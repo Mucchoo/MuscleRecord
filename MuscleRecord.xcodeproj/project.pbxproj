@@ -7,18 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A25372827ECB0D5003C8728 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */; };
+		2A4511D727EDCDE80059D4A6 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4511D627EDCDE80059D4A6 /* CardView.swift */; };
 		2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */; };
-		2AA3733127EC507200A885B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3733027EC507200A885B0 /* ContentView.swift */; };
+		2AA3733127EC507200A885B0 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3733027EC507200A885B0 /* ListView.swift */; };
 		2AA3733327EC507300A885B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA3733227EC507300A885B0 /* Assets.xcassets */; };
 		2AA3733627EC507300A885B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA3733527EC507300A885B0 /* Preview Assets.xcassets */; };
+		2AFDF1A427ED85F200A03ACE /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A327ED85F200A03ACE /* GraphView.swift */; };
+		2AFDF1A627ED861100A03ACE /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A527ED861100A03ACE /* SettingView.swift */; };
+		2AFDF1A827ED869500A03ACE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A727ED869500A03ACE /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2AA3732B27EC507200A885B0 /* MuscleRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuscleRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A25372627ECAE52003C8728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2A4511D627EDCDE80059D4A6 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		2AA3732B27EC507200A885B0 /* Muscle Record.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Muscle Record.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleRecordApp.swift; sourceTree = "<group>"; };
-		2AA3733027EC507200A885B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2AA3733027EC507200A885B0 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		2AA3733227EC507300A885B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2AA3733527EC507300A885B0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2AFDF1A327ED85F200A03ACE /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		2AFDF1A527ED861100A03ACE /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		2AFDF1A727ED869500A03ACE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +54,7 @@
 		2AA3732C27EC507200A885B0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2AA3732B27EC507200A885B0 /* MuscleRecord.app */,
+				2AA3732B27EC507200A885B0 /* Muscle Record.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,9 +62,15 @@
 		2AA3732D27EC507200A885B0 /* MuscleRecord */ = {
 			isa = PBXGroup;
 			children = (
+				2A25372627ECAE52003C8728 /* Info.plist */,
 				2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */,
-				2AA3733027EC507200A885B0 /* ContentView.swift */,
+				2AFDF1A727ED869500A03ACE /* ContentView.swift */,
+				2A4511D627EDCDE80059D4A6 /* CardView.swift */,
+				2AA3733027EC507200A885B0 /* ListView.swift */,
+				2AFDF1A327ED85F200A03ACE /* GraphView.swift */,
+				2AFDF1A527ED861100A03ACE /* SettingView.swift */,
 				2AA3733227EC507300A885B0 /* Assets.xcassets */,
+				2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */,
 				2AA3733427EC507300A885B0 /* Preview Content */,
 			);
 			path = MuscleRecord;
@@ -84,7 +101,7 @@
 			);
 			name = MuscleRecord;
 			productName = MuscleRecord;
-			productReference = 2AA3732B27EC507200A885B0 /* MuscleRecord.app */;
+			productReference = 2AA3732B27EC507200A885B0 /* Muscle Record.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -125,6 +142,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A25372827ECB0D5003C8728 /* LaunchScreen.storyboard in Resources */,
 				2AA3733627EC507300A885B0 /* Preview Assets.xcassets in Resources */,
 				2AA3733327EC507300A885B0 /* Assets.xcassets in Resources */,
 			);
@@ -137,8 +155,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AA3733127EC507200A885B0 /* ContentView.swift in Sources */,
+				2AA3733127EC507200A885B0 /* ListView.swift in Sources */,
+				2AFDF1A827ED869500A03ACE /* ContentView.swift in Sources */,
+				2AFDF1A627ED861100A03ACE /* SettingView.swift in Sources */,
 				2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */,
+				2A4511D727EDCDE80059D4A6 /* CardView.swift in Sources */,
+				2AFDF1A427ED85F200A03ACE /* GraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +217,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -249,7 +271,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -270,18 +292,21 @@
 				DEVELOPMENT_TEAM = DS86AF5N83;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MuscleRecord/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yazujumusa.MuscleRecord;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Muscle Record";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -299,18 +324,21 @@
 				DEVELOPMENT_TEAM = DS86AF5N83;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MuscleRecord/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yazujumusa.MuscleRecord;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Muscle Record";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
