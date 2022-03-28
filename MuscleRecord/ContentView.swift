@@ -16,6 +16,9 @@ struct ContentView: View {
         appearance.backgroundColor = UIColor(Color("AccentColor"))
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().standardAppearance = appearance
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color("AccentColor"))
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color("AccentColor")),], for: .normal)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white,], for: .selected)
     }
     
     var body: some View {
@@ -25,7 +28,7 @@ struct ContentView: View {
                     .tabItem{
                         Image(systemName: "list.dash")
                         Text("リスト")
-                    }
+                    }.background(Color("BackgroundColor"))
                 GraphView()
                     .tabItem{
                         Image(systemName: "chart.bar.fill")
@@ -37,7 +40,7 @@ struct ContentView: View {
                         Text("設定")
                     }
             }
-            .navigationBarTitle(Text("種目リスト"), displayMode: .inline)
+            .navigationBarTitle(Text("2022年 3月1日"), displayMode: .inline)
             .navigationBarItems(
                 leading: Button(action: {print("eee")}) {
                     Image(systemName: "calendar")

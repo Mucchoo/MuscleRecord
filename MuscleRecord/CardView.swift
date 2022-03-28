@@ -11,7 +11,7 @@ struct CardView: View {
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                Text("ここに種目名が入りますここに種目名が入りますここに種目名が入ります")
+                Text("ここに種目名が入ります")
                     .fontWeight(.bold)
                     .lineLimit(2)
                     .foregroundColor(Color("FontColor"))
