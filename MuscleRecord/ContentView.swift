@@ -22,37 +22,44 @@ struct ContentView: View {
     }
     
     var body: some View {
-        NavigationView {
-            TabView{
+        TabView{
+            NavigationView{
                 ListView()
-                    .tabItem{
-                        Image(systemName: "list.dash")
-                        Text("リスト")
-                    }.background(Color("BackgroundColor"))
-                GraphView()
-                    .tabItem{
-                        Image(systemName: "chart.bar.fill")
-                        Text("グラフ")
-                    }
-                SettingView()
-                    .tabItem{
-                        Image(systemName: "gearshape.fill")
-                        Text("設定")
-                    }
+                    .background(Color("BackgroundColor"))
+                    .navigationBarTitle(Text("2022年 3月1日"), displayMode: .inline)
+                    .navigationBarItems(
+                        leading: Button(action: {print("eee")}) {
+                            Image(systemName: "calendar")
+                                .foregroundColor(Color.white)
+                        },
+                        trailing: Button(action: {
+                            print("ff")
+                        }) {
+                            Image(systemName: "plus")
+                                .foregroundColor(Color.white)
+                        }
+                    )
             }
-            .navigationBarTitle(Text("2022年 3月1日"), displayMode: .inline)
-            .navigationBarItems(
-                leading: Button(action: {print("eee")}) {
-                    Image(systemName: "calendar")
-                        .foregroundColor(Color.white)
-                },
-                trailing: Button(action: {
-                    print("ff")
-                }) {
-                    Image(systemName: "plus")
-                        .foregroundColor(Color.white)
+            .tabItem{
+                Image(systemName: "list.dash")
+                Text("リスト")
+            }
+            NavigationView{
+                GraphView()
+                    .navigationBarTitle(Text("グラフ"), displayMode: .inline)
+            }
+            .tabItem{
+                Image(systemName: "chart.bar.fill")
+                Text("グラフ")
+            }
+            NavigationView{
+                SettingView()
+                    .navigationBarTitle(Text("設定"), displayMode: .inline)
+            }.background(Color("BackgroundColor"))
+                .tabItem{
+                    Image(systemName: "gearshape.fill")
+                    Text("設定")
                 }
-            )
         }
     }
 }

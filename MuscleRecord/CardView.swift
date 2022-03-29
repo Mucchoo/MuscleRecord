@@ -16,11 +16,12 @@ struct CardView: View {
                     .lineLimit(2)
                     .foregroundColor(Color("FontColor"))
                 Spacer()
-                Image(systemName: "pencil.circle.fill")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(Color("AccentColor"))
-                    
+                NavigationLink(destination: InputView()){
+                    Image(systemName: "pencil.circle.fill")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(Color("AccentColor"))
+                }
             }.frame(minHeight: 43)
             Spacer()
             HStack(alignment: .bottom) {
