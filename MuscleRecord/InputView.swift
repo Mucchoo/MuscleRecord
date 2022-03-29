@@ -45,7 +45,7 @@ struct InputView: View {
             })
             Spacer()
         }
-            .navigationTitle("記録を入力")
+            .navigationTitle("今日の記録を入力")
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

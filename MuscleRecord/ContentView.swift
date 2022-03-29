@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    @State private var date = Date()
+    @State private var showingDataPicker = false
     init(){
         UITabBar.appearance().backgroundColor = UIColor.secondarySystemBackground
         let appearance = UINavigationBarAppearance()
@@ -28,12 +29,8 @@ struct ContentView: View {
                     .background(Color("BackgroundColor"))
                     .navigationBarTitle(Text("2022年 3月1日"), displayMode: .inline)
                     .navigationBarItems(
-                        leading: Button(action: {print("eee")}) {
-                            Image(systemName: "calendar")
-                                .foregroundColor(Color.white)
-                        },
                         trailing: Button(action: {
-                            print("ff")
+                            print("プラスが押されました")
                         }) {
                             Image(systemName: "plus")
                                 .foregroundColor(Color.white)

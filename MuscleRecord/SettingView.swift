@@ -13,7 +13,7 @@ struct SettingView: View {
             Form{
                 Section(header: Text("Pro")){
                     FormRowView(icon: "gift", firstText: "Proにアップグレード", secondText: "")
-                    FormRowView(icon: "", firstText: "テーマカラー", secondText: "")
+                    FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", secondText: "")
                     FormRowView(icon: "circle.righthalf.filled", firstText: "ダークモード", secondText: "OFF")
                     HStack{
                         Image("OrangeIcon")

@@ -19,7 +19,7 @@ struct CardView: View {
                 NavigationLink(destination: InputView()){
                     Image(systemName: "pencil.circle.fill")
                         .resizable()
-                        .frame(width: 30, height: 30)
+                        .frame(width: 40, height: 40)
                         .foregroundColor(Color("AccentColor"))
                 }
             }.frame(minHeight: 43)
@@ -27,20 +27,20 @@ struct CardView: View {
             HStack(alignment: .bottom) {
                 VStack(alignment: .leading, spacing: 5) {
                     HStack(spacing: 10) {
-                        Text("↑")
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color.green)
-                        Text("重量：60kg")
+                        Text("重量：60kg ")
                             .fontWeight(.semibold)
                             .foregroundColor(Color("FontColor"))
+                        Text("↑")
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color("AccentColor"))
                     }
                     HStack(spacing: 10) {
-                        Text("↓")
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color.red)
                         Text("回数：10rep")
                             .fontWeight(.semibold)
                             .foregroundColor(Color("FontColor"))
+                        Text("↓")
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color("AccentColor"))
                     }
                 }
                 Spacer()
