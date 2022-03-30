@@ -24,20 +24,16 @@ struct SettingView: View {
                         Spacer()
                     }
                 }
-                FormRowView(icon: "questionmark", firstText: "使い方", secondText: "")
-                FormRowView(icon: "person", firstText: "アカウント作成", secondText: "")
-                FormRowView(icon: "star", firstText: "レビューで応援！", secondText: "")
-                FormRowView(icon: "square.and.arrow.up", firstText: "アプリをシェア", secondText: "")
-                FormRowView(icon: "envelope", firstText: "ご意見・ご要望", secondText: "")
+                Section(footer: Text("©︎ 2022 Musa Yazuju")){
+                    FormRowView(icon: "questionmark", firstText: "使い方", secondText: "")
+                    FormRowView(icon: "person", firstText: "アカウント作成", secondText: "")
+                    FormRowView(icon: "star", firstText: "レビューで応援！", secondText: "")
+                    FormRowView(icon: "square.and.arrow.up", firstText: "アプリをシェア", secondText: "")
+                    FormRowView(icon: "envelope", firstText: "ご意見・ご要望", secondText: "")
+                }
             }
             .listStyle(GroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
-            Text("Copyright ©︎ All rights reserved. \nMusa Yazuju")
-                .multilineTextAlignment(.center)
-                .font(.footnote)
-                .padding(.top, 6)
-                .padding(.bottom, 8)
-                .foregroundColor(Color.secondary)
         }.background(Color("BackgroundColor").edgesIgnoringSafeArea(.all))
     }
 }
