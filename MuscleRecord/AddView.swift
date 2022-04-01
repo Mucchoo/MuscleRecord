@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct MyTextField: UIViewRepresentable {
     typealias UIViewType = UITextField

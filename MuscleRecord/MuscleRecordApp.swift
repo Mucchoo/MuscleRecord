@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct MuscleRecordApp: App {
@@ -13,5 +14,13 @@ struct MuscleRecordApp: App {
         WindowGroup {
             ContentView()
         }
+    }
+}
+
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        let db = Firestore.firestore()
+        return true
     }
 }

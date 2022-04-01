@@ -29,12 +29,6 @@ struct ContentView: View {
                     .background(Color("BackgroundColor"))
                     .navigationBarTitle(Text("2022年 3月1日"), displayMode: .inline)
                     .navigationBarItems(
-//                        trailing: Button(action: {
-//                            print("プラスが押されました")
-//                        }) {
-//                            Image(systemName: "plus")
-//                                .foregroundColor(Color.white)
-//                        }
                         trailing: NavigationLink(destination: AddView()){
                             Image(systemName: "plus").foregroundColor(.white)
                         }
