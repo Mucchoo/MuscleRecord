@@ -10,7 +10,8 @@
 		2A25372827ECB0D5003C8728 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */; };
 		2A27AB8D27F5BB0A004AF6F3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2A27AB8C27F5BB0A004AF6F3 /* FirebaseAuth */; };
 		2A27AB8F27F5BB0A004AF6F3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2A27AB8E27F5BB0A004AF6F3 /* FirebaseFirestore */; };
-		2A4511D727EDCDE80059D4A6 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4511D627EDCDE80059D4A6 /* CardView.swift */; };
+		2A543DCB27F9C6FB0051665E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A543DCA27F9C6FB0051665E /* Event.swift */; };
+		2A543DCD27F9C7670051665E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A543DCC27F9C7670051665E /* ViewModel.swift */; };
 		2A58E12727F26E1300121A4F /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A58E12627F26E1300121A4F /* InputView.swift */; };
 		2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A96A78627F2BBD000A37A43 /* FormRowView.swift */; };
 		2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */; };
@@ -27,7 +28,8 @@
 /* Begin PBXFileReference section */
 		2A25372627ECAE52003C8728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2A4511D627EDCDE80059D4A6 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		2A543DCA27F9C6FB0051665E /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		2A543DCC27F9C7670051665E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		2A58E12627F26E1300121A4F /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		2A96A78627F2BBD000A37A43 /* FormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowView.swift; sourceTree = "<group>"; };
 		2AA3732B27EC507200A885B0 /* Muscle Record.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Muscle Record.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,9 +80,10 @@
 				2ADDC0C427F5BE3D003C548B /* GoogleService-Info.plist */,
 				2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */,
 				2AFDF1A727ED869500A03ACE /* ContentView.swift */,
-				2AD99F8427F3EF760007E152 /* AddView.swift */,
-				2A4511D627EDCDE80059D4A6 /* CardView.swift */,
+				2A543DCA27F9C6FB0051665E /* Event.swift */,
+				2A543DCC27F9C7670051665E /* ViewModel.swift */,
 				2AA3733027EC507200A885B0 /* ListView.swift */,
+				2AD99F8427F3EF760007E152 /* AddView.swift */,
 				2AFDF1A327ED85F200A03ACE /* GraphView.swift */,
 				2A58E12627F26E1300121A4F /* InputView.swift */,
 				2AFDF1A527ED861100A03ACE /* SettingView.swift */,
@@ -179,14 +182,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A543DCB27F9C6FB0051665E /* Event.swift in Sources */,
 				2AA3733127EC507200A885B0 /* ListView.swift in Sources */,
 				2A58E12727F26E1300121A4F /* InputView.swift in Sources */,
+				2A543DCD27F9C7670051665E /* ViewModel.swift in Sources */,
 				2AD99F8527F3EF760007E152 /* AddView.swift in Sources */,
 				2AFDF1A827ED869500A03ACE /* ContentView.swift in Sources */,
 				2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */,
 				2AFDF1A627ED861100A03ACE /* SettingView.swift in Sources */,
 				2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */,
-				2A4511D727EDCDE80059D4A6 /* CardView.swift in Sources */,
 				2AFDF1A427ED85F200A03ACE /* GraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
