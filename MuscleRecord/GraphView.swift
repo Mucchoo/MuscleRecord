@@ -9,9 +9,10 @@ import SwiftUI
 
 struct GraphView: View {
     @State var selectedIndex = 0
+    
     var body: some View {
         VStack(spacing: 10) {
-            Picker("種目", selection: .constant(1), content: {
+            Picker("event", selection: .constant(1), content: {
                 ForEach(0..<30) { num in
                     Text("ここに文章が入ります").font(.headline)
                 }
@@ -23,7 +24,7 @@ struct GraphView: View {
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(Color("AccentColor"), lineWidth: 3)
             )
-            Picker("期間", selection: self.$selectedIndex, content: {
+            Picker("period", selection: self.$selectedIndex, content: {
                 Text("毎日").tag(0)
                 Text("3日平均").tag(1)
                 Text("週平均").tag(2)

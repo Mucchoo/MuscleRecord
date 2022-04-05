@@ -10,29 +10,24 @@ import Firebase
 
 struct ListView: View {
     @ObservedObject var model = ViewModel()
-    init() {
-        model.getData("user")
-    }
-
     var body: some View {
-//        List (model.events) { event in
-//            Text(event.id)
-//            Text(event.name)
-//            Text(String(event.latestWeight))
-//            Text(String(event.latestRep))
-//        }
-        
         ScrollView {
             VStack(spacing: 0) {
                 ForEach(model.events) { event in
                     VStack {
                         HStack(alignment: .top) {
+                            NavigationLink(destination: EditView(editingEvent: event)){
+                                Image(systemName: "ellipsis.circle")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(Color("AccentColor"))
+                            }
                             Text(event.name)
                                 .fontWeight(.bold)
                                 .lineLimit(2)
                                 .foregroundColor(Color("FontColor"))
                             Spacer()
-                            NavigationLink(destination: InputView()){
+                            NavigationLink(destination: RecordView(recordingEvent: event)){
                                 Image(systemName: "pencil.circle.fill")
                                     .resizable()
                                     .frame(width: 40, height: 40)
@@ -42,22 +37,12 @@ struct ListView: View {
                         Spacer()
                         HStack(alignment: .bottom) {
                             VStack(alignment: .leading, spacing: 5) {
-                                HStack(spacing: 10) {
-                                    Text("重量：\(event.latestWeight)kg ")
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(Color("FontColor"))
-                                    Text("↑")
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(Color("AccentColor"))
-                                }
-                                HStack(spacing: 10) {
-                                    Text("回数：\(event.latestRep)rep")
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(Color("FontColor"))
-                                    Text("↓")
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(Color("AccentColor"))
-                                }
+                                Text("重量：\(event.latestWeight)kg ")
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color("FontColor"))
+                                Text("回数：\(event.latestRep)rep")
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color("FontColor"))
                             }
                             Spacer()
                             Text("グラフを見る ▶︎")
@@ -69,15 +54,17 @@ struct ListView: View {
                     .padding(20)
                     .cornerRadius(20)
                     .background(Color("CellColor"))
-                        .cornerRadius(20)
-                        .padding(.horizontal, 10)
+                    .cornerRadius(20)
+                    .padding(.horizontal, 10)
                     Spacer()
                 }
             }
             .padding(.top, 10)
+        }.onAppear {
+            model.getEvent()
         }
     }
-
+    
 }
 
 struct ListView_Previews: PreviewProvider {

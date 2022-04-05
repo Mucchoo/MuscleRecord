@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var date = Date()
     @State private var showingDataPicker = false
+    let dateFormatter = DateFormatter()
     init(){
         UITabBar.appearance().backgroundColor = UIColor.secondarySystemBackground
         let appearance = UINavigationBarAppearance()
@@ -20,6 +21,7 @@ struct ContentView: View {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color("AccentColor"))
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color("AccentColor")),], for: .normal)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white,], for: .selected)
+        dateFormatter.dateFormat = "y年 M月 d日"
     }
     
     var body: some View {
@@ -27,7 +29,7 @@ struct ContentView: View {
             NavigationView{
                 ListView()
                     .background(Color("BackgroundColor"))
-                    .navigationBarTitle(Text("2022年 3月1日"), displayMode: .inline)
+                    .navigationBarTitle(Text(dateFormatter.string(from: date)), displayMode: .inline)
                     .navigationBarItems(
                         trailing: NavigationLink(destination: AddView()){
                             Image(systemName: "plus").foregroundColor(.white)

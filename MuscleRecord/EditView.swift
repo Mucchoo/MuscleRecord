@@ -1,25 +1,19 @@
 //
-//  AddView.swift
+//  EditView.swift
 //  MuscleRecord
 //
-//  Created by Musa Yazuju on 2022/03/30.
+//  Created by Musa Yazuju on 2022/04/05.
 //
 
 import SwiftUI
-import Firebase
 
-struct AddView: View {
-    
-    private enum Field: Int, Hashable {
-        case text
-    }
-
-    @Environment(\.dismiss) var dismiss
+struct EditView: View {
     @ObservedObject var model = ViewModel()
-    @FocusState private var focusField: Field?
+    @Environment(\.dismiss) var dismiss
     @State private var name = ""
+    var editingEvent: Event
     var body: some View {
-        VStack(spacing: 0){
+        VStack{
             HStack{
                 Text("種目名")
                     .font(.title3)
@@ -30,27 +24,34 @@ struct AddView: View {
             }.frame(width: 300, height: 70, alignment: .center)
             TextField("種目名を入力してください", text: $name)
                 .font(.headline)
-                .focused($focusField, equals: .text)
-                .frame(width: 300, height: 100, alignment: .center)
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {  /// Anything over 0.5 seems to work
-                        self.focusField = .text
-                     }                }
+                .frame(width: 300, height: 70, alignment: .center)
+                .onAppear{
+                    self.name = editingEvent.name
+                }
             Button( action: {
-                model.addEvent(name)
+                model.updateEvent(event: editingEvent, newName: name)
                 dismiss()
             }, label: {
-                Text("追加する")
+                Text("名前を上書き")
                     .fontWeight(.bold)
                     .frame(width: 300, height: 70, alignment: .center)
                     .background(Color("AccentColor"))
                     .foregroundColor(.white)
                     .cornerRadius(20)
-                    .padding(.top, 30)
+                    .padding(10)
+            })
+            Button( action: {
+                model.deleteEvent(event: editingEvent)
+                dismiss()
+            }, label: {
+                Text("種目を削除")
+                    .fontWeight(.bold)
+                    .frame(width: 300, height: 70, alignment: .center)
+                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(lineWidth: 3))
             })
             Spacer()
         }
-            .navigationTitle("種目を追加")
+        .navigationTitle("種目を編集")
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -62,12 +63,11 @@ struct AddView: View {
                         }
                     ).tint(.white)
                 }
-            }
-    }
+            }    }
 }
 
-struct AddView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddView()
-    }
-}
+//struct EditView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EditView()
+//    }
+//}
