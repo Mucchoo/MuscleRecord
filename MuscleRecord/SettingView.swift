@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingView: View {
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack{
             Form{
@@ -35,11 +36,18 @@ struct SettingView: View {
             .listStyle(GroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
         }.background(Color("BackgroundColor").edgesIgnoringSafeArea(.all))
-    }
-}
-
-struct SettingView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingView()
+            .navigationTitle("設定")
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(
+                        action: {
+                            dismiss()
+                        }, label: {
+                            Image(systemName: "arrow.backward")
+                        }
+                    ).tint(.white)
+                }
+            }
     }
 }

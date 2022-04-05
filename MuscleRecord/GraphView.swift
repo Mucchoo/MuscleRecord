@@ -8,22 +8,13 @@
 import SwiftUI
 
 struct GraphView: View {
+    @Environment(\.dismiss) var dismiss
+    @ObservedObject var model = ViewModel()
     @State var selectedIndex = 0
+    var event: Event
     
     var body: some View {
         VStack(spacing: 10) {
-            Picker("event", selection: .constant(1), content: {
-                ForEach(0..<30) { num in
-                    Text("ここに文章が入ります").font(.headline)
-                }
-            })
-            .pickerStyle(WheelPickerStyle())
-            .frame(height: 104)
-            .clipped()
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color("AccentColor"), lineWidth: 3)
-            )
             Picker("period", selection: self.$selectedIndex, content: {
                 Text("毎日").tag(0)
                 Text("3日平均").tag(1)
@@ -77,12 +68,23 @@ struct GraphView: View {
                     }
                 }
             }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-        }.padding(10)
-    }
-}
-
-struct GraphView_Previews: PreviewProvider {
-    static var previews: some View {
-        GraphView()
+        }
+        .padding(10)
+        .onAppear {
+            model.getEvent()
+        }
+        .navigationTitle(event.name)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(
+                    action: {
+                        dismiss()
+                    }, label: {
+                        Image(systemName: "arrow.backward")
+                    }
+                ).tint(.white)
+            }
+        }
     }
 }

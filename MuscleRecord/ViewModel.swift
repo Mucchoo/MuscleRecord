@@ -19,10 +19,8 @@ class ViewModel: ObservableObject {
     func deleteEvent(event: Event) {
         let db = Firestore.firestore()
         db.collection("user").document(event.id).delete { error in
-            DispatchQueue.main.async {
-                self.events.removeAll { e in
-                    return e.id == event.id
-                }
+            self.events.removeAll { e in
+                return e.id == event.id
             }
         }
     }
@@ -33,22 +31,16 @@ class ViewModel: ObservableObject {
             self.getEvent()
         }
     }
-
+    
     func getEvent() {
         let db = Firestore.firestore()
         db.collection("user").getDocuments { snapshot, error in
             if let snapshot = snapshot{
-                DispatchQueue.main.async {
-                    self.events = snapshot.documents.map { d in
-                        return Event(id: d.documentID,
-                                     name: d["name"] as? String ?? "",
-                                     latestWeight: d["latestWeight"] as? Int ?? 0,
-                                     latestRep: d["latestRep"] as? Int ?? 0)
-                    }
-                    //                            let timeStamp: Timestamp = d["date"] as! Timestamp
-                    //                            let dateFormatter = DateFormatter()
-                    //                            dateFormatter.dateFormat = "YY/MM/dd"
-                    //                            let date: String = dateFormatter.string(from: timeStamp.dateValue())
+                self.events = snapshot.documents.map { d in
+                    return Event(id: d.documentID,
+                                 name: d["name"] as? String ?? "",
+                                 latestWeight: d["latestWeight"] as? Int ?? 0,
+                                 latestRep: d["latestRep"] as? Int ?? 0)
                 }
             }
         }
@@ -60,3 +52,8 @@ class ViewModel: ObservableObject {
     }
     
 }
+
+//                            let timeStamp: Timestamp = d["date"] as! Timestamp
+//                            let dateFormatter = DateFormatter()
+//                            dateFormatter.dateFormat = "YY/MM/dd"
+//                            let date: String = dateFormatter.string(from: timeStamp.dateValue())

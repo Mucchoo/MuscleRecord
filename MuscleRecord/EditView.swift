@@ -11,7 +11,7 @@ struct EditView: View {
     @ObservedObject var model = ViewModel()
     @Environment(\.dismiss) var dismiss
     @State private var name = ""
-    var editingEvent: Event
+    var event: Event
     var body: some View {
         VStack{
             HStack{
@@ -26,10 +26,10 @@ struct EditView: View {
                 .font(.headline)
                 .frame(width: 300, height: 70, alignment: .center)
                 .onAppear{
-                    self.name = editingEvent.name
+                    self.name = event.name
                 }
             Button( action: {
-                model.updateEvent(event: editingEvent, newName: name)
+                model.updateEvent(event: event, newName: name)
                 dismiss()
             }, label: {
                 Text("名前を上書き")
@@ -41,7 +41,7 @@ struct EditView: View {
                     .padding(10)
             })
             Button( action: {
-                model.deleteEvent(event: editingEvent)
+                model.deleteEvent(event: event)
                 dismiss()
             }, label: {
                 Text("種目を削除")
@@ -65,9 +65,3 @@ struct EditView: View {
                 }
             }    }
 }
-
-//struct EditView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EditView()
-//    }
-//}

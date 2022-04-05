@@ -13,7 +13,7 @@ struct AddView: View {
     private enum Field: Int, Hashable {
         case text
     }
-
+    
     @Environment(\.dismiss) var dismiss
     @ObservedObject var model = ViewModel()
     @FocusState private var focusField: Field?
@@ -33,14 +33,15 @@ struct AddView: View {
                 .focused($focusField, equals: .text)
                 .frame(width: 300, height: 100, alignment: .center)
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {  /// Anything over 0.5 seems to work
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.focusField = .text
-                     }                }
+                    }
+                }
             Button( action: {
                 model.addEvent(name)
                 dismiss()
             }, label: {
-                Text("追加する")
+                Text("追加")
                     .fontWeight(.bold)
                     .frame(width: 300, height: 70, alignment: .center)
                     .background(Color("AccentColor"))
@@ -50,24 +51,18 @@ struct AddView: View {
             })
             Spacer()
         }
-            .navigationTitle("種目を追加")
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(
-                        action: {
-                            dismiss()
-                        }, label: {
-                            Image(systemName: "arrow.backward")
-                        }
-                    ).tint(.white)
-                }
+        .navigationTitle("種目を追加")
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(
+                    action: {
+                        dismiss()
+                    }, label: {
+                        Image(systemName: "arrow.backward")
+                    }
+                ).tint(.white)
             }
-    }
-}
-
-struct AddView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddView()
+        }
     }
 }

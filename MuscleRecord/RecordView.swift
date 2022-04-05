@@ -12,7 +12,7 @@ struct RecordView: View {
     @ObservedObject var model = ViewModel()
     @State private var weight = 4
     @State private var rep = 4
-    var recordingEvent: Event
+    var event: Event
     var body: some View {
         VStack{
             HStack{
@@ -22,7 +22,7 @@ struct RecordView: View {
                         Text(String(num)).font(.headline)
                     }
                 })
-                .frame(width: 100, height: 150)
+                .frame(width: 100)
                 .clipped()
                 .pickerStyle(WheelPickerStyle())
                 Text("kg ").fontWeight(.bold)
@@ -34,16 +34,16 @@ struct RecordView: View {
                         Text(String(num)).font(.headline)
                     }
                 })
-                .frame(width: 100, height: 150)
+                .frame(width: 100)
                 .clipped()
                 .pickerStyle(WheelPickerStyle())
                 Text("rep").fontWeight(.bold)
             }
             Button( action: {
-                model.updateRecord(event: recordingEvent, weight: weight + 1, rep: rep + 1)
+                model.updateRecord(event: event, weight: weight + 1, rep: rep + 1)
                 dismiss()
             }, label: {
-                Text("完了")
+                Text("記録")
                     .fontWeight(.bold)
                     .frame(width: 300, height: 70, alignment: .center)
                     .background(Color("AccentColor"))
@@ -53,7 +53,7 @@ struct RecordView: View {
             })
             Spacer()
         }
-            .navigationTitle("今日の記録を入力")
+        .navigationTitle(event.name)
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -68,9 +68,3 @@ struct RecordView: View {
             }
     }
 }
-
-//struct RecordView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RecordView()
-//    }
-//}

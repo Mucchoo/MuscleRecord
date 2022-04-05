@@ -26,11 +26,3 @@ struct FormRowView: View {
         }
     }
 }
-
-struct FormRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        FormRowView(icon: "gear", firstText: "Application", secondText: "Todo")
-            .previewLayout(.fixed(width: 375, height: 60))
-            .padding()
-    }
-}
