@@ -30,7 +30,7 @@ struct RecordView: View {
             HStack{
                 Text("回数").fontWeight(.bold)
                 Picker("rep", selection: $rep, content: {
-                    ForEach(1..<300) { num in
+                    ForEach(1..<100) { num in
                         Text(String(num)).font(.headline)
                     }
                 })
@@ -40,7 +40,7 @@ struct RecordView: View {
                 Text("rep").fontWeight(.bold)
             }
             Button( action: {
-                model.updateRecord(event: event, weight: weight + 1, rep: rep + 1)
+                model.addRecord(event: event, weight: weight + 1, rep: rep + 1)
                 dismiss()
             }, label: {
                 Text("記録")

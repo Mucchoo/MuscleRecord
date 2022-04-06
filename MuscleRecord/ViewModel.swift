@@ -10,7 +10,12 @@ import Firebase
 
 class ViewModel: ObservableObject {
     @Published var events = [Event]()
-    
+    @Published var records = [Record]()
+    @Published var weightArray = [Float]()
+    @Published var maxWeight: Float = 0.0
+    @Published var latestID: String = ""
+    @Published var oldRecord: Record?
+
     func updateEvent(event: Event, newName: String) {
         let db = Firestore.firestore()
         db.collection("user").document(event.id).setData(["name": newName])
@@ -46,14 +51,32 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func updateRecord(event: Event, weight: Int, rep: Int) {
+    func getRecord(event: Event) {
+        let db = Firestore.firestore()
+        db.collection("user").document(event.id).collection("records").order(by: "date").getDocuments { (snapshot, error) in
+            if let snapshot = snapshot{
+                self.records = snapshot.documents.map { d in
+                    self.latestID = d.documentID
+                    let timeStamp: Timestamp = d["date"] as? Timestamp ?? Timestamp()
+                    return Record(id: d.documentID, date: timeStamp.dateValue(),
+                                  weight: d["weight"] as? Float ?? 0,
+                                  rep: d["rep"] as? Int ?? 0)
+                }
+                self.weightArray = snapshot.documents.map { d in
+                    if self.maxWeight < d["weight"] as? Float ?? 0.0 {
+                        self.maxWeight = d["weight"] as? Float ?? 0.0
+                    }
+                    return d["weight"] as? Float ?? 0.0
+                            
+                }
+            }
+        }
+    }
+    
+    func addRecord(event: Event, weight: Int, rep: Int) {
         let db = Firestore.firestore()
         db.collection("user").document(event.id).setData(["name":event.name, "latestWeight": weight, "latestRep": rep])
+        db.collection("user").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep])
     }
     
 }
-
-//                            let timeStamp: Timestamp = d["date"] as! Timestamp
-//                            let dateFormatter = DateFormatter()
-//                            dateFormatter.dateFormat = "YY/MM/dd"
-//                            let date: String = dateFormatter.string(from: timeStamp.dateValue())
