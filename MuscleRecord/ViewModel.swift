@@ -48,10 +48,8 @@ class ViewModel: ObservableObject {
         db.collection("user").getDocuments { snapshot, error in
             if let snapshot = snapshot{
                 self.events = snapshot.documents.map { d in
-                    return Event(id: d.documentID,
-                                 name: d["name"] as? String ?? "",
-                                 latestWeight: d["latestWeight"] as? Int ?? 0,
-                                 latestRep: d["latestRep"] as? Int ?? 0)
+                    let timeStamp: Timestamp = d["latestDate"] as? Timestamp ?? Timestamp()
+                    return Event(id: d.documentID, name: d["name"] as? String ?? "", latestWeight: d["latestWeight"] as? Float ?? 0, latestRep: d["latestRep"] as? Int ?? 0, latestDate: timeStamp.dateValue())
                 }
             }
         }
@@ -169,17 +167,25 @@ class ViewModel: ObservableObject {
                 }
             }
         }
-        //recordsPer3Daysの作成手順
-        //1.recordsをfor文に突っ込んでrecordごとに処理を行えるようにする
-        //2.recordの情報のうち、weightとrepを受け取る受け皿作成
-        //3.recordの情報を何本分受け取ったかカウントする受け皿作成
-        //4.record3つ分の情報が溜まったら、3つ分weightとrepを凝縮してBar1本生成
-        //5.最後に余った1、2個分の情報も使ってBar1本生成
     }
     
-    func addRecord(event: Event, weight: Int, rep: Int) {
+    func addRecord(event: Event, weight: Float, rep: Int) {
         let db = Firestore.firestore()
         db.collection("user").document(event.id).setData(["name":event.name, "latestWeight": weight, "latestRep": rep])
         db.collection("user").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep])
+    }
+    
+    func updateRecord(event: Event, weight: Float, rep: Int) {
+        let db = Firestore.firestore()
+        db.collection("user").document(event.id).collection("records").order(by: "date", descending: true).limit(to: 1).getDocuments { snapshot, error in
+            if let snapshot = snapshot {
+                snapshot.documents.map { d in
+                    let latestRecordID = d.documentID
+                    db.collection("user").document(event.id).collection("records").document(latestRecordID).delete()
+                }
+                db.collection("user").document(event.id).setData(["name":event.name, "latestWeight": weight, "latestRep": rep])
+                db.collection("user").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep])
+            }
+        }
     }
 }

@@ -44,16 +44,23 @@ struct ContentView: View {
                                     .foregroundColor(Color("FontColor"))
                                 Spacer()
                                 NavigationLink(destination: RecordView(event: event)){
-                                    Image(systemName: "pencil.circle.fill")
-                                        .resizable()
-                                        .frame(width: 40, height: 40)
-                                        .foregroundColor(Color("AccentColor"))
+                                    if (Calendar.current.dateComponents([.day], from: Date(), to: event.latestDate)).day! == 0 {
+                                        Image(systemName: "pencil.circle")
+                                            .resizable()
+                                            .frame(width: 40, height: 40)
+                                            .foregroundColor(Color("AccentColor"))
+                                    } else {
+                                        Image(systemName: "pencil.circle.fill")
+                                            .resizable()
+                                            .frame(width: 40, height: 40)
+                                            .foregroundColor(Color("AccentColor"))
+                                    }
                                 }
                             }.frame(minHeight: 43)
                             Spacer()
                             HStack(alignment: .bottom) {
                                 VStack(alignment: .leading, spacing: 5) {
-                                    Text("重量：\(event.latestWeight)kg ")
+                                    Text("重量：\(String(format: "%.1f", event.latestWeight))kg ")
                                         .fontWeight(.semibold)
                                         .foregroundColor(Color("FontColor"))
                                     Text("回数：\(event.latestRep)rep")
@@ -82,7 +89,7 @@ struct ContentView: View {
                 model.getEvent()
             }
                 .background(Color("BackgroundColor"))
-                .navigationBarTitle(Text(dateFormatter.string(from: date)), displayMode: .inline)
+                .navigationBarTitle("Muscle Record", displayMode: .inline)
                 .navigationBarItems(
                     leading: NavigationLink(destination: SettingView()){
                         Image(systemName: "line.3.horizontal").foregroundColor(.white)
