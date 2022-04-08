@@ -14,7 +14,6 @@ class ViewModel: ObservableObject {
     @Published var weightArray = [Float]()
     @Published var maxWeight: Float = 0.0
     @Published var latestID: String = ""
-    @Published var oldRecord: Record?
 
     func updateEvent(event: Event, newName: String) {
         let db = Firestore.firestore()
@@ -78,5 +77,4 @@ class ViewModel: ObservableObject {
         db.collection("user").document(event.id).setData(["name":event.name, "latestWeight": weight, "latestRep": rep])
         db.collection("user").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep])
     }
-    
 }

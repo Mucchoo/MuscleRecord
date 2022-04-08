@@ -7,45 +7,6 @@
 
 import SwiftUI
 
-//func createBar(newRecord: Record, oldRecord: Record) {
-//    @ObservedObject var model = ViewModel()
-//    let dateFormatter: DateFormatter = {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "M/d"
-//        return dateFormatter
-//    }()
-//    var modifiedDate = Date(timeInterval: 60*60*24, since: oldRecord.date)
-//    while modifiedDate != newRecord.date {
-//        VStack(spacing: 0){
-//            GeometryReader { geometry in
-//                VStack(spacing: 0) {
-//                    Rectangle()
-//                        .frame(minHeight: 0, maxHeight: .infinity)
-//                        .foregroundColor(Color("ClearColor"))
-//                    Rectangle()
-//                        .frame(width: 30, height: geometry.size.height * CGFloat(oldRecord.weight/model.maxWeight))
-//                        .foregroundColor(Color("AccentColor"))
-//                }
-//            }
-//            Text(String(oldRecord.rep))
-//                .foregroundColor(.white)
-//                .padding(.bottom, 5)
-//                .frame(width: 30, height: 30)
-//                .background(Color("AccentColor"))
-//            Rectangle()
-//                .frame(width: 40, height: 3)
-//                .foregroundColor(Color("AccentColor"))
-//            Text(dateFormatter.string(from: modifiedDate))
-//                .frame(width: 34)
-//                .foregroundColor(Color("AccentColor"))
-//                .font(.footnote)
-//                .padding(.bottom, 10)
-//                .padding(.top, 4)
-//        }
-//        modifiedDate = Date(timeInterval: 60*60*24, since: modifiedDate)
-//    }
-//}
-
 struct GraphView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var model = ViewModel()
@@ -61,9 +22,10 @@ struct GraphView: View {
     var body: some View {
         VStack(spacing: 10) {
             Picker("period", selection: self.$selectedIndex, content: {
-                Text("毎日").tag(0)
-                Text("3日平均").tag(1)
-                Text("週平均").tag(2)
+                Text("1週間").tag(0)
+                Text("1ヶ月").tag(1)
+                Text("3ヶ月").tag(2)
+                Text("6ヶ月").tag(3)
             })
             .pickerStyle(SegmentedPickerStyle())
             HStack(spacing: 0) {
@@ -92,20 +54,6 @@ struct GraphView: View {
                         HStack(alignment: .bottom, spacing: 0) {
                             
                             ForEach(model.records) { record in
-//                                if let oldRecord = model.oldRecord {
-//                                    ForEach(0..<Int((record.date.timeIntervalSince(oldRecord.date))) { num in
-//                                        Text(String(num))
-//                                    }
-//                                }
-//                                    ForEach(Date(timeInterval: -60*60*24, since: record.date).timeIntervalSince(oldRecord.date)/60*60*24) { num in
-//                                        Text(String(num))
-//                                    }
-                                //1.oldRecordがnilではないことを確認
-                                //2.oldRecord.date+1とrecord.dateが等しくなるまで3,4をループ
-                                //3.oldRecord.dateに1日加算
-                                //4.oldRecordを元にグラフを1本作成
-                                //5.oldRecordにrecordを代入
-                                
                                 VStack(spacing: 0){
                                     GeometryReader { geometry in
                                         VStack(spacing: 0) {
@@ -119,8 +67,13 @@ struct GraphView: View {
                                     }
                                     Text(String(record.rep))
                                         .foregroundColor(.white)
+                                        .frame(width: 30, height: 15)
+                                        .background(Color("AccentColor"))
+                                    Text("rep")
+                                        .foregroundColor(.white)
+                                        .font(.footnote)
+                                        .frame(width: 30, height: 10)
                                         .padding(.bottom, 5)
-                                        .frame(width: 30, height: 30)
                                         .background(Color("AccentColor"))
                                     Rectangle()
                                         .frame(width: 40, height: 3)
@@ -133,9 +86,6 @@ struct GraphView: View {
                                         .padding(.top, 4)
                                         .id(record.id)
                                 }
-//                                .onAppear{
-//                                    model.oldRecord = record
-//                                }
                             }
                             .padding(.top, 38)
                             .onAppear{
