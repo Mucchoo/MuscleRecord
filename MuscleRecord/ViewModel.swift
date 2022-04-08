@@ -59,7 +59,7 @@ class ViewModel: ObservableObject {
         let db = Firestore.firestore()
         db.collection("user").document(event.id).collection("records").order(by: "date").getDocuments { (snapshot, error) in
             if let snapshot = snapshot{
-                snapshot.documents.map { d in
+                snapshot.documents.forEach { d in
                     self.latestID = d.documentID
                     let timeStamp: Timestamp = d["date"] as? Timestamp ?? Timestamp()
                     let date = timeStamp.dateValue()
@@ -179,7 +179,7 @@ class ViewModel: ObservableObject {
         let db = Firestore.firestore()
         db.collection("user").document(event.id).collection("records").order(by: "date", descending: true).limit(to: 1).getDocuments { snapshot, error in
             if let snapshot = snapshot {
-                snapshot.documents.map { d in
+                snapshot.documents.forEach { d in
                     let latestRecordID = d.documentID
                     db.collection("user").document(event.id).collection("records").document(latestRecordID).delete()
                 }
