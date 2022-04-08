@@ -14,6 +14,7 @@ class ViewModel: ObservableObject {
     @Published var weightArray = [Float]()
     @Published var maxWeight: Float = 0.0
     @Published var latestID: String = ""
+    @Published var newRecord: Record?
 
     func updateEvent(event: Event, newName: String) {
         let db = Firestore.firestore()
@@ -54,12 +55,20 @@ class ViewModel: ObservableObject {
         let db = Firestore.firestore()
         db.collection("user").document(event.id).collection("records").order(by: "date").getDocuments { (snapshot, error) in
             if let snapshot = snapshot{
-                self.records = snapshot.documents.map { d in
+                snapshot.documents.map { d in
                     self.latestID = d.documentID
                     let timeStamp: Timestamp = d["date"] as? Timestamp ?? Timestamp()
-                    return Record(id: d.documentID, date: timeStamp.dateValue(),
-                                  weight: d["weight"] as? Float ?? 0,
-                                  rep: d["rep"] as? Int ?? 0)
+                    let date = timeStamp.dateValue()
+                    if let newRecord = self.newRecord {
+                        var dateDifference = (Calendar.current.dateComponents([.day], from: newRecord.date, to: timeStamp.dateValue())).day! - 1
+                        while dateDifference > 0 {
+                            self.records.append(Record(id: UUID().uuidString, date: Date(timeInterval: TimeInterval(-60*60*24*dateDifference), since: date), weight: newRecord.weight, rep: newRecord.rep, dummy: true))
+                            dateDifference -= 1
+                        }
+                    }
+                    let record = Record(id: d.documentID, date: date, weight: d["weight"] as? Float ?? 0, rep: d["rep"] as? Int ?? 0, dummy: false)
+                    self.newRecord = record
+                    self.records.append(record)
                 }
                 self.weightArray = snapshot.documents.map { d in
                     if self.maxWeight < d["weight"] as? Float ?? 0.0 {

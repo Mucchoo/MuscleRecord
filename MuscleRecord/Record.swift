@@ -12,4 +12,5 @@ struct Record: Identifiable {
     var date: Date
     var weight: Float
     var rep: Int
+    var dummy: Bool
 }
