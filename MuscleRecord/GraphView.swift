@@ -24,7 +24,8 @@ struct GraphView: View {
             Picker("period", selection: self.$selectedIndex, content: {
                 Text("1日毎").tag(0)
                 Text("3日平均").tag(1)
-                Text("週平均").tag(2)
+                Text("9日平均").tag(2)
+                Text("27日平均").tag(3)
             })
             .pickerStyle(SegmentedPickerStyle())
             HStack(spacing: 0) {
@@ -51,61 +52,163 @@ struct GraphView: View {
                 ScrollViewReader{ proxy in
                     ScrollView(.horizontal){
                         HStack(alignment: .bottom, spacing: 0) {
-                            ForEach(model.records) { record in
-                                VStack(spacing: 0){
-                                    if record.dummy {
-                                        Group {
-                                            GeometryReader { geometry in
-                                                VStack(spacing: 0) {
-                                                    Rectangle()
-                                                        .frame(minHeight: 0, maxHeight: .infinity)
-                                                        .opacity(0)
-                                                    Rectangle()
-                                                        .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
-                                                        .foregroundColor(Color("AccentColor"))
-                                                }
-                                            }.opacity(0.3)
-                                            Text("\(record.rep)")
-                                                .foregroundColor(.white)
-                                                .frame(width: 30, height: 30)
-                                                .padding(.bottom, 5)
-                                                .background(Color("AccentColor"))
-                                                .opacity(0.3)
-                                        }
-                                    } else {
-                                        Group {
-                                            GeometryReader { geometry in
-                                                VStack(spacing: 0) {
-                                                    Rectangle()
-                                                        .frame(minHeight: 0, maxHeight: .infinity)
-                                                        .opacity(0)
-                                                    Rectangle()
-                                                        .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
-                                                        .foregroundColor(Color("AccentColor"))
-                                                }
+                            if selectedIndex == 0 {
+                                ForEach(model.records) { record in
+                                    VStack(spacing: 0){
+                                        if record.dummy {
+                                            Group {
+                                                GeometryReader { geometry in
+                                                    VStack(spacing: 0) {
+                                                        Rectangle()
+                                                            .frame(minHeight: 0, maxHeight: .infinity)
+                                                            .opacity(0)
+                                                        Rectangle()
+                                                            .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
+                                                            .foregroundColor(Color("AccentColor"))
+                                                    }
+                                                }.opacity(0.3)
+                                                Text("")
+                                                    .frame(width: 30, height: 35)
+                                                    .background(Color("AccentColor"))
+                                                    .opacity(0.3)
                                             }
-                                            Text("\(record.rep)")
-                                                .foregroundColor(.white)
-                                                .frame(width: 30, height: 30)
-                                                .padding(.bottom, 5)
-                                                .background(Color("AccentColor"))
+                                        } else {
+                                            Group {
+                                                GeometryReader { geometry in
+                                                    VStack(spacing: 0) {
+                                                        Rectangle()
+                                                            .frame(minHeight: 0, maxHeight: .infinity)
+                                                            .opacity(0)
+                                                        Rectangle()
+                                                            .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
+                                                            .foregroundColor(Color("AccentColor"))
+                                                    }
+                                                }
+                                                Text("\(record.rep)")
+                                                    .foregroundColor(.white)
+                                                    .frame(width: 30, height: 30)
+                                                    .padding(.bottom, 5)
+                                                    .background(Color("AccentColor"))
+                                            }
                                         }
+                                        Rectangle()
+                                            .frame(width: 40, height: 3)
+                                            .foregroundColor(Color("AccentColor"))
+                                        Text(dateFormatter.string(from: record.date))
+                                            .frame(width: 34)
+                                            .foregroundColor(Color("AccentColor"))
+                                            .font(.footnote)
+                                            .padding(.bottom, 10)
+                                            .padding(.top, 4)
+                                            .id(record.id)
                                     }
-                                    Rectangle()
-                                        .frame(width: 40, height: 3)
-                                        .foregroundColor(Color("AccentColor"))
-                                    Text(dateFormatter.string(from: record.date))
-                                        .frame(width: 34)
-                                        .foregroundColor(Color("AccentColor"))
-                                        .font(.footnote)
-                                        .padding(.bottom, 10)
-                                        .padding(.top, 4)
-                                        .id(record.id)
                                 }
-                            }
-                            .padding(.top, 38)
-                            .onAppear{
-                                proxy.scrollTo(model.latestID)
+                                .padding(.top, 38)
+                                .onAppear{
+                                    proxy.scrollTo(model.latestID)
+                                }
+                            } else if selectedIndex == 1 {
+                                ForEach(model.records3) { record in
+                                    VStack(spacing: 0){
+                                        GeometryReader { geometry in
+                                            VStack(spacing: 0) {
+                                                Rectangle()
+                                                    .frame(minHeight: 0, maxHeight: .infinity)
+                                                    .opacity(0)
+                                                Rectangle()
+                                                    .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
+                                                    .foregroundColor(Color("AccentColor"))
+                                            }
+                                        }
+                                        Text("\(record.rep)")
+                                            .foregroundColor(.white)
+                                            .frame(width: 30, height: 30)
+                                            .padding(.bottom, 5)
+                                            .background(Color("AccentColor"))
+                                        Rectangle()
+                                            .frame(width: 40, height: 3)
+                                            .foregroundColor(Color("AccentColor"))
+                                        Text(dateFormatter.string(from: record.date))
+                                            .frame(width: 34)
+                                            .foregroundColor(Color("AccentColor"))
+                                            .font(.footnote)
+                                            .padding(.bottom, 10)
+                                            .padding(.top, 4)
+                                            .id(record.id)
+                                    }
+                                }
+                                .padding(.top, 38)
+                                .onAppear{
+                                    proxy.scrollTo(model.latestID3)
+                                }
+                            } else if selectedIndex == 2 {
+                                ForEach(model.records9) { record in
+                                    VStack(spacing: 0){
+                                        GeometryReader { geometry in
+                                            VStack(spacing: 0) {
+                                                Rectangle()
+                                                    .frame(minHeight: 0, maxHeight: .infinity)
+                                                    .opacity(0)
+                                                Rectangle()
+                                                    .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
+                                                    .foregroundColor(Color("AccentColor"))
+                                            }
+                                        }
+                                        Text("\(record.rep)")
+                                            .foregroundColor(.white)
+                                            .frame(width: 30, height: 30)
+                                            .padding(.bottom, 5)
+                                            .background(Color("AccentColor"))
+                                        Rectangle()
+                                            .frame(width: 40, height: 3)
+                                            .foregroundColor(Color("AccentColor"))
+                                        Text(dateFormatter.string(from: record.date))
+                                            .frame(width: 34)
+                                            .foregroundColor(Color("AccentColor"))
+                                            .font(.footnote)
+                                            .padding(.bottom, 10)
+                                            .padding(.top, 4)
+                                            .id(record.id)
+                                    }
+                                }
+                                .padding(.top, 38)
+                                .onAppear{
+                                    proxy.scrollTo(model.latestID9)
+                                }
+                            } else {
+                                ForEach(model.records27) { record in
+                                    VStack(spacing: 0){
+                                        GeometryReader { geometry in
+                                            VStack(spacing: 0) {
+                                                Rectangle()
+                                                    .frame(minHeight: 0, maxHeight: .infinity)
+                                                    .opacity(0)
+                                                Rectangle()
+                                                    .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
+                                                    .foregroundColor(Color("AccentColor"))
+                                            }
+                                        }
+                                        Text("\(record.rep)")
+                                            .foregroundColor(.white)
+                                            .frame(width: 30, height: 30)
+                                            .padding(.bottom, 5)
+                                            .background(Color("AccentColor"))
+                                        Rectangle()
+                                            .frame(width: 40, height: 3)
+                                            .foregroundColor(Color("AccentColor"))
+                                        Text(dateFormatter.string(from: record.date))
+                                            .frame(width: 34)
+                                            .foregroundColor(Color("AccentColor"))
+                                            .font(.footnote)
+                                            .padding(.bottom, 10)
+                                            .padding(.top, 4)
+                                            .id(record.id)
+                                    }
+                                }
+                                .padding(.top, 38)
+                                .onAppear{
+                                    proxy.scrollTo(model.latestID27)
+                                }
                             }
                         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .bottom)
                     }
