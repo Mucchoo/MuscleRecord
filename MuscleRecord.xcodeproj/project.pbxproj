@@ -14,6 +14,7 @@
 		2A543DCB27F9C6FB0051665E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A543DCA27F9C6FB0051665E /* Event.swift */; };
 		2A543DCD27F9C7670051665E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A543DCC27F9C7670051665E /* ViewModel.swift */; };
 		2A58E12727F26E1300121A4F /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A58E12627F26E1300121A4F /* RecordView.swift */; };
+		2A5D524C2802704C00F0427D /* ThemeColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5D524B2802704C00F0427D /* ThemeColorView.swift */; };
 		2A817F6327FBC55C00772B6C /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A817F6227FBC55C00772B6C /* EditView.swift */; };
 		2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A96A78627F2BBD000A37A43 /* FormRowView.swift */; };
 		2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */; };
@@ -33,6 +34,7 @@
 		2A543DCA27F9C6FB0051665E /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		2A543DCC27F9C7670051665E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		2A58E12627F26E1300121A4F /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		2A5D524B2802704C00F0427D /* ThemeColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorView.swift; sourceTree = "<group>"; };
 		2A817F6227FBC55C00772B6C /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		2A96A78627F2BBD000A37A43 /* FormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowView.swift; sourceTree = "<group>"; };
 		2AA3732B27EC507200A885B0 /* Muscle Record.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Muscle Record.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +93,7 @@
 				2A58E12627F26E1300121A4F /* RecordView.swift */,
 				2AFDF1A527ED861100A03ACE /* SettingView.swift */,
 				2A96A78627F2BBD000A37A43 /* FormRowView.swift */,
+				2A5D524B2802704C00F0427D /* ThemeColorView.swift */,
 				2AA3733227EC507300A885B0 /* Assets.xcassets */,
 				2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */,
 				2AA3733427EC507300A885B0 /* Preview Content */,
@@ -185,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A5D524C2802704C00F0427D /* ThemeColorView.swift in Sources */,
 				2A543DCB27F9C6FB0051665E /* Event.swift in Sources */,
 				2A817F6327FBC55C00772B6C /* EditView.swift in Sources */,
 				2A58E12727F26E1300121A4F /* RecordView.swift in Sources */,
@@ -328,6 +332,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MuscleRecord/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Record;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -360,6 +365,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MuscleRecord/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Record;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

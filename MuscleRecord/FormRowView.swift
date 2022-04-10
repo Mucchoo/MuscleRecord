@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FormRowView: View {
+    @ObservedObject var model = ViewModel()
     var icon: String
     var firstText: String
     var secondText: String
@@ -15,7 +16,7 @@ struct FormRowView: View {
         HStack{
             ZStack{
                 RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .fill(Color("AccentColor"))
+                    .fill(model.getThemeColor())
                 Image(systemName: icon)
                     .foregroundColor(Color.white)
             }

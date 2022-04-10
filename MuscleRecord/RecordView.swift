@@ -46,18 +46,18 @@ struct RecordView: View {
                 Text("rep").fontWeight(.bold)
             }
             Button( action: {
-                if (Calendar.current.dateComponents([.day], from: Date(), to: event.latestDate)).day! == 0 {
+                if model.dateFormat(date: Date()) == model.dateFormat(date: event.latestDate) {
                     model.updateRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1)
                 } else {
                     model.addRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1)
                 }
                 dismiss()
             }, label: {
-                if (Calendar.current.dateComponents([.day], from: Date(), to: event.latestDate)).day! == 0 {
+                if model.dateFormat(date: Date()) == model.dateFormat(date: event.latestDate) {
                     Text("記録を上書きする")
                         .fontWeight(.bold)
                         .frame(width: 300, height: 70, alignment: .center)
-                        .background(Color("AccentColor"))
+                        .background(model.getThemeColor())
                         .foregroundColor(.white)
                         .cornerRadius(20)
                         .padding(10)
@@ -65,7 +65,7 @@ struct RecordView: View {
                     Text("記録")
                         .fontWeight(.bold)
                         .frame(width: 300, height: 70, alignment: .center)
-                        .background(Color("AccentColor"))
+                        .background(model.getThemeColor())
                         .foregroundColor(.white)
                         .cornerRadius(20)
                         .padding(10)

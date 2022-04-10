@@ -35,7 +35,7 @@ struct EditView: View {
                 Text("名前を上書き")
                     .fontWeight(.bold)
                     .frame(width: 300, height: 70, alignment: .center)
-                    .background(Color("AccentColor"))
+                    .background(model.getThemeColor())
                     .foregroundColor(.white)
                     .cornerRadius(20)
                     .padding(10)
@@ -47,7 +47,11 @@ struct EditView: View {
                 Text("種目を削除")
                     .fontWeight(.bold)
                     .frame(width: 300, height: 70, alignment: .center)
-                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(lineWidth: 3))
+                    .foregroundColor(model.getThemeColor())
+                    .overlay(RoundedRectangle(cornerRadius: 20)
+                        .stroke(lineWidth: 3)
+                        .foregroundColor(model.getThemeColor())
+                    )
             })
             Spacer()
         }
@@ -63,5 +67,6 @@ struct EditView: View {
                         }
                     ).tint(.white)
                 }
-            }    }
+            }
+    }
 }

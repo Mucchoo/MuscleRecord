@@ -11,18 +11,16 @@ struct ContentView: View {
     @ObservedObject var model = ViewModel()
     @State private var date = Date()
     @State private var showingDataPicker = false
-    let dateFormatter = DateFormatter()
     init(){
         UITabBar.appearance().backgroundColor = UIColor.secondarySystemBackground
         let appearance = UINavigationBarAppearance()
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.backgroundColor = UIColor(Color("AccentColor"))
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().standardAppearance = appearance
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color("AccentColor"))
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color("AccentColor")),], for: .normal)
+        appearance.backgroundColor = UIColor(model.getThemeColor())
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(model.getThemeColor())
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(model.getThemeColor()),], for: .normal)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white,], for: .selected)
-        dateFormatter.dateFormat = "y年 M月 d日"
     }
     
     var body: some View {
@@ -36,7 +34,7 @@ struct ContentView: View {
                                     Image(systemName: "ellipsis.circle")
                                         .resizable()
                                         .frame(width: 20, height: 20)
-                                        .foregroundColor(Color("AccentColor"))
+                                        .foregroundColor(model.getThemeColor())
                                 }
                                 Text(event.name)
                                     .fontWeight(.bold)
@@ -44,16 +42,16 @@ struct ContentView: View {
                                     .foregroundColor(Color("FontColor"))
                                 Spacer()
                                 NavigationLink(destination: RecordView(event: event)){
-                                    if (Calendar.current.dateComponents([.day], from: Date(), to: event.latestDate)).day! == 0 {
+                                    if model.dateFormat(date: Date()) == model.dateFormat(date: event.latestDate) {
                                         Image(systemName: "pencil.circle")
                                             .resizable()
                                             .frame(width: 40, height: 40)
-                                            .foregroundColor(Color("AccentColor"))
+                                            .foregroundColor(model.getThemeColor())
                                     } else {
                                         Image(systemName: "pencil.circle.fill")
                                             .resizable()
                                             .frame(width: 40, height: 40)
-                                            .foregroundColor(Color("AccentColor"))
+                                            .foregroundColor(model.getThemeColor())
                                     }
                                 }
                             }.frame(minHeight: 43)
@@ -70,7 +68,7 @@ struct ContentView: View {
                                 Spacer()
                                 NavigationLink(destination: GraphView(event: event)) {
                                     Text("グラフを見る ▶︎")
-                                        .foregroundColor(Color("AccentColor"))
+                                        .foregroundColor(model.getThemeColor())
                                         .fontWeight(.semibold)
                                 }
                             }
@@ -86,6 +84,7 @@ struct ContentView: View {
                 }
                 .padding(.top, 10)
             }.onAppear {
+                print("onAppearが呼び出されました")
                 model.getEvent()
             }
                 .background(Color("BackgroundColor"))

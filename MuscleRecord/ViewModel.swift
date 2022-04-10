@@ -5,7 +5,7 @@
 //  Created by Musa Yazuju on 2022/04/03.
 //
 
-import Foundation
+import SwiftUI
 import Firebase
 
 class ViewModel: ObservableObject {
@@ -21,6 +21,13 @@ class ViewModel: ObservableObject {
     @Published var latestID9: String = ""
     @Published var latestID27: String = ""
     @Published var oldRecord: Record?
+    
+    func dateFormat(date: Date) -> String {
+        let f = DateFormatter()
+        f.dateStyle = .long
+        f.timeStyle = .none
+        return f.string(from: date)
+    }
     
     func updateEvent(event: Event, newName: String) {
         let db = Firestore.firestore()
@@ -38,9 +45,7 @@ class ViewModel: ObservableObject {
     
     func addEvent(_ name: String) {
         let db = Firestore.firestore()
-        db.collection("user").addDocument(data: ["name": name, "latestWeight": 0, "latestRep": 0,]) { error in
-            self.getEvent()
-        }
+        db.collection("user").addDocument(data: ["name": name, "latestWeight": 0, "latestRep": 0,])
     }
     
     func getEvent() {
@@ -171,7 +176,7 @@ class ViewModel: ObservableObject {
     
     func addRecord(event: Event, weight: Float, rep: Int) {
         let db = Firestore.firestore()
-        db.collection("user").document(event.id).setData(["name":event.name, "latestWeight": weight, "latestRep": rep])
+        db.collection("user").document(event.id).setData(["name":event.name, "latestWeight": weight, "latestRep": rep, "latestDate": Date()])
         db.collection("user").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep])
     }
     
@@ -183,9 +188,28 @@ class ViewModel: ObservableObject {
                     let latestRecordID = d.documentID
                     db.collection("user").document(event.id).collection("records").document(latestRecordID).delete()
                 }
-                db.collection("user").document(event.id).setData(["name":event.name, "latestWeight": weight, "latestRep": rep])
+                db.collection("user").document(event.id).setData(["name":event.name, "latestWeight": weight, "latestRep": rep,"latestDate": Date()])
                 db.collection("user").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep])
             }
+        }
+    }
+    
+    func getThemeColor() -> Color{
+        switch UserDefaults.standard.integer(forKey: "themeColorNumber") {
+        case 0:
+            return Color("ThemeColor0")
+        case 1:
+            return Color("ThemeColor1")
+        case 2:
+            return Color("ThemeColor2")
+        case 3:
+            return Color("ThemeColor3")
+        case 4:
+            return Color("ThemeColor4")
+        case 5:
+            return Color("ThemeColor5")
+        default:
+            return Color("ThemeColor0")
         }
     }
 }

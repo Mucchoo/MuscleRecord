@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Firebase
 
 struct AddView: View {
     
@@ -44,7 +43,7 @@ struct AddView: View {
                 Text("追加")
                     .fontWeight(.bold)
                     .frame(width: 300, height: 70, alignment: .center)
-                    .background(Color("AccentColor"))
+                    .background(model.getThemeColor())
                     .foregroundColor(.white)
                     .cornerRadius(20)
                     .padding(.top, 30)
