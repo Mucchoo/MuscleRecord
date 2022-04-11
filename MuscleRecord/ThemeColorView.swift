@@ -51,20 +51,10 @@ struct ThemeColorView: View {
                         }.frame(width: itemWidth, height: itemWidth)
                     }
                 }
-                .padding(10)
+                .padding(.horizontal, 10)
                 Spacer()
-            }.navigationBarHidden(true)
+            }
+            .navigationBarHidden(true)
         }
-//        .toolbar {
-//            ToolbarItem(placement: .navigationBarLeading) {
-//                Button(
-//                    action: {
-//                        dismiss()
-//                    }, label: {
-//                        Image(systemName: "arrow.backward")
-//                    }
-//                ).tint(.white)
-//            }
-//        }
     }
 }

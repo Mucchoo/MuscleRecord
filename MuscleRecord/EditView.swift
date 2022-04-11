@@ -18,7 +18,7 @@ struct EditView: View {
                 Text("種目名")
                     .font(.title3)
                     .fontWeight(.bold)
-                    .foregroundColor(Color("FontColor"))
+                    .foregroundColor(model.fontColor)
                     .padding(.top, 30)
                 Spacer()
             }.frame(width: 300, height: 70, alignment: .center)

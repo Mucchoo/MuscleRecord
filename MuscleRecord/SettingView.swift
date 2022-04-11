@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SettingView: View {
     @Environment(\.dismiss) var dismiss
+    @ObservedObject var model = ViewModel()
+    @State private var isActive = false
+    @Binding var isFirstViewActive: Bool
     var body: some View {
         VStack{
             Form{
@@ -17,7 +20,13 @@ struct SettingView: View {
                     NavigationLink(destination: ThemeColorView()) {
                         FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", secondText: "")
                     }
-//                    FormRowView(icon: "circle.righthalf.filled", firstText: "ダークモード", secondText: "OFF")
+                    NavigationLink(destination: DarkModeView(isFirstViewActive: $isFirstViewActive), isActive: $isActive) {
+                        Button(action: {
+                            self.isActive = true
+                        }) {
+                            FormRowView(icon: "circle.righthalf.filled", firstText: "ダークモード", secondText: model.getAppearanceName())
+                        }
+                    }
 //                    HStack{
 //                        Image("OrangeIcon")
 //                            .resizable()

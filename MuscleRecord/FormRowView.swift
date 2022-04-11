@@ -21,7 +21,7 @@ struct FormRowView: View {
                     .foregroundColor(Color.white)
             }
             .frame(width: 36, height: 36, alignment: .center)
-            Text(firstText).foregroundColor(Color("FontColor"))
+            Text(firstText).foregroundColor(model.fontColor)
             Spacer()
             Text(secondText).foregroundColor(Color.gray)
         }

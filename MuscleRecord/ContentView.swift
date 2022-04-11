@@ -11,13 +11,14 @@ struct ContentView: View {
     @ObservedObject var model = ViewModel()
     @State private var date = Date()
     @State private var showingDataPicker = false
+    @State private var isActive = false
     init(){
         UITabBar.appearance().backgroundColor = UIColor.secondarySystemBackground
         let appearance = UINavigationBarAppearance()
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.backgroundColor = UIColor(model.getThemeColor())
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().standardAppearance = appearance
-        appearance.backgroundColor = UIColor(model.getThemeColor())
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(model.getThemeColor())
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(model.getThemeColor()),], for: .normal)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white,], for: .selected)
@@ -39,7 +40,7 @@ struct ContentView: View {
                                 Text(event.name)
                                     .fontWeight(.bold)
                                     .lineLimit(2)
-                                    .foregroundColor(Color("FontColor"))
+                                    .foregroundColor(model.fontColor)
                                 Spacer()
                                 NavigationLink(destination: RecordView(event: event)){
                                     if model.dateFormat(date: Date()) == model.dateFormat(date: event.latestDate) {
@@ -60,10 +61,10 @@ struct ContentView: View {
                                 VStack(alignment: .leading, spacing: 5) {
                                     Text("重量：\(String(format: "%.1f", event.latestWeight))kg ")
                                         .fontWeight(.semibold)
-                                        .foregroundColor(Color("FontColor"))
+                                        .foregroundColor(model.fontColor)
                                     Text("回数：\(event.latestRep)rep")
                                         .fontWeight(.semibold)
-                                        .foregroundColor(Color("FontColor"))
+                                        .foregroundColor(model.fontColor)
                                 }
                                 Spacer()
                                 NavigationLink(destination: GraphView(event: event)) {
@@ -76,22 +77,27 @@ struct ContentView: View {
                         .frame(maxHeight: 110)
                         .padding(20)
                         .cornerRadius(20)
-                        .background(Color("CellColor"))
+                        .background(model.cellColor)
                         .cornerRadius(20)
                         .padding(.horizontal, 10)
                         Spacer()
                     }
                 }
                 .padding(.top, 10)
-            }.onAppear {
-                print("onAppearが呼び出されました")
-                model.getEvent()
+                .onAppear {
+                    model.getEvent()
+                }
             }
-                .background(Color("BackgroundColor"))
+            .preferredColorScheme(model.getAppearance())
+            .background(Color("BackgroundColor"))
                 .navigationBarTitle("Muscle Record", displayMode: .inline)
                 .navigationBarItems(
-                    leading: NavigationLink(destination: SettingView()){
-                        Image(systemName: "line.3.horizontal").foregroundColor(.white)
+                    leading: NavigationLink(destination: SettingView(isFirstViewActive: $isActive), isActive: $isActive){
+                        Button(action: {
+                            self.isActive = true
+                        }) {
+                            Image(systemName: "line.3.horizontal").foregroundColor(.white)
+                        }
                     },
                     trailing: NavigationLink(destination: AddView()){
                         Image(systemName: "plus").foregroundColor(.white)

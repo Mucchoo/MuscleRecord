@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A10352E2803060F001B92AF /* DarkModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A10352D2803060F001B92AF /* DarkModeView.swift */; };
 		2A25372827ECB0D5003C8728 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */; };
 		2A27AB8D27F5BB0A004AF6F3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2A27AB8C27F5BB0A004AF6F3 /* FirebaseAuth */; };
 		2A27AB8F27F5BB0A004AF6F3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2A27AB8E27F5BB0A004AF6F3 /* FirebaseFirestore */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A10352D2803060F001B92AF /* DarkModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeView.swift; sourceTree = "<group>"; };
 		2A25372627ECAE52003C8728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A3C7E6027FC2C9800B1E4EB /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				2A58E12627F26E1300121A4F /* RecordView.swift */,
 				2AFDF1A527ED861100A03ACE /* SettingView.swift */,
 				2A96A78627F2BBD000A37A43 /* FormRowView.swift */,
+				2A10352D2803060F001B92AF /* DarkModeView.swift */,
 				2A5D524B2802704C00F0427D /* ThemeColorView.swift */,
 				2AA3733227EC507300A885B0 /* Assets.xcassets */,
 				2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */,
@@ -199,6 +202,7 @@
 				2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */,
 				2AFDF1A627ED861100A03ACE /* SettingView.swift in Sources */,
 				2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */,
+				2A10352E2803060F001B92AF /* DarkModeView.swift in Sources */,
 				2AFDF1A427ED85F200A03ACE /* GraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
