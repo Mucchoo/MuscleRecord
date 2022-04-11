@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ThemeColorView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var model = ViewModel()
+    @ObservedObject var model = FirebaseModel()
     @State var colorChanged = false
     let itemWidth = (UIScreen.main.bounds.width - 40)/3
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
+    @State var viewModel = ViewModel()
     var body: some View {
         if colorChanged {
             ContentView()
@@ -40,7 +41,7 @@ struct ThemeColorView: View {
                         .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                 }
                 .padding(.vertical, 10)
-                .background(model.getThemeColor())
+                .background(viewModel.themeColor)
                 LazyVGrid(columns: columns, spacing: 10) {
                     ForEach(0..<6) { num in
                         Button(action: {

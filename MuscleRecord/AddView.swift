@@ -14,16 +14,17 @@ struct AddView: View {
     }
     
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var model = ViewModel()
+    @ObservedObject var model = FirebaseModel()
     @FocusState private var focusField: Field?
     @State private var name = ""
+    @State var viewModel = ViewModel()
     var body: some View {
         VStack(spacing: 0){
             HStack{
                 Text("種目名")
                     .font(.title3)
                     .fontWeight(.bold)
-                    .foregroundColor(model.fontColor)
+                    .foregroundColor(viewModel.fontColor)
                     .padding(.top, 30)
                 Spacer()
             }.frame(width: 300, height: 70, alignment: .center)
@@ -43,7 +44,7 @@ struct AddView: View {
                 Text("追加")
                     .fontWeight(.bold)
                     .frame(width: 300, height: 70, alignment: .center)
-                    .background(model.getThemeColor())
+                    .background(viewModel.themeColor)
                     .foregroundColor(.white)
                     .cornerRadius(20)
                     .padding(.top, 30)

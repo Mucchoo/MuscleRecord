@@ -9,9 +9,10 @@ import SwiftUI
 
 struct GraphView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var model = ViewModel()
+    @ObservedObject var model = FirebaseModel()
     @State var selectedIndex = 0
     var indexArray: [Float] = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]
+    @State var viewModel = ViewModel()
     var event: Event
     var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -32,12 +33,12 @@ struct GraphView: View {
                 VStack(spacing:0) {
                     ForEach(indexArray, id: \.self) { index in
                         Text(String(format: "%.0f", model.maxWeight * index))
-                            .foregroundColor(model.getThemeColor())
+                            .foregroundColor(viewModel.themeColor)
                             .font(.footnote)
                         Spacer()
                     }
                     Text("0")
-                        .foregroundColor(model.getThemeColor())
+                        .foregroundColor(viewModel.themeColor)
                         .font(.footnote)
                 }
                 .offset(y: 8)
@@ -46,7 +47,7 @@ struct GraphView: View {
                 .padding(.trailing, 10)
                 .padding(.top, 22)
                 Rectangle()
-                    .foregroundColor(model.getThemeColor())
+                    .foregroundColor(viewModel.themeColor)
                 .frame(width: 3)
                 .padding(.bottom, 30)
                 ScrollViewReader{ proxy in
@@ -64,13 +65,13 @@ struct GraphView: View {
                                                             .opacity(0)
                                                         Rectangle()
                                                             .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
-                                                            .foregroundColor(model.getThemeColor())
+                                                            .foregroundColor(viewModel.themeColor)
                                                     }
-                                                }.opacity(0.3)
+                                                }.opacity(0.5)
                                                 Text("")
                                                     .frame(width: 30, height: 35)
-                                                    .background(model.getThemeColor())
-                                                    .opacity(0.3)
+                                                    .background(viewModel.themeColor)
+                                                    .opacity(0.5)
                                             }
                                         } else {
                                             Group {
@@ -81,22 +82,22 @@ struct GraphView: View {
                                                             .opacity(0)
                                                         Rectangle()
                                                             .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
-                                                            .foregroundColor(model.getThemeColor())
+                                                            .foregroundColor(viewModel.themeColor)
                                                     }
                                                 }
                                                 Text("\(record.rep)")
                                                     .foregroundColor(.white)
                                                     .frame(width: 30, height: 30)
                                                     .padding(.bottom, 5)
-                                                    .background(model.getThemeColor())
+                                                    .background(viewModel.themeColor)
                                             }
                                         }
                                         Rectangle()
                                             .frame(width: 40, height: 3)
-                                            .foregroundColor(model.getThemeColor())
+                                            .foregroundColor(viewModel.themeColor)
                                         Text(dateFormatter.string(from: record.date))
                                             .frame(width: 34)
-                                            .foregroundColor(model.getThemeColor())
+                                            .foregroundColor(viewModel.themeColor)
                                             .font(.footnote)
                                             .padding(.bottom, 10)
                                             .padding(.top, 4)
@@ -117,20 +118,20 @@ struct GraphView: View {
                                                     .opacity(0)
                                                 Rectangle()
                                                     .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
-                                                    .foregroundColor(model.getThemeColor())
+                                                    .foregroundColor(viewModel.themeColor)
                                             }
                                         }
                                         Text("\(record.rep)")
                                             .foregroundColor(.white)
                                             .frame(width: 30, height: 30)
                                             .padding(.bottom, 5)
-                                            .background(model.getThemeColor())
+                                            .background(viewModel.themeColor)
                                         Rectangle()
                                             .frame(width: 40, height: 3)
-                                            .foregroundColor(model.getThemeColor())
+                                            .foregroundColor(viewModel.themeColor)
                                         Text(dateFormatter.string(from: record.date))
                                             .frame(width: 34)
-                                            .foregroundColor(model.getThemeColor())
+                                            .foregroundColor(viewModel.themeColor)
                                             .font(.footnote)
                                             .padding(.bottom, 10)
                                             .padding(.top, 4)
@@ -151,20 +152,20 @@ struct GraphView: View {
                                                     .opacity(0)
                                                 Rectangle()
                                                     .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
-                                                    .foregroundColor(model.getThemeColor())
+                                                    .foregroundColor(viewModel.themeColor)
                                             }
                                         }
                                         Text("\(record.rep)")
                                             .foregroundColor(.white)
                                             .frame(width: 30, height: 30)
                                             .padding(.bottom, 5)
-                                            .background(model.getThemeColor())
+                                            .background(viewModel.themeColor)
                                         Rectangle()
                                             .frame(width: 40, height: 3)
-                                            .foregroundColor(model.getThemeColor())
+                                            .foregroundColor(viewModel.themeColor)
                                         Text(dateFormatter.string(from: record.date))
                                             .frame(width: 34)
-                                            .foregroundColor(model.getThemeColor())
+                                            .foregroundColor(viewModel.themeColor)
                                             .font(.footnote)
                                             .padding(.bottom, 10)
                                             .padding(.top, 4)
@@ -185,20 +186,20 @@ struct GraphView: View {
                                                     .opacity(0)
                                                 Rectangle()
                                                     .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
-                                                    .foregroundColor(model.getThemeColor())
+                                                    .foregroundColor(viewModel.themeColor)
                                             }
                                         }
                                         Text("\(record.rep)")
                                             .foregroundColor(.white)
                                             .frame(width: 30, height: 30)
                                             .padding(.bottom, 5)
-                                            .background(model.getThemeColor())
+                                            .background(viewModel.themeColor)
                                         Rectangle()
                                             .frame(width: 40, height: 3)
-                                            .foregroundColor(model.getThemeColor())
+                                            .foregroundColor(viewModel.themeColor)
                                         Text(dateFormatter.string(from: record.date))
                                             .frame(width: 34)
-                                            .foregroundColor(model.getThemeColor())
+                                            .foregroundColor(viewModel.themeColor)
                                             .font(.footnote)
                                             .padding(.bottom, 10)
                                             .padding(.top, 4)

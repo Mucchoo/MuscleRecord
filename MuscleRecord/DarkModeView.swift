@@ -9,8 +9,9 @@ import SwiftUI
 
 struct DarkModeView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var model = ViewModel()
+    @ObservedObject var model = FirebaseModel()
     @Binding var isFirstViewActive: Bool
+    @State var viewModel = ViewModel()
     let itemWidth = (UIScreen.main.bounds.width - 40)/3
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     var body: some View {
@@ -21,7 +22,7 @@ struct DarkModeView: View {
             }) {
                 ZStack(){
                     RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(model.getThemeColor())
+                        .foregroundColor(viewModel.themeColor)
                     VStack(){
                         Image(systemName: "sun.max.circle.fill")
                             .resizable()
@@ -42,7 +43,7 @@ struct DarkModeView: View {
             }) {
                 ZStack(){
                     RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(model.getThemeColor())
+                        .foregroundColor(viewModel.themeColor)
                     VStack(){
                         Image(systemName: "moon.circle.fill")
                             .resizable()
@@ -63,7 +64,7 @@ struct DarkModeView: View {
             }) {
                 ZStack(){
                     RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(model.getThemeColor())
+                        .foregroundColor(viewModel.themeColor)
                     VStack(){
                         Image(systemName: "circle.righthalf.filled")
                             .resizable()

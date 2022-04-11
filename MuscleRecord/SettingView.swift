@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SettingView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var model = ViewModel()
+    @ObservedObject var model = FirebaseModel()
+    @State var viewModel = ViewModel()
     @State private var isActive = false
     @Binding var isFirstViewActive: Bool
     var body: some View {
@@ -24,8 +25,11 @@ struct SettingView: View {
                         Button(action: {
                             self.isActive = true
                         }) {
-                            FormRowView(icon: "circle.righthalf.filled", firstText: "ダークモード", secondText: model.getAppearanceName())
+                            FormRowView(icon: "circle.righthalf.filled", firstText: "ダークモード", secondText: viewModel.appearanceName)
                         }
+                    }
+                    NavigationLink(destination: DarkModeView2()) {
+                        FormRowView(icon: "circle.righthalf.filled", firstText: "ダークモード", secondText: viewModel.appearanceName)
                     }
 //                    HStack{
 //                        Image("OrangeIcon")

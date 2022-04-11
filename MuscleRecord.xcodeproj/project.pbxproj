@@ -13,9 +13,11 @@
 		2A27AB8F27F5BB0A004AF6F3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2A27AB8E27F5BB0A004AF6F3 /* FirebaseFirestore */; };
 		2A3C7E6127FC2C9800B1E4EB /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C7E6027FC2C9800B1E4EB /* Record.swift */; };
 		2A543DCB27F9C6FB0051665E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A543DCA27F9C6FB0051665E /* Event.swift */; };
-		2A543DCD27F9C7670051665E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A543DCC27F9C7670051665E /* ViewModel.swift */; };
+		2A543DCD27F9C7670051665E /* FirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A543DCC27F9C7670051665E /* FirebaseModel.swift */; };
 		2A58E12727F26E1300121A4F /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A58E12627F26E1300121A4F /* RecordView.swift */; };
 		2A5D524C2802704C00F0427D /* ThemeColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5D524B2802704C00F0427D /* ThemeColorView.swift */; };
+		2A75C2DC2803FF8B00922FF6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75C2DB2803FF8B00922FF6 /* ViewModel.swift */; };
+		2A75C2DE280403C000922FF6 /* DarkModeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75C2DD280403C000922FF6 /* DarkModeView2.swift */; };
 		2A817F6327FBC55C00772B6C /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A817F6227FBC55C00772B6C /* EditView.swift */; };
 		2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A96A78627F2BBD000A37A43 /* FormRowView.swift */; };
 		2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */; };
@@ -34,9 +36,11 @@
 		2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A3C7E6027FC2C9800B1E4EB /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		2A543DCA27F9C6FB0051665E /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		2A543DCC27F9C7670051665E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		2A543DCC27F9C7670051665E /* FirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModel.swift; sourceTree = "<group>"; };
 		2A58E12627F26E1300121A4F /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		2A5D524B2802704C00F0427D /* ThemeColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorView.swift; sourceTree = "<group>"; };
+		2A75C2DB2803FF8B00922FF6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		2A75C2DD280403C000922FF6 /* DarkModeView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkModeView2.swift; sourceTree = "<group>"; };
 		2A817F6227FBC55C00772B6C /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		2A96A78627F2BBD000A37A43 /* FormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowView.swift; sourceTree = "<group>"; };
 		2AA3732B27EC507200A885B0 /* Muscle Record.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Muscle Record.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +67,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A138CBA2803C74200FB9814 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
 		2AA3732227EC507200A885B0 = {
 			isa = PBXGroup;
 			children = (
@@ -84,10 +95,12 @@
 			children = (
 				2A25372627ECAE52003C8728 /* Info.plist */,
 				2ADDC0C427F5BE3D003C548B /* GoogleService-Info.plist */,
+				2A138CBA2803C74200FB9814 /* Icons */,
 				2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */,
 				2A3C7E6027FC2C9800B1E4EB /* Record.swift */,
 				2A543DCA27F9C6FB0051665E /* Event.swift */,
-				2A543DCC27F9C7670051665E /* ViewModel.swift */,
+				2A543DCC27F9C7670051665E /* FirebaseModel.swift */,
+				2A75C2DB2803FF8B00922FF6 /* ViewModel.swift */,
 				2AFDF1A727ED869500A03ACE /* ContentView.swift */,
 				2A817F6227FBC55C00772B6C /* EditView.swift */,
 				2AD99F8427F3EF760007E152 /* AddView.swift */,
@@ -96,6 +109,7 @@
 				2AFDF1A527ED861100A03ACE /* SettingView.swift */,
 				2A96A78627F2BBD000A37A43 /* FormRowView.swift */,
 				2A10352D2803060F001B92AF /* DarkModeView.swift */,
+				2A75C2DD280403C000922FF6 /* DarkModeView2.swift */,
 				2A5D524B2802704C00F0427D /* ThemeColorView.swift */,
 				2AA3733227EC507300A885B0 /* Assets.xcassets */,
 				2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */,
@@ -193,10 +207,12 @@
 			files = (
 				2A5D524C2802704C00F0427D /* ThemeColorView.swift in Sources */,
 				2A543DCB27F9C6FB0051665E /* Event.swift in Sources */,
+				2A75C2DE280403C000922FF6 /* DarkModeView2.swift in Sources */,
 				2A817F6327FBC55C00772B6C /* EditView.swift in Sources */,
 				2A58E12727F26E1300121A4F /* RecordView.swift in Sources */,
-				2A543DCD27F9C7670051665E /* ViewModel.swift in Sources */,
+				2A543DCD27F9C7670051665E /* FirebaseModel.swift in Sources */,
 				2AD99F8527F3EF760007E152 /* AddView.swift in Sources */,
+				2A75C2DC2803FF8B00922FF6 /* ViewModel.swift in Sources */,
 				2AFDF1A827ED869500A03ACE /* ContentView.swift in Sources */,
 				2A3C7E6127FC2C9800B1E4EB /* Record.swift in Sources */,
 				2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */,

@@ -9,9 +9,10 @@ import SwiftUI
 
 struct RecordView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var model = ViewModel()
+    @ObservedObject var model = FirebaseModel()
     @State private var weight = 0
     @State private var rep = 0
+    @State var viewModel = ViewModel()
     var event: Event
     var body: some View {
         VStack{
@@ -57,7 +58,7 @@ struct RecordView: View {
                     Text("記録を上書きする")
                         .fontWeight(.bold)
                         .frame(width: 300, height: 70, alignment: .center)
-                        .background(model.getThemeColor())
+                        .background(viewModel.themeColor)
                         .foregroundColor(.white)
                         .cornerRadius(20)
                         .padding(10)
@@ -65,7 +66,7 @@ struct RecordView: View {
                     Text("記録")
                         .fontWeight(.bold)
                         .frame(width: 300, height: 70, alignment: .center)
-                        .background(model.getThemeColor())
+                        .background(viewModel.themeColor)
                         .foregroundColor(.white)
                         .cornerRadius(20)
                         .padding(10)

@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct EditView: View {
-    @ObservedObject var model = ViewModel()
+    @ObservedObject var model = FirebaseModel()
     @Environment(\.dismiss) var dismiss
     @State private var name = ""
+    @State var viewModel = ViewModel()
     var event: Event
     var body: some View {
         VStack{
@@ -18,7 +19,7 @@ struct EditView: View {
                 Text("種目名")
                     .font(.title3)
                     .fontWeight(.bold)
-                    .foregroundColor(model.fontColor)
+                    .foregroundColor(viewModel.fontColor)
                     .padding(.top, 30)
                 Spacer()
             }.frame(width: 300, height: 70, alignment: .center)
@@ -35,7 +36,7 @@ struct EditView: View {
                 Text("名前を上書き")
                     .fontWeight(.bold)
                     .frame(width: 300, height: 70, alignment: .center)
-                    .background(model.getThemeColor())
+                    .background(viewModel.themeColor)
                     .foregroundColor(.white)
                     .cornerRadius(20)
                     .padding(10)
@@ -47,10 +48,10 @@ struct EditView: View {
                 Text("種目を削除")
                     .fontWeight(.bold)
                     .frame(width: 300, height: 70, alignment: .center)
-                    .foregroundColor(model.getThemeColor())
+                    .foregroundColor(viewModel.themeColor)
                     .overlay(RoundedRectangle(cornerRadius: 20)
                         .stroke(lineWidth: 3)
-                        .foregroundColor(model.getThemeColor())
+                        .foregroundColor(viewModel.themeColor)
                     )
             })
             Spacer()
