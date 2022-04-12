@@ -1,10 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-</dict>
+    <dict>
+        <key>UIStatusBarStyle</key>
+        <string>UIStatusBarStyleLightContent</string>
+        <key>CFBundleIcons</key>
+        <dict>
+            <key>CFBundlePrimaryIcon</key>
+            <dict>
+                <key>CFBundleIconName</key>
+                <string></string>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>Icon1</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>CFBundleAlternateIcons</key>
+            <dict>
+                <key>Icon1</key>
+                <dict>
+                    <key>CFBundleIconFiles</key>
+                    <array>
+                        <string>Icon1</string>
+                    </array>
+                    <key>UIPrerenderedIcon</key>
+                    <false/>
+                </dict>
+                <key>Icon2</key>
+                <dict>
+                    <key>CFBundleIconFiles</key>
+                    <array>
+                        <string>Icon2</string>
+                    </array>
+                    <key>UIPrerenderedIcon</key>
+                    <false/>
+                </dict>
+                <key>Icon3</key>
+                <dict>
+                    <key>CFBundleIconFiles</key>
+                    <array>
+                        <string>Icon3</string>
+                    </array>
+                    <key>UIPrerenderedIcon</key>
+                    <false/>
+                </dict>
+            </dict>
+        </dict>
+        <key>UIViewControllerBasedStatusBarAppearance</key>
+        <false/>
+    </dict>
 </plist>

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A10352E2803060F001B92AF /* DarkModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A10352D2803060F001B92AF /* DarkModeView.swift */; };
 		2A25372827ECB0D5003C8728 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */; };
 		2A27AB8D27F5BB0A004AF6F3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2A27AB8C27F5BB0A004AF6F3 /* FirebaseAuth */; };
 		2A27AB8F27F5BB0A004AF6F3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2A27AB8E27F5BB0A004AF6F3 /* FirebaseFirestore */; };
@@ -17,7 +16,27 @@
 		2A58E12727F26E1300121A4F /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A58E12627F26E1300121A4F /* RecordView.swift */; };
 		2A5D524C2802704C00F0427D /* ThemeColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5D524B2802704C00F0427D /* ThemeColorView.swift */; };
 		2A75C2DC2803FF8B00922FF6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75C2DB2803FF8B00922FF6 /* ViewModel.swift */; };
-		2A75C2DE280403C000922FF6 /* DarkModeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75C2DD280403C000922FF6 /* DarkModeView2.swift */; };
+		2A75C2F228050E7100922FF6 /* Icon9.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2DF28050E7000922FF6 /* Icon9.png */; };
+		2A75C2F328050E7100922FF6 /* Icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2E028050E7000922FF6 /* Icon3.png */; };
+		2A75C2F428050E7100922FF6 /* Icon16.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2E128050E7000922FF6 /* Icon16.png */; };
+		2A75C2F528050E7100922FF6 /* Icon15.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2E228050E7100922FF6 /* Icon15.png */; };
+		2A75C2F628050E7100922FF6 /* Icon5.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2E328050E7100922FF6 /* Icon5.png */; };
+		2A75C2F728050E7100922FF6 /* Icon17.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2E428050E7100922FF6 /* Icon17.png */; };
+		2A75C2F828050E7100922FF6 /* Icon10.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2E528050E7100922FF6 /* Icon10.png */; };
+		2A75C2F928050E7100922FF6 /* Icon19.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2E628050E7100922FF6 /* Icon19.png */; };
+		2A75C2FA28050E7100922FF6 /* Icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2E728050E7100922FF6 /* Icon2.png */; };
+		2A75C2FB28050E7100922FF6 /* Icon7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2E828050E7100922FF6 /* Icon7.png */; };
+		2A75C2FC28050E7100922FF6 /* Icon11.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2E928050E7100922FF6 /* Icon11.png */; };
+		2A75C2FD28050E7100922FF6 /* Icon8.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2EA28050E7100922FF6 /* Icon8.png */; };
+		2A75C2FE28050E7100922FF6 /* Icon6.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2EB28050E7100922FF6 /* Icon6.png */; };
+		2A75C2FF28050E7100922FF6 /* Icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2EC28050E7100922FF6 /* Icon1.png */; };
+		2A75C30028050E7100922FF6 /* Icon13.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2ED28050E7100922FF6 /* Icon13.png */; };
+		2A75C30128050E7100922FF6 /* Icon14.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2EE28050E7100922FF6 /* Icon14.png */; };
+		2A75C30228050E7100922FF6 /* Icon18.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2EF28050E7100922FF6 /* Icon18.png */; };
+		2A75C30328050E7100922FF6 /* Icon12.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2F028050E7100922FF6 /* Icon12.png */; };
+		2A75C30428050E7100922FF6 /* Icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2F128050E7100922FF6 /* Icon4.png */; };
+		2A75C30A2805258A00922FF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75C3092805258A00922FF6 /* AppDelegate.swift */; };
+		2A75C30C2805259300922FF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75C30B2805259300922FF6 /* SceneDelegate.swift */; };
 		2A817F6327FBC55C00772B6C /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A817F6227FBC55C00772B6C /* EditView.swift */; };
 		2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A96A78627F2BBD000A37A43 /* FormRowView.swift */; };
 		2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */; };
@@ -31,7 +50,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2A10352D2803060F001B92AF /* DarkModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeView.swift; sourceTree = "<group>"; };
 		2A25372627ECAE52003C8728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A3C7E6027FC2C9800B1E4EB /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
@@ -40,7 +58,27 @@
 		2A58E12627F26E1300121A4F /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		2A5D524B2802704C00F0427D /* ThemeColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorView.swift; sourceTree = "<group>"; };
 		2A75C2DB2803FF8B00922FF6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		2A75C2DD280403C000922FF6 /* DarkModeView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkModeView2.swift; sourceTree = "<group>"; };
+		2A75C2DF28050E7000922FF6 /* Icon9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon9.png; sourceTree = "<group>"; };
+		2A75C2E028050E7000922FF6 /* Icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon3.png; sourceTree = "<group>"; };
+		2A75C2E128050E7000922FF6 /* Icon16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon16.png; sourceTree = "<group>"; };
+		2A75C2E228050E7100922FF6 /* Icon15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon15.png; sourceTree = "<group>"; };
+		2A75C2E328050E7100922FF6 /* Icon5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon5.png; sourceTree = "<group>"; };
+		2A75C2E428050E7100922FF6 /* Icon17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon17.png; sourceTree = "<group>"; };
+		2A75C2E528050E7100922FF6 /* Icon10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon10.png; sourceTree = "<group>"; };
+		2A75C2E628050E7100922FF6 /* Icon19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon19.png; sourceTree = "<group>"; };
+		2A75C2E728050E7100922FF6 /* Icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon2.png; sourceTree = "<group>"; };
+		2A75C2E828050E7100922FF6 /* Icon7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon7.png; sourceTree = "<group>"; };
+		2A75C2E928050E7100922FF6 /* Icon11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon11.png; sourceTree = "<group>"; };
+		2A75C2EA28050E7100922FF6 /* Icon8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon8.png; sourceTree = "<group>"; };
+		2A75C2EB28050E7100922FF6 /* Icon6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon6.png; sourceTree = "<group>"; };
+		2A75C2EC28050E7100922FF6 /* Icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon1.png; sourceTree = "<group>"; };
+		2A75C2ED28050E7100922FF6 /* Icon13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon13.png; sourceTree = "<group>"; };
+		2A75C2EE28050E7100922FF6 /* Icon14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon14.png; sourceTree = "<group>"; };
+		2A75C2EF28050E7100922FF6 /* Icon18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon18.png; sourceTree = "<group>"; };
+		2A75C2F028050E7100922FF6 /* Icon12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon12.png; sourceTree = "<group>"; };
+		2A75C2F128050E7100922FF6 /* Icon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon4.png; sourceTree = "<group>"; };
+		2A75C3092805258A00922FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2A75C30B2805259300922FF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2A817F6227FBC55C00772B6C /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		2A96A78627F2BBD000A37A43 /* FormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowView.swift; sourceTree = "<group>"; };
 		2AA3732B27EC507200A885B0 /* Muscle Record.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Muscle Record.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +108,25 @@
 		2A138CBA2803C74200FB9814 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				2A75C2EC28050E7100922FF6 /* Icon1.png */,
+				2A75C2E728050E7100922FF6 /* Icon2.png */,
+				2A75C2E028050E7000922FF6 /* Icon3.png */,
+				2A75C2F128050E7100922FF6 /* Icon4.png */,
+				2A75C2E328050E7100922FF6 /* Icon5.png */,
+				2A75C2EB28050E7100922FF6 /* Icon6.png */,
+				2A75C2E828050E7100922FF6 /* Icon7.png */,
+				2A75C2EA28050E7100922FF6 /* Icon8.png */,
+				2A75C2DF28050E7000922FF6 /* Icon9.png */,
+				2A75C2E528050E7100922FF6 /* Icon10.png */,
+				2A75C2E928050E7100922FF6 /* Icon11.png */,
+				2A75C2F028050E7100922FF6 /* Icon12.png */,
+				2A75C2ED28050E7100922FF6 /* Icon13.png */,
+				2A75C2EE28050E7100922FF6 /* Icon14.png */,
+				2A75C2E228050E7100922FF6 /* Icon15.png */,
+				2A75C2E128050E7000922FF6 /* Icon16.png */,
+				2A75C2E428050E7100922FF6 /* Icon17.png */,
+				2A75C2EF28050E7100922FF6 /* Icon18.png */,
+				2A75C2E628050E7100922FF6 /* Icon19.png */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -93,10 +150,12 @@
 		2AA3732D27EC507200A885B0 /* MuscleRecord */ = {
 			isa = PBXGroup;
 			children = (
+				2A138CBA2803C74200FB9814 /* Icons */,
 				2A25372627ECAE52003C8728 /* Info.plist */,
 				2ADDC0C427F5BE3D003C548B /* GoogleService-Info.plist */,
-				2A138CBA2803C74200FB9814 /* Icons */,
 				2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */,
+				2A75C3092805258A00922FF6 /* AppDelegate.swift */,
+				2A75C30B2805259300922FF6 /* SceneDelegate.swift */,
 				2A3C7E6027FC2C9800B1E4EB /* Record.swift */,
 				2A543DCA27F9C6FB0051665E /* Event.swift */,
 				2A543DCC27F9C7670051665E /* FirebaseModel.swift */,
@@ -108,8 +167,6 @@
 				2A58E12627F26E1300121A4F /* RecordView.swift */,
 				2AFDF1A527ED861100A03ACE /* SettingView.swift */,
 				2A96A78627F2BBD000A37A43 /* FormRowView.swift */,
-				2A10352D2803060F001B92AF /* DarkModeView.swift */,
-				2A75C2DD280403C000922FF6 /* DarkModeView2.swift */,
 				2A5D524B2802704C00F0427D /* ThemeColorView.swift */,
 				2AA3733227EC507300A885B0 /* Assets.xcassets */,
 				2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */,
@@ -191,10 +248,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A75C2FB28050E7100922FF6 /* Icon7.png in Resources */,
+				2A75C2F328050E7100922FF6 /* Icon3.png in Resources */,
 				2A25372827ECB0D5003C8728 /* LaunchScreen.storyboard in Resources */,
+				2A75C30228050E7100922FF6 /* Icon18.png in Resources */,
+				2A75C30128050E7100922FF6 /* Icon14.png in Resources */,
 				2ADDC0C527F5BE3E003C548B /* GoogleService-Info.plist in Resources */,
+				2A75C2F828050E7100922FF6 /* Icon10.png in Resources */,
 				2AA3733627EC507300A885B0 /* Preview Assets.xcassets in Resources */,
+				2A75C2FF28050E7100922FF6 /* Icon1.png in Resources */,
+				2A75C2F528050E7100922FF6 /* Icon15.png in Resources */,
 				2AA3733327EC507300A885B0 /* Assets.xcassets in Resources */,
+				2A75C30428050E7100922FF6 /* Icon4.png in Resources */,
+				2A75C2FE28050E7100922FF6 /* Icon6.png in Resources */,
+				2A75C2F628050E7100922FF6 /* Icon5.png in Resources */,
+				2A75C2FA28050E7100922FF6 /* Icon2.png in Resources */,
+				2A75C2F928050E7100922FF6 /* Icon19.png in Resources */,
+				2A75C30328050E7100922FF6 /* Icon12.png in Resources */,
+				2A75C2F428050E7100922FF6 /* Icon16.png in Resources */,
+				2A75C2F728050E7100922FF6 /* Icon17.png in Resources */,
+				2A75C2FD28050E7100922FF6 /* Icon8.png in Resources */,
+				2A75C2FC28050E7100922FF6 /* Icon11.png in Resources */,
+				2A75C2F228050E7100922FF6 /* Icon9.png in Resources */,
+				2A75C30028050E7100922FF6 /* Icon13.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,9 +283,10 @@
 			files = (
 				2A5D524C2802704C00F0427D /* ThemeColorView.swift in Sources */,
 				2A543DCB27F9C6FB0051665E /* Event.swift in Sources */,
-				2A75C2DE280403C000922FF6 /* DarkModeView2.swift in Sources */,
 				2A817F6327FBC55C00772B6C /* EditView.swift in Sources */,
 				2A58E12727F26E1300121A4F /* RecordView.swift in Sources */,
+				2A75C30A2805258A00922FF6 /* AppDelegate.swift in Sources */,
+				2A75C30C2805259300922FF6 /* SceneDelegate.swift in Sources */,
 				2A543DCD27F9C7670051665E /* FirebaseModel.swift in Sources */,
 				2AD99F8527F3EF760007E152 /* AddView.swift in Sources */,
 				2A75C2DC2803FF8B00922FF6 /* ViewModel.swift in Sources */,
@@ -218,7 +295,6 @@
 				2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */,
 				2AFDF1A627ED861100A03ACE /* SettingView.swift in Sources */,
 				2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */,
-				2A10352E2803060F001B92AF /* DarkModeView.swift in Sources */,
 				2AFDF1A427ED85F200A03ACE /* GraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

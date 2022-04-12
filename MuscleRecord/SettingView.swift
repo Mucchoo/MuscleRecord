@@ -12,7 +12,6 @@ struct SettingView: View {
     @ObservedObject var model = FirebaseModel()
     @State var viewModel = ViewModel()
     @State private var isActive = false
-    @Binding var isFirstViewActive: Bool
     var body: some View {
         VStack{
             Form{
@@ -21,24 +20,14 @@ struct SettingView: View {
                     NavigationLink(destination: ThemeColorView()) {
                         FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", secondText: "")
                     }
-                    NavigationLink(destination: DarkModeView(isFirstViewActive: $isFirstViewActive), isActive: $isActive) {
-                        Button(action: {
-                            self.isActive = true
-                        }) {
-                            FormRowView(icon: "circle.righthalf.filled", firstText: "ダークモード", secondText: viewModel.appearanceName)
-                        }
+                    HStack{
+                        Image("OrangeIcon")
+                            .resizable()
+                            .frame(width: 36, height: 36)
+                            .cornerRadius(8)
+                        Text("アイコン").foregroundColor(Color("FontColor"))
+                        Spacer()
                     }
-                    NavigationLink(destination: DarkModeView2()) {
-                        FormRowView(icon: "circle.righthalf.filled", firstText: "ダークモード", secondText: viewModel.appearanceName)
-                    }
-//                    HStack{
-//                        Image("OrangeIcon")
-//                            .resizable()
-//                            .frame(width: 36, height: 36)
-//                            .cornerRadius(8)
-//                        Text("アイコン").foregroundColor(Color("FontColor"))
-//                        Spacer()
-//                    }
                 }
                 Section(footer: Text("©︎ 2022 Musa Yazuju")){
 //                    FormRowView(icon: "questionmark", firstText: "使い方", secondText: "")

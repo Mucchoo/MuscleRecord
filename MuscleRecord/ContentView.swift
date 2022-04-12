@@ -9,12 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var model = FirebaseModel()
-    @State private var date = Date()
-    @State private var showingDataPicker = false
-    @State private var isActive = false
     @State var viewModel = ViewModel()
+    @State private var date = Date()
     init(){
-        UITabBar.appearance().backgroundColor = UIColor.secondarySystemBackground
         let appearance = UINavigationBarAppearance()
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         appearance.backgroundColor = UIColor(viewModel.themeColor)
@@ -87,25 +84,18 @@ struct ContentView: View {
                 .padding(.top, 10)
                 .onAppear {
                     model.getEvent()
-                    viewModel.getAppearance()
-                    print(viewModel.appearance)
                 }
             }
-            .preferredColorScheme(viewModel.appearance)
             .background(Color("BackgroundColor"))
-                .navigationBarTitle("Muscle Record", displayMode: .inline)
-                .navigationBarItems(
-                    leading: NavigationLink(destination: SettingView(isFirstViewActive: $isActive), isActive: $isActive){
-                        Button(action: {
-                            self.isActive = true
-                        }) {
-                            Image(systemName: "line.3.horizontal").foregroundColor(.white)
-                        }
-                    },
-                    trailing: NavigationLink(destination: AddView()){
-                        Image(systemName: "plus").foregroundColor(.white)
-                    }
-                )
+            .navigationBarTitle("Muscle Record", displayMode: .inline)
+            .navigationBarItems(
+                leading: NavigationLink(destination: SettingView()){
+                    Image(systemName: "line.3.horizontal").foregroundColor(.white)
+                },
+                trailing: NavigationLink(destination: AddView()){
+                    Image(systemName: "plus").foregroundColor(.white)
+                }
+            )
         }
     }
 }

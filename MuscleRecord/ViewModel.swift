@@ -11,7 +11,6 @@ struct ViewModel {
     var fontColor = Color("FontColor")
     var cellColor = Color("CellColor")
     var BackgroundColor = Color("BackgroundColor")
-    @State var appearance: ColorScheme?
     
     var themeColor: Color {
         switch UserDefaults.standard.integer(forKey: "themeColorNumber") {
@@ -30,27 +29,5 @@ struct ViewModel {
         default:
             return Color("ThemeColor0")
         }
-    }
-    
-    mutating func getAppearance(){
-        if UserDefaults.standard.integer(forKey: "appearance") == 1 {
-            appearance = .dark
-        } else if UserDefaults.standard.integer(forKey: "appearance") == 2 {
-            appearance = nil
-        } else {
-            appearance = .light
-        }
-        print("getAppearance発動")
-        print(UserDefaults.standard.integer(forKey: "appearance"))
-    }
-    
-    var appearanceName: String {
-        if UserDefaults.standard.integer(forKey: "appearance") == 1 {
-            return "Dark"
-        } else if UserDefaults.standard.integer(forKey: "appearance") == 2 {
-            return "Auto"
-        } else {
-            return "Light"
-        }
-    }
+    } 
 }
