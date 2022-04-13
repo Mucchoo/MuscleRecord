@@ -54,8 +54,8 @@ class FirebaseModel: ObservableObject {
                 if let snapshot = snapshot{
                     DispatchQueue.main.async {
                         self.events = snapshot.documents.map { d in
-                            let timeStamp: Timestamp = d["latestDate"] as? Timestamp ?? Timestamp()
-                            return Event(id: d.documentID, name: d["name"] as? String ?? "", latestWeight: d["latestWeight"] as? Float ?? 0, latestRep: d["latestRep"] as? Int ?? 0, latestDate: timeStamp.dateValue())
+                            let timeStamp: Timestamp? = d["latestDate"] as? Timestamp
+                            return Event(id: d.documentID, name: d["name"] as? String ?? "", latestWeight: d["latestWeight"] as? Float ?? 0, latestRep: d["latestRep"] as? Int ?? 0, latestDate: timeStamp?.dateValue() ?? Date(timeInterval: -60*60*24, since: Date()))
                         }
                     }
                 }

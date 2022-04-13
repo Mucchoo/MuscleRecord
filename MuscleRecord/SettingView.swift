@@ -16,7 +16,9 @@ struct SettingView: View {
         VStack{
             Form{
                 Section(header: Text("Pro")){
-                    FormRowView(icon: "gift", firstText: "Proにアップグレード", secondText: "")
+                    NavigationLink(destination: ProView()) {
+                        FormRowView(icon: "gift", firstText: "Proにアップグレード", secondText: "")
+                    }
                     NavigationLink(destination: ThemeColorView()) {
                         FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", secondText: "")
                     }

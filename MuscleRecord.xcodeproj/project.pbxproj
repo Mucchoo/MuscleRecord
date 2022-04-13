@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A23193D2806725200192216 /* ProView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A23193C2806725200192216 /* ProView.swift */; };
 		2A25372827ECB0D5003C8728 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */; };
 		2A27AB8D27F5BB0A004AF6F3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2A27AB8C27F5BB0A004AF6F3 /* FirebaseAuth */; };
 		2A27AB8F27F5BB0A004AF6F3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2A27AB8E27F5BB0A004AF6F3 /* FirebaseFirestore */; };
@@ -49,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A23193C2806725200192216 /* ProView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProView.swift; sourceTree = "<group>"; };
 		2A25372627ECAE52003C8728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A3C7E6027FC2C9800B1E4EB /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				2A25372627ECAE52003C8728 /* Info.plist */,
 				2ADDC0C427F5BE3D003C548B /* GoogleService-Info.plist */,
 				2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */,
+				2A23193C2806725200192216 /* ProView.swift */,
 				2A3C7E6027FC2C9800B1E4EB /* Record.swift */,
 				2A543DCA27F9C6FB0051665E /* Event.swift */,
 				2A543DCC27F9C7670051665E /* FirebaseModel.swift */,
@@ -280,6 +283,7 @@
 			files = (
 				2A5D524C2802704C00F0427D /* ThemeColorView.swift in Sources */,
 				2AD3AC0B28065A7100DE6E00 /* IconView.swift in Sources */,
+				2A23193D2806725200192216 /* ProView.swift in Sources */,
 				2A543DCB27F9C6FB0051665E /* Event.swift in Sources */,
 				2A817F6327FBC55C00772B6C /* EditView.swift in Sources */,
 				2A58E12727F26E1300121A4F /* RecordView.swift in Sources */,

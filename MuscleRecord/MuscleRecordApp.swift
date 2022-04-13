@@ -10,7 +10,7 @@ import Firebase
 
 @main
 struct MuscleRecordApp: App {
-    
+        
     init() {
         FirebaseApp.configure()
     }
@@ -20,4 +20,5 @@ struct MuscleRecordApp: App {
             ContentView()
         }
     }
+
 }

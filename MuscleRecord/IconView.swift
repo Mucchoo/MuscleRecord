@@ -23,7 +23,7 @@ struct IconView: View {
                         .resizable()
                         .cornerRadius(20)
                 }.frame(width: itemWidth, height: itemWidth)
-                ForEach(0..<20) { num in
+                ForEach(0..<19) { num in
                     Button(action: {
                         UIApplication.shared.setAlternateIconName("AppIcon\(num)")
                         dismiss()
