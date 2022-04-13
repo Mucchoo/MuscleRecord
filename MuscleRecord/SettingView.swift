@@ -16,25 +16,31 @@ struct SettingView: View {
         VStack{
             Form{
                 Section(header: Text("Pro")){
-//                    FormRowView(icon: "gift", firstText: "Proにアップグレード", secondText: "")
+                    FormRowView(icon: "gift", firstText: "Proにアップグレード", secondText: "")
                     NavigationLink(destination: ThemeColorView()) {
                         FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", secondText: "")
                     }
-                    HStack{
-                        Image("OrangeIcon")
-                            .resizable()
-                            .frame(width: 36, height: 36)
-                            .cornerRadius(8)
-                        Text("アイコン").foregroundColor(Color("FontColor"))
-                        Spacer()
+                    NavigationLink(destination: IconView()) {
+                        HStack{
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 8)
+                                    .foregroundColor(viewModel.themeColor)
+                                    .frame(width: 36, height: 36)
+                                Image("Logo")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                            }
+                            Text("アイコン").foregroundColor(Color("FontColor"))
+                            Spacer()
+                        }
                     }
                 }
                 Section(footer: Text("©︎ 2022 Musa Yazuju")){
-//                    FormRowView(icon: "questionmark", firstText: "使い方", secondText: "")
-//                    FormRowView(icon: "person", firstText: "アカウント作成", secondText: "")
-//                    FormRowView(icon: "star", firstText: "レビューで応援！", secondText: "")
-//                    FormRowView(icon: "square.and.arrow.up", firstText: "アプリをシェア", secondText: "")
-//                    FormRowView(icon: "envelope", firstText: "ご意見・ご要望", secondText: "")
+                    FormRowView(icon: "questionmark", firstText: "使い方", secondText: "")
+                    FormRowView(icon: "person", firstText: "アカウント作成", secondText: "")
+                    FormRowView(icon: "star", firstText: "レビューで応援！", secondText: "")
+                    FormRowView(icon: "square.and.arrow.up", firstText: "アプリをシェア", secondText: "")
+                    FormRowView(icon: "envelope", firstText: "ご意見・ご要望", secondText: "")
                 }
             }
             .listStyle(GroupedListStyle())

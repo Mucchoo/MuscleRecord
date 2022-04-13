@@ -35,13 +35,12 @@
 		2A75C30228050E7100922FF6 /* Icon18.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2EF28050E7100922FF6 /* Icon18.png */; };
 		2A75C30328050E7100922FF6 /* Icon12.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2F028050E7100922FF6 /* Icon12.png */; };
 		2A75C30428050E7100922FF6 /* Icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75C2F128050E7100922FF6 /* Icon4.png */; };
-		2A75C30A2805258A00922FF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75C3092805258A00922FF6 /* AppDelegate.swift */; };
-		2A75C30C2805259300922FF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75C30B2805259300922FF6 /* SceneDelegate.swift */; };
 		2A817F6327FBC55C00772B6C /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A817F6227FBC55C00772B6C /* EditView.swift */; };
 		2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A96A78627F2BBD000A37A43 /* FormRowView.swift */; };
 		2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */; };
 		2AA3733327EC507300A885B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA3733227EC507300A885B0 /* Assets.xcassets */; };
 		2AA3733627EC507300A885B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA3733527EC507300A885B0 /* Preview Assets.xcassets */; };
+		2AD3AC0B28065A7100DE6E00 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3AC0A28065A7100DE6E00 /* IconView.swift */; };
 		2AD99F8527F3EF760007E152 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD99F8427F3EF760007E152 /* AddView.swift */; };
 		2ADDC0C527F5BE3E003C548B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2ADDC0C427F5BE3D003C548B /* GoogleService-Info.plist */; };
 		2AFDF1A427ED85F200A03ACE /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A327ED85F200A03ACE /* GraphView.swift */; };
@@ -77,14 +76,13 @@
 		2A75C2EF28050E7100922FF6 /* Icon18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon18.png; sourceTree = "<group>"; };
 		2A75C2F028050E7100922FF6 /* Icon12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon12.png; sourceTree = "<group>"; };
 		2A75C2F128050E7100922FF6 /* Icon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon4.png; sourceTree = "<group>"; };
-		2A75C3092805258A00922FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2A75C30B2805259300922FF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2A817F6227FBC55C00772B6C /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		2A96A78627F2BBD000A37A43 /* FormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowView.swift; sourceTree = "<group>"; };
 		2AA3732B27EC507200A885B0 /* Muscle Record.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Muscle Record.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleRecordApp.swift; sourceTree = "<group>"; };
 		2AA3733227EC507300A885B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2AA3733527EC507300A885B0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2AD3AC0A28065A7100DE6E00 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		2AD99F8427F3EF760007E152 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		2ADDC0C427F5BE3D003C548B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2AFDF1A327ED85F200A03ACE /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
@@ -154,8 +152,6 @@
 				2A25372627ECAE52003C8728 /* Info.plist */,
 				2ADDC0C427F5BE3D003C548B /* GoogleService-Info.plist */,
 				2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */,
-				2A75C3092805258A00922FF6 /* AppDelegate.swift */,
-				2A75C30B2805259300922FF6 /* SceneDelegate.swift */,
 				2A3C7E6027FC2C9800B1E4EB /* Record.swift */,
 				2A543DCA27F9C6FB0051665E /* Event.swift */,
 				2A543DCC27F9C7670051665E /* FirebaseModel.swift */,
@@ -166,6 +162,7 @@
 				2AFDF1A327ED85F200A03ACE /* GraphView.swift */,
 				2A58E12627F26E1300121A4F /* RecordView.swift */,
 				2AFDF1A527ED861100A03ACE /* SettingView.swift */,
+				2AD3AC0A28065A7100DE6E00 /* IconView.swift */,
 				2A96A78627F2BBD000A37A43 /* FormRowView.swift */,
 				2A5D524B2802704C00F0427D /* ThemeColorView.swift */,
 				2AA3733227EC507300A885B0 /* Assets.xcassets */,
@@ -282,11 +279,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A5D524C2802704C00F0427D /* ThemeColorView.swift in Sources */,
+				2AD3AC0B28065A7100DE6E00 /* IconView.swift in Sources */,
 				2A543DCB27F9C6FB0051665E /* Event.swift in Sources */,
 				2A817F6327FBC55C00772B6C /* EditView.swift in Sources */,
 				2A58E12727F26E1300121A4F /* RecordView.swift in Sources */,
-				2A75C30A2805258A00922FF6 /* AppDelegate.swift in Sources */,
-				2A75C30C2805259300922FF6 /* SceneDelegate.swift in Sources */,
 				2A543DCD27F9C7670051665E /* FirebaseModel.swift in Sources */,
 				2AD99F8527F3EF760007E152 /* AddView.swift in Sources */,
 				2A75C2DC2803FF8B00922FF6 /* ViewModel.swift in Sources */,
@@ -419,8 +415,10 @@
 		2AA3733A27EC507300A885B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon2 AppIcon1";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MuscleRecord/Preview Content\"";
@@ -452,8 +450,10 @@
 		2AA3733B27EC507300A885B0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon2 AppIcon1";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MuscleRecord/Preview Content\"";
