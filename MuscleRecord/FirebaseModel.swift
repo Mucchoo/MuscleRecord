@@ -31,7 +31,7 @@ class FirebaseModel: ObservableObject {
     
     func updateEvent(event: Event, newName: String) {
         let db = Firestore.firestore()
-        db.collection("user").document(event.id).setData(["name": newName])
+        db.collection("user").document(event.id).updateData(["name": newName])
     }
     
     func deleteEvent(event: Event) {
