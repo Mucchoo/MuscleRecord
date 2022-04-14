@@ -222,7 +222,7 @@ struct GraphView: View {
             model.getEvent()
             model.getRecord(event: event)
         }
-        .navigationTitle(event.name)
+        .navigationTitle(event.id)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {

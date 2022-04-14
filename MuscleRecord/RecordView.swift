@@ -74,7 +74,7 @@ struct RecordView: View {
             })
             Spacer()
         }
-        .navigationTitle(event.name)
+        .navigationTitle(event.id)
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

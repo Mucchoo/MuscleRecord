@@ -27,7 +27,7 @@ struct EditView: View {
                 .font(.headline)
                 .frame(width: 300, height: 70, alignment: .center)
                 .onAppear{
-                    self.name = event.name
+                    self.name = event.id
                 }
             Button( action: {
                 model.updateEvent(event: event, newName: name)

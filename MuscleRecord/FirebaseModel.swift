@@ -36,16 +36,18 @@ class FirebaseModel: ObservableObject {
     
     func deleteEvent(event: Event) {
         let db = Firestore.firestore()
-        db.collection("user").document(event.id).delete { error in
-            self.events.removeAll { e in
-                return e.id == event.id
+        db.collection("user").document(event.id).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
             }
         }
     }
     
     func addEvent(_ name: String) {
         let db = Firestore.firestore()
-        db.collection("user").addDocument(data: ["name": name, "latestWeight": 0, "latestRep": 0, "latestDate": Date(timeInterval: -60*60*24, since: .now)])
+        db.collection("user").document(name).setData(["latestWeight": 0, "latestRep": 0, "latestDate": Date(timeInterval: -60*60*24, since: .now)])
     }
     
     func getEvent() {
@@ -54,8 +56,8 @@ class FirebaseModel: ObservableObject {
                 if let snapshot = snapshot{
                     DispatchQueue.main.async {
                         self.events = snapshot.documents.map { d in
-                            let timeStamp: Timestamp? = d["latestDate"] as? Timestamp
-                            return Event(id: d.documentID, name: d["name"] as? String ?? "", latestWeight: d["latestWeight"] as? Float ?? 0, latestRep: d["latestRep"] as? Int ?? 0, latestDate: timeStamp?.dateValue() ?? Date(timeInterval: -60*60*24, since: Date()))
+                            let timeStamp = d["latestDate"] as! Timestamp
+                            return Event(id: d.documentID, latestWeight: d["latestWeight"] as! Float, latestRep: d["latestRep"] as! Int, latestDate: timeStamp.dateValue())
                         }
                     }
                 }
@@ -180,8 +182,14 @@ class FirebaseModel: ObservableObject {
     
     func addRecord(event: Event, weight: Float, rep: Int) {
         let db = Firestore.firestore()
-        db.collection("user").document(event.id).setData(["name":event.name, "latestWeight": weight, "latestRep": rep, "latestDate": Date()])
-        db.collection("user").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep])
+        let f = DateFormatter()
+        f.dateStyle = .long
+        f.timeStyle = .none
+        let date = f.string(from: Date())
+        db.collection("user").document(event.id).setData(["latestWeight": weight, "latestRep": rep, "latestDate": date])
+//        db.collection("user").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep])
+        db.collection("user").document(event.id).collection("records").document(date).setData(["weight": weight, "rep": rep])
+
     }
     
     func updateRecord(event: Event, weight: Float, rep: Int) {
@@ -192,7 +200,7 @@ class FirebaseModel: ObservableObject {
                     let latestRecordID = d.documentID
                     db.collection("user").document(event.id).collection("records").document(latestRecordID).delete()
                 }
-                db.collection("user").document(event.id).setData(["name":event.name, "latestWeight": weight, "latestRep": rep,"latestDate": Date()])
+                db.collection("user").document(event.id).setData(["latestWeight": weight, "latestRep": rep,"latestDate": Date()])
                 db.collection("user").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep])
             }
         }

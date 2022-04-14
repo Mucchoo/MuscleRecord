@@ -37,7 +37,7 @@ struct ContentView: View {
                                         .frame(width: 20, height: 20)
                                         .foregroundColor(viewModel.themeColor)
                                 }
-                                Text(event.name)
+                                Text(event.id)
                                     .fontWeight(.bold)
                                     .lineLimit(2)
                                     .foregroundColor(viewModel.fontColor)
