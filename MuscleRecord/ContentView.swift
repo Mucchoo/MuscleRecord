@@ -20,6 +20,8 @@ struct ContentView: View {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(viewModel.themeColor)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(viewModel.themeColor),], for: .normal)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white,], for: .selected)
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(viewModel.themeColor)
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
     
     var body: some View {

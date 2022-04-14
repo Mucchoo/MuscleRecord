@@ -38,7 +38,9 @@ struct SettingView: View {
                     }
                 }
                 Section(footer: Text("©︎ 2022 Musa Yazuju")){
-                    FormRowView(icon: "questionmark", firstText: "使い方", secondText: "")
+                    NavigationLink(destination: TutorialView()) {
+                        FormRowView(icon: "questionmark", firstText: "使い方", secondText: "")
+                    }
                     FormRowView(icon: "person", firstText: "アカウント作成", secondText: "")
                     FormRowView(icon: "star", firstText: "レビューで応援！", secondText: "")
                     FormRowView(icon: "square.and.arrow.up", firstText: "アプリをシェア", secondText: "")
