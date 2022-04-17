@@ -10,7 +10,6 @@ import SwiftUI
 struct IconView: View {
     @Environment(\.dismiss) var dismiss
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
-    @State var viewModel = ViewModel()
     var body: some View {
         GeometryReader{ geometry in
             ScrollView(){

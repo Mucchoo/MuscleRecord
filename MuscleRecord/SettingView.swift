@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SettingView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var model = FirebaseModel()
-    @State var viewModel = ViewModel()
+    @ObservedObject var viewModel = ViewModel()
     @State private var isActive = false
     var body: some View {
         VStack{
@@ -26,7 +25,7 @@ struct SettingView: View {
                         HStack{
                             ZStack{
                                 RoundedRectangle(cornerRadius: 8)
-                                    .foregroundColor(viewModel.themeColor)
+                                    .foregroundColor(viewModel.getThemeColor())
                                     .frame(width: 36, height: 36)
                                 Image("Logo")
                                     .resizable()

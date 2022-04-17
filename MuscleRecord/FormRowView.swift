@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct FormRowView: View {
-    @ObservedObject var model = FirebaseModel()
+    @ObservedObject var viewModel = ViewModel()
     var icon: String
     var firstText: String
     var secondText: String
-    @State var viewModel = ViewModel()
     var body: some View {
         HStack{
             ZStack{
                 RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .fill(viewModel.themeColor)
+                    .fill(viewModel.getThemeColor())
                 Image(systemName: icon)
                     .foregroundColor(Color.white)
             }

@@ -8,21 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var model = FirebaseModel()
-    @State var viewModel = ViewModel()
+    @ObservedObject var viewModel = ViewModel()
     @State private var date = Date()
     init(){
         let appearance = UINavigationBarAppearance()
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.backgroundColor = UIColor(viewModel.themeColor)
+        appearance.backgroundColor = UIColor(viewModel.getThemeColor())
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().barStyle = .black
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().standardAppearance = appearance
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(viewModel.themeColor)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(viewModel.themeColor),], for: .normal)
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(viewModel.getThemeColor())
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(viewModel.getThemeColor()),], for: .normal)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white,], for: .selected)
-        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(viewModel.themeColor)
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(viewModel.getThemeColor())
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
     
@@ -30,14 +29,14 @@ struct ContentView: View {
         NavigationView{
             ScrollView {
                 VStack(spacing: 0) {
-                    ForEach(model.events) { event in
+                    ForEach(viewModel.events) { event in
                         VStack {
                             HStack(alignment: .top) {
                                 NavigationLink(destination: EditView(event: event)){
                                     Image(systemName: "ellipsis.circle")
                                         .resizable()
                                         .frame(width: 20, height: 20)
-                                        .foregroundColor(viewModel.themeColor)
+                                        .foregroundColor(viewModel.getThemeColor())
                                 }
                                 Text(event.id)
                                     .fontWeight(.bold)
@@ -45,16 +44,16 @@ struct ContentView: View {
                                     .foregroundColor(viewModel.fontColor)
                                 Spacer()
                                 NavigationLink(destination: RecordView(event: event)){
-                                    if model.dateFormat(date: Date()) == model.dateFormat(date: event.latestDate) {
+                                    if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
                                         Image(systemName: "pencil.circle")
                                             .resizable()
                                             .frame(width: 40, height: 40)
-                                            .foregroundColor(viewModel.themeColor)
+                                            .foregroundColor(viewModel.getThemeColor())
                                     } else {
                                         Image(systemName: "pencil.circle.fill")
                                             .resizable()
                                             .frame(width: 40, height: 40)
-                                            .foregroundColor(viewModel.themeColor)
+                                            .foregroundColor(viewModel.getThemeColor())
                                     }
                                 }
                             }.frame(minHeight: 43)
@@ -71,7 +70,7 @@ struct ContentView: View {
                                 Spacer()
                                 NavigationLink(destination: GraphView(event: event)) {
                                     Text("グラフを見る ▶︎")
-                                        .foregroundColor(viewModel.themeColor)
+                                        .foregroundColor(viewModel.getThemeColor())
                                         .fontWeight(.semibold)
                                 }
                             }
@@ -87,7 +86,7 @@ struct ContentView: View {
                 }
                 .padding(.top, 10)
                 .onAppear {
-                    model.getEvent()
+                    viewModel.getEvent()
                 }
             }
             .background(Color("BackgroundColor"))

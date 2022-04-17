@@ -10,10 +10,9 @@ import SwiftUI
 struct AddView: View {
     
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var model = FirebaseModel()
+    @ObservedObject var viewModel = ViewModel()
     @FocusState private var focus: Bool
     @State private var name = ""
-    @State var viewModel = ViewModel()
     var body: some View {
         VStack(spacing: 0){
             HStack{
@@ -34,7 +33,7 @@ struct AddView: View {
                     }
                 }
             Button( action: {
-                model.addEvent(name)
+                viewModel.addEvent(name)
                 self.focus = false
                 self.name = ""
                 print("ででええええええええ")
@@ -43,7 +42,7 @@ struct AddView: View {
                 Text("追加")
                     .fontWeight(.bold)
                     .frame(width: 300, height: 70, alignment: .center)
-                    .background(viewModel.themeColor)
+                    .background(viewModel.getThemeColor())
                     .foregroundColor(.white)
                     .cornerRadius(20)
                     .padding(.top, 30)

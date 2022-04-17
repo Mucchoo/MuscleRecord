@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ProView: View {
     @Environment(\.dismiss) var dismiss
-    @State var viewModel = ViewModel()
+    @ObservedObject var viewModel = ViewModel()
     var body: some View {
         ScrollView(){
             VStack(spacing: 10){
                 ZStack(){
-                    RoundedRectangle(cornerRadius: 100).foregroundColor(viewModel.themeColor)
+                    RoundedRectangle(cornerRadius: 100).foregroundColor(viewModel.getThemeColor())
                     HStack(){
                         Image(systemName: "list.bullet")
                             .resizable()
@@ -33,13 +33,13 @@ struct ProView: View {
                     Image(systemName: "infinity.circle.fill")
                         .resizable()
                         .frame(width: 20, height: 20)
-                        .foregroundColor(viewModel.themeColor)
+                        .foregroundColor(viewModel.getThemeColor())
                     Text("無制限")
                         .font(.headline)
                         .foregroundColor(viewModel.fontColor)
                 }
                 ZStack(){
-                    RoundedRectangle(cornerRadius: 100).foregroundColor(viewModel.themeColor)
+                    RoundedRectangle(cornerRadius: 100).foregroundColor(viewModel.getThemeColor())
                     HStack(){
                         Image("Logo")
                             .resizable()
@@ -54,12 +54,12 @@ struct ProView: View {
                 Image("Icons")
                     .resizable()
                     .scaledToFit()
-                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(viewModel.themeColor, lineWidth: 3))
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(viewModel.getThemeColor(), lineWidth: 3))
                 Text("アイコン：1個　→ 20個")
                     .font(.headline)
                     .foregroundColor(viewModel.fontColor)
                 ZStack(){
-                    RoundedRectangle(cornerRadius: 100).foregroundColor(viewModel.themeColor)
+                    RoundedRectangle(cornerRadius: 100).foregroundColor(viewModel.getThemeColor())
                     HStack(){
                         Image(systemName: "paintbrush.pointed.fill")
                             .resizable()
@@ -74,7 +74,7 @@ struct ProView: View {
                 Image("Themes")
                     .resizable()
                     .scaledToFit()
-                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(viewModel.themeColor, lineWidth: 3))
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(viewModel.getThemeColor(), lineWidth: 3))
                 Text("テーマカラー：1色　→ 6色")
                     .font(.headline)
                     .foregroundColor(viewModel.fontColor)
@@ -87,7 +87,7 @@ struct ProView: View {
                     Text("購入する")
                         .fontWeight(.bold)
                         .frame(width: 300, height: 70, alignment: .center)
-                        .background(viewModel.themeColor)
+                        .background(viewModel.getThemeColor())
                         .foregroundColor(.white)
                         .cornerRadius(20)
                 })

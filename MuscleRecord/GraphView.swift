@@ -9,10 +9,9 @@ import SwiftUI
 
 struct GraphView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var model = FirebaseModel()
+    @ObservedObject var viewModel = ViewModel()
     @State var selectedIndex = 0
     var indexArray: [Float] = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]
-    @State var viewModel = ViewModel()
     var event: Event
     var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -32,13 +31,13 @@ struct GraphView: View {
             HStack(spacing: 0) {
                 VStack(spacing:0) {
                     ForEach(indexArray, id: \.self) { index in
-                        Text(String(format: "%.0f", model.maxWeight * index))
-                            .foregroundColor(viewModel.themeColor)
+                        Text(String(format: "%.0f", viewModel.maxWeight * index))
+                            .foregroundColor(viewModel.getThemeColor())
                             .font(.footnote)
                         Spacer()
                     }
                     Text("0")
-                        .foregroundColor(viewModel.themeColor)
+                        .foregroundColor(viewModel.getThemeColor())
                         .font(.footnote)
                 }
                 .offset(y: 8)
@@ -47,14 +46,14 @@ struct GraphView: View {
                 .padding(.trailing, 10)
                 .padding(.top, 22)
                 Rectangle()
-                    .foregroundColor(viewModel.themeColor)
+                    .foregroundColor(viewModel.getThemeColor())
                 .frame(width: 3)
                 .padding(.bottom, 30)
                 ScrollViewReader{ proxy in
                     ScrollView(.horizontal){
                         HStack(alignment: .bottom, spacing: 0) {
                             if selectedIndex == 0 {
-                                ForEach(model.records) { record in
+                                ForEach(viewModel.records) { record in
                                     VStack(spacing: 0){
                                         if record.dummy {
                                             Group {
@@ -64,13 +63,13 @@ struct GraphView: View {
                                                             .frame(minHeight: 0, maxHeight: .infinity)
                                                             .opacity(0)
                                                         Rectangle()
-                                                            .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
-                                                            .foregroundColor(viewModel.themeColor)
+                                                            .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/viewModel.maxWeight))
+                                                            .foregroundColor(viewModel.getThemeColor())
                                                     }
                                                 }.opacity(0.5)
                                                 Text("")
                                                     .frame(width: 30, height: 35)
-                                                    .background(viewModel.themeColor)
+                                                    .background(viewModel.getThemeColor())
                                                     .opacity(0.5)
                                             }
                                         } else {
@@ -81,23 +80,23 @@ struct GraphView: View {
                                                             .frame(minHeight: 0, maxHeight: .infinity)
                                                             .opacity(0)
                                                         Rectangle()
-                                                            .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
-                                                            .foregroundColor(viewModel.themeColor)
+                                                            .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/viewModel.maxWeight))
+                                                            .foregroundColor(viewModel.getThemeColor())
                                                     }
                                                 }
                                                 Text("\(record.rep)")
                                                     .foregroundColor(.white)
                                                     .frame(width: 30, height: 30)
                                                     .padding(.bottom, 5)
-                                                    .background(viewModel.themeColor)
+                                                    .background(viewModel.getThemeColor())
                                             }
                                         }
                                         Rectangle()
                                             .frame(width: 40, height: 3)
-                                            .foregroundColor(viewModel.themeColor)
+                                            .foregroundColor(viewModel.getThemeColor())
                                         Text(dateFormatter.string(from: record.date))
                                             .frame(width: 34)
-                                            .foregroundColor(viewModel.themeColor)
+                                            .foregroundColor(viewModel.getThemeColor())
                                             .font(.footnote)
                                             .padding(.bottom, 10)
                                             .padding(.top, 4)
@@ -106,10 +105,10 @@ struct GraphView: View {
                                 }
                                 .padding(.top, 38)
                                 .onAppear{
-                                    proxy.scrollTo(model.latestID)
+                                    proxy.scrollTo(viewModel.latestID)
                                 }
                             } else if selectedIndex == 1 {
-                                ForEach(model.records3) { record in
+                                ForEach(viewModel.records3) { record in
                                     VStack(spacing: 0){
                                         GeometryReader { geometry in
                                             VStack(spacing: 0) {
@@ -117,21 +116,21 @@ struct GraphView: View {
                                                     .frame(minHeight: 0, maxHeight: .infinity)
                                                     .opacity(0)
                                                 Rectangle()
-                                                    .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
-                                                    .foregroundColor(viewModel.themeColor)
+                                                    .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/viewModel.maxWeight))
+                                                    .foregroundColor(viewModel.getThemeColor())
                                             }
                                         }
                                         Text("\(record.rep)")
                                             .foregroundColor(.white)
                                             .frame(width: 30, height: 30)
                                             .padding(.bottom, 5)
-                                            .background(viewModel.themeColor)
+                                            .background(viewModel.getThemeColor())
                                         Rectangle()
                                             .frame(width: 40, height: 3)
-                                            .foregroundColor(viewModel.themeColor)
+                                            .foregroundColor(viewModel.getThemeColor())
                                         Text(dateFormatter.string(from: record.date))
                                             .frame(width: 34)
-                                            .foregroundColor(viewModel.themeColor)
+                                            .foregroundColor(viewModel.getThemeColor())
                                             .font(.footnote)
                                             .padding(.bottom, 10)
                                             .padding(.top, 4)
@@ -140,10 +139,10 @@ struct GraphView: View {
                                 }
                                 .padding(.top, 38)
                                 .onAppear{
-                                    proxy.scrollTo(model.latestID3)
+                                    proxy.scrollTo(viewModel.latestID3)
                                 }
                             } else if selectedIndex == 2 {
-                                ForEach(model.records9) { record in
+                                ForEach(viewModel.records9) { record in
                                     VStack(spacing: 0){
                                         GeometryReader { geometry in
                                             VStack(spacing: 0) {
@@ -151,21 +150,21 @@ struct GraphView: View {
                                                     .frame(minHeight: 0, maxHeight: .infinity)
                                                     .opacity(0)
                                                 Rectangle()
-                                                    .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
-                                                    .foregroundColor(viewModel.themeColor)
+                                                    .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/viewModel.maxWeight))
+                                                    .foregroundColor(viewModel.getThemeColor())
                                             }
                                         }
                                         Text("\(record.rep)")
                                             .foregroundColor(.white)
                                             .frame(width: 30, height: 30)
                                             .padding(.bottom, 5)
-                                            .background(viewModel.themeColor)
+                                            .background(viewModel.getThemeColor())
                                         Rectangle()
                                             .frame(width: 40, height: 3)
-                                            .foregroundColor(viewModel.themeColor)
+                                            .foregroundColor(viewModel.getThemeColor())
                                         Text(dateFormatter.string(from: record.date))
                                             .frame(width: 34)
-                                            .foregroundColor(viewModel.themeColor)
+                                            .foregroundColor(viewModel.getThemeColor())
                                             .font(.footnote)
                                             .padding(.bottom, 10)
                                             .padding(.top, 4)
@@ -174,10 +173,10 @@ struct GraphView: View {
                                 }
                                 .padding(.top, 38)
                                 .onAppear{
-                                    proxy.scrollTo(model.latestID9)
+                                    proxy.scrollTo(viewModel.latestID9)
                                 }
                             } else {
-                                ForEach(model.records27) { record in
+                                ForEach(viewModel.records27) { record in
                                     VStack(spacing: 0){
                                         GeometryReader { geometry in
                                             VStack(spacing: 0) {
@@ -185,21 +184,21 @@ struct GraphView: View {
                                                     .frame(minHeight: 0, maxHeight: .infinity)
                                                     .opacity(0)
                                                 Rectangle()
-                                                    .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/model.maxWeight))
-                                                    .foregroundColor(viewModel.themeColor)
+                                                    .frame(width: 30, height: geometry.size.height * CGFloat(record.weight/viewModel.maxWeight))
+                                                    .foregroundColor(viewModel.getThemeColor())
                                             }
                                         }
                                         Text("\(record.rep)")
                                             .foregroundColor(.white)
                                             .frame(width: 30, height: 30)
                                             .padding(.bottom, 5)
-                                            .background(viewModel.themeColor)
+                                            .background(viewModel.getThemeColor())
                                         Rectangle()
                                             .frame(width: 40, height: 3)
-                                            .foregroundColor(viewModel.themeColor)
+                                            .foregroundColor(viewModel.getThemeColor())
                                         Text(dateFormatter.string(from: record.date))
                                             .frame(width: 34)
-                                            .foregroundColor(viewModel.themeColor)
+                                            .foregroundColor(viewModel.getThemeColor())
                                             .font(.footnote)
                                             .padding(.bottom, 10)
                                             .padding(.top, 4)
@@ -208,7 +207,7 @@ struct GraphView: View {
                                 }
                                 .padding(.top, 38)
                                 .onAppear{
-                                    proxy.scrollTo(model.latestID27)
+                                    proxy.scrollTo(viewModel.latestID27)
                                 }
                             }
                         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .bottom)
@@ -219,8 +218,8 @@ struct GraphView: View {
         }
         .padding(10)
         .onAppear {
-            model.getEvent()
-            model.getRecord(event: event)
+            viewModel.getEvent()
+            viewModel.getRecord(event: event)
         }
         .navigationTitle(event.id)
         .navigationBarBackButtonHidden(true)

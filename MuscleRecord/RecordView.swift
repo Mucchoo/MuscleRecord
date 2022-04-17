@@ -9,10 +9,9 @@ import SwiftUI
 
 struct RecordView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var model = FirebaseModel()
+    @ObservedObject var viewModel = ViewModel()
     @State private var weight = 0
     @State private var rep = 0
-    @State var viewModel = ViewModel()
     var event: Event
     var body: some View {
         VStack{
@@ -47,18 +46,18 @@ struct RecordView: View {
                 Text("rep").fontWeight(.bold)
             }
             Button( action: {
-                if model.dateFormat(date: Date()) == model.dateFormat(date: event.latestDate) {
-                    model.updateRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1)
+                if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
+                    viewModel.updateRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1)
                 } else {
-                    model.addRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1)
+                    viewModel.addRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1)
                 }
                 dismiss()
             }, label: {
-                if model.dateFormat(date: Date()) == model.dateFormat(date: event.latestDate) {
+                if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
                     Text("記録を上書きする")
                         .fontWeight(.bold)
                         .frame(width: 300, height: 70, alignment: .center)
-                        .background(viewModel.themeColor)
+                        .background(viewModel.getThemeColor())
                         .foregroundColor(.white)
                         .cornerRadius(20)
                         .padding(10)
@@ -66,7 +65,7 @@ struct RecordView: View {
                     Text("記録")
                         .fontWeight(.bold)
                         .frame(width: 300, height: 70, alignment: .center)
-                        .background(viewModel.themeColor)
+                        .background(viewModel.getThemeColor())
                         .foregroundColor(.white)
                         .cornerRadius(20)
                         .padding(10)
