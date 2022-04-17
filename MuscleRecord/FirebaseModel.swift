@@ -182,14 +182,8 @@ class FirebaseModel: ObservableObject {
     
     func addRecord(event: Event, weight: Float, rep: Int) {
         let db = Firestore.firestore()
-        let f = DateFormatter()
-        f.dateStyle = .long
-        f.timeStyle = .none
-        let date = f.string(from: Date())
-        db.collection("user").document(event.id).setData(["latestWeight": weight, "latestRep": rep, "latestDate": date])
-//        db.collection("user").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep])
-        db.collection("user").document(event.id).collection("records").document(date).setData(["weight": weight, "rep": rep])
-
+        db.collection("user").document(event.id).setData(["latestWeight": weight, "latestRep": rep, "latestDate": Date()])
+        db.collection("user").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep])
     }
     
     func updateRecord(event: Event, weight: Float, rep: Int) {

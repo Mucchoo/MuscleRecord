@@ -15,6 +15,8 @@ struct ContentView: View {
         let appearance = UINavigationBarAppearance()
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         appearance.backgroundColor = UIColor(viewModel.themeColor)
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().barStyle = .black
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().standardAppearance = appearance
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(viewModel.themeColor)

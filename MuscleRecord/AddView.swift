@@ -9,13 +9,9 @@ import SwiftUI
 
 struct AddView: View {
     
-    private enum Field: Int, Hashable {
-        case text
-    }
-    
     @Environment(\.dismiss) var dismiss
     @ObservedObject var model = FirebaseModel()
-    @FocusState private var focusField: Field?
+    @FocusState private var focus: Bool
     @State private var name = ""
     @State var viewModel = ViewModel()
     var body: some View {
@@ -30,15 +26,18 @@ struct AddView: View {
             }.frame(width: 300, height: 70, alignment: .center)
             TextField("種目名を入力してください", text: $name)
                 .font(.headline)
-                .focused($focusField, equals: .text)
+                .focused($focus)
                 .frame(width: 300, height: 100, alignment: .center)
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.focusField = .text
+                        self.focus = true
                     }
                 }
             Button( action: {
                 model.addEvent(name)
+                self.focus = false
+                self.name = ""
+                print("ででええええええええ")
                 dismiss()
             }, label: {
                 Text("追加")

@@ -11,7 +11,6 @@ struct ThemeColorView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var model = FirebaseModel()
     @State var colorChanged = false
-    let itemWidth = (UIScreen.main.bounds.width - 40)/3
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     @State var viewModel = ViewModel()
     var body: some View {
@@ -42,18 +41,20 @@ struct ThemeColorView: View {
                 }
                 .padding(.vertical, 10)
                 .background(viewModel.themeColor)
-                LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach(0..<6) { num in
-                        Button(action: {
-                            UserDefaults.standard.set(num, forKey: "themeColorNumber")
-                            colorChanged = true
-                        }) {
-                            RoundedRectangle(cornerRadius: 20).foregroundColor(Color("ThemeColor\(num)"))
-                        }.frame(width: itemWidth, height: itemWidth)
+                GeometryReader{ geometry in
+                    LazyVGrid(columns: columns, spacing: 10) {
+                        ForEach(0..<6) { num in
+                            Button(action: {
+                                UserDefaults.standard.set(num, forKey: "themeColorNumber")
+                                colorChanged = true
+                            }) {
+                                RoundedRectangle(cornerRadius: 20).foregroundColor(Color("ThemeColor\(num)"))
+                            }.frame(width: (geometry.size.width - 40)/3, height: (geometry.size.width - 40)/3)
+                        }
                     }
+                    .padding(.horizontal, 10)
+                    Spacer()
                 }
-                .padding(.horizontal, 10)
-                Spacer()
             }
             .navigationBarHidden(true)
         }
