@@ -1,8 +1,8 @@
 //
-//  TutorialView.swift
+//  TutorialView2.swift
 //  MuscleRecord
 //
-//  Created by Musa Yazuju on 2022/04/13.
+//  Created by Musa Yazuju on 2022/04/17.
 //
 
 import SwiftUI
@@ -11,108 +11,63 @@ struct TutorialView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = ViewModel()
     var body: some View {
-        TabView(){
-            ScrollView(){
+        ZStack(){
+            viewModel.getThemeColor().edgesIgnoringSafeArea(.all)
+            TabView(){
                 VStack(){
-                    Image("Tutorial1")
-                        .resizable()
-                        .scaledToFit()
-                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(viewModel.getThemeColor(), lineWidth: 3))
-                    Image(systemName: "arrow.down.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(viewModel.getThemeColor())
-                    Image("Tutorial2")
-                        .resizable()
-                        .scaledToFit()
-                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(viewModel.getThemeColor(), lineWidth: 3))
-                    Image(systemName: "arrow.down.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(viewModel.getThemeColor())
-                    Image("Tutorial3")
-                        .resizable()
-                        .scaledToFit()
-                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(viewModel.getThemeColor(), lineWidth: 3))
-                    Text("①「＋」ボタンを押し、②名前を入力して③種目を追加します。")
-                        .font(.headline)
-                        .multilineTextAlignment(.center)
+                    Spacer()
+                    TutorialImageView(image: "Tutorial1")
+                    TutorialArrowView()
+                    TutorialImageView(image: "Tutorial3")
+                    TutorialTextView(text: "まずは右上の「＋」ボタンから種目を追加！")
+                    Spacer()
                 }
-                .padding(40)
-            }
-            ScrollView(){
+                .background(viewModel.clearColor)
+                .cornerRadius(20)
+                .padding(.horizontal, 20)
                 VStack(){
-                    Image("Tutorial4")
-                        .resizable()
-                        .scaledToFit()
-                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(viewModel.getThemeColor(), lineWidth: 3))
-                    Image(systemName: "arrow.down.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(viewModel.getThemeColor())
-                    Image("Tutorial5")
-                        .resizable()
-                        .scaledToFit()
-                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(viewModel.getThemeColor(), lineWidth: 3))
-                    Image(systemName: "arrow.down.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(viewModel.getThemeColor())
-                    Image("Tutorial6")
-                        .resizable()
-                        .scaledToFit()
-                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(viewModel.getThemeColor(), lineWidth: 3))
-                    Text("①ボタンを押し、②使った重量と動作の回数を入力して③記録します。④に最新の記録が表示されます。")
+                    Spacer()
+                    TutorialImageView(image: "Tutorial3")
+                    TutorialArrowView()
+                    TutorialImageView(image: "Tutorial4")
+                    Text("トレーニング後は\(Image(systemName: "pencil.circle.fill"))を押して記録！")
                         .font(.headline)
                         .multilineTextAlignment(.center)
+                        .padding(.horizontal, 20)
+                        .foregroundColor(viewModel.fontColor)
+                    Spacer()
                 }
-                .padding(40)
-            }
-            ScrollView(){
+                .background(viewModel.clearColor)
+                .cornerRadius(20)
+                .padding(.horizontal, 20)
                 VStack(){
-                    Image("Tutorial7")
-                        .resizable()
-                        .scaledToFit()
-                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(viewModel.getThemeColor(), lineWidth: 3))
-                    Image(systemName: "arrow.down.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(viewModel.getThemeColor())
-                    Image("Tutorial8")
-                        .resizable()
-                        .scaledToFit()
-                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(viewModel.getThemeColor(), lineWidth: 3))
-                    Text("①「グラフを見る」を押すと、それまでの記録がグラフで確認できます。②未記入日は半透明で表示され、棒の長さは重量、回数は③に表示されます。")
-                        .font(.headline)
-                        .multilineTextAlignment(.center)
+                    Spacer()
+                    TutorialImageView(image: "Tutorial5")
+                    TutorialTextView(text: "記録をすると結果がグラフに表れます！")
+                    Spacer()
                 }
-                .padding(40)
-            }
-            ScrollView(){
+                .background(viewModel.clearColor)
+                .cornerRadius(20)
+                .padding(.horizontal, 20)
                 VStack(){
-                    Image("Tutorial9")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(viewModel.getThemeColor())
-                    Text("記録を続けて筋肉の成長をデータ化しましょう！")
-                        .font(.headline)
-                        .multilineTextAlignment(.center)
+                    Spacer()
+                    TutorialImageView(image: "Tutorial6")
+                    TutorialTextView(text: "記録を続けて成長をデータ化しましょう！")
                     Button( action: {
                         dismiss()
                     }, label: {
-                        Text("始める")
-                            .fontWeight(.bold)
-                            .frame(width: 300, height: 70, alignment: .center)
-                            .background(viewModel.getThemeColor())
-                            .foregroundColor(.white)
-                            .cornerRadius(20)
-                            .padding(.top, 30)
+                        ButtonView(text: "始める").padding(.top, 30)
                     })
+                    Spacer()
                 }
-                .padding(40)
+                .background(viewModel.clearColor)
+                .cornerRadius(20)
+                .padding(.horizontal, 20)
             }
+            .tabViewStyle(PageTabViewStyle())
+            .edgesIgnoringSafeArea(.all)
+            .padding(.vertical, 20)
         }
-        .tabViewStyle(PageTabViewStyle())
         .navigationTitle("使い方")
         .navigationBarBackButtonHidden(true)
         .toolbar {

@@ -39,13 +39,7 @@ struct AddView: View {
                 print("ででええええええええ")
                 dismiss()
             }, label: {
-                Text("追加")
-                    .fontWeight(.bold)
-                    .frame(width: 300, height: 70, alignment: .center)
-                    .background(viewModel.getThemeColor())
-                    .foregroundColor(.white)
-                    .cornerRadius(20)
-                    .padding(.top, 30)
+                ButtonView(text: "追加").padding(.top, 30)
             })
             Spacer()
         }

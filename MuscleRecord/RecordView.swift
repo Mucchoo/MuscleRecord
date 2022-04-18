@@ -54,21 +54,9 @@ struct RecordView: View {
                 dismiss()
             }, label: {
                 if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
-                    Text("記録を上書きする")
-                        .fontWeight(.bold)
-                        .frame(width: 300, height: 70, alignment: .center)
-                        .background(viewModel.getThemeColor())
-                        .foregroundColor(.white)
-                        .cornerRadius(20)
-                        .padding(10)
+                    ButtonView(text: "記録を上書き").padding(10)
                 } else {
-                    Text("記録")
-                        .fontWeight(.bold)
-                        .frame(width: 300, height: 70, alignment: .center)
-                        .background(viewModel.getThemeColor())
-                        .foregroundColor(.white)
-                        .cornerRadius(20)
-                        .padding(10)
+                    ButtonView(text: "記録").padding(10)
                 }
             })
             Spacer()

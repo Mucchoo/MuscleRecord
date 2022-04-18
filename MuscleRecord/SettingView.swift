@@ -15,12 +15,8 @@ struct SettingView: View {
         VStack{
             Form{
                 Section(header: Text("Pro")){
-                    NavigationLink(destination: ProView()) {
-                        FormRowView(icon: "gift", firstText: "Proにアップグレード", secondText: "")
-                    }
-                    NavigationLink(destination: ThemeColorView()) {
-                        FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", secondText: "")
-                    }
+                    NavigationLink(destination: ProView()) {FormRowView(icon: "gift", firstText: "Proにアップグレード", secondText: "")}
+                    NavigationLink(destination: ThemeColorView()) {FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", secondText: "")}
                     NavigationLink(destination: IconView()) {
                         HStack{
                             ZStack{
@@ -37,9 +33,7 @@ struct SettingView: View {
                     }
                 }
                 Section(footer: Text("©︎ 2022 Musa Yazuju")){
-                    NavigationLink(destination: TutorialView()) {
-                        FormRowView(icon: "questionmark", firstText: "使い方", secondText: "")
-                    }
+                    NavigationLink(destination: TutorialView()) {FormRowView(icon: "questionmark", firstText: "使い方", secondText: "")}
                     FormRowView(icon: "person", firstText: "アカウント作成", secondText: "")
                     FormRowView(icon: "star", firstText: "レビューで応援！", secondText: "")
                     FormRowView(icon: "square.and.arrow.up", firstText: "アプリをシェア", secondText: "")

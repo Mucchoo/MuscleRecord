@@ -23,6 +23,7 @@ class ViewModel: ObservableObject {
     @Published var oldRecord: Record?
     @Published var fontColor = Color("FontColor")
     @Published var cellColor = Color("CellColor")
+    @Published var clearColor = Color("ClearColor")
     @Published var backgroundColor = Color("BackgroundColor")
     
     func getThemeColor() -> Color {

@@ -32,13 +32,7 @@ struct EditView: View {
                 viewModel.updateEvent(event: event, newName: name)
                 dismiss()
             }, label: {
-                Text("名前を上書き")
-                    .fontWeight(.bold)
-                    .frame(width: 300, height: 70, alignment: .center)
-                    .background(viewModel.getThemeColor())
-                    .foregroundColor(.white)
-                    .cornerRadius(20)
-                    .padding(10)
+                ButtonView(text: "名前を上書き").padding(10)
             })
             Button( action: {
                 viewModel.deleteEvent(event: event)
