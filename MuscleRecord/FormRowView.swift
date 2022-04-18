@@ -27,27 +27,3 @@ struct FormRowView: View {
         }
     }
 }
-
-//struct FormRowViewTest: View {
-//    @ObservedObject var viewModel = ViewModel()
-//    var icon: String
-//    var firstText: String
-//    var secondText: String
-//    var destination: View
-//    var body: some View {
-//        NavigationLink(destination: destination) {
-//            HStack{
-//                ZStack{
-//                    RoundedRectangle(cornerRadius: 8, style: .continuous)
-//                        .fill(viewModel.getThemeColor())
-//                    Image(systemName: icon)
-//                        .foregroundColor(Color.white)
-//                }
-//                .frame(width: 36, height: 36, alignment: .center)
-//                Text(firstText).foregroundColor(viewModel.fontColor)
-//                Spacer()
-//                Text(secondText).foregroundColor(Color.gray)
-//            }
-//        }
-//    }
-//}

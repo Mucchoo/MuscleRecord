@@ -14,65 +14,54 @@ struct RecordView: View {
     @State private var rep = 0
     var event: Event
     var body: some View {
-        VStack{
-            HStack{
-                Text("重量").fontWeight(.bold)
-                Picker("weight", selection: $weight, content: {
-                    ForEach(1..<1001) { num in
-                        Text(String(Float(num)/2)).font(.headline)
-                    }
-                })
-                .frame(width: 100)
-                .clipped()
-                .pickerStyle(WheelPickerStyle())
-                .onAppear {
-                    weight = Int(event.latestWeight*2) - 1
-                }
-                Text("kg ").fontWeight(.bold)
-            }
-            HStack{
-                Text("回数").fontWeight(.bold)
-                Picker("rep", selection: $rep, content: {
-                    ForEach(1..<100) { num in
-                        Text(String(num)).font(.headline)
-                    }
-                })
-                .frame(width: 100)
-                .clipped()
-                .pickerStyle(WheelPickerStyle())
-                .onAppear {
-                    rep = event.latestRep - 1
-                }
-                Text("rep").fontWeight(.bold)
-            }
-            Button( action: {
-                if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
-                    viewModel.updateRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1)
-                } else {
-                    viewModel.addRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1)
-                }
-                dismiss()
-            }, label: {
-                if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
-                    ButtonView(text: "記録を上書き").padding(10)
-                } else {
-                    ButtonView(text: "記録").padding(10)
-                }
-            })
-            Spacer()
-        }
-        .navigationTitle(event.id)
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(
-                        action: {
-                            dismiss()
-                        }, label: {
-                            Image(systemName: "arrow.backward")
+        SimpleNavigationView(title: event.id) {
+            VStack{
+                HStack{
+                    Text("重量").fontWeight(.bold)
+                    Picker("weight", selection: $weight, content: {
+                        ForEach(1..<1001) { num in
+                            Text(String(Float(num)/2)).font(.headline)
                         }
-                    ).tint(.white)
+                    })
+                    .frame(width: 100)
+                    .clipped()
+                    .pickerStyle(WheelPickerStyle())
+                    .onAppear {
+                        weight = Int(event.latestWeight*2) - 1
+                    }
+                    Text("kg ").fontWeight(.bold)
                 }
+                HStack{
+                    Text("回数").fontWeight(.bold)
+                    Picker("rep", selection: $rep, content: {
+                        ForEach(1..<100) { num in
+                            Text(String(num)).font(.headline)
+                        }
+                    })
+                    .frame(width: 100)
+                    .clipped()
+                    .pickerStyle(WheelPickerStyle())
+                    .onAppear {
+                        rep = event.latestRep - 1
+                    }
+                    Text("rep").fontWeight(.bold)
+                }
+                Button( action: {
+                    if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
+                        viewModel.updateRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1)
+                    } else {
+                        viewModel.addRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1)
+                    }
+                    dismiss()
+                }, label: {
+                    if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
+                        ButtonView(text: "記録を上書き").padding(10)
+                    } else {
+                        ButtonView(text: "記録").padding(10)
+                    }
+                })
+                Spacer()
             }
+        }
     }
 }
