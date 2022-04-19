@@ -128,8 +128,9 @@ class ViewModel: ObservableObject {
                             self.records.append(record)
                         }
                         
+                        //取得した記録を元に3日、9日、27日平均に変換した配列を作る
                         for i in 1..<4{
-                            var dataCount = 0
+                            var totalDate = 0
                             var totalWeight: Float = 0
                             var totalRep = 0
                             let period = Int(truncating: pow(3, i) as NSNumber)
@@ -138,17 +139,17 @@ class ViewModel: ObservableObject {
                             self.records.forEach { record in
                                 totalWeight += record.weight
                                 totalRep += record.rep
-                                dataCount += 1
-                                if remainder != 0 && remainder == dataCount && created == false {
+                                totalDate += 1
+                                if remainder != 0 && remainder == totalDate && created == false {
                                     let recordID = UUID().uuidString
-                                    self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(dataCount), rep: totalRep/dataCount, dummy: false))
+                                    self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(totalDate), rep: totalRep/totalDate, dummy: false))
                                     self.latestID3 = recordID
                                     created = true
                                     totalWeight = 0
                                     totalRep = 0
-                                    dataCount = 0
+                                    totalDate = 0
                                 }
-                                if dataCount == period {
+                                if totalDate == period {
                                     let recordID = UUID().uuidString
                                     if period == 3 {
                                         self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
@@ -162,7 +163,7 @@ class ViewModel: ObservableObject {
                                     }
                                     totalWeight = 0
                                     totalRep = 0
-                                    dataCount = 0
+                                    totalDate = 0
                                 }
                             }
                         }

@@ -151,6 +151,51 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
+		2A57660C280E335F0079DB82 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A3C7E6027FC2C9800B1E4EB /* Record.swift */,
+				2A543DCA27F9C6FB0051665E /* Event.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2A57660D280E33690079DB82 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A58E12627F26E1300121A4F /* RecordView.swift */,
+				2AFDF1A527ED861100A03ACE /* SettingView.swift */,
+				2AD3AC0A28065A7100DE6E00 /* IconView.swift */,
+				2A96A78627F2BBD000A37A43 /* FormRowView.swift */,
+				2A5D524B2802704C00F0427D /* ThemeColorView.swift */,
+				2A23193C2806725200192216 /* ProView.swift */,
+				2A048CB7280C306200866E56 /* ProImageView.swift */,
+				2A048CB9280C310900866E56 /* ProTextView.swift */,
+				2A048CB5280C275500866E56 /* ButtonView.swift */,
+				2A048CB3280C270400866E56 /* ProTitleView.swift */,
+				2A048CBB280C356A00866E56 /* TutorialView.swift */,
+				2AACB831280D3B8400ADCA84 /* SimpleNavigationView.swift */,
+				2AACB82F280D2E7600ADCA84 /* TutorialCardView.swift */,
+				2AACB82D280D0F6D00ADCA84 /* TutorialArrowView.swift */,
+				2AACB82B280D0F0E00ADCA84 /* TutorialTextView.swift */,
+				2AACB829280D0EB300ADCA84 /* TutorialImageView.swift */,
+				2AFDF1A727ED869500A03ACE /* ContentView.swift */,
+				2A817F6227FBC55C00772B6C /* EditView.swift */,
+				2AD99F8427F3EF760007E152 /* AddView.swift */,
+				2AFDF1A327ED85F200A03ACE /* GraphView.swift */,
+				2AACB837280D46B100ADCA84 /* GraphBodyView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2A57660E280E337C0079DB82 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2A543DCC27F9C7670051665E /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2AA3732227EC507200A885B0 = {
 			isa = PBXGroup;
 			children = (
@@ -174,30 +219,9 @@
 				2A25372627ECAE52003C8728 /* Info.plist */,
 				2ADDC0C427F5BE3D003C548B /* GoogleService-Info.plist */,
 				2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */,
-				2A23193C2806725200192216 /* ProView.swift */,
-				2A048CB7280C306200866E56 /* ProImageView.swift */,
-				2A048CB9280C310900866E56 /* ProTextView.swift */,
-				2A048CB5280C275500866E56 /* ButtonView.swift */,
-				2A048CB3280C270400866E56 /* ProTitleView.swift */,
-				2A3C7E6027FC2C9800B1E4EB /* Record.swift */,
-				2A543DCA27F9C6FB0051665E /* Event.swift */,
-				2A543DCC27F9C7670051665E /* ViewModel.swift */,
-				2A048CBB280C356A00866E56 /* TutorialView.swift */,
-				2AACB831280D3B8400ADCA84 /* SimpleNavigationView.swift */,
-				2AACB82F280D2E7600ADCA84 /* TutorialCardView.swift */,
-				2AACB82D280D0F6D00ADCA84 /* TutorialArrowView.swift */,
-				2AACB82B280D0F0E00ADCA84 /* TutorialTextView.swift */,
-				2AACB829280D0EB300ADCA84 /* TutorialImageView.swift */,
-				2AFDF1A727ED869500A03ACE /* ContentView.swift */,
-				2A817F6227FBC55C00772B6C /* EditView.swift */,
-				2AD99F8427F3EF760007E152 /* AddView.swift */,
-				2AFDF1A327ED85F200A03ACE /* GraphView.swift */,
-				2AACB837280D46B100ADCA84 /* GraphBodyView.swift */,
-				2A58E12627F26E1300121A4F /* RecordView.swift */,
-				2AFDF1A527ED861100A03ACE /* SettingView.swift */,
-				2AD3AC0A28065A7100DE6E00 /* IconView.swift */,
-				2A96A78627F2BBD000A37A43 /* FormRowView.swift */,
-				2A5D524B2802704C00F0427D /* ThemeColorView.swift */,
+				2A57660C280E335F0079DB82 /* Model */,
+				2A57660D280E33690079DB82 /* View */,
+				2A57660E280E337C0079DB82 /* ViewModel */,
 				2AA3733227EC507300A885B0 /* Assets.xcassets */,
 				2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */,
 				2AA3733427EC507300A885B0 /* Preview Content */,
