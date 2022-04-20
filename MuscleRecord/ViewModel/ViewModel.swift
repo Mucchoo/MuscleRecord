@@ -168,6 +168,7 @@ class ViewModel: ObservableObject {
                             }
                         }
                         
+                        //グラフの目盛り幅を決めるために重量の最大値を計算
                         snapshot.documents.forEach { d in
                             if self.maxWeight < d["weight"] as? Float ?? 0.0 {
                                 self.maxWeight = d["weight"] as? Float ?? 0.0
