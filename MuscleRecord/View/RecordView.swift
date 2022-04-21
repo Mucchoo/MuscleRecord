@@ -55,13 +55,13 @@ struct RecordView: View {
                     dismiss()
                 }, label: {
                     if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
-                        ButtonView(text: "記録を上書き").padding(10)
+                        ButtonView(text: "記録を上書き")
                     } else {
-                        ButtonView(text: "記録").padding(10)
+                        ButtonView(text: "記録")
                     }
                 })
                 Spacer()
-            }
+            }.padding(20)
         }
     }
 }

@@ -18,8 +18,11 @@ struct TextFieldView: View {
                 .font(.headline)
                 .fontWeight(.bold)
                 .foregroundColor(viewModel.fontColor)
+                .padding(.leading, 10)
             Spacer()
-        }.padding(10)
+        }
+        .padding(.top, 10)
+        .padding(.bottom, 5)
         TextField(placeHolder, text: text)
             .font(.headline)
             .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
