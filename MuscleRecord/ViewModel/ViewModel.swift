@@ -175,7 +175,7 @@ class ViewModel: ObservableObject {
                             }
                         }
                     }
-
+                    
                 }
             }
         }
@@ -201,6 +201,7 @@ class ViewModel: ObservableObject {
     
     func updateRecord(event: Event, weight: Float, rep: Int) {
         let db = Firestore.firestore()
+
         db.collection("user").document(event.id).collection("records").order(by: "date", descending: true).limit(to: 1).getDocuments { snapshot, error in
             if let snapshot = snapshot {
                 if let error = error {
@@ -213,19 +214,21 @@ class ViewModel: ObservableObject {
                     }
                 }
             }
-            db.collection("user").document(event.id).setData(["latestWeight": weight, "latestRep": rep,"latestDate": Date()]) { error in
-                if let error = error {
-                    print("updateRecord(event)中のエラー: \(error)")
-                } else {
-                    print("updateRecord(event)成功")
-                }
+        }
+        
+        db.collection("user").document(event.id).setData(["latestWeight": weight, "latestRep": rep,"latestDate": Date()]) { error in
+            if let error = error {
+                print("updateRecord(event)中のエラー: \(error)")
+            } else {
+                print("updateRecord(event)成功")
             }
-            db.collection("user").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep]) { error in
-                if let error = error {
-                    print("updateRecord(record)中のエラー: \(error)")
-                } else {
-                    print("updateRecord(record)成功")
-                }
+        }
+        
+        db.collection("user").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep]) { error in
+            if let error = error {
+                print("updateRecord(record)中のエラー: \(error)")
+            } else {
+                print("updateRecord(record)成功")
             }
         }
     }
