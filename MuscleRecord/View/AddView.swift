@@ -16,18 +16,8 @@ struct AddView: View {
     var body: some View {
         SimpleNavigationView(title: "種目を追加") {
             VStack(spacing: 0){
-                HStack{
-                    Text("種目名")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundColor(viewModel.fontColor)
-                        .padding(.top, 30)
-                    Spacer()
-                }.frame(width: 300, height: 70, alignment: .center)
-                TextField("種目名を入力してください", text: $name)
-                    .font(.headline)
+                TextFieldView(title: "種目名", text: $name, placeHolder: "種目名を入力してください")
                     .focused($focus)
-                    .frame(width: 300, height: 100, alignment: .center)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             self.focus = true
@@ -37,13 +27,12 @@ struct AddView: View {
                     viewModel.addEvent(name)
                     self.focus = false
                     self.name = ""
-                    print("ででええええええええ")
                     dismiss()
                 }, label: {
-                    ButtonView(text: "追加").padding(.top, 30)
+                    ButtonView(text: "追加").padding(.top, 20)
                 })
                 Spacer()
-            }
+            }.padding(20)
         }
     }
 }

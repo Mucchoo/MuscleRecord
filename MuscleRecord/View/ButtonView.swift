@@ -13,7 +13,7 @@ struct ButtonView: View {
     var body: some View {
         Text(text)
             .fontWeight(.bold)
-            .frame(width: 300, height: 70, alignment: .center)
+            .frame(minWidth: 300, maxWidth: .infinity, minHeight: 70, alignment: .center)
             .background(viewModel.getThemeColor())
             .foregroundColor(.white)
             .cornerRadius(20)

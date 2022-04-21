@@ -15,17 +15,7 @@ struct EditView: View {
     var body: some View {
         SimpleNavigationView(title: "種目を編集") {
             VStack{
-                HStack{
-                    Text("種目名")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundColor(viewModel.fontColor)
-                        .padding(.top, 30)
-                    Spacer()
-                }.frame(width: 300, height: 70, alignment: .center)
-                TextField("種目名を入力してください", text: $name)
-                    .font(.headline)
-                    .frame(width: 300, height: 70, alignment: .center)
+                TextFieldView(title: "種目名", text: $name, placeHolder: "種目名を入力してください")
                     .onAppear{
                         self.name = event.id
                     }
@@ -49,7 +39,7 @@ struct EditView: View {
                         )
                 })
                 Spacer()
-            }
+            }.padding(20)
 
         }
     }

@@ -229,4 +229,8 @@ class ViewModel: ObservableObject {
             }
         }
     }
+    
+    func signUp(adress: String) {
+        
+    }
 }
