@@ -201,7 +201,7 @@ class ViewModel: ObservableObject {
     
     func updateRecord(event: Event, weight: Float, rep: Int) {
         let db = Firestore.firestore()
-
+        
         db.collection("user").document(event.id).collection("records").order(by: "date", descending: true).limit(to: 1).getDocuments { snapshot, error in
             if let snapshot = snapshot {
                 if let error = error {
@@ -231,9 +231,5 @@ class ViewModel: ObservableObject {
                 print("updateRecord(record)成功")
             }
         }
-    }
-    
-    func signUp(adress: String) {
-        
     }
 }

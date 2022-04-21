@@ -22,7 +22,7 @@ struct AddView: View {
                         self.focus = false
                     }
                 VStack(spacing: 0){
-                    TextFieldView(title: "種目名", text: $name, placeHolder: "種目名を入力してください")
+                    TextFieldView(title: "種目名", text: $name, placeHolder: "種目名を入力してください", isSecure: false)
                         .focused($focus)
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

@@ -12,6 +12,7 @@ struct TextFieldView: View {
     var title: String
     var text: Binding<String>
     var placeHolder: String
+    var isSecure: Bool
     var body: some View {
         HStack {
             Text(title)
@@ -23,11 +24,20 @@ struct TextFieldView: View {
         }
         .padding(.top, 10)
         .padding(.bottom, 5)
-        TextField(placeHolder, text: text)
-            .font(.headline)
-            .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
-            .frame(height: 50, alignment: .center)
-            .background(viewModel.getThemeColor().opacity(0.2))
-            .cornerRadius(8)
+        if isSecure {
+            SecureField(placeHolder, text: text)
+                .font(.headline)
+                .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
+                .frame(height: 50, alignment: .center)
+                .background(viewModel.getThemeColor().opacity(0.2))
+                .cornerRadius(8)
+        } else {
+            TextField(placeHolder, text: text)
+                .font(.headline)
+                .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
+                .frame(height: 50, alignment: .center)
+                .background(viewModel.getThemeColor().opacity(0.2))
+                .cornerRadius(8)
+        }
     }
 }
