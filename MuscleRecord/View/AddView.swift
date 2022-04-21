@@ -15,24 +15,32 @@ struct AddView: View {
     @State private var name = ""
     var body: some View {
         SimpleNavigationView(title: "種目を追加") {
-            VStack(spacing: 0){
-                TextFieldView(title: "種目名", text: $name, placeHolder: "種目名を入力してください")
-                    .focused($focus)
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            self.focus = true
-                        }
+            ZStack{
+                viewModel.clearColor
+                    .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        self.focus = false
                     }
-                Button( action: {
-                    viewModel.addEvent(name)
-                    self.focus = false
-                    self.name = ""
-                    dismiss()
-                }, label: {
-                    ButtonView(text: "追加").padding(.top, 20)
-                })
-                Spacer()
-            }.padding(20)
+                VStack(spacing: 0){
+                    TextFieldView(title: "種目名", text: $name, placeHolder: "種目名を入力してください")
+                        .focused($focus)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                self.focus = true
+                            }
+                        }
+                    Button( action: {
+                        viewModel.addEvent(name)
+                        self.focus = false
+                        self.name = ""
+                        dismiss()
+                    }, label: {
+                        ButtonView(text: "追加").padding(.top, 20)
+                    })
+                    Spacer()
+                }
+                .padding(20)
+            }
         }
     }
 }

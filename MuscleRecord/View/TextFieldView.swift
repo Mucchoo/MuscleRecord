@@ -18,7 +18,7 @@ struct TextFieldView: View {
                 .font(.headline)
                 .fontWeight(.bold)
                 .foregroundColor(viewModel.fontColor)
-                .padding(.leading, 10)
+                .padding(.leading, 8)
             Spacer()
         }
         .padding(.top, 10)
