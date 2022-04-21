@@ -16,6 +16,7 @@ struct EditView: View {
         SimpleNavigationView(title: "種目を編集") {
             VStack{
                 TextFieldView(title: "種目名", text: $name, placeHolder: "種目名を入力してください")
+                    .padding(.bottom, 20)
                     .onAppear{
                         self.name = event.id
                     }
@@ -23,7 +24,7 @@ struct EditView: View {
                     viewModel.updateEvent(event: event, newName: name)
                     dismiss()
                 }, label: {
-                    ButtonView(text: "名前を上書き").padding(10)
+                    ButtonView(text: "名前を上書き")
                 })
                 Button( action: {
                     viewModel.deleteEvent(event: event)
@@ -31,12 +32,9 @@ struct EditView: View {
                 }, label: {
                     Text("種目を削除")
                         .fontWeight(.bold)
-                        .frame(width: 300, height: 70, alignment: .center)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 70, alignment: .center)
                         .foregroundColor(viewModel.getThemeColor())
-                        .overlay(RoundedRectangle(cornerRadius: 20)
-                            .stroke(lineWidth: 3)
-                            .foregroundColor(viewModel.getThemeColor())
-                        )
+                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(viewModel.getThemeColor(), lineWidth: 3))
                 })
                 Spacer()
             }.padding(20)

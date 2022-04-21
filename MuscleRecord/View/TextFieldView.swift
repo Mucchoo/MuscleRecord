@@ -13,15 +13,18 @@ struct TextFieldView: View {
     var text: Binding<String>
     var placeHolder: String
     var body: some View {
-        Text(title)
-            .font(.headline)
-            .fontWeight(.bold)
-            .foregroundColor(viewModel.fontColor)
-            .padding(10)
+        HStack {
+            Text(title)
+                .font(.headline)
+                .fontWeight(.bold)
+                .foregroundColor(viewModel.fontColor)
+            Spacer()
+        }.padding(10)
         TextField(placeHolder, text: text)
             .font(.headline)
+            .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
             .frame(height: 50, alignment: .center)
-            .overlay(RoundedRectangle(cornerRadius: 8).stroke(viewModel.getThemeColor(), lineWidth: 3))
-            .multilineTextAlignment(.center)
+            .background(viewModel.getThemeColor().opacity(0.2))
+            .cornerRadius(8)
     }
 }
