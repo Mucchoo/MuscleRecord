@@ -122,11 +122,10 @@
 				2A048CB3280C270400866E56 /* ProTitleView.swift */,
 				2AD3AC0A28065A7100DE6E00 /* IconView.swift */,
 				2A58E12627F26E1300121A4F /* RecordView.swift */,
+				2A75278D28123EDD00A0961C /* ResetPasswordView.swift */,
 				2AEA33B3281108C900E968FB /* SignUpView.swift */,
 				2A75278628121EE500A0961C /* SignInView.swift */,
-				2A75278D28123EDD00A0961C /* ResetPasswordView.swift */,
 				2AFDF1A527ED861100A03ACE /* SettingView.swift */,
-				2A7527882812277500A0961C /* UpdateAuthView.swift */,
 				2AACB831280D3B8400ADCA84 /* SimpleNavigationView.swift */,
 				2A5D524B2802704C00F0427D /* ThemeColorView.swift */,
 				2A17A6AD28111AA4007AEE3B /* TextFieldView.swift */,
@@ -135,6 +134,7 @@
 				2AACB82D280D0F6D00ADCA84 /* TutorialArrowView.swift */,
 				2AACB82B280D0F0E00ADCA84 /* TutorialTextView.swift */,
 				2AACB829280D0EB300ADCA84 /* TutorialImageView.swift */,
+				2A7527882812277500A0961C /* UpdateAuthView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

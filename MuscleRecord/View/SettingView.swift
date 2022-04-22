@@ -20,7 +20,7 @@ struct SettingView: View {
                 Form{
                     Section(header: Text("Pro")){
                         NavigationLink(destination: ProView()) {FormRowView(icon: "gift", firstText: "Proにアップグレード", secondText: "未実装")}
-                        NavigationLink(destination: ThemeColorView()) {FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", secondText: "")}
+                        NavigationLink(destination: ThemeColorView()) {FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", secondText: "未実装c")}
                         NavigationLink(destination: IconView()) {
                             HStack{
                                 ZStack{

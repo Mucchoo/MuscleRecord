@@ -120,7 +120,7 @@ class ViewModel: ObservableObject {
                             if let newRecord = self.oldRecord {
                                 var dateDifference = (Calendar.current.dateComponents([.day], from: newRecord.date, to: timeStamp.dateValue())).day! - 1
                                 while dateDifference > 0 {
-                                    self.records.append(Record(id: UUID().uuidString, date: Date(timeInterval: TimeInterval(-60*60*24*dateDifference), since: date), weight: newRecord.weight, rep: 0, dummy: true))
+                                    self.records.append(Record(id: UUID().uuidString, date: Date(timeInterval: TimeInterval(-60*60*24*dateDifference), since: date), weight: newRecord.weight, rep: newRecord.rep, dummy: true))
                                     dateDifference -= 1
                                 }
                             }
