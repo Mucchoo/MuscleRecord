@@ -24,6 +24,7 @@ class ViewModel: ObservableObject {
     @Published var cellColor = Color("CellColor")
     @Published var clearColor = Color("ClearColor")
     @Published var backgroundColor = Color("BackgroundColor")
+    @Published var isSigned = false
     
     func getThemeColor() -> Color {
         switch UserDefaults.standard.integer(forKey: "themeColorNumber") {

@@ -24,6 +24,7 @@
 		2A5D524C2802704C00F0427D /* ThemeColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5D524B2802704C00F0427D /* ThemeColorView.swift */; };
 		2A75278728121EE500A0961C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75278628121EE500A0961C /* SignInView.swift */; };
 		2A7527892812277500A0961C /* UpdateAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7527882812277500A0961C /* UpdateAuthView.swift */; };
+		2A75278E28123EDD00A0961C /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75278D28123EDD00A0961C /* ResetPasswordView.swift */; };
 		2A817F6327FBC55C00772B6C /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A817F6227FBC55C00772B6C /* EditView.swift */; };
 		2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A96A78627F2BBD000A37A43 /* FormRowView.swift */; };
 		2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */; };
@@ -41,7 +42,7 @@
 		2AEA33B4281108C900E968FB /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA33B3281108C900E968FB /* SignUpView.swift */; };
 		2AFDF1A427ED85F200A03ACE /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A327ED85F200A03ACE /* GraphView.swift */; };
 		2AFDF1A627ED861100A03ACE /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A527ED861100A03ACE /* SettingView.swift */; };
-		2AFDF1A827ED869500A03ACE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A727ED869500A03ACE /* ContentView.swift */; };
+		2AFDF1A827ED869500A03ACE /* MuscleRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A727ED869500A03ACE /* MuscleRecordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		2A5D524B2802704C00F0427D /* ThemeColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorView.swift; sourceTree = "<group>"; };
 		2A75278628121EE500A0961C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		2A7527882812277500A0961C /* UpdateAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAuthView.swift; sourceTree = "<group>"; };
+		2A75278D28123EDD00A0961C /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2A817F6227FBC55C00772B6C /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		2A96A78627F2BBD000A37A43 /* FormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowView.swift; sourceTree = "<group>"; };
 		2AA3732B27EC507200A885B0 /* Muscle Record.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Muscle Record.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +81,7 @@
 		2AEA33B3281108C900E968FB /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		2AFDF1A327ED85F200A03ACE /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		2AFDF1A527ED861100A03ACE /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		2AFDF1A727ED869500A03ACE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2AFDF1A727ED869500A03ACE /* MuscleRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleRecordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,11 +111,11 @@
 			children = (
 				2AD99F8427F3EF760007E152 /* AddView.swift */,
 				2A048CB5280C275500866E56 /* ButtonView.swift */,
-				2AFDF1A727ED869500A03ACE /* ContentView.swift */,
 				2A817F6227FBC55C00772B6C /* EditView.swift */,
 				2A96A78627F2BBD000A37A43 /* FormRowView.swift */,
 				2AFDF1A327ED85F200A03ACE /* GraphView.swift */,
 				2AACB837280D46B100ADCA84 /* GraphBodyView.swift */,
+				2AFDF1A727ED869500A03ACE /* MuscleRecordView.swift */,
 				2A23193C2806725200192216 /* ProView.swift */,
 				2A048CB7280C306200866E56 /* ProImageView.swift */,
 				2A048CB9280C310900866E56 /* ProTextView.swift */,
@@ -122,6 +124,7 @@
 				2A58E12627F26E1300121A4F /* RecordView.swift */,
 				2AEA33B3281108C900E968FB /* SignUpView.swift */,
 				2A75278628121EE500A0961C /* SignInView.swift */,
+				2A75278D28123EDD00A0961C /* ResetPasswordView.swift */,
 				2AFDF1A527ED861100A03ACE /* SettingView.swift */,
 				2A7527882812277500A0961C /* UpdateAuthView.swift */,
 				2AACB831280D3B8400ADCA84 /* SimpleNavigationView.swift */,
@@ -278,7 +281,7 @@
 				2A543DCD27F9C7670051665E /* ViewModel.swift in Sources */,
 				2A7527892812277500A0961C /* UpdateAuthView.swift in Sources */,
 				2AD99F8527F3EF760007E152 /* AddView.swift in Sources */,
-				2AFDF1A827ED869500A03ACE /* ContentView.swift in Sources */,
+				2AFDF1A827ED869500A03ACE /* MuscleRecordView.swift in Sources */,
 				2A3C7E6127FC2C9800B1E4EB /* Record.swift in Sources */,
 				2A048CBC280C356A00866E56 /* TutorialView.swift in Sources */,
 				2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */,
@@ -290,6 +293,7 @@
 				2AACB82E280D0F6D00ADCA84 /* TutorialArrowView.swift in Sources */,
 				2AFDF1A627ED861100A03ACE /* SettingView.swift in Sources */,
 				2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */,
+				2A75278E28123EDD00A0961C /* ResetPasswordView.swift in Sources */,
 				2AFDF1A427ED85F200A03ACE /* GraphView.swift in Sources */,
 				2AACB838280D46B100ADCA84 /* GraphBodyView.swift in Sources */,
 			);

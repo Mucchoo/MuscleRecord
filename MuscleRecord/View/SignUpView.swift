@@ -15,10 +15,13 @@ struct SignUpView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var passwordConfirm = ""
-    
+    @State var showSignIn = false
+
     @State private var isShowAlert = false
     @State private var isError = false
     @State private var errorMessage = ""
+    @Binding var showSignUp: Bool
+    @Binding var showMuscleRecord: Bool
 
     enum Focus {
         case email, password, passwordConfirm
@@ -33,6 +36,10 @@ struct SignUpView: View {
                         self.focus = nil
                     }
                 VStack(spacing: 0){
+                    Text("アカウント作成")
+                        .font(.headline)
+                        .padding(.bottom, 20)
+                        .foregroundColor(viewModel.fontColor)
                     TextFieldView(title: "メールアドレス", text: $email, placeHolder: "example@example.com", isSecure: false)
                         .focused($focus, equals: .email)
                     TextFieldView(title: "パスワード", text: $password, placeHolder: "password", isSecure: true)
@@ -63,13 +70,13 @@ struct SignUpView: View {
                     }){
                         ButtonView(text: "アカウント作成").padding(.top, 20)
                     }
-                    Button(action: {
-                        Auth.auth().sendPasswordReset(withEmail: email) { error in }
-                    }){
-                        Text("パスワード再設定")
+                    Button {
+                        showSignIn = true
+                    } label: {
+                        Text("既存のアカウントにログイン")
                             .font(.headline)
                             .foregroundColor(viewModel.getThemeColor())
-                            .padding(20)
+                            .padding(.top, 30)
                     }
                     .alert(isPresented: $isShowAlert) {
                         if self.isError {
@@ -81,6 +88,8 @@ struct SignUpView: View {
                     }
                     Spacer()
                 }.padding(20)
+            }.sheet(isPresented: $showSignIn) {
+                SignInView(showSignIn: $showSignIn, showSignUp: $showSignUp, showMuscleRecord: $showMuscleRecord)
             }
         }
     }

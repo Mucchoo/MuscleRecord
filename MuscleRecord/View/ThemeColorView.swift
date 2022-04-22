@@ -14,7 +14,7 @@ struct ThemeColorView: View {
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     var body: some View {
         if colorChanged {
-            ContentView()
+            MuscleRecordView()
         } else {
             VStack(){
                 ZStack(){
