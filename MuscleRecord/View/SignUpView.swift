@@ -63,6 +63,14 @@ struct SignUpView: View {
                     }){
                         ButtonView(text: "アカウント作成").padding(.top, 20)
                     }
+                    Button(action: {
+                        Auth.auth().sendPasswordReset(withEmail: email) { error in }
+                    }){
+                        Text("パスワード再設定")
+                            .font(.headline)
+                            .foregroundColor(viewModel.getThemeColor())
+                            .padding(20)
+                    }
                     .alert(isPresented: $isShowAlert) {
                         if self.isError {
                             return Alert(title: Text(""), message: Text(self.errorMessage), dismissButton: .destructive(Text("OK"))
@@ -82,22 +90,30 @@ struct SignUpView: View {
             if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
                 switch errorCode {
                 case .invalidEmail:
-                    self.errorMessage = "メールアドレスの形式が正しくありません"
+                    errorMessage = "メールアドレスの形式が正しくありません"
                 case .emailAlreadyInUse:
-                    self.errorMessage = "このメールアドレスは既に登録されています"
+                    errorMessage = "このメールアドレスは既に登録されています"
                 case .weakPassword:
-                    self.errorMessage = "パスワードは６文字以上で入力してください"
+                    errorMessage = "パスワードは６文字以上で入力してください"
                 default:
-                    self.errorMessage = error.domain
+                    errorMessage = error.domain
                 }
                 
-                self.isError = true
-                self.isShowAlert = true
+                isError = true
+                isShowAlert = true
             }
             
             if let _ = authResult?.user {
-                self.isError = false
-                self.isShowAlert = true
+                isError = false
+                isShowAlert = true
+            }
+            
+            if let user = authResult?.user {
+                user.sendEmailVerification(completion: { error in
+                    if error == nil {
+                        print("send mail success.")
+                    }
+                })
             }
         }
     }

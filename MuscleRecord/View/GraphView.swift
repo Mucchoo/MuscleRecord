@@ -10,10 +10,10 @@ import SwiftUI
 struct GraphView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = ViewModel()
-    @State var periodScale = 0
-    var weightScale: [Float] = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]
+    @State private var periodScale = 0
+    private var weightScale: [Float] = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]
     var event: Event
-    var dateFormatter: DateFormatter = {
+    private var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M/d"
         return dateFormatter
