@@ -232,4 +232,22 @@ class ViewModel: ObservableObject {
             }
         }
     }
+    
+    func shareApp(){
+        var window: UIWindow? {
+            guard let scene = UIApplication.shared.connectedScenes.first,
+                  let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
+                  let window = windowSceneDelegate.window else {
+                return nil
+            }
+            return window
+        }
+        let productURL:URL = URL(string: "https://apps.apple.com/xxxxxxxxxxxxxxxxxxxx")!
+        
+        let activityViewController = UIActivityViewController(
+            activityItems: [productURL],
+            applicationActivities: nil)
+        
+        window?.rootViewController?.present(activityViewController, animated: true, completion: nil)
+    }
 }

@@ -51,7 +51,12 @@ struct SettingView: View {
                         } label: {
                             FormRowView(icon: "star", firstText: "レビューで応援！")
                         }
-                        FormRowView(icon: "square.and.arrow.up", firstText: "アプリをシェア")
+                        Button {
+                            viewModel.shareApp()
+                        } label: {
+                            FormRowView(icon: "square.and.arrow.up", firstText: "アプリをシェア")
+                        }
+                        //MuscleRecordユーザーの声
                         FormRowView(icon: "envelope", firstText: "ご意見・ご要望")
                         Button(action: {
                             signOut()
