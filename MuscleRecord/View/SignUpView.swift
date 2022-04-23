@@ -9,88 +9,91 @@ import Firebase
 import SwiftUI
 
 struct SignUpView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = ViewModel()
     @FocusState private var focus: Focus?
     @State private var email = ""
     @State private var password = ""
     @State private var passwordConfirm = ""
-    @State var showSignIn = false
-
     @State private var isShowAlert = false
     @State private var isError = false
     @State private var errorMessage = ""
-    @Binding var showSignUp: Bool
-    @Binding var showMuscleRecord: Bool
-
+    @State var showSignIn = false
+    
     enum Focus {
         case email, password, passwordConfirm
     }
     
     var body: some View {
-        SimpleNavigationView(title: "アカウント作成") {
-            ZStack{
-                viewModel.clearColor
-                    .edgesIgnoringSafeArea(.all)
-                    .onTapGesture {
-                        self.focus = nil
+        ZStack{
+            viewModel.clearColor
+                .edgesIgnoringSafeArea(.all)
+                .onTapGesture {
+                    self.focus = nil
+                }
+            VStack(spacing: 0){
+                Text("アカウント作成")
+                    .font(.headline)
+                    .padding(.bottom, 20)
+                    .foregroundColor(viewModel.fontColor)
+                TextFieldView(title: "メールアドレス", text: $email, placeHolder: "example@example.com", isSecure: false)
+                    .focused($focus, equals: .email)
+                TextFieldView(title: "パスワード", text: $password, placeHolder: "password", isSecure: true)
+                    .focused($focus, equals: .password)
+                TextFieldView(title: "確認用パスワード", text: $passwordConfirm, placeHolder: "password", isSecure: true)
+                    .focused($focus, equals: .passwordConfirm)
+                Button( action: {
+                    errorMessage = ""
+                    if email.isEmpty {
+                        errorMessage = "メールアドレスが入力されていません"
+                        isError = true
+                        isShowAlert = true
+                    } else if password.isEmpty {
+                        errorMessage = "パスワードが入力されていません"
+                        isError = true
+                        isShowAlert = true
+                    } else if passwordConfirm.isEmpty {
+                        errorMessage = "確認用パスワードが入力されていません"
+                        isError = true
+                        isShowAlert = true
+                    } else if password.compare(passwordConfirm) != .orderedSame {
+                        errorMessage = "パスワードと確認パスワードが一致しません"
+                        isError = true
+                        isShowAlert = true
+                    } else {
+                        signUp()
                     }
-                VStack(spacing: 0){
-                    Text("アカウント作成")
+                }){
+                    ButtonView(text: "アカウント作成").padding(.top, 20)
+                }
+                Button {
+                    showSignIn = true
+                } label: {
+                    Text("既存のアカウントにログイン")
                         .font(.headline)
-                        .padding(.bottom, 20)
-                        .foregroundColor(viewModel.fontColor)
-                    TextFieldView(title: "メールアドレス", text: $email, placeHolder: "example@example.com", isSecure: false)
-                        .focused($focus, equals: .email)
-                    TextFieldView(title: "パスワード", text: $password, placeHolder: "password", isSecure: true)
-                        .focused($focus, equals: .password)
-                    TextFieldView(title: "確認用パスワード", text: $passwordConfirm, placeHolder: "password", isSecure: true)
-                        .focused($focus, equals: .passwordConfirm)
-                    Button( action: {
-                        errorMessage = ""
-                        if email.isEmpty {
-                            errorMessage = "メールアドレスが入力されていません"
-                            isError = true
-                            isShowAlert = true
-                        } else if password.isEmpty {
-                            errorMessage = "パスワードが入力されていません"
-                            isError = true
-                            isShowAlert = true
-                        } else if passwordConfirm.isEmpty {
-                            errorMessage = "確認用パスワードが入力されていません"
-                            isError = true
-                            isShowAlert = true
-                        } else if password.compare(passwordConfirm) != .orderedSame {
-                            errorMessage = "パスワードと確認パスワードが一致しません"
-                            isError = true
-                            isShowAlert = true
-                        } else {
-                            signUp()
-                        }
-                    }){
-                        ButtonView(text: "アカウント作成").padding(.top, 20)
+                        .foregroundColor(viewModel.getThemeColor())
+                        .padding(.top, 30)
+                }
+                Button {
+                    self.presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Text("ジェスチャーで閉じたことになる奴")
+                        .font(.headline)
+                        .foregroundColor(viewModel.getThemeColor())
+                        .padding(.top, 30)
+                }
+                .alert(isPresented: $isShowAlert) {
+                    if self.isError {
+                        return Alert(title: Text(""), message: Text(self.errorMessage), dismissButton: .destructive(Text("OK"))
+                        )
+                    } else {
+                        return Alert(title: Text(""), message: Text("登録されました"), dismissButton: .default(Text("OK")))
                     }
-                    Button {
-                        showSignIn = true
-                    } label: {
-                        Text("既存のアカウントにログイン")
-                            .font(.headline)
-                            .foregroundColor(viewModel.getThemeColor())
-                            .padding(.top, 30)
-                    }
-                    .alert(isPresented: $isShowAlert) {
-                        if self.isError {
-                            return Alert(title: Text(""), message: Text(self.errorMessage), dismissButton: .destructive(Text("OK"))
-                            )
-                        } else {
-                            return Alert(title: Text(""), message: Text("登録されました"), dismissButton: .default(Text("OK")))
-                        }
-                    }
-                    Spacer()
-                }.padding(20)
-            }.sheet(isPresented: $showSignIn) {
-                SignInView(showSignIn: $showSignIn, showSignUp: $showSignUp, showMuscleRecord: $showMuscleRecord)
-            }
+                }
+                Spacer()
+            }.padding(20)
+        }.sheet(isPresented: $showSignIn) {
+            SignInView()
         }
     }
     

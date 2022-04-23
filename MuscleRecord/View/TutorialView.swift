@@ -6,36 +6,30 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct TutorialView: View {
     @ObservedObject var viewModel = ViewModel()
-    @Environment(\.dismiss) var dismiss
     @State var showSignUp = false
-    @State var showMuscleRecord = false
-
-    init(){
-        let appearance = UINavigationBarAppearance()
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.backgroundColor = UIColor(viewModel.getThemeColor())
-        UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance().barStyle = .black
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().standardAppearance = appearance
+    @Binding var showTutorial: Bool
+    
+    init(showTutorial: Binding<Bool>){
+        self._showTutorial = showTutorial
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(viewModel.getThemeColor())
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
+    
     var body: some View {
-        NavigationView {
             ZStack(){
                 viewModel.getThemeColor().edgesIgnoringSafeArea(.all)
                 VStack {
-//                    Text("\(Image(systemName: "questionmark.circle.fill")) 使い方")
-//                        .font(.headline)
-//                        .foregroundColor(viewModel.getThemeColor())
-//                        .frame(width: 150, height: 30)
-//                        .background(.white)
-//                        .cornerRadius(25)
-//                        .padding(10)
+                    Text("\(Image(systemName: "questionmark.circle.fill")) 使い方")
+                        .font(.headline)
+                        .foregroundColor(viewModel.getThemeColor())
+                        .frame(width: 150, height: 30)
+                        .background(.white)
+                        .cornerRadius(25)
+                        .padding(10)
                     TabView{
                         TutorialCardView {
                             TutorialImageView(image: "Tutorial1")
@@ -61,7 +55,11 @@ struct TutorialView: View {
                             TutorialImageView(image: "Tutorial6")
                             TutorialTextView(text: "記録を続けて成長をデータ化しましょう！")
                             Button {
-                                showSignUp = true
+                                if Auth.auth().currentUser == nil {
+                                    showSignUp = true
+                                } else {
+                                    showTutorial = false
+                                }
                             } label: {
                                 ButtonView(text: "始める").padding(.top, 30)
                             }
@@ -69,19 +67,14 @@ struct TutorialView: View {
                         .background(viewModel.clearColor)
                         .cornerRadius(20)
                         .padding(.horizontal, 20)
-                        .sheet(isPresented: $showSignUp) {
-                            SignUpView(showSignUp: $showSignUp, showMuscleRecord: $showMuscleRecord)
-                        }
                     }
                     .tabViewStyle(PageTabViewStyle())
                     .edgesIgnoringSafeArea(.all)
-                    .padding(.vertical, 20)
-                    NavigationLink(destination: MuscleRecordView(), isActive: $showMuscleRecord, label: {
-                        EmptyView()
-                    })
+                    .padding(.bottom, 20)
                 }
             }
-            .navigationBarTitle("使い方", displayMode: .inline)
-        }
+            .sheet(isPresented: $showSignUp) {
+                SignUpView()
+            }
     }
 }

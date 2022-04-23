@@ -9,19 +9,22 @@ import Firebase
 import SwiftUI
 
 struct SignInView: View {
-    @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = ViewModel()
     @FocusState private var focus: Focus?
     @State private var email = ""
     @State private var password = ""
     @State private var showResetPassword = false
-    
     @State private var isShowAlert = false
     @State private var errorMessage = ""
-
-    @Binding var showSignIn: Bool
-    @Binding var showSignUp: Bool
-    @Binding var showMuscleRecord: Bool
+    var window: UIWindow? {
+        guard let scene = UIApplication.shared.connectedScenes.first,
+              let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
+              let window = windowSceneDelegate.window else {
+            return nil
+        }
+        return window
+    }
+    
     enum Focus {
         case email, password
     }
@@ -77,9 +80,7 @@ struct SignInView: View {
     private func signIn() {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if authResult?.user != nil {
-                showSignIn = false
-                showSignUp = false
-                showMuscleRecord = true
+                window?.rootViewController?.dismiss(animated: true, completion: nil)
             } else {
                 isShowAlert = true
                 if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {

@@ -17,13 +17,14 @@ struct MuscleRecordApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if Auth.auth().currentUser != nil {
-                NavigationView {
-                    MuscleRecordView()
-                }
-            } else {
-                TutorialView()
-            }
+            MuscleRecordView()
+//            if Auth.auth().currentUser != nil {
+//                NavigationView {
+//                    MuscleRecordView()
+//                }
+//            } else {
+//                TutorialView()
+//            }
         }
     }
 
