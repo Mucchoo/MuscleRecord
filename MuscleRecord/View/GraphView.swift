@@ -25,7 +25,7 @@ struct GraphView: View {
     }
     
     var body: some View {
-        SimpleNavigationView(title: event.id) {
+        SimpleNavigationView(title: event.name) {
             VStack(spacing: 10) {
                 Picker("period", selection: self.$periodScale, content: {
                     Text("1日毎").tag(0)
