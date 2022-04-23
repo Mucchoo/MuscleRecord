@@ -25,7 +25,7 @@ struct EditView: View {
                     TextFieldView(title: "種目名", text: $name, placeHolder: "種目名を入力してください", isSecure: false)
                         .focused($focus)
                         .onAppear{
-                            self.name = event.id
+                            self.name = event.name
                         }
                     Button( action: {
                         viewModel.updateEvent(event: event, newName: name)

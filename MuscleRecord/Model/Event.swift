@@ -9,6 +9,7 @@ import Foundation
 
 struct Event: Identifiable {
     var id: String
+    var name: String
     var latestWeight: Float
     var latestRep: Int
     var latestDate: Date

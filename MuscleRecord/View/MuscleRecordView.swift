@@ -39,7 +39,7 @@ struct MuscleRecordView: View {
                                         .frame(width: 20, height: 20)
                                         .foregroundColor(viewModel.getThemeColor())
                                 }
-                                Text(event.id)
+                                Text(event.name)
                                     .fontWeight(.bold)
                                     .lineLimit(2)
                                     .foregroundColor(viewModel.fontColor)

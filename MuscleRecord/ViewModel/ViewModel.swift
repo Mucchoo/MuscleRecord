@@ -75,7 +75,7 @@ class ViewModel: ObservableObject {
     
     func addEvent(_ name: String) {
         let db = Firestore.firestore()
-        db.collection("user").document(name).setData(["latestWeight": 0, "latestRep": 0, "latestDate": Date(timeInterval: -60*60*24, since: .now)]) { error in
+        db.collection("user").addDocument(data: ["name": name, "latestWeight": 0, "latestRep": 0, "latestDate": Date(timeInterval: -60*60*24, since: .now)]) { error in
             if let error = error {
                 print("addEvent中のエラー: \(error)")
             } else {
@@ -95,7 +95,7 @@ class ViewModel: ObservableObject {
                     DispatchQueue.main.async {
                         self.events = snapshot.documents.map { d in
                             let timeStamp = d["latestDate"] as! Timestamp
-                            return Event(id: d.documentID, latestWeight: d["latestWeight"] as! Float, latestRep: d["latestRep"] as! Int, latestDate: timeStamp.dateValue())
+                            return Event(id: d.documentID, name: d["name"] as! String, latestWeight: d["latestWeight"] as! Float, latestRep: d["latestRep"] as! Int, latestDate: timeStamp.dateValue())
                         }
                     }
                 }
@@ -116,10 +116,10 @@ class ViewModel: ObservableObject {
                             self.latestID = d.documentID
                             let timeStamp: Timestamp = d["date"] as? Timestamp ?? Timestamp()
                             let date = timeStamp.dateValue()
-                            if let newRecord = self.oldRecord {
-                                var dateDifference = (Calendar.current.dateComponents([.day], from: newRecord.date, to: timeStamp.dateValue())).day! - 1
+                            if let oldRecord = self.oldRecord {
+                                var dateDifference = (Calendar.current.dateComponents([.day], from: oldRecord.date, to: timeStamp.dateValue())).day! - 1
                                 while dateDifference > 0 {
-                                    self.records.append(Record(id: UUID().uuidString, date: Date(timeInterval: TimeInterval(-60*60*24*dateDifference), since: date), weight: newRecord.weight, rep: newRecord.rep, dummy: true))
+                                    self.records.append(Record(id: UUID().uuidString, date: Date(timeInterval: TimeInterval(-60*60*24*dateDifference), since: date), weight: oldRecord.weight, rep: oldRecord.rep, dummy: true))
                                     dateDifference -= 1
                                 }
                             }
@@ -129,18 +129,18 @@ class ViewModel: ObservableObject {
                         }
                         
                         //取得した記録を元に3日、9日、27日平均に変換した配列を作る
-                        for i in 1..<4{
+                        let periodArray = [3,9,27]
+                        for period in periodArray {
                             var totalDate = 0
                             var totalWeight: Float = 0
                             var totalRep = 0
-                            let period = Int(truncating: pow(3, i) as NSNumber)
-                            let remainder = self.records.count % period
+                            let fraction = self.records.count % period
                             var created = false
                             self.records.forEach { record in
                                 totalWeight += record.weight
                                 totalRep += record.rep
                                 totalDate += 1
-                                if remainder != 0 && remainder == totalDate && created == false {
+                                if fraction != 0 && fraction == totalDate && created == false {
                                     let recordID = UUID().uuidString
                                     self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(totalDate), rep: totalRep/totalDate, dummy: false))
                                     self.latestID3 = recordID

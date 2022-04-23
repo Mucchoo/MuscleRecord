@@ -7,6 +7,7 @@
 
 import Firebase
 import SwiftUI
+import StoreKit
 
 struct SettingView: View {
     @Environment(\.dismiss) var dismiss
@@ -43,7 +44,13 @@ struct SettingView: View {
                         } label: {
                             FormRowView(icon: "questionmark", firstText: "使い方")
                         }
-                        FormRowView(icon: "star", firstText: "レビューで応援！")
+                        Button {
+                            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                                SKStoreReviewController.requestReview(in: scene)
+                            }
+                        } label: {
+                            FormRowView(icon: "star", firstText: "レビューで応援！")
+                        }
                         FormRowView(icon: "square.and.arrow.up", firstText: "アプリをシェア")
                         FormRowView(icon: "envelope", firstText: "ご意見・ご要望")
                         Button(action: {
