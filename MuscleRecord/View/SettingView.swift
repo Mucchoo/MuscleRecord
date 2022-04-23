@@ -39,6 +39,9 @@ struct SettingView: View {
                         }
                     }
                     Section(footer: Text("©︎ 2022 Musa Yazuju")){
+                        NavigationLink(destination: ContactView()) {
+                            FormRowView(icon: "envelope", firstText: "ご意見・ご要望")
+                        }
                         Button {
                             showTutorial = true
                         } label: {
@@ -56,8 +59,6 @@ struct SettingView: View {
                         } label: {
                             FormRowView(icon: "square.and.arrow.up", firstText: "アプリをシェア")
                         }
-                        //MuscleRecordユーザーの声
-                        FormRowView(icon: "envelope", firstText: "ご意見・ご要望")
                         Button(action: {
                             signOut()
                         }) {

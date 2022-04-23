@@ -19,20 +19,20 @@ struct AddView: View {
                 viewModel.clearColor
                     .edgesIgnoringSafeArea(.all)
                     .onTapGesture {
-                        self.focus = false
+                        focus = false
                     }
                 VStack(spacing: 0){
                     TextFieldView(title: "種目名", text: $name, placeHolder: "種目名を入力してください", isSecure: false)
                         .focused($focus)
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                self.focus = true
+                                focus = true
                             }
                         }
                     Button( action: {
                         viewModel.addEvent(name)
-                        self.focus = false
-                        self.name = ""
+                        focus = false
+                        name = ""
                         dismiss()
                     }, label: {
                         ButtonView(text: "追加").padding(.top, 20)

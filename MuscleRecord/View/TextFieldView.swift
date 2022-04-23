@@ -29,14 +29,14 @@ struct TextFieldView: View {
                 .font(.headline)
                 .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                 .frame(height: 50, alignment: .center)
-                .background(viewModel.getThemeColor().opacity(0.2))
+                .background(viewModel.getThemeColor().opacity(0.1))
                 .cornerRadius(8)
         } else {
             TextField(placeHolder, text: text)
                 .font(.headline)
                 .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                 .frame(height: 50, alignment: .center)
-                .background(viewModel.getThemeColor().opacity(0.2))
+                .background(viewModel.getThemeColor().opacity(0.1))
                 .cornerRadius(8)
         }
     }

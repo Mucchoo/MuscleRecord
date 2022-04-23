@@ -24,6 +24,7 @@ struct MuscleRecordView: View {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(viewModel.getThemeColor())
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(viewModel.getThemeColor()),], for: .normal)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white,], for: .selected)
+        UITextView.appearance().backgroundColor = UIColor(.black.opacity(0))
     }
     
     var body: some View {
