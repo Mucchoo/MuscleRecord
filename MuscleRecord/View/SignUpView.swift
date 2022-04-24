@@ -120,6 +120,9 @@ struct SignUpView: View {
                 isError = false
                 isShowAlert = true
                 Auth.auth().signIn(withEmail: email, password: password)
+                let db = Firestore.firestore()
+                let userID = Auth.auth().currentUser!.uid
+                db.collection("users").document(userID).setData(["email": email])
             }
         }
     }
