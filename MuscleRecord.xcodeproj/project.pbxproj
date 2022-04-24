@@ -22,6 +22,8 @@
 		2A543DCD27F9C7670051665E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A543DCC27F9C7670051665E /* ViewModel.swift */; };
 		2A58E12727F26E1300121A4F /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A58E12627F26E1300121A4F /* RecordView.swift */; };
 		2A5D524C2802704C00F0427D /* ThemeColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5D524B2802704C00F0427D /* ThemeColorView.swift */; };
+		2A6F35FA2814F9D000885CE9 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6F35F92814F9D000885CE9 /* Email.swift */; };
+		2A6F35FE2814FA3100885CE9 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6F35FD2814FA3100885CE9 /* MailView.swift */; };
 		2A75278728121EE500A0961C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75278628121EE500A0961C /* SignInView.swift */; };
 		2A7527892812277500A0961C /* UpdateAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7527882812277500A0961C /* UpdateAuthView.swift */; };
 		2A75278E28123EDD00A0961C /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75278D28123EDD00A0961C /* ResetPasswordView.swift */; };
@@ -36,7 +38,6 @@
 		2AACB830280D2E7600ADCA84 /* TutorialCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACB82F280D2E7600ADCA84 /* TutorialCardView.swift */; };
 		2AACB832280D3B8400ADCA84 /* SimpleNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACB831280D3B8400ADCA84 /* SimpleNavigationView.swift */; };
 		2AACB838280D46B100ADCA84 /* GraphBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACB837280D46B100ADCA84 /* GraphBodyView.swift */; };
-		2AB77223281423D2005CB7E4 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB77222281423D2005CB7E4 /* ContactView.swift */; };
 		2AD3AC0B28065A7100DE6E00 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3AC0A28065A7100DE6E00 /* IconView.swift */; };
 		2AD99F8527F3EF760007E152 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD99F8427F3EF760007E152 /* AddView.swift */; };
 		2ADDC0C527F5BE3E003C548B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2ADDC0C427F5BE3D003C548B /* GoogleService-Info.plist */; };
@@ -61,6 +62,8 @@
 		2A543DCC27F9C7670051665E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		2A58E12627F26E1300121A4F /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		2A5D524B2802704C00F0427D /* ThemeColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorView.swift; sourceTree = "<group>"; };
+		2A6F35F92814F9D000885CE9 /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
+		2A6F35FD2814FA3100885CE9 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		2A75278628121EE500A0961C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		2A7527882812277500A0961C /* UpdateAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAuthView.swift; sourceTree = "<group>"; };
 		2A75278D28123EDD00A0961C /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
@@ -76,7 +79,6 @@
 		2AACB82F280D2E7600ADCA84 /* TutorialCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCardView.swift; sourceTree = "<group>"; };
 		2AACB831280D3B8400ADCA84 /* SimpleNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNavigationView.swift; sourceTree = "<group>"; };
 		2AACB837280D46B100ADCA84 /* GraphBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBodyView.swift; sourceTree = "<group>"; };
-		2AB77222281423D2005CB7E4 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		2AD3AC0A28065A7100DE6E00 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		2AD99F8427F3EF760007E152 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		2ADDC0C427F5BE3D003C548B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		2A57660C280E335F0079DB82 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2A6F35F92814F9D000885CE9 /* Email.swift */,
 				2A543DCA27F9C6FB0051665E /* Event.swift */,
 				2A3C7E6027FC2C9800B1E4EB /* Record.swift */,
 			);
@@ -113,12 +116,12 @@
 			children = (
 				2AD99F8427F3EF760007E152 /* AddView.swift */,
 				2A048CB5280C275500866E56 /* ButtonView.swift */,
-				2AB77222281423D2005CB7E4 /* ContactView.swift */,
 				2A817F6227FBC55C00772B6C /* EditView.swift */,
 				2A96A78627F2BBD000A37A43 /* FormRowView.swift */,
 				2AFDF1A327ED85F200A03ACE /* GraphView.swift */,
 				2AACB837280D46B100ADCA84 /* GraphBodyView.swift */,
 				2AFDF1A727ED869500A03ACE /* MuscleRecordView.swift */,
+				2A6F35FD2814FA3100885CE9 /* MailView.swift */,
 				2A23193C2806725200192216 /* ProView.swift */,
 				2A048CB7280C306200866E56 /* ProImageView.swift */,
 				2A048CB9280C310900866E56 /* ProTextView.swift */,
@@ -273,13 +276,13 @@
 				2AD3AC0B28065A7100DE6E00 /* IconView.swift in Sources */,
 				2AACB82C280D0F0E00ADCA84 /* TutorialTextView.swift in Sources */,
 				2A23193D2806725200192216 /* ProView.swift in Sources */,
+				2A6F35FE2814FA3100885CE9 /* MailView.swift in Sources */,
 				2A543DCB27F9C6FB0051665E /* Event.swift in Sources */,
 				2A048CB6280C275500866E56 /* ButtonView.swift in Sources */,
 				2A817F6327FBC55C00772B6C /* EditView.swift in Sources */,
 				2AACB832280D3B8400ADCA84 /* SimpleNavigationView.swift in Sources */,
 				2A17A6AE28111AA4007AEE3B /* TextFieldView.swift in Sources */,
 				2AACB830280D2E7600ADCA84 /* TutorialCardView.swift in Sources */,
-				2AB77223281423D2005CB7E4 /* ContactView.swift in Sources */,
 				2A58E12727F26E1300121A4F /* RecordView.swift in Sources */,
 				2AEA33B4281108C900E968FB /* SignUpView.swift in Sources */,
 				2A543DCD27F9C7670051665E /* ViewModel.swift in Sources */,
@@ -288,6 +291,7 @@
 				2AFDF1A827ED869500A03ACE /* MuscleRecordView.swift in Sources */,
 				2A3C7E6127FC2C9800B1E4EB /* Record.swift in Sources */,
 				2A048CBC280C356A00866E56 /* TutorialView.swift in Sources */,
+				2A6F35FA2814F9D000885CE9 /* Email.swift in Sources */,
 				2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */,
 				2A048CBA280C310900866E56 /* ProTextView.swift in Sources */,
 				2A048CB4280C270400866E56 /* ProTitleView.swift in Sources */,
