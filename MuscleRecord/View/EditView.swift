@@ -12,6 +12,7 @@ struct EditView: View {
     @Environment(\.dismiss) var dismiss
     @FocusState private var focus: Bool
     @State private var name = ""
+    @State private var showAlert = false
     var event: Event
     var body: some View {
         SimpleNavigationView(title: "種目を編集") {
@@ -36,14 +37,19 @@ struct EditView: View {
                             .padding(.bottom, 10)
                     }
                     Button( action: {
-                        viewModel.deleteEvent(event: event)
-                        dismiss()
+                        showAlert = true
                     }){
                         Text("種目を削除")
                             .fontWeight(.bold)
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 70, alignment: .center)
                             .foregroundColor(viewModel.getThemeColor())
                             .overlay(RoundedRectangle(cornerRadius: 20).stroke(viewModel.getThemeColor(), lineWidth: 3))
+                    }
+                    .alert(isPresented: $showAlert) {
+                        return Alert(title: Text("本当に削除しますか？"), message: Text(""), primaryButton: .cancel(), secondaryButton: .destructive(Text("削除"), action: {
+                            viewModel.deleteEvent(event: event)
+                            dismiss()
+                        }))
                     }
                     Spacer()
                 }.padding(20)

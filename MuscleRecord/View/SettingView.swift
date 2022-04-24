@@ -13,9 +13,9 @@ struct SettingView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = ViewModel()
     @State private var isActive = false
-    @State private var isShowSignedOut = false
     @State var showTutorial = false
     @State var showMail = false
+    @State var showAlert = false
     @State var showReauthenticate = false
     @State private var mailData = Email(subject: "ご意見・ご要望", recipients: ["yazujumusa@gmail.com"], message: "\n\n\n\n\nーーーーーーーーーーーーーーーーー\nこの上へお気軽にご記入ください。\nMuscle Record")
     
@@ -82,12 +82,14 @@ struct SettingView: View {
                             ReauthenticateView()
                         }
                         Button(action: {
-                            signOut()
+                            showAlert = true
                         }) {
                             FormRowView(icon: "rectangle.portrait.and.arrow.right", firstText: "ログアウト")
                         }
-                        .alert(isPresented: $isShowSignedOut) {
-                            Alert(title: Text(""), message: Text("ログアウトしました"), dismissButton: .default(Text("OK")))
+                        .alert(isPresented: $showAlert) {
+                            return Alert(title: Text("本当にログアウトしますか？"), message: Text(""), primaryButton: .cancel(), secondaryButton: .destructive(Text("ログアウト"), action: {
+                                signOut()
+                            }))
                         }
                     }
                 }
@@ -101,7 +103,7 @@ struct SettingView: View {
     private func signOut() {
         do {
             try Auth.auth().signOut()
-            isShowSignedOut = true
+            dismiss()
         } catch let signOutError as NSError {
             print("サインアウトエラー: %@", signOutError)
         }
