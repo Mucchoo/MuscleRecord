@@ -16,6 +16,7 @@ struct SettingView: View {
     @State private var isShowSignedOut = false
     @State var showTutorial = false
     @State var showMail = false
+    @State var showReauthenticate = false
     @State private var mailData = Email(subject: "ご意見・ご要望", recipients: ["yazujumusa@gmail.com"], message: "\n\n\n\n\nーーーーーーーーーーーーーーーーー\nこの上へお気軽にご記入ください。\nMuscle Record")
     
     var body: some View {
@@ -42,14 +43,12 @@ struct SettingView: View {
                     }
                     Section(footer: Text("©︎ 2022 Musa Yazuju")){
                         Button {
-                            showMail = true
-                        } label: {
-                            FormRowView(icon: "envelope", firstText: "ご意見・ご要望")
-                        }
-                        Button {
                             showTutorial = true
                         } label: {
                             FormRowView(icon: "questionmark", firstText: "使い方")
+                        }
+                        .fullScreenCover(isPresented: $showTutorial) {
+                            TutorialView(showTutorial: $showTutorial)
                         }
                         Button {
                             if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
@@ -62,6 +61,25 @@ struct SettingView: View {
                             viewModel.shareApp()
                         } label: {
                             FormRowView(icon: "square.and.arrow.up", firstText: "アプリをシェア")
+                        }
+                        Button {
+                            showMail = true
+                        } label: {
+                            FormRowView(icon: "envelope", firstText: "ご意見・ご要望")
+                        }
+                        .disabled(!MailView.canSendMail)
+                        .sheet(isPresented: $showMail) {
+                            MailView(data: $mailData) { result in
+                                print(result)
+                            }
+                        }
+                        Button {
+                            showReauthenticate = true
+                        } label: {
+                            FormRowView(icon: "person", firstText: "アカウント情報変更")
+                        }
+                        .sheet(isPresented: $showReauthenticate) {
+                            ReauthenticateView()
                         }
                         Button(action: {
                             signOut()
@@ -77,16 +95,6 @@ struct SettingView: View {
                 .environment(\.horizontalSizeClass, .regular)
             }
             .background(Color("BackgroundColor").edgesIgnoringSafeArea(.all))
-            .fullScreenCover(isPresented: $showTutorial) {
-                TutorialView(showTutorial: $showTutorial)
-            }
-            .disabled(!MailView.canSendMail)
-            .sheet(isPresented: $showMail) {
-                MailView(data: $mailData) { result in
-                    print(result)
-                }
-            }
-            
         }
     }
     

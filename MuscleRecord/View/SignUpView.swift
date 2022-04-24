@@ -9,19 +9,18 @@ import Firebase
 import SwiftUI
 
 struct SignUpView: View {
-    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = ViewModel()
     @FocusState private var focus: Focus?
     @State private var email = ""
     @State private var password = ""
-    @State private var passwordConfirm = ""
+    @State private var confirm = ""
     @State private var isShowAlert = false
     @State private var isError = false
     @State private var errorMessage = ""
     @State var showSignIn = false
     
     enum Focus {
-        case email, password, passwordConfirm
+        case email, password, confirm
     }
     
     var body: some View {
@@ -40,8 +39,8 @@ struct SignUpView: View {
                     .focused($focus, equals: .email)
                 TextFieldView(title: "パスワード", text: $password, placeHolder: "password", isSecure: true)
                     .focused($focus, equals: .password)
-                TextFieldView(title: "確認用パスワード", text: $passwordConfirm, placeHolder: "password", isSecure: true)
-                    .focused($focus, equals: .passwordConfirm)
+                TextFieldView(title: "確認用パスワード", text: $confirm, placeHolder: "password", isSecure: true)
+                    .focused($focus, equals: .confirm)
                 Button( action: {
                     errorMessage = ""
                     if email.isEmpty {
@@ -52,11 +51,11 @@ struct SignUpView: View {
                         errorMessage = "パスワードが入力されていません"
                         isError = true
                         isShowAlert = true
-                    } else if passwordConfirm.isEmpty {
+                    } else if confirm.isEmpty {
                         errorMessage = "確認用パスワードが入力されていません"
                         isError = true
                         isShowAlert = true
-                    } else if password.compare(passwordConfirm) != .orderedSame {
+                    } else if password.compare(confirm) != .orderedSame {
                         errorMessage = "パスワードと確認パスワードが一致しません"
                         isError = true
                         isShowAlert = true
@@ -70,14 +69,6 @@ struct SignUpView: View {
                     showSignIn = true
                 } label: {
                     Text("既存のアカウントにログイン")
-                        .font(.headline)
-                        .foregroundColor(viewModel.getThemeColor())
-                        .padding(.top, 30)
-                }
-                Button {
-                    self.presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Text("ジェスチャーで閉じたことになる奴")
                         .font(.headline)
                         .foregroundColor(viewModel.getThemeColor())
                         .padding(.top, 30)

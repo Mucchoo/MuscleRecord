@@ -24,11 +24,6 @@ struct AddView: View {
                 VStack(spacing: 0){
                     TextFieldView(title: "種目名", text: $name, placeHolder: "種目名を入力してください", isSecure: false)
                         .focused($focus)
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                focus = true
-                            }
-                        }
                     Button( action: {
                         viewModel.addEvent(name)
                         focus = false
@@ -40,6 +35,10 @@ struct AddView: View {
                     Spacer()
                 }
                 .padding(20)
+            }
+        }.onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                focus = true
             }
         }
     }
