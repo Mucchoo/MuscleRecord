@@ -18,6 +18,14 @@ struct SignUpView: View {
     @State private var isError = false
     @State private var errorMessage = ""
     @State var showSignIn = false
+    private var window: UIWindow? {
+        guard let scene = UIApplication.shared.connectedScenes.first,
+              let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
+              let window = windowSceneDelegate.window else {
+            return nil
+        }
+        return window
+    }
     
     enum Focus {
         case email, password, confirm
@@ -28,7 +36,7 @@ struct SignUpView: View {
             viewModel.clearColor
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
-                    self.focus = nil
+                    focus = nil
                 }
             VStack(spacing: 0){
                 Text("アカウント作成")
@@ -74,11 +82,13 @@ struct SignUpView: View {
                         .padding(.top, 30)
                 }
                 .alert(isPresented: $isShowAlert) {
-                    if self.isError {
-                        return Alert(title: Text(""), message: Text(self.errorMessage), dismissButton: .destructive(Text("OK"))
+                    if isError {
+                        return Alert(title: Text(""), message: Text(errorMessage), dismissButton: .destructive(Text("OK"))
                         )
                     } else {
-                        return Alert(title: Text(""), message: Text("登録されました"), dismissButton: .default(Text("OK")))
+                        return Alert(title: Text("アカウントが作成されました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
+                            window?.rootViewController?.dismiss(animated: true, completion: nil)
+                        }))
                     }
                 }
                 Spacer()
@@ -109,14 +119,7 @@ struct SignUpView: View {
             if let _ = authResult?.user {
                 isError = false
                 isShowAlert = true
-            }
-            
-            if let user = authResult?.user {
-                user.sendEmailVerification(completion: { error in
-                    if error == nil {
-                        print("send mail success.")
-                    }
-                })
+                Auth.auth().signIn(withEmail: email, password: password)
             }
         }
     }

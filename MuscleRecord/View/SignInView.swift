@@ -15,8 +15,9 @@ struct SignInView: View {
     @State private var password = ""
     @State private var showResetPassword = false
     @State private var isShowAlert = false
+    @State private var isError = false
     @State private var errorMessage = ""
-    var window: UIWindow? {
+    private var window: UIWindow? {
         guard let scene = UIApplication.shared.connectedScenes.first,
               let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
               let window = windowSceneDelegate.window else {
@@ -46,11 +47,12 @@ struct SignInView: View {
                 TextFieldView(title: "パスワード", text: $password, placeHolder: "password", isSecure: true)
                     .focused($focus, equals: .password)
                 Button( action: {
-                    errorMessage = ""
                     if email.isEmpty {
+                        isError = true
                         errorMessage = "メールアドレスが入力されていません"
                         isShowAlert = true
                     } else if password.isEmpty {
+                        isError = true
                         errorMessage = "パスワードが入力されていません"
                         isShowAlert = true
                     } else {
@@ -68,7 +70,14 @@ struct SignInView: View {
                         .padding(.top, 30)
                 }
                 .alert(isPresented: $isShowAlert) {
-                    return Alert(title: Text(""), message: Text(errorMessage), dismissButton: .destructive(Text("OK")))
+                    if isError {
+                        return Alert(title: Text(""), message: Text(errorMessage), dismissButton: .destructive(Text("OK"))
+                        )
+                    } else {
+                        return Alert(title: Text("ログインに成功しました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
+                            window?.rootViewController?.dismiss(animated: true, completion: nil)
+                        }))
+                    }
                 }
                 Spacer()
             }.padding(20)
@@ -80,9 +89,10 @@ struct SignInView: View {
     private func signIn() {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if authResult?.user != nil {
-                window?.rootViewController?.dismiss(animated: true, completion: nil)
+                isShowAlert = true
             } else {
                 isShowAlert = true
+                isError = true
                 if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
                     switch errorCode {
                     case .invalidEmail:
