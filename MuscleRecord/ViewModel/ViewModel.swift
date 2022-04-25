@@ -229,7 +229,7 @@ class ViewModel: ObservableObject {
                 }
             }
             
-            db.collection("users").document(userID).collection("events").document(event.id).setData(["latestWeight": weight, "latestRep": rep,"latestDate": Date()]) { error in
+            db.collection("users").document(userID).collection("events").document(event.id).setData(["name": event.name, "latestWeight": weight, "latestRep": rep,"latestDate": Date()]) { error in
                 if let error = error {
                     print("updateRecord(event)中のエラー: \(error)")
                 } else {

@@ -22,12 +22,3 @@ struct MuscleRecordApp: App {
     }
 
 }
-
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-
-        // この間に AppDelegate.swift の処理を書く
-
-        return true
-    }
-}
