@@ -11,19 +11,32 @@ struct ProTitleView: View {
     @ObservedObject var viewModel = ViewModel()
     var icon: String
     var title: String
+    var isImage: Bool
     var body: some View {
-        ZStack(){
-            RoundedRectangle(cornerRadius: 100).foregroundColor(viewModel.getThemeColor())
-            HStack(){
-                Image(systemName: icon)
-                    .resizable()
-                    .frame(width: 20, height: 15)
-                    .foregroundColor(.white)
-                Text(title)
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-            }.padding(5)
-        }
+            HStack {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 100)
+                        .foregroundColor(viewModel.getThemeColor())
+                        .frame(width: 30, height: 30)
+                    if isImage {
+                        Image(icon)
+                            .resizable()
+                            .frame(width: 15, height: 15)
+                            .foregroundColor(.white)
+                    } else {
+                        Image(systemName: icon)
+                            .frame(width: 10)
+                            .padding(.bottom, 2)
+                            .foregroundColor(.white)
+                    }
+                }
+                HStack {
+                    Text(title)
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundColor(viewModel.fontColor)
+                    Spacer()
+                }
+            }
     }
 }

@@ -14,21 +14,17 @@ struct ProView: View {
         SimpleNavigationView(title: "Proにアップグレード") {
             ScrollView(){
                 VStack(spacing: 10){
-                    ProTitleView(icon: "list.bullet", title: "種目数")
-                    HStack(){
-                        ProTextView(text: "種目数：5個　→")
-                        Image(systemName: "infinity.circle.fill")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(viewModel.getThemeColor())
-                        ProTextView(text: "無制限")
-                    }
-                    ProTitleView(icon: "Logo", title: "アイコン").padding(.top, 20)
-                    ProImageView(image: "Icons")
-                    ProTextView(text: "アイコン：1個　→ 20個")
-                    ProTitleView(icon: "paintbrush.pointed.fill", title: "テーマカラー").padding(.top, 20)
-                    ProImageView(image: "Themes")
-                    ProTextView(text: "テーマカラー：1色　→ 6色")
+                    ProTitleView(icon: "Logo", title: "アイコン解放", isImage: true)
+                    Image("Icons")
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(20)
+                    ProTitleView(icon: "paintbrush.pointed.fill", title: "テーマカラー解放", isImage: false)
+                    Image("Themes")
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(20)
+                    ProTitleView(icon: "lock.fill", title: "種目数：5個 → 無制限", isImage: false)
                     Text("Proプラン - 300円/月")
                         .font(.headline)
                         .padding(.top, 20)

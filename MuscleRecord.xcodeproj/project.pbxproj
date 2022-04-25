@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		2A048CB4280C270400866E56 /* ProTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A048CB3280C270400866E56 /* ProTitleView.swift */; };
 		2A048CB6280C275500866E56 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A048CB5280C275500866E56 /* ButtonView.swift */; };
-		2A048CB8280C306200866E56 /* ProImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A048CB7280C306200866E56 /* ProImageView.swift */; };
-		2A048CBA280C310900866E56 /* ProTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A048CB9280C310900866E56 /* ProTextView.swift */; };
 		2A048CBC280C356A00866E56 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A048CBB280C356A00866E56 /* TutorialView.swift */; };
 		2A17A6AE28111AA4007AEE3B /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17A6AD28111AA4007AEE3B /* TextFieldView.swift */; };
 		2A23193D2806725200192216 /* ProView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A23193C2806725200192216 /* ProView.swift */; };
@@ -52,8 +50,6 @@
 /* Begin PBXFileReference section */
 		2A048CB3280C270400866E56 /* ProTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProTitleView.swift; sourceTree = "<group>"; };
 		2A048CB5280C275500866E56 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
-		2A048CB7280C306200866E56 /* ProImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProImageView.swift; sourceTree = "<group>"; };
-		2A048CB9280C310900866E56 /* ProTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProTextView.swift; sourceTree = "<group>"; };
 		2A048CBB280C356A00866E56 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		2A17A6AD28111AA4007AEE3B /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		2A23193C2806725200192216 /* ProView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProView.swift; sourceTree = "<group>"; };
@@ -127,8 +123,6 @@
 				2AFDF1A727ED869500A03ACE /* MuscleRecordView.swift */,
 				2A6F35FD2814FA3100885CE9 /* MailView.swift */,
 				2A23193C2806725200192216 /* ProView.swift */,
-				2A048CB7280C306200866E56 /* ProImageView.swift */,
-				2A048CB9280C310900866E56 /* ProTextView.swift */,
 				2A048CB3280C270400866E56 /* ProTitleView.swift */,
 				2AD3AC0A28065A7100DE6E00 /* IconView.swift */,
 				2A58E12627F26E1300121A4F /* RecordView.swift */,
@@ -301,9 +295,7 @@
 				2A048CBC280C356A00866E56 /* TutorialView.swift in Sources */,
 				2A6F35FA2814F9D000885CE9 /* Email.swift in Sources */,
 				2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */,
-				2A048CBA280C310900866E56 /* ProTextView.swift in Sources */,
 				2A048CB4280C270400866E56 /* ProTitleView.swift in Sources */,
-				2A048CB8280C306200866E56 /* ProImageView.swift in Sources */,
 				2AACB82A280D0EB300ADCA84 /* TutorialImageView.swift in Sources */,
 				2A75278728121EE500A0961C /* SignInView.swift in Sources */,
 				2AACB82E280D0F6D00ADCA84 /* TutorialArrowView.swift in Sources */,
