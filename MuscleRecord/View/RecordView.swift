@@ -14,7 +14,7 @@ struct RecordView: View {
     @State private var rep = 0
     var event: Event
     var body: some View {
-        SimpleNavigationView(title: event.id) {
+        SimpleNavigationView(title: event.name) {
             VStack{
                 HStack{
                     Text("重量").fontWeight(.bold)
