@@ -15,19 +15,19 @@ struct ProTitleView: View {
     var body: some View {
             HStack {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 100)
-                        .foregroundColor(viewModel.getThemeColor())
-                        .frame(width: 30, height: 30)
                     if isImage {
+                        RoundedRectangle(cornerRadius: 100)
+                            .foregroundColor(viewModel.getThemeColor())
+                            .frame(width: 30, height: 30)
                         Image(icon)
                             .resizable()
-                            .frame(width: 15, height: 15)
+                            .frame(width: 18, height: 18)
                             .foregroundColor(.white)
                     } else {
                         Image(systemName: icon)
-                            .frame(width: 10)
-                            .padding(.bottom, 2)
-                            .foregroundColor(.white)
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(viewModel.getThemeColor())
                     }
                 }
                 HStack {

@@ -9,11 +9,9 @@ import SwiftUI
 import Firebase
 
 struct UpdateAuthView: View {
-    
     @State private var email = ""
     @State private var password = ""
     @State private var confirm = ""
-    
     @State private var isShowEmailUpdateAlert = false
     @State private var isShowPasswordUpdateAlert = false
     @State private var isError = false
@@ -25,28 +23,7 @@ struct UpdateAuthView: View {
                 Text("新しいメールアドレス")
                 TextField("mail@example.com", text: $email).textFieldStyle(RoundedBorderTextFieldStyle())
                 Button(action: {
-                    if email.isEmpty {
-                        isShowEmailUpdateAlert = true
-                        isError = true
-                        errorMessage = "メールアドレスが入力されていません"
-                    } else {
-                        Auth.auth().currentUser?.updateEmail(to: email) { error in
-                            isShowEmailUpdateAlert = true
-                            if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
-                                switch errorCode {
-                                case .invalidEmail:
-                                    errorMessage = "メールアドレスの形式が正しくありません"
-                                case .requiresRecentLogin:
-                                    errorMessage = "ログインしてください"
-                                default:
-                                    errorMessage = error.localizedDescription
-                                }
-                                isError = true
-                            } else {
-                                isError = false
-                            }
-                        }
-                    }
+                    updateEmail()
                 }) {
                     Text("メールアドレス変更")
                 }
@@ -63,36 +40,7 @@ struct UpdateAuthView: View {
                 Text("パスワード確認")
                 SecureField("半角英数字", text: $confirm).textFieldStyle(RoundedBorderTextFieldStyle())
                 Button(action: {
-                    if self.password.isEmpty {
-                        isShowPasswordUpdateAlert = true
-                        isError = true
-                        errorMessage = "パスワードが入力されていません"
-                    } else if self.confirm.isEmpty {
-                        isShowPasswordUpdateAlert = true
-                        isError = true
-                        errorMessage = "確認パスワードが入力されていません"
-                    } else if self.password.compare(self.confirm) != .orderedSame {
-                        isShowPasswordUpdateAlert = true
-                        isError = true
-                        errorMessage = "パスワードと確認パスワードが一致しません"
-                    } else {
-                        Auth.auth().currentUser?.updatePassword(to: password) { error in
-                            isShowPasswordUpdateAlert = true
-                            if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
-                                switch errorCode {
-                                case .weakPassword:
-                                    errorMessage = "パスワードは６文字以上で入力してください"
-                                case .requiresRecentLogin:
-                                    errorMessage = "ログインしてください"
-                                default:
-                                    errorMessage = error.localizedDescription
-                                }
-                                isError = true
-                            } else {
-                                isError = false
-                            }
-                        }
-                    }
+                    updatePassword()
                 }) {
                     Text("パスワード変更")
                 }
@@ -105,6 +53,64 @@ struct UpdateAuthView: View {
                 }
             }
             Spacer()
+        }
+    }
+    
+    private func updateEmail() {
+        if email.isEmpty {
+            isShowEmailUpdateAlert = true
+            isError = true
+            errorMessage = "メールアドレスが入力されていません"
+        } else {
+            Auth.auth().currentUser?.updateEmail(to: email) { error in
+                isShowEmailUpdateAlert = true
+                if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
+                    switch errorCode {
+                    case .invalidEmail:
+                        errorMessage = "メールアドレスの形式が正しくありません"
+                    case .requiresRecentLogin:
+                        errorMessage = "ログインしてください"
+                    default:
+                        errorMessage = error.localizedDescription
+                    }
+                    isError = true
+                } else {
+                    isError = false
+                }
+            }
+        }
+    }
+    
+    private func updatePassword() {
+        if self.password.isEmpty {
+            isShowPasswordUpdateAlert = true
+            isError = true
+            errorMessage = "パスワードが入力されていません"
+        } else if self.confirm.isEmpty {
+            isShowPasswordUpdateAlert = true
+            isError = true
+            errorMessage = "確認パスワードが入力されていません"
+        } else if self.password.compare(self.confirm) != .orderedSame {
+            isShowPasswordUpdateAlert = true
+            isError = true
+            errorMessage = "パスワードと確認パスワードが一致しません"
+        } else {
+            Auth.auth().currentUser?.updatePassword(to: password) { error in
+                isShowPasswordUpdateAlert = true
+                if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
+                    switch errorCode {
+                    case .weakPassword:
+                        errorMessage = "パスワードは６文字以上で入力してください"
+                    case .requiresRecentLogin:
+                        errorMessage = "ログインしてください"
+                    default:
+                        errorMessage = error.localizedDescription
+                    }
+                    isError = true
+                } else {
+                    isError = false
+                }
+            }
         }
     }
 }

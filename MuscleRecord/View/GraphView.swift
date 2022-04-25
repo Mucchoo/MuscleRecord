@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct GraphView: View {
-    @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = ViewModel()
     @State private var periodScale = 0
     private var weightScale: [Float] = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]

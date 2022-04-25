@@ -13,7 +13,6 @@ struct ResetPasswordView: View {
     @ObservedObject var viewModel = ViewModel()
     @FocusState private var focus: Bool
     @State private var email = ""
-    
     @State private var isSignedIn = false
     @State private var isShowAlert = false
     @State private var isError = false

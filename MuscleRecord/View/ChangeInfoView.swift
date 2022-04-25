@@ -14,7 +14,6 @@ struct ChangeInfoView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var confirm = ""
-    
     @State private var showEmailAlert = false
     @State private var showPasswordAlert = false
     @State private var isError = false

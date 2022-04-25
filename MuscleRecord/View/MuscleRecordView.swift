@@ -22,9 +22,10 @@ struct MuscleRecordView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().standardAppearance = appearance
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(viewModel.getThemeColor())
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(viewModel.getThemeColor()),], for: .normal)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(viewModel.getThemeColor())], for: .normal)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white,], for: .selected)
-        UITextView.appearance().backgroundColor = UIColor(.black.opacity(0))
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(viewModel.getThemeColor())
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
     
     var body: some View {

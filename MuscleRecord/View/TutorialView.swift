@@ -10,14 +10,8 @@ import Firebase
 
 struct TutorialView: View {
     @ObservedObject var viewModel = ViewModel()
-    @State var showSignUp = false
+    @State private var showSignUp = false
     @Binding var showTutorial: Bool
-    
-    init(showTutorial: Binding<Bool>){
-        self._showTutorial = showTutorial
-        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(viewModel.getThemeColor())
-        UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
-    }
     
     var body: some View {
             ZStack(){
