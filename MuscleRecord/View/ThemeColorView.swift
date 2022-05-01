@@ -11,12 +11,11 @@ struct ThemeColorView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = ViewModel()
     @State var colorChanged = false
-    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     var body: some View {
         if colorChanged {
             MuscleRecordView()
         } else {
-            VStack(){
+            VStack(spacing: 0){
                 ZStack(){
                     HStack(){
                         Button(
@@ -40,19 +39,29 @@ struct ThemeColorView: View {
                 }
                 .padding(.vertical, 10)
                 .background(viewModel.getThemeColor())
-                GeometryReader{ geometry in
-                    LazyVGrid(columns: columns, spacing: 10) {
-                        ForEach(0..<6) { num in
+                VStack(spacing: 0) {
+                    HStack(spacing: 0) {
+                        ForEach(0..<3) { i in
                             Button(action: {
-                                UserDefaults.standard.set(num, forKey: "themeColorNumber")
+                                UserDefaults.standard.set(i, forKey: "themeColorNumber")
                                 colorChanged = true
                             }) {
-                                RoundedRectangle(cornerRadius: 20).foregroundColor(Color("ThemeColor\(num)"))
-                            }.frame(width: (geometry.size.width - 40)/3, height: (geometry.size.width - 40)/3)
+                                Rectangle()
+                                    .foregroundColor(Color("ThemeColor\(i)"))
+                            }
                         }
                     }
-                    .padding(.horizontal, 10)
-                    Spacer()
+                    HStack(spacing: 0) {
+                        ForEach(3..<6) { i in
+                            Button(action: {
+                                UserDefaults.standard.set(i, forKey: "themeColorNumber")
+                                colorChanged = true
+                            }) {
+                                Rectangle()
+                                    .foregroundColor(Color("ThemeColor\(i)"))
+                            }
+                        }
+                    }
                 }
             }
             .navigationBarHidden(true)
