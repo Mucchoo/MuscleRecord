@@ -24,6 +24,9 @@ struct ProTitleView: View {
                             .frame(width: 18, height: 18)
                             .foregroundColor(.white)
                     } else {
+                        RoundedRectangle(cornerRadius: 100)
+                            .foregroundColor(.white)
+                            .frame(width: 30, height: 30)
                         Image(systemName: icon)
                             .resizable()
                             .frame(width: 30, height: 30)
