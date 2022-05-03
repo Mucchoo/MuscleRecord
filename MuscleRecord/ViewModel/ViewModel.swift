@@ -137,7 +137,6 @@ class ViewModel: ObservableObject {
                                 self.records.append(record)
                             }
                             
-                            //取得した記録を元に3日、9日、27日平均に変換した配列を作る
                             let periodArray = [3,9,27]
                             for period in periodArray {
                                 var totalDate = 0
@@ -151,8 +150,16 @@ class ViewModel: ObservableObject {
                                     totalDate += 1
                                     if fraction != 0 && fraction == totalDate && created == false {
                                         let recordID = UUID().uuidString
-                                        self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(totalDate), rep: totalRep/totalDate, dummy: false))
-                                        self.latestID3 = recordID
+                                        if period == 3 {
+                                            self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
+                                            self.latestID3 = recordID
+                                        } else if period == 9 {
+                                            self.records9.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
+                                            self.latestID9 = recordID
+                                        } else if period == 27 {
+                                            self.records27.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
+                                            self.latestID27 = recordID
+                                        }
                                         created = true
                                         totalWeight = 0
                                         totalRep = 0
@@ -173,11 +180,11 @@ class ViewModel: ObservableObject {
                                         totalWeight = 0
                                         totalRep = 0
                                         totalDate = 0
+                                        print("棒作成しました\(period)")
                                     }
                                 }
                             }
                             
-                            //グラフの目盛り幅を決めるために重量の最大値を計算
                             snapshot.documents.forEach { d in
                                 if self.maxWeight < d["weight"] as? Float ?? 0.0 {
                                     self.maxWeight = d["weight"] as? Float ?? 0.0
