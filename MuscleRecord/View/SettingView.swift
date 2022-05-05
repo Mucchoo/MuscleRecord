@@ -17,7 +17,7 @@ struct SettingView: View {
     @State var showMail = false
     @State var showAlert = false
     @State var showReauthenticate = false
-    @State private var mailData = Email(subject: "ご意見・ご要望", recipients: ["yazujumusa@gmail.com"], message: "\n\n\n\n\nーーーーーーーーーーーーーーーーー\nこの上へお気軽にご記入ください。\nMuscle Record")
+    @State private var mailData = Email(subject: "ご意見・ご要望", recipients: ["yazujumusa@gmail.com"], message: "\n\n\n\n\nーーーーーーーーーーーーーーーーー\nこの上へお気軽にご記入ください。\n筋トレ記録")
     
     var body: some View {
         SimpleNavigationView(title: "設定") {
