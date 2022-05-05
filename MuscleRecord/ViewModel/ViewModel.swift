@@ -180,7 +180,6 @@ class ViewModel: ObservableObject {
                                         totalWeight = 0
                                         totalRep = 0
                                         totalDate = 0
-                                        print("棒作成しました\(period)")
                                     }
                                 }
                             }
