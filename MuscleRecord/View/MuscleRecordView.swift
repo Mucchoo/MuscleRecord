@@ -93,7 +93,7 @@ struct MuscleRecordView: View {
                 }
             }
             .background(Color("BackgroundColor"))
-            .navigationBarTitle("Muscle Record", displayMode: .inline)
+            .navigationBarTitle("筋トレ記録", displayMode: .inline)
             .navigationBarItems(
                 leading: NavigationLink(destination: SettingView()){
                     Image(systemName: "line.3.horizontal").foregroundColor(.white)

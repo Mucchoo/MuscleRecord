@@ -25,7 +25,7 @@ struct ProView: View {
                         .scaledToFit()
                         .cornerRadius(20)
                     ProTitleView(icon: "lock.circle.fill", title: "種目数：5個 → 無制限", isImage: false)
-                    Text("Proプラン - 300円/月")
+                    Text("Proプラン - 120円/月")
                         .font(.headline)
                         .padding(.top, 20)
                     Button( action: {
