@@ -29,6 +29,8 @@
 		2A75278E28123EDD00A0961C /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75278D28123EDD00A0961C /* ResetPasswordView.swift */; };
 		2A817F6327FBC55C00772B6C /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A817F6227FBC55C00772B6C /* EditView.swift */; };
 		2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A96A78627F2BBD000A37A43 /* FormRowView.swift */; };
+		2A97B8D7282565E9002EC14D /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 2A97B8D6282565E9002EC14D /* RevenueCat */; };
+		2A97B8DA28256A0F002EC14D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A97B8D928256A0F002EC14D /* StoreKit.framework */; };
 		2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */; };
 		2AA3733327EC507300A885B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA3733227EC507300A885B0 /* Assets.xcassets */; };
 		2AA3733627EC507300A885B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA3733527EC507300A885B0 /* Preview Assets.xcassets */; };
@@ -69,6 +71,7 @@
 		2A75278D28123EDD00A0961C /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2A817F6227FBC55C00772B6C /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		2A96A78627F2BBD000A37A43 /* FormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowView.swift; sourceTree = "<group>"; };
+		2A97B8D928256A0F002EC14D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2AA3732B27EC507200A885B0 /* Muscle Record.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Muscle Record.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleRecordApp.swift; sourceTree = "<group>"; };
 		2AA3733227EC507300A885B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 			files = (
 				2A27AB8D27F5BB0A004AF6F3 /* FirebaseAuth in Frameworks */,
 				2A27AB8F27F5BB0A004AF6F3 /* FirebaseFirestore in Frameworks */,
+				2A97B8D7282565E9002EC14D /* RevenueCat in Frameworks */,
+				2A97B8DA28256A0F002EC14D /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,11 +158,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		2A97B8D828256A0F002EC14D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A97B8D928256A0F002EC14D /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2AA3732227EC507200A885B0 = {
 			isa = PBXGroup;
 			children = (
 				2AA3732D27EC507200A885B0 /* MuscleRecord */,
 				2AA3732C27EC507200A885B0 /* Products */,
+				2A97B8D828256A0F002EC14D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +226,7 @@
 			packageProductDependencies = (
 				2A27AB8C27F5BB0A004AF6F3 /* FirebaseAuth */,
 				2A27AB8E27F5BB0A004AF6F3 /* FirebaseFirestore */,
+				2A97B8D6282565E9002EC14D /* RevenueCat */,
 			);
 			productName = MuscleRecord;
 			productReference = 2AA3732B27EC507200A885B0 /* Muscle Record.app */;
@@ -243,6 +258,7 @@
 			mainGroup = 2AA3732227EC507200A885B0;
 			packageReferences = (
 				2A27AB8B27F5BB0A004AF6F3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2A97B8D5282565E8002EC14D /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = 2AA3732C27EC507200A885B0 /* Products */;
 			projectDirPath = "";
@@ -526,6 +542,14 @@
 				kind = branch;
 			};
 		};
+		2A97B8D5282565E8002EC14D /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -538,6 +562,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2A27AB8B27F5BB0A004AF6F3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		2A97B8D6282565E9002EC14D /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2A97B8D5282565E8002EC14D /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

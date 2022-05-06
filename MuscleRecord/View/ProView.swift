@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import RevenueCat
 
 struct ProView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = ViewModel()
+    @State private var title = ""
+    @State private var price = ""
     var body: some View {
         SimpleNavigationView(title: "Proにアップグレード") {
             ScrollView(){
@@ -28,12 +31,36 @@ struct ProView: View {
                     Text("Proプラン - 120円/月")
                         .font(.headline)
                         .padding(.top, 20)
+                    Text("title\(title)")
+                        .font(.headline)
+                        .padding(.top, 20)
+                    Text("price\(price)")
+                        .font(.headline)
+                        .padding(.top, 20)
                     Button( action: {
                         dismiss()
                     }, label: {
                         ButtonView(text: "購入する")
                     })
-                }.padding(20)
+                }
+                .padding(20)
+                .onAppear {
+                    Purchases.shared.getOfferings { (offerings, error) in
+                        if let offerings = offerings {
+                            let offer = offerings.current
+                            let packages = offer?.availablePackages
+                            guard packages != nil else {
+                                return
+                            }
+                            for i in 0...packages!.count - 1 {
+                                let package = packages![i]
+                                let product = package.storeProduct
+                                title = product.localizedTitle
+                                price = "\(product.price)"
+                            }
+                        }
+                    }
+                }
             }
         }
     }

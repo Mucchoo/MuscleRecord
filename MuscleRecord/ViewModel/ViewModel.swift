@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import RevenueCat
 
 class ViewModel: ObservableObject {
     @Published var events = [Event]()
