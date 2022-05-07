@@ -26,6 +26,16 @@ class ViewModel: ObservableObject {
     @Published var clearColor = Color("ClearColor")
     @Published var backgroundColor = Color("BackgroundColor")
     
+    func customerInfo() -> Bool {
+        var isPro = false
+        Purchases.shared.getCustomerInfo { (purchaserInfo, error) in
+            if purchaserInfo?.entitlements.all["pro"]?.isActive == true {
+                isPro = true
+            }
+        }
+        return isPro
+    }
+    
     func getThemeColor() -> Color {
         switch UserDefaults.standard.integer(forKey: "themeColorNumber") {
         case 0:

@@ -11,6 +11,8 @@ import Firebase
 struct MuscleRecordView: View {
     @ObservedObject var viewModel = ViewModel()
     @State private var date = Date()
+    @State private var showAlert = false
+    @State private var showPro = false
     @State var showTutorial = false
     
     init(){
@@ -86,6 +88,9 @@ struct MuscleRecordView: View {
                         .padding(.horizontal, 10)
                         Spacer()
                     }
+                    NavigationLink(destination: ProView(), isActive: $showPro) {
+                        EmptyView()
+                    }
                 }
                 .padding(.top, 10)
                 .onAppear {
@@ -94,14 +99,32 @@ struct MuscleRecordView: View {
             }
             .background(Color("BackgroundColor"))
             .navigationBarTitle("筋トレ記録", displayMode: .inline)
-            .navigationBarItems(
-                leading: NavigationLink(destination: SettingView()){
-                    Image(systemName: "line.3.horizontal").foregroundColor(.white)
-                },
-                trailing: NavigationLink(destination: AddView()){
-                    Image(systemName: "plus").foregroundColor(.white)
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    NavigationLink(destination: SettingView()){
+                        Image(systemName: "line.3.horizontal").foregroundColor(.white)
+                    }
                 }
-            )
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    if viewModel.events.count > 4 {
+                        if viewModel.customerInfo() {
+                            NavigationLink(destination: AddView()){
+                                Image(systemName: "plus").foregroundColor(.white)
+                            }
+                        } else {
+                            Button( action: {
+                                showAlert = true
+                            }, label: {
+                                Image(systemName: "plus").foregroundColor(.white)
+                            })
+                        }
+                    } else {
+                        NavigationLink(destination: AddView()){
+                            Image(systemName: "plus").foregroundColor(.white)
+                        }
+                    }
+                }
+            }
             .onAppear {
                 if Auth.auth().currentUser == nil {
                     showTutorial = true
@@ -111,6 +134,11 @@ struct MuscleRecordView: View {
                 viewModel.getEvent()
             }) {
                 TutorialView(showTutorial: $showTutorial)
+            }
+            .alert(isPresented: $showAlert) {
+                return Alert(title: Text("無料版で追加できる種目は5個です。"), message: Text("Proにアップグレードすれば、無制限に追加することができます。"), primaryButton: .default(Text("閉じる")), secondaryButton: .default(Text("Proを見る"), action: {
+                    showPro = true
+                }))
             }
         }
     }
