@@ -13,6 +13,7 @@ struct ProView: View {
     @ObservedObject var viewModel = ViewModel()
     @State private var title = ""
     @State private var price = ""
+    @State private var locate = ""
     var body: some View {
         SimpleNavigationView(title: "Proにアップグレード") {
             ScrollView(){
@@ -31,14 +32,23 @@ struct ProView: View {
                     Text("Proプラン - 120円/月")
                         .font(.headline)
                         .padding(.top, 20)
-                    Text("title\(title)")
+                    Text("locate\(locate)")
                         .font(.headline)
-                        .padding(.top, 20)
-                    Text("price\(price)")
-                        .font(.headline)
-                        .padding(.top, 20)
                     Button( action: {
-                        dismiss()
+                        Purchases.shared.getOfferings { (offerings, error) in
+                            if let package = offerings?.current?.monthly?.storeProduct {
+                                print("iflet突破 package\(package)")
+                                Purchases.shared.purchase(product: package) { (transaction, customerInfo, error, userCancelled) in
+                                    print("購入実行中だあああああああああああああああああああああああああああああああ")
+                                    locate = package.localizedPriceString
+                                    if customerInfo?.entitlements.all["Pro"]?.isActive == true {
+                                        print("成功おおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお")
+                                    }
+                                }
+                            } else {
+                                print("ifletで引っかかってる")
+                            }
+                        }
                     }, label: {
                         ButtonView(text: "購入する")
                     })
@@ -56,9 +66,15 @@ struct ProView: View {
                                 let package = packages![i]
                                 let product = package.storeProduct
                                 title = product.localizedTitle
-                                price = "\(product.price)"
+                                price = package.localizedPriceString
                             }
                         }
+                    }
+                    Purchases.shared.getCustomerInfo { (purchaserInfo, error) in
+                        if purchaserInfo?.entitlements.all["pro"]?.isActive == true {
+                            print("Proです")
+                        }
+                        print("Normalです")
                     }
                 }
             }
