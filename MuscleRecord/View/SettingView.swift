@@ -25,7 +25,7 @@ struct SettingView: View {
                 Form{
                     Section(header: Text("Pro")){
                         if viewModel.customerInfo() {
-                            FormRowView(icon: "gift", firstText: "Proにアップグレード", isHidden: true)
+                            FormRowView(icon: "gift", firstText: "Proをアンロック", isHidden: true)
                             NavigationLink(destination: ThemeColorView()) {FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", isHidden: false)}
                             NavigationLink(destination: IconView()) {
                                 HStack{
