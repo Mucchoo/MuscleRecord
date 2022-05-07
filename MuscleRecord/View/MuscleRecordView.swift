@@ -15,7 +15,7 @@ struct MuscleRecordView: View {
     @State private var showPro = false
     @State private var isPro = false
     @State var showTutorial = false
-    
+
     init(){
         let appearance = UINavigationBarAppearance()
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -139,7 +139,7 @@ struct MuscleRecordView: View {
                 TutorialView(showTutorial: $showTutorial)
             }
             .alert(isPresented: $showAlert) {
-                return Alert(title: Text("無料版で追加できる種目は5個です。"), message: Text("Proにアップグレードすれば、無制限に追加することができます。"), primaryButton: .default(Text("閉じる")), secondaryButton: .default(Text("Proを見る"), action: {
+                return Alert(title: Text("無料版で追加できる種目は5個です"), message: Text("Proにアップグレードすれば、無制限に追加することができます。"), primaryButton: .default(Text("閉じる")), secondaryButton: .default(Text("Proを見る"), action: {
                     showPro = true
                 }))
             }
