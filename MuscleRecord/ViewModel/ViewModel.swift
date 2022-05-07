@@ -28,8 +28,8 @@ class ViewModel: ObservableObject {
     
     func customerInfo() -> Bool {
         var isPro = false
-        Purchases.shared.getCustomerInfo { (purchaserInfo, error) in
-            if purchaserInfo?.entitlements.all["pro"]?.isActive == true {
+        Purchases.shared.getCustomerInfo { (customerInfo, error) in
+            if customerInfo?.entitlements["Pro"]?.isActive == true {
                 isPro = true
             }
         }

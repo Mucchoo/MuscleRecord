@@ -13,6 +13,7 @@ struct MuscleRecordView: View {
     @State private var date = Date()
     @State private var showAlert = false
     @State private var showPro = false
+    @State private var isPro = false
     @State var showTutorial = false
     
     init(){
@@ -129,6 +130,8 @@ struct MuscleRecordView: View {
                 if Auth.auth().currentUser == nil {
                     showTutorial = true
                 }
+                print("isPro：\(viewModel.customerInfo())")
+                
             }
             .fullScreenCover(isPresented: $showTutorial, onDismiss: {
                 viewModel.getEvent()
