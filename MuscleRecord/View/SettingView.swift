@@ -25,7 +25,7 @@ struct SettingView: View {
                 Form{
                     Section(header: Text("Pro")){
                         if viewModel.customerInfo() {
-                            FormRowView(icon: "gift", firstText: "Proをアンロック", isHidden: true)
+                            FormRowView(icon: "gift", firstText: "Proアンロック済み", isHidden: false)
                             NavigationLink(destination: ThemeColorView()) {FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", isHidden: false)}
                             NavigationLink(destination: IconView()) {
                                 HStack{
@@ -42,7 +42,7 @@ struct SettingView: View {
                                 }
                             }
                         } else {
-                            NavigationLink(destination: ProView()) {FormRowView(icon: "gift", firstText: "Pro アンロック済み", isHidden: false)}
+                            NavigationLink(destination: ProView()) {FormRowView(icon: "gift", firstText: "Proをアンロック", isHidden: false)}
                             FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", isHidden: true)
                             HStack{
                                 ZStack{
@@ -55,7 +55,7 @@ struct SettingView: View {
                                 }
                                 Text("アイコン").foregroundColor(Color("FontColor"))
                                 Spacer()
-                            }
+                            }.opacity(0.5)
                         }
                     }
                     Section(footer: Text("©︎ 2022 Musa Yazuju")){

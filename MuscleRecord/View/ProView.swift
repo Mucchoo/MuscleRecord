@@ -26,9 +26,6 @@ struct ProView: View {
                         .scaledToFit()
                         .cornerRadius(20)
                     ProTitleView(icon: "lock.circle.fill", title: "種目数：5個 → 無制限", isImage: false)
-                    Text("Proをアンロック - 490円")
-                        .font(.headline)
-                        .padding(.top, 20)
                     Button( action: {
                         Purchases.shared.getOfferings { (offerings, error) in
                             if let package = offerings?.current?.lifetime?.storeProduct {
@@ -40,7 +37,8 @@ struct ProView: View {
                             }
                         }
                     }, label: {
-                        ButtonView(text: "購入する")
+                        ButtonView(text: "Proをアンロック - 490円")
+                            .padding(.top, 20)
                     })
                 }
                 .padding(20)
