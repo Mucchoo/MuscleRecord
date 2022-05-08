@@ -15,7 +15,7 @@ struct MuscleRecordView: View {
     @State private var showPro = false
     @State private var isPro = false
     @State var showTutorial = false
-
+    
     init(){
         let appearance = UINavigationBarAppearance()
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -143,6 +143,6 @@ struct MuscleRecordView: View {
                     showPro = true
                 }))
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
