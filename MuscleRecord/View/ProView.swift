@@ -30,14 +30,21 @@ struct ProView: View {
                         Purchases.shared.getOfferings { (offerings, error) in
                             if let package = offerings?.current?.lifetime?.storeProduct {
                                 Purchases.shared.purchase(product: package) { (transaction, customerInfo, error, userCancelled) in
-                                    if customerInfo?.entitlements.all["Pro"]?.isActive == true {
-                                        dismiss()
-                                    }
                                 }
                             }
                         }
                     }, label: {
                         ButtonView(text: "Proをアンロック - 490円")
+                            .padding(.top, 20)
+                    })
+                    Button( action: {
+                        Purchases.shared.restorePurchases { customerInfo, error in
+                            if customerInfo?.entitlements.all["Pro"]?.isActive == true {
+                                dismiss()
+                            }
+                        }
+                    }, label: {
+                        ButtonView(text: "過去の購入を復元")
                             .padding(.top, 20)
                     })
                 }

@@ -14,7 +14,7 @@ struct MuscleRecordApp: App {
         
     init() {
         FirebaseApp.configure()
-        Purchases.configure(withAPIKey: "appl_xBBDyDHmiVldcADDnLdXFbOGQRH")
+        Purchases.configure(withAPIKey: "appl_xBBDyDHmiVldcADDnLdXFbOGQRH", appUserID: "my_app_user_id")
     }
     
     var body: some Scene {
