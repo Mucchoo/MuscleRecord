@@ -11,6 +11,7 @@ import RevenueCat
 struct ProView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = ViewModel()
+    @State private var showAlert = false
     var body: some View {
         SimpleNavigationView(title: "Proをアンロック") {
             ScrollView(){
@@ -40,7 +41,7 @@ struct ProView: View {
                     Button( action: {
                         Purchases.shared.restorePurchases { customerInfo, error in
                             if customerInfo?.entitlements.all["Pro"]?.isActive == true {
-                                dismiss()
+                                showAlert = true
                             }
                         }
                     }, label: {
@@ -49,6 +50,9 @@ struct ProView: View {
                     })
                 }
                 .padding(20)
+                .alert(isPresented: $showAlert) {
+                            return Alert(title: Text("購入を復元しました"), message: Text(""), dismissButton: .destructive(Text("OK")))
+                }
             }
         }
     }
