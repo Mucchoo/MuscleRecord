@@ -51,7 +51,7 @@ struct ProView: View {
                 }
                 .padding(20)
                 .alert(isPresented: $showAlert) {
-                            return Alert(title: Text("購入を復元しました"), message: Text(""), dismissButton: .destructive(Text("OK")))
+                            return Alert(title: Text("購入を復元しました"), message: Text(""), dismissButton: .default(Text("OK")))
                 }
             }
         }
