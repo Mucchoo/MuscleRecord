@@ -20,7 +20,7 @@ struct TutorialCardView<Content: View>: View {
             content
             Spacer()
         }
-        .background(viewModel.clearColor)
+        .background(.white)
         .cornerRadius(20)
         .padding(.horizontal, 20)
     }
