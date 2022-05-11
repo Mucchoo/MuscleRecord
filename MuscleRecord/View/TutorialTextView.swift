@@ -14,7 +14,8 @@ struct TutorialTextView: View {
         Text(text)
             .font(.headline)
             .multilineTextAlignment(.center)
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 30)
+            .padding(.bottom, 30)
             .foregroundColor(.black)
     }
 }
