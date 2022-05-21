@@ -89,9 +89,7 @@ struct SettingView: View {
                         }
                         .disabled(!MailView.canSendMail)
                         .sheet(isPresented: $showMail) {
-                            MailView(data: $mailData) { result in
-                                print(result)
-                            }
+                            MailView(data: $mailData) { result in }
                         }
                         Button {
                             showReauthenticate = true

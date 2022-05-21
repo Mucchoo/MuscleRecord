@@ -17,7 +17,6 @@ struct MuscleRecordApp: App {
         Purchases.configure(withAPIKey: "appl_xBBDyDHmiVldcADDnLdXFbOGQRH")
         let launchedTimes = UserDefaults.standard.object(forKey: "LaunchedTimes") as? Int ?? 0
         UserDefaults.standard.set(launchedTimes + 1, forKey: "LaunchedTimes")
-        print(launchedTimes)
     }
     
     var body: some Scene {

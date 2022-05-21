@@ -137,9 +137,7 @@ struct MuscleRecordView: View {
             .onAppear {
                 if Auth.auth().currentUser == nil {
                     showTutorial = true
-                }
-                print("isPro：\(viewModel.customerInfo())")
-                
+                }                
             }
             .fullScreenCover(isPresented: $showTutorial, onDismiss: {
                 viewModel.getEvent()
