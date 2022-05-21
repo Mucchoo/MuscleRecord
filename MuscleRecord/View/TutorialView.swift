@@ -39,7 +39,8 @@ struct TutorialView: View {
                                 .font(.headline)
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 20)
-                                .foregroundColor(viewModel.fontColor)
+                                .padding(.bottom, 30)
+                                .foregroundColor(.black)
                         }
                         TutorialCardView {
                             TutorialImageView(image: "Tutorial5")
@@ -55,10 +56,10 @@ struct TutorialView: View {
                                     showTutorial = false
                                 }
                             } label: {
-                                ButtonView(text: "始める").padding(.top, 30)
+                                ButtonView(text: "始める").padding(.vertical, 30)
                             }
                         }
-                        .background(viewModel.clearColor)
+                        .background(.white)
                         .cornerRadius(20)
                         .padding(.horizontal, 20)
                     }

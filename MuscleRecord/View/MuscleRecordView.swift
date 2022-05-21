@@ -7,11 +7,16 @@
 
 import SwiftUI
 import Firebase
+import StoreKit
 
 struct MuscleRecordView: View {
     @ObservedObject var viewModel = ViewModel()
     @State private var date = Date()
+    @State private var showAlert = false
+    @State private var showPro = false
+    @State private var isPro = false
     @State var showTutorial = false
+    @State var isActive : Bool = false
     
     init(){
         let appearance = UINavigationBarAppearance()
@@ -26,6 +31,12 @@ struct MuscleRecordView: View {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white,], for: .selected)
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(viewModel.getThemeColor())
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
+        if UserDefaults.standard.integer(forKey: "LaunchedTimes") > 20 {
+            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                SKStoreReviewController.requestReview(in: scene)
+                UserDefaults.standard.set(0, forKey: "LaunchedTimes")
+            }
+        }
     }
     
     var body: some View {
@@ -86,6 +97,9 @@ struct MuscleRecordView: View {
                         .padding(.horizontal, 10)
                         Spacer()
                     }
+                    NavigationLink(destination: ProView(shouldPopToRootView: $showPro), isActive: $showPro) {
+                        EmptyView()
+                    }
                 }
                 .padding(.top, 10)
                 .onAppear {
@@ -93,25 +107,48 @@ struct MuscleRecordView: View {
                 }
             }
             .background(Color("BackgroundColor"))
-            .navigationBarTitle("Muscle Record", displayMode: .inline)
-            .navigationBarItems(
-                leading: NavigationLink(destination: SettingView()){
-                    Image(systemName: "line.3.horizontal").foregroundColor(.white)
-                },
-                trailing: NavigationLink(destination: AddView()){
-                    Image(systemName: "plus").foregroundColor(.white)
+            .navigationBarTitle("筋トレ記録", displayMode: .inline)
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    NavigationLink(destination: SettingView(rootIsActive: $isActive), isActive: $isActive){
+                        Image(systemName: "line.3.horizontal").foregroundColor(.white)
+                    }
                 }
-            )
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    if viewModel.events.count > 4 {
+                        if viewModel.customerInfo() {
+                            NavigationLink(destination: AddView()){
+                                Image(systemName: "plus").foregroundColor(.white)
+                            }
+                        } else {
+                            Button( action: {
+                                showAlert = true
+                            }, label: {
+                                Image(systemName: "plus").foregroundColor(.white)
+                            })
+                        }
+                    } else {
+                        NavigationLink(destination: AddView()){
+                            Image(systemName: "plus").foregroundColor(.white)
+                        }
+                    }
+                }
+            }
             .onAppear {
                 if Auth.auth().currentUser == nil {
                     showTutorial = true
-                }
+                }                
             }
             .fullScreenCover(isPresented: $showTutorial, onDismiss: {
                 viewModel.getEvent()
             }) {
                 TutorialView(showTutorial: $showTutorial)
             }
-        }
+            .alert(isPresented: $showAlert) {
+                return Alert(title: Text("無料版で追加できる種目は5個です"), message: Text("Proにをアンロックすれば、無制限に追加することができます。"), primaryButton: .default(Text("閉じる")), secondaryButton: .default(Text("Proを見る"), action: {
+                    showPro = true
+                }))
+            }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }

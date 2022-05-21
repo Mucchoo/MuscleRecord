@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import RevenueCat
 
 class ViewModel: ObservableObject {
     @Published var events = [Event]()
@@ -24,6 +25,16 @@ class ViewModel: ObservableObject {
     @Published var cellColor = Color("CellColor")
     @Published var clearColor = Color("ClearColor")
     @Published var backgroundColor = Color("BackgroundColor")
+    
+    func customerInfo() -> Bool {
+        var isPro = false
+        Purchases.shared.getCustomerInfo { (customerInfo, error) in
+            if customerInfo?.entitlements["Pro"]?.isActive == true {
+                isPro = true
+            }
+        }
+        return isPro
+    }
     
     func getThemeColor() -> Color {
         switch UserDefaults.standard.integer(forKey: "themeColorNumber") {
@@ -180,7 +191,6 @@ class ViewModel: ObservableObject {
                                         totalWeight = 0
                                         totalRep = 0
                                         totalDate = 0
-                                        print("棒作成しました\(period)")
                                     }
                                 }
                             }
@@ -263,12 +273,12 @@ class ViewModel: ObservableObject {
             }
             return window
         }
-        let productURL:URL = URL(string: "https://apps.apple.com/xxxxxxxxxxxxxxxxxxxx")!
-        
-        let activityViewController = UIActivityViewController(
-            activityItems: [productURL],
-            applicationActivities: nil)
-        
-        window?.rootViewController?.present(activityViewController, animated: true, completion: nil)
+        let productURL:URL = URL(string: "https://apps.apple.com/us/app/%E7%AD%8B%E3%83%88%E3%83%AC%E8%A8%98%E9%8C%B2-%E7%AD%8B%E8%82%89%E3%81%AE%E6%88%90%E9%95%B7%E3%82%92%E3%83%87%E3%83%BC%E3%82%BF%E5%8C%96-%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E8%A8%98%E9%8C%B2/id1622549301?itsct=apps_box_link&itscg=30200")!
+        let av = UIActivityViewController(activityItems: [productURL],applicationActivities: nil)
+        window?.rootViewController?.present(av, animated: true, completion: nil)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            av.popoverPresentationController?.sourceView = window
+            av.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.width/2.1, y: UIScreen.main.bounds.height/1.3, width: 200, height: 200)
+        }
     }
 }
