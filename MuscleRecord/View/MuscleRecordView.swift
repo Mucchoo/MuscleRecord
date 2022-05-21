@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import StoreKit
 
 struct MuscleRecordView: View {
     @ObservedObject var viewModel = ViewModel()
@@ -29,6 +30,12 @@ struct MuscleRecordView: View {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white,], for: .selected)
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(viewModel.getThemeColor())
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
+        if UserDefaults.standard.integer(forKey: "LaunchedTimes") > 20 {
+            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                SKStoreReviewController.requestReview(in: scene)
+                UserDefaults.standard.set(0, forKey: "LaunchedTimes")
+            }
+        }
     }
     
     var body: some View {
