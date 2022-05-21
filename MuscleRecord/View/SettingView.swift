@@ -11,6 +11,7 @@ import StoreKit
 
 struct SettingView: View {
     @Environment(\.dismiss) var dismiss
+    @Binding var rootIsActive : Bool
     @ObservedObject var viewModel = ViewModel()
     @State private var isActive = false
     @State var showTutorial = false
@@ -42,7 +43,9 @@ struct SettingView: View {
                                 }
                             }
                         } else {
-                            NavigationLink(destination: ProView()) {FormRowView(icon: "gift", firstText: "Proをアンロック", isHidden: false)}
+                            NavigationLink(destination: ProView(shouldPopToRootView: $rootIsActive)) {
+                                FormRowView(icon: "gift", firstText: "Proをアンロック", isHidden: false)
+                            }
                             FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", isHidden: true)
                             HStack{
                                 ZStack{

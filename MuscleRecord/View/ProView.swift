@@ -10,6 +10,7 @@ import RevenueCat
 
 struct ProView: View {
     @Environment(\.dismiss) var dismiss
+    @Binding var shouldPopToRootView : Bool
     @ObservedObject var viewModel = ViewModel()
     @State private var showAlert = false
     var body: some View {
@@ -31,6 +32,9 @@ struct ProView: View {
                         Purchases.shared.getOfferings { (offerings, error) in
                             if let package = offerings?.current?.lifetime?.storeProduct {
                                 Purchases.shared.purchase(product: package) { (transaction, customerInfo, error, userCancelled) in
+                                    if customerInfo?.entitlements.all["Pro"]?.isActive == true {
+                                        shouldPopToRootView = false
+                                    }
                                 }
                             }
                         }
@@ -50,8 +54,10 @@ struct ProView: View {
                     })
                 }
                 .padding(20)
-                .alert(isPresented: $showAlert) {
-                            return Alert(title: Text("購入を復元しました"), message: Text(""), dismissButton: .default(Text("OK")))
+                .alert("購入を復元しました", isPresented: $showAlert) {
+                    Button("OK") {
+                        shouldPopToRootView = false
+                    }
                 }
             }
         }

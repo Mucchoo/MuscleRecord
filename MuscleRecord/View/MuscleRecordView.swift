@@ -16,6 +16,7 @@ struct MuscleRecordView: View {
     @State private var showPro = false
     @State private var isPro = false
     @State var showTutorial = false
+    @State var isActive : Bool = false
     
     init(){
         let appearance = UINavigationBarAppearance()
@@ -96,7 +97,7 @@ struct MuscleRecordView: View {
                         .padding(.horizontal, 10)
                         Spacer()
                     }
-                    NavigationLink(destination: ProView(), isActive: $showPro) {
+                    NavigationLink(destination: ProView(shouldPopToRootView: $showPro), isActive: $showPro) {
                         EmptyView()
                     }
                 }
@@ -109,7 +110,7 @@ struct MuscleRecordView: View {
             .navigationBarTitle("筋トレ記録", displayMode: .inline)
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
-                    NavigationLink(destination: SettingView()){
+                    NavigationLink(destination: SettingView(rootIsActive: $isActive), isActive: $isActive){
                         Image(systemName: "line.3.horizontal").foregroundColor(.white)
                     }
                 }
