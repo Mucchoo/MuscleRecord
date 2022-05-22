@@ -39,7 +39,7 @@ struct ProView: View {
                             }
                         }
                     }, label: {
-                        ButtonView(text: "Proをアンロック - 490円")
+                        ButtonView(text: "Proをアンロック - 250円")
                             .padding(.top, 20)
                     })
                     Button( action: {
