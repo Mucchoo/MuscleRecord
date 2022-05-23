@@ -30,7 +30,8 @@ struct AddView: View {
                         name = ""
                         dismiss()
                     }, label: {
-                        ButtonView(text: "追加").padding(.top, 20)
+                        ButtonView(text: "追加")
+                            .padding(.top, 20)
                     })
                     Spacer()
                 }

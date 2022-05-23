@@ -91,9 +91,9 @@ struct MuscleRecordView: View {
                         }
                         .frame(maxHeight: 110)
                         .padding(20)
-                        .cornerRadius(20)
                         .background(viewModel.cellColor)
                         .cornerRadius(20)
+                        .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 2)
                         .padding(.horizontal, 10)
                         Spacer()
                     }

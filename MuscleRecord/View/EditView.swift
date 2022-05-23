@@ -42,8 +42,10 @@ struct EditView: View {
                         Text("種目を削除")
                             .fontWeight(.bold)
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 70, alignment: .center)
+                            .background(viewModel.clearColor)
                             .foregroundColor(viewModel.getThemeColor())
-                            .overlay(RoundedRectangle(cornerRadius: 20).stroke(viewModel.getThemeColor(), lineWidth: 3))
+                            .cornerRadius(20)
+                            .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 2)
                     }
                     .alert(isPresented: $showAlert) {
                         return Alert(title: Text("本当に削除しますか？"), message: Text(""), primaryButton: .cancel(), secondaryButton: .destructive(Text("削除"), action: {
