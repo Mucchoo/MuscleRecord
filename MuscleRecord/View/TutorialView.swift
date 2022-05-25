@@ -29,13 +29,13 @@ struct TutorialView: View {
                             TutorialImageView(image: "Tutorial1")
                             TutorialArrowView()
                             TutorialImageView(image: "Tutorial3")
-                            TutorialTextView(text: "まずは右上の ＋ ボタンから種目を追加！")
+                            TutorialTextView(text: "まずは右上の ＋ ボタンから種目を追加しましょう")
                         }
                         TutorialCardView {
                             TutorialImageView(image: "Tutorial3")
                             TutorialArrowView()
                             TutorialImageView(image: "Tutorial4")
-                            Text("トレーニング後は\(Image(systemName: "pencil.circle.fill"))を押して記録！")
+                            Text("トレーニング後は\(Image(systemName: "pencil.circle.fill"))を押して記録できます")
                                 .font(.headline)
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 20)
@@ -44,7 +44,7 @@ struct TutorialView: View {
                         }
                         TutorialCardView {
                             TutorialImageView(image: "Tutorial5")
-                            TutorialTextView(text: "記録をすると結果がグラフに表れます！")
+                            TutorialTextView(text: "記録をすると結果がグラフに表れます")
                         }
                         TutorialCardView {
                             TutorialImageView(image: "Tutorial6")
