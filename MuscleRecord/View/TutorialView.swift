@@ -17,13 +17,14 @@ struct TutorialView: View {
             ZStack(){
                 viewModel.getThemeColor().edgesIgnoringSafeArea(.all)
                 VStack {
-                    Text("\(Image(systemName: "questionmark.circle.fill")) 使い方")
-                        .font(.headline)
+                    Text("使い方")
+                        .font(.system(size: 20))
+                        .fontWeight(.bold)
                         .foregroundColor(viewModel.getThemeColor())
-                        .frame(width: 150, height: 30)
+                        .frame(width: 200, height: 40)
                         .background(.white)
-                        .cornerRadius(25)
-                        .padding(10)
+                        .cornerRadius(20)
+                        .padding(.bottom, 10)
                     TabView{
                         TutorialCardView {
                             TutorialImageView(image: "Tutorial1")
