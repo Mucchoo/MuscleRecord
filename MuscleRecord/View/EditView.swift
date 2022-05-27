@@ -14,20 +14,24 @@ struct EditView: View {
     @State private var name = ""
     @State private var showAlert = false
     var event: Event
+    
     var body: some View {
         SimpleNavigationView(title: "種目を編集") {
             ZStack{
+                //背景タップ時にキーボードを閉じる
                 viewModel.clearColor
                     .edgesIgnoringSafeArea(.all)
                     .onTapGesture {
                         self.focus = false
                     }
                 VStack(spacing: 0){
+                    //種目名textfield
                     TextFieldView(title: "種目名", text: $name, placeHolder: "種目名を入力してください", isSecure: false)
                         .focused($focus)
                         .onAppear{
                             self.name = event.name
                         }
+                    //上書きボタン
                     Button( action: {
                         viewModel.updateEvent(event: event, newName: name)
                         dismiss()
@@ -36,6 +40,7 @@ struct EditView: View {
                             .padding(.top, 20)
                             .padding(.bottom, 10)
                     }
+                    //削除ボタン
                     Button( action: {
                         showAlert = true
                     }){
@@ -47,6 +52,7 @@ struct EditView: View {
                             .cornerRadius(20)
                             .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 2)
                     }
+                    //削除時のアラート
                     .alert(isPresented: $showAlert) {
                         return Alert(title: Text("本当に削除しますか？"), message: Text(""), primaryButton: .cancel(), secondaryButton: .destructive(Text("削除"), action: {
                             viewModel.deleteEvent(event: event)

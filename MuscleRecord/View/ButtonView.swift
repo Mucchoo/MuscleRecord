@@ -10,6 +10,7 @@ import SwiftUI
 struct ButtonView: View {
     @ObservedObject var viewModel = ViewModel()
     var text: String
+    //アプリ全体で使うButton
     var body: some View {
         Text(text)
             .fontWeight(.bold)

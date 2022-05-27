@@ -25,7 +25,7 @@ class ViewModel: ObservableObject {
     @Published var cellColor = Color("CellColor")
     @Published var clearColor = Color("ClearColor")
     @Published var backgroundColor = Color("BackgroundColor")
-    
+    //内課金購入状態
     func customerInfo() -> Bool {
         var isPro = false
         Purchases.shared.getCustomerInfo { (customerInfo, error) in
@@ -35,7 +35,7 @@ class ViewModel: ObservableObject {
         }
         return isPro
     }
-    
+    //テーマカラーの取得
     func getThemeColor() -> Color {
         switch UserDefaults.standard.integer(forKey: "themeColorNumber") {
         case 0:
@@ -54,14 +54,14 @@ class ViewModel: ObservableObject {
             return Color("ThemeColor0")
         }
     }
-    
+    //記録時のdateFormat
     func dateFormat(date: Date) -> String {
         let f = DateFormatter()
         f.dateStyle = .long
         f.timeStyle = .none
         return f.string(from: date)
     }
-    
+    //種目名の更新
     func updateEvent(event: Event, newName: String) {
         let db = Firestore.firestore()
         if let userID = Auth.auth().currentUser?.uid {
@@ -74,7 +74,7 @@ class ViewModel: ObservableObject {
             }
         }
     }
-    
+    //種目の削除
     func deleteEvent(event: Event) {
         let db = Firestore.firestore()
         if let userID = Auth.auth().currentUser?.uid {
@@ -87,7 +87,7 @@ class ViewModel: ObservableObject {
             }
         }
     }
-    
+    //種目の追加
     func addEvent(_ name: String) {
         let db = Firestore.firestore()
         if let userID = Auth.auth().currentUser?.uid {
@@ -100,7 +100,7 @@ class ViewModel: ObservableObject {
             }
         }
     }
-    
+    //種目の取得
     func getEvent() {
         let db = Firestore.firestore()
         if let userID = Auth.auth().currentUser?.uid {
@@ -121,7 +121,7 @@ class ViewModel: ObservableObject {
             }
         }
     }
-    
+    //記録の取得
     func getRecord(event: Event) {
         let db = Firestore.firestore()
         if let userID = Auth.auth().currentUser?.uid {
@@ -136,6 +136,7 @@ class ViewModel: ObservableObject {
                                 self.latestID = d.documentID
                                 let timeStamp: Timestamp = d["date"] as? Timestamp ?? Timestamp()
                                 let date = timeStamp.dateValue()
+                                //記録に間が空いている場合はダミーを作成
                                 if let oldRecord = self.oldRecord {
                                     var dateDifference = (Calendar.current.dateComponents([.day], from: oldRecord.date, to: timeStamp.dateValue())).day! - 1
                                     while dateDifference > 0 {
@@ -147,7 +148,7 @@ class ViewModel: ObservableObject {
                                 self.oldRecord = record
                                 self.records.append(record)
                             }
-                            
+                            //3日平均、9日平均、27日平均の作成
                             let periodArray = [3,9,27]
                             for period in periodArray {
                                 var totalDate = 0
@@ -159,6 +160,7 @@ class ViewModel: ObservableObject {
                                     totalWeight += record.weight
                                     totalRep += record.rep
                                     totalDate += 1
+                                    //余った部分を最初に作成
                                     if fraction != 0 && fraction == totalDate && created == false {
                                         let recordID = UUID().uuidString
                                         if period == 3 {
@@ -176,6 +178,7 @@ class ViewModel: ObservableObject {
                                         totalRep = 0
                                         totalDate = 0
                                     }
+                                    //平均を作成
                                     if totalDate == period {
                                         let recordID = UUID().uuidString
                                         if period == 3 {
@@ -194,7 +197,7 @@ class ViewModel: ObservableObject {
                                     }
                                 }
                             }
-                            
+                            //最大重量
                             snapshot.documents.forEach { d in
                                 if self.maxWeight < d["weight"] as? Float ?? 0.0 {
                                     self.maxWeight = d["weight"] as? Float ?? 0.0
@@ -208,7 +211,7 @@ class ViewModel: ObservableObject {
 
         }
     }
-    
+    //記録
     func addRecord(event: Event, weight: Float, rep: Int) {
         let db = Firestore.firestore()
         if let userID = Auth.auth().currentUser?.uid {
@@ -219,6 +222,7 @@ class ViewModel: ObservableObject {
                     print("addRecord(event)成功")
                 }
             }
+            //トップページの最新の記録も更新
             db.collection("users").document(userID).collection("events").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep]) { error in
                 if let error = error {
                     print("addRecord(record)中のエラー: \(error)")
@@ -228,10 +232,11 @@ class ViewModel: ObservableObject {
             }
         }
     }
-    
+    //記録を上書き
     func updateRecord(event: Event, weight: Float, rep: Int) {
         let db = Firestore.firestore()
         if let userID = Auth.auth().currentUser?.uid {
+            //一番新しい記録を削除
             db.collection("users").document(userID).collection("events").document(event.id).collection("records").order(by: "date", descending: true).limit(to: 1).getDocuments { snapshot, error in
                 if let snapshot = snapshot {
                     if let error = error {
@@ -245,7 +250,7 @@ class ViewModel: ObservableObject {
                     }
                 }
             }
-            
+            //トップページの最新の記録も更新
             db.collection("users").document(userID).collection("events").document(event.id).setData(["name": event.name, "latestWeight": weight, "latestRep": rep,"latestDate": Date()]) { error in
                 if let error = error {
                     print("updateRecord(event)中のエラー: \(error)")
@@ -253,7 +258,7 @@ class ViewModel: ObservableObject {
                     print("updateRecord(event)成功")
                 }
             }
-            
+            //記録を上書き
             db.collection("users").document(userID).collection("events").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep]) { error in
                 if let error = error {
                     print("updateRecord(record)中のエラー: \(error)")
@@ -263,7 +268,7 @@ class ViewModel: ObservableObject {
             }
         }
     }
-    
+    //シェア
     func shareApp(){
         var window: UIWindow? {
             guard let scene = UIApplication.shared.connectedScenes.first,

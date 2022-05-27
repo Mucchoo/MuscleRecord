@@ -13,6 +13,7 @@ struct TextFieldView: View {
     var text: Binding<String>
     var placeHolder: String
     var isSecure: Bool
+    //アプリ全体で使うtextField
     var body: some View {
         HStack {
             Text(title)

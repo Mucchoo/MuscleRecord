@@ -20,18 +20,22 @@ struct ResetPasswordView: View {
     
     var body: some View {
         ZStack{
+            //背景タップでキーボードを閉じる
             viewModel.clearColor
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
                     focus = false
                 }
             VStack(spacing: 0){
+                //タイトル
                 Text("パスワードを再設定")
                     .font(.headline)
                     .padding(.bottom, 20)
                     .foregroundColor(viewModel.fontColor)
+                //メールアドレスtextField
                 TextFieldView(title: "メールアドレス", text: $email, placeHolder: "example@example.com", isSecure: false)
                     .focused($focus)
+                //パスワード再設定ボタン
                 Button( action: {
                     errorMessage = ""
                     if email.isEmpty {
@@ -46,9 +50,11 @@ struct ResetPasswordView: View {
                     ButtonView(text: "パスワードを再設定").padding(.top, 20)
                 }
                 .alert(isPresented: $isShowAlert) {
+                    //エラーアラート
                     if isError {
                         return Alert(title: Text("エラー"), message: Text(errorMessage), dismissButton: .default(Text("OK"))
                         )
+                    //成功アラート
                     } else {
                         return Alert(title: Text("メールを送信しました"), message: Text("受け取ったメールを開いてパスワードを再設定してください。"), dismissButton: .default(Text("OK"), action: {
                             dismiss()
@@ -57,6 +63,7 @@ struct ResetPasswordView: View {
                 }
                 Spacer()
             }.padding(20)
+        //自動フォーカス
         }.onAppear {
             focus = true
         }

@@ -17,8 +17,9 @@ struct MuscleRecordView: View {
     @State private var isPro = false
     @State var showTutorial = false
     @State var isActive : Bool = false
-    
+
     init(){
+        //ナビゲーションバーのUI調整
         let appearance = UINavigationBarAppearance()
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         appearance.backgroundColor = UIColor(viewModel.getThemeColor())
@@ -26,11 +27,14 @@ struct MuscleRecordView: View {
         UINavigationBar.appearance().barStyle = .black
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().standardAppearance = appearance
+        //グラフの表示幅選択ボタンのUI調整
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(viewModel.getThemeColor())
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(viewModel.getThemeColor())], for: .normal)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white,], for: .selected)
+        //チュートリアルのPageControlのUI調整
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(viewModel.getThemeColor())
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
+        //20回起動毎にレビューアラートを表示
         if UserDefaults.standard.integer(forKey: "LaunchedTimes") > 20 {
             if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: scene)
@@ -44,19 +48,23 @@ struct MuscleRecordView: View {
             ScrollView {
                 VStack(spacing: 0) {
                     ForEach(viewModel.events) { event in
+                        //種目
                         VStack {
                             HStack(alignment: .top) {
+                                //編集ボタン
                                 NavigationLink(destination: EditView(event: event)){
                                     Image(systemName: "ellipsis.circle")
                                         .resizable()
                                         .frame(width: 20, height: 20)
                                         .foregroundColor(viewModel.getThemeColor())
                                 }
+                                //種目名
                                 Text(event.name)
                                     .fontWeight(.bold)
                                     .lineLimit(2)
                                     .foregroundColor(viewModel.fontColor)
                                 Spacer()
+                                //記録ボタン（記録後は表示を変更）
                                 NavigationLink(destination: RecordView(event: event)){
                                     if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
                                         Image(systemName: "pencil.circle")
@@ -73,6 +81,7 @@ struct MuscleRecordView: View {
                             }.frame(minHeight: 43)
                             Spacer()
                             HStack(alignment: .bottom) {
+                                //最新の重量と回数
                                 VStack(alignment: .leading, spacing: 5) {
                                     Text("重量：\(String(format: "%.1f", event.latestWeight))kg ")
                                         .fontWeight(.semibold)
@@ -82,6 +91,7 @@ struct MuscleRecordView: View {
                                         .foregroundColor(viewModel.fontColor)
                                 }
                                 Spacer()
+                                //グラフを見るボタン
                                 NavigationLink(destination: GraphView(event: event)) {
                                     Text("グラフを見る ▶︎")
                                         .foregroundColor(viewModel.getThemeColor())
@@ -97,6 +107,7 @@ struct MuscleRecordView: View {
                         .padding(.horizontal, 10)
                         Spacer()
                     }
+                    //6個以上種目を登録する場合アラートを表示し内課金購入ページに遷移
                     NavigationLink(destination: ProView(shouldPopToRootView: $showPro), isActive: $showPro) {
                         EmptyView()
                     }
@@ -109,12 +120,15 @@ struct MuscleRecordView: View {
             .background(Color("BackgroundColor"))
             .navigationBarTitle("筋トレ記録", displayMode: .inline)
             .toolbar {
+                //設定ボタン
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     NavigationLink(destination: SettingView(rootIsActive: $isActive), isActive: $isActive){
                         Image(systemName: "line.3.horizontal").foregroundColor(.white)
                     }
                 }
+                //種目追加ボタン
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    //6個以上種目を登録する場合アラートを表示し内課金購入ページに遷移
                     if viewModel.events.count > 4 {
                         if viewModel.customerInfo() {
                             NavigationLink(destination: AddView()){
@@ -134,16 +148,19 @@ struct MuscleRecordView: View {
                     }
                 }
             }
+            //ログインしていない場合チュートリアルを表示
             .onAppear {
                 if Auth.auth().currentUser == nil {
                     showTutorial = true
                 }                
             }
+            //チュートリアル
             .fullScreenCover(isPresented: $showTutorial, onDismiss: {
                 viewModel.getEvent()
             }) {
                 TutorialView(showTutorial: $showTutorial)
             }
+            //非課金状態で6個以上種目を登録する場合アラートを表示
             .alert(isPresented: $showAlert) {
                 return Alert(title: Text("無料版で追加できる種目は5個です"), message: Text("Proにをアンロックすれば、無制限に追加することができます。"), primaryButton: .default(Text("閉じる")), secondaryButton: .default(Text("Proを見る"), action: {
                     showPro = true

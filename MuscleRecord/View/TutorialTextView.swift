@@ -10,6 +10,7 @@ import SwiftUI
 struct TutorialTextView: View {
     @ObservedObject var viewModel = ViewModel()
     var text: String
+    //チュートリアルの説明文
     var body: some View {
         Text(text)
             .font(.headline)

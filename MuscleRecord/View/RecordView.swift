@@ -13,9 +13,11 @@ struct RecordView: View {
     @State private var weight = 0
     @State private var rep = 0
     var event: Event
+    
     var body: some View {
         SimpleNavigationView(title: event.name) {
             VStack{
+                //重量入力
                 HStack{
                     Text("重量").fontWeight(.bold)
                     Picker("weight", selection: $weight, content: {
@@ -31,6 +33,7 @@ struct RecordView: View {
                     }
                     Text("kg ").fontWeight(.bold)
                 }
+                //回数入力
                 HStack{
                     Text("回数").fontWeight(.bold)
                     Picker("rep", selection: $rep, content: {
@@ -46,7 +49,9 @@ struct RecordView: View {
                     }
                     Text("rep").fontWeight(.bold)
                 }
+                //記録ボタン
                 Button( action: {
+                    //既に記録している場合記録を更新
                     if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
                         viewModel.updateRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1)
                     } else {

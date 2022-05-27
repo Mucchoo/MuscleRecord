@@ -15,8 +15,10 @@ struct TutorialView: View {
     
     var body: some View {
             ZStack(){
+                //背景
                 viewModel.getThemeColor().edgesIgnoringSafeArea(.all)
                 VStack {
+                    //タイトル
                     Text("使い方")
                         .font(.system(size: 20))
                         .fontWeight(.bold)
@@ -25,6 +27,7 @@ struct TutorialView: View {
                         .background(.white)
                         .cornerRadius(20)
                         .padding(.bottom, 10)
+                    //ページビュー
                     TabView{
                         TutorialCardView {
                             TutorialImageView(image: "Tutorial1")
@@ -50,9 +53,12 @@ struct TutorialView: View {
                         TutorialCardView {
                             TutorialImageView(image: "Tutorial6")
                             TutorialTextView(text: "記録を続けて成長をデータ化しましょう！")
+                            //始めるボタン
                             Button {
+                                //未ログインの場合はアカウント作成ページ
                                 if Auth.auth().currentUser == nil {
                                     showSignUp = true
+                                //ログイン済みの場合はトップページ
                                 } else {
                                     showTutorial = false
                                 }

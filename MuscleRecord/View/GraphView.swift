@@ -12,12 +12,7 @@ struct GraphView: View {
     @State private var periodScale = 0
     private var weightScale: [Float] = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]
     var event: Event
-    private var dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M/d"
-        return dateFormatter
-    }()
-    
+    //選択した種目のデータをグラフに表示
     init(event: Event){
         self.event = event
         viewModel.getRecord(event: event)
@@ -26,6 +21,7 @@ struct GraphView: View {
     var body: some View {
         SimpleNavigationView(title: event.name) {
             VStack(spacing: 10) {
+                //グラフの表示幅の切り替え
                 Picker("period", selection: self.$periodScale, content: {
                     Text("1日毎").tag(0)
                     Text("3日平均").tag(1)
@@ -34,6 +30,7 @@ struct GraphView: View {
                 })
                 .pickerStyle(SegmentedPickerStyle())
                 HStack(spacing: 0) {
+                    //グラフのメモリを種目の最大重量から生成
                     VStack(spacing:0) {
                         ForEach(weightScale, id: \.self) { index in
                             Text(String(format: "%.0f", viewModel.maxWeight * index))
@@ -50,10 +47,12 @@ struct GraphView: View {
                     .padding(.bottom, 63)
                     .padding(.trailing, 10)
                     .padding(.top, 22)
+                    //メモリとグラフを仕切る線
                     Rectangle()
                         .foregroundColor(viewModel.getThemeColor())
                         .frame(width: 3)
                         .padding(.bottom, 30)
+                    //選択した表示幅を反映
                     if periodScale == 0 {
                         GraphBodyView(records: viewModel.records, latestID: viewModel.latestID, maxWeight: viewModel.maxWeight)
                     } else if periodScale == 1 {

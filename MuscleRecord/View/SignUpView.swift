@@ -33,22 +33,26 @@ struct SignUpView: View {
     
     var body: some View {
         ZStack{
+            //背景タップでキーボードを閉じる
             viewModel.clearColor
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
                     focus = nil
                 }
             VStack(spacing: 0){
+                //タイトル
                 Text("アカウント作成")
                     .font(.headline)
                     .padding(.bottom, 20)
                     .foregroundColor(viewModel.fontColor)
+                //フォーム
                 TextFieldView(title: "メールアドレス", text: $email, placeHolder: "example@example.com", isSecure: false)
                     .focused($focus, equals: .email)
                 TextFieldView(title: "パスワード", text: $password, placeHolder: "password", isSecure: true)
                     .focused($focus, equals: .password)
                 TextFieldView(title: "確認用パスワード", text: $confirm, placeHolder: "password", isSecure: true)
                     .focused($focus, equals: .confirm)
+                //アカウント作成ボタン
                 Button( action: {
                     errorMessage = ""
                     if email.isEmpty {
@@ -73,6 +77,7 @@ struct SignUpView: View {
                 }){
                     ButtonView(text: "アカウント作成").padding(.top, 20)
                 }
+                //ログインボタン
                 Button {
                     showSignIn = true
                 } label: {
@@ -82,9 +87,11 @@ struct SignUpView: View {
                         .padding(.top, 30)
                 }
                 .alert(isPresented: $isShowAlert) {
+                    //エラーアラート
                     if isError {
                         return Alert(title: Text(""), message: Text(errorMessage), dismissButton: .destructive(Text("OK"))
                         )
+                    //成功アラート
                     } else {
                         return Alert(title: Text("アカウントが作成されました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
                             window?.rootViewController?.dismiss(animated: true, completion: nil)
@@ -93,11 +100,12 @@ struct SignUpView: View {
                 }
                 Spacer()
             }.padding(20)
+        //ログインページ
         }.sheet(isPresented: $showSignIn) {
             SignInView()
         }
     }
-    
+    //アカウント作成
     private func signUp() {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {

@@ -12,6 +12,7 @@ struct FormRowView: View {
     var icon: String
     var firstText: String
     var isHidden: Bool
+    //SettingViewの項目
     var body: some View {
         HStack{
             ZStack{

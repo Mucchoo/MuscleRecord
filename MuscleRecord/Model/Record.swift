@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//記録
 struct Record: Identifiable {
     var id: String
     var date: Date

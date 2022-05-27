@@ -14,6 +14,7 @@ struct TutorialCardView<Content: View>: View {
         self.content = content()
     }
     @ObservedObject var viewModel = ViewModel()
+    //チュートリアルのカード
     var body: some View {
         VStack(){
             Spacer()

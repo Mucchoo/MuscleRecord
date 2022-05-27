@@ -24,26 +24,33 @@ struct ReauthenticateView: View {
     
     var body: some View {
         ZStack{
+            //背景タップでキーボードを閉じる
             viewModel.clearColor
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
                     focus = nil
                 }
             VStack(spacing: 0){
+                //タイトル
                 Text("ログイン")
                     .font(.headline)
                     .padding(.bottom, 10)
                     .foregroundColor(viewModel.fontColor)
+                //説明文
                 Text("アカウント情報を変更するには一度ログインする必要があります。")
                     .font(.body)
                     .padding(.bottom, 20)
                     .foregroundColor(viewModel.fontColor)
                     .multilineTextAlignment(.center)
+                //メールアドレスtextField
                 TextFieldView(title: "メールアドレス", text: $email, placeHolder: "example@example.com", isSecure: false)
                     .focused($focus, equals: .email)
+                //パスワードtextField
                 TextFieldView(title: "パスワード", text: $password, placeHolder: "password", isSecure: true)
                     .focused($focus, equals: .password)
+                //ログインボタン
                 Button( action: {
+                    //不備やエラーを確認
                     errorMessage = ""
                     if email.isEmpty {
                         errorMessage = "メールアドレスが入力されていません"
@@ -57,9 +64,11 @@ struct ReauthenticateView: View {
                 }){
                     ButtonView(text: "ログイン").padding(.top, 20)
                 }
+                //アカウント情報変更ページ
                 .sheet(isPresented: $showChangeInfo) {
                     ChangeInfoView()
                 }
+                //パスワードを忘れたボタン
                 Button {
                     showResetPassword = true
                 } label: {
@@ -68,9 +77,11 @@ struct ReauthenticateView: View {
                         .foregroundColor(viewModel.getThemeColor())
                         .padding(.top, 30)
                 }
+                //パスワード変更ページ
                 .sheet(isPresented: $showResetPassword) {
                     ResetPasswordView()
                 }
+                //エラーアラート
                 .alert(isPresented: $isShowAlert) {
                     return Alert(title: Text(""), message: Text(errorMessage), dismissButton: .destructive(Text("OK")))
                 }
@@ -78,7 +89,7 @@ struct ReauthenticateView: View {
             }.padding(20)
         }
     }
-    
+    //サインイン
     private func signIn() {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if authResult?.user != nil {

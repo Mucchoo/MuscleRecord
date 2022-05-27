@@ -34,14 +34,17 @@ struct ChangeInfoView: View {
     var body: some View {
         SimpleNavigationView(title: "アカウント情報変更") {
             ZStack{
+                //背景タップでキーボードを閉じる
                 viewModel.clearColor
                     .edgesIgnoringSafeArea(.all)
                     .onTapGesture {
                         focus = nil
                     }
                 VStack(spacing: 0){
+                    //メールアドレスtextField
                     TextFieldView(title: "新しいメールアドレス", text: $email, placeHolder: "example@example.com", isSecure: false)
                         .focused($focus, equals: .email)
+                    //メールアドレス変更ボタン
                     Button( action: {
                         if email.isEmpty {
                             showEmailAlert = true
@@ -69,18 +72,22 @@ struct ChangeInfoView: View {
                         ButtonView(text: "メールアドレスを変更").padding(.vertical, 20)
                     })
                     .alert(isPresented: $showEmailAlert) {
+                        //エラーアラート
                         if isError {
                             return Alert(title: Text(errorMessage), message: Text(""), dismissButton: .default(Text("OK")))
+                        //成功アラート
                         } else {
                             return Alert(title: Text("メールアドレスが更新されました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
                                 window?.rootViewController?.dismiss(animated: true, completion: nil)
                             }))
                         }
                     }
+                    //パスワード変更フォーム
                     TextFieldView(title: "新しいパスワード", text: $password, placeHolder: "password", isSecure: true)
                         .focused($focus, equals: .password)
                     TextFieldView(title: "確認用パスワード", text: $confirm, placeHolder: "password", isSecure: true)
                         .focused($focus, equals: .confirm)
+                    //パスワード変更ボタン
                     Button( action: {
                         if password.isEmpty {
                             showPasswordAlert = true
@@ -116,8 +123,10 @@ struct ChangeInfoView: View {
                         ButtonView(text: "パスワードを変更").padding(.top, 20)
                     })
                     .alert(isPresented: $showPasswordAlert) {
+                        //エラーアラート
                         if isError {
                             return Alert(title: Text(errorMessage), message: Text(""), dismissButton: .default(Text("OK")))
+                        //成功アラート
                         } else {
                             return Alert(title: Text("パスワードが更新されました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
                                 window?.rootViewController?.dismiss(animated: true, completion: nil)

@@ -25,7 +25,6 @@
 		2A6F3600281507B800885CE9 /* ChangeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6F35FF281507B800885CE9 /* ChangeInfoView.swift */; };
 		2A6F36022815107800885CE9 /* ReauthenticateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6F36012815107800885CE9 /* ReauthenticateView.swift */; };
 		2A75278728121EE500A0961C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75278628121EE500A0961C /* SignInView.swift */; };
-		2A7527892812277500A0961C /* UpdateAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7527882812277500A0961C /* UpdateAuthView.swift */; };
 		2A75278E28123EDD00A0961C /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75278D28123EDD00A0961C /* ResetPasswordView.swift */; };
 		2A817F6327FBC55C00772B6C /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A817F6227FBC55C00772B6C /* EditView.swift */; };
 		2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A96A78627F2BBD000A37A43 /* FormRowView.swift */; };
@@ -67,7 +66,6 @@
 		2A6F35FF281507B800885CE9 /* ChangeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeInfoView.swift; sourceTree = "<group>"; };
 		2A6F36012815107800885CE9 /* ReauthenticateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReauthenticateView.swift; sourceTree = "<group>"; };
 		2A75278628121EE500A0961C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		2A7527882812277500A0961C /* UpdateAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAuthView.swift; sourceTree = "<group>"; };
 		2A75278D28123EDD00A0961C /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2A7EFA90282B8CE1000C1891 /* MuscleRecord.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MuscleRecord.entitlements; sourceTree = "<group>"; };
 		2A817F6227FBC55C00772B6C /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 				2AACB82D280D0F6D00ADCA84 /* TutorialArrowView.swift */,
 				2AACB82B280D0F0E00ADCA84 /* TutorialTextView.swift */,
 				2AACB829280D0EB300ADCA84 /* TutorialImageView.swift */,
-				2A7527882812277500A0961C /* UpdateAuthView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -306,7 +303,6 @@
 				2A58E12727F26E1300121A4F /* RecordView.swift in Sources */,
 				2AEA33B4281108C900E968FB /* SignUpView.swift in Sources */,
 				2A543DCD27F9C7670051665E /* ViewModel.swift in Sources */,
-				2A7527892812277500A0961C /* UpdateAuthView.swift in Sources */,
 				2AD99F8527F3EF760007E152 /* AddView.swift in Sources */,
 				2AFDF1A827ED869500A03ACE /* MuscleRecordView.swift in Sources */,
 				2A3C7E6127FC2C9800B1E4EB /* Record.swift in Sources */,

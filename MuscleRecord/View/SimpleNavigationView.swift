@@ -16,7 +16,7 @@ struct SimpleNavigationView<Content: View>: View {
         self.title = title
         self.content = content()
     }
-    
+    //アプリ全体で使うNavigationView
     var body: some View {
         content
         .navigationTitle(title)

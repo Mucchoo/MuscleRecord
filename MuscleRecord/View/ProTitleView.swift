@@ -12,6 +12,7 @@ struct ProTitleView: View {
     var icon: String
     var title: String
     var isImage: Bool
+    //内課金ページのタイトル
     var body: some View {
             HStack {
                 ZStack {

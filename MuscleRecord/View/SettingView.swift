@@ -24,10 +24,15 @@ struct SettingView: View {
         SimpleNavigationView(title: "設定") {
             VStack{
                 Form{
+                    //Proセクション
                     Section(header: Text("Pro")){
+                        //内課金状態で表示内容を切り替え
                         if viewModel.customerInfo() {
+                            //選択できない項目
                             FormRowView(icon: "gift", firstText: "Proアンロック済み", isHidden: false)
+                            //テーマカラー
                             NavigationLink(destination: ThemeColorView()) {FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", isHidden: false)}
+                            //アイコン
                             NavigationLink(destination: IconView()) {
                                 HStack{
                                     ZStack{
@@ -43,10 +48,13 @@ struct SettingView: View {
                                 }
                             }
                         } else {
+                            //Proをアンロック
                             NavigationLink(destination: ProView(shouldPopToRootView: $rootIsActive)) {
                                 FormRowView(icon: "gift", firstText: "Proをアンロック", isHidden: false)
                             }
+                            //選択できない項目
                             FormRowView(icon: "paintbrush.pointed.fill", firstText: "テーマカラー", isHidden: true)
+                            //選択できない項目
                             HStack{
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 8)
@@ -62,6 +70,7 @@ struct SettingView: View {
                         }
                     }
                     Section(footer: Text("©︎ 2022 Musa Yazuju")){
+                        //使い方
                         Button {
                             showTutorial = true
                         } label: {
@@ -70,6 +79,7 @@ struct SettingView: View {
                         .fullScreenCover(isPresented: $showTutorial) {
                             TutorialView(showTutorial: $showTutorial)
                         }
+                        //レビュー
                         Button {
                             if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                                 SKStoreReviewController.requestReview(in: scene)
@@ -77,20 +87,22 @@ struct SettingView: View {
                         } label: {
                             FormRowView(icon: "star", firstText: "レビューで応援！", isHidden: false)
                         }
+                        //シェア
                         Button {
                             viewModel.shareApp()
                         } label: {
                             FormRowView(icon: "square.and.arrow.up", firstText: "アプリをシェア", isHidden: false)
                         }
+                        //お問い合わせ
                         Button {
                             showMail = true
                         } label: {
                             FormRowView(icon: "envelope", firstText: "ご意見・ご要望", isHidden: false)
                         }
-                        .disabled(!MailView.canSendMail)
                         .sheet(isPresented: $showMail) {
                             MailView(data: $mailData) { result in }
                         }
+                        //アカウント情報変更
                         Button {
                             showReauthenticate = true
                         } label: {
@@ -99,6 +111,7 @@ struct SettingView: View {
                         .sheet(isPresented: $showReauthenticate) {
                             ReauthenticateView()
                         }
+                        //ログアウト
                         Button(action: {
                             showAlert = true
                         }) {
@@ -117,7 +130,7 @@ struct SettingView: View {
             .background(Color("BackgroundColor").edgesIgnoringSafeArea(.all))
         }
     }
-    
+    //ログアウト
     private func signOut() {
         do {
             try Auth.auth().signOut()

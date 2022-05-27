@@ -10,6 +10,7 @@ import SwiftUI
 struct TutorialImageView: View {
     @ObservedObject var viewModel = ViewModel()
     var image: String
+    //チュートリアル内の画像
     var body: some View {
         Image(image)
             .resizable()

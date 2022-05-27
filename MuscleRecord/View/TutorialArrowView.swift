@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TutorialArrowView: View {
     @ObservedObject var viewModel = ViewModel()
+    //チュートリアルの下向きの矢印
     var body: some View {
         Image(systemName: "arrow.down.circle.fill")
             .resizable()

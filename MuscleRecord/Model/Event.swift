@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//種目
 struct Event: Identifiable {
     var id: String
     var name: String

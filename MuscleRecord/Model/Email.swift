@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//問い合わせメールの内容
 struct Email {
   let subject: String
   let recipients: [String]?
