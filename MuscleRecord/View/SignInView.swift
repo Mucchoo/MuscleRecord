@@ -71,7 +71,7 @@ struct SignInView: View {
                     if isError {
                         return Alert(title: Text(""), message: Text(errorMessage), dismissButton: .destructive(Text("OK"))
                         )
-                    //成功アラート
+                        //成功アラート
                     } else {
                         return Alert(title: Text("ログインに成功しました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
                             Window.first?.rootViewController?.dismiss(animated: true, completion: nil)

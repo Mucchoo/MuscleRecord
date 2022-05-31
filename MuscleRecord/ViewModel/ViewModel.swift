@@ -29,12 +29,10 @@ class ViewModel: ObservableObject {
     func customerInfo() -> Bool {
         var isPro = false
         Purchases.shared.getCustomerInfo { (customerInfo, error) in
-            
             guard error == nil else {
                 print("内課金購入時のエラー\(error!)")
                 return
             }
-            
             if customerInfo?.entitlements["Pro"]?.isActive == true {
                 isPro = true
             }
@@ -70,57 +68,50 @@ class ViewModel: ObservableObject {
     //種目名の更新
     func updateEvent(event: Event, newName: String) {
         let db = Firestore.firestore()
-        if let userID = Auth.auth().currentUser?.uid {
-            db.collection("users").document(userID).collection("events").document(event.id).updateData(["name": newName]) { error in
-                guard error == nil else {
-                    print("種目更新時のエラー\(error!)")
-                    return
-                }
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        db.collection("users").document(userID).collection("events").document(event.id).updateData(["name": newName]) { error in
+            guard error == nil else {
+                print("種目更新時のエラー\(error!)")
+                return
             }
         }
     }
     //種目の削除
     func deleteEvent(event: Event) {
         let db = Firestore.firestore()
-        if let userID = Auth.auth().currentUser?.uid {
-            db.collection("users").document(userID).collection("events").document(event.id).delete() { error in
-                guard error == nil else {
-                    print("種目削除時のエラー\(error!)")
-                    return
-                }
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        db.collection("users").document(userID).collection("events").document(event.id).delete() { error in
+            guard error == nil else {
+                print("種目削除時のエラー\(error!)")
+                return
             }
         }
     }
     //種目の追加
     func addEvent(_ name: String) {
         let db = Firestore.firestore()
-        if let userID = Auth.auth().currentUser?.uid {
-            db.collection("users").document(userID).collection("events").addDocument(data: ["name": name, "latestWeight": 0.0, "latestRep": 0, "latestDate": Date(timeInterval: -60*60*24, since: .now)]) { error in
-                guard error == nil else {
-                    print("種目追加時のエラー\(error!)")
-                    return
-                }
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        db.collection("users").document(userID).collection("events").addDocument(data: ["name": name, "latestWeight": 0.0, "latestRep": 0, "latestDate": Date(timeInterval: -60*60*24, since: .now)]) { error in
+            guard error == nil else {
+                print("種目追加時のエラー\(error!)")
+                return
             }
         }
     }
     //種目の取得
     func getEvent() {
         let db = Firestore.firestore()
-        if let userID = Auth.auth().currentUser?.uid {
-            db.collection("users").document(userID).collection("events").getDocuments { snapshot, error in
-                
-                guard error == nil else {
-                    print("種目取得時のエラー\(error!)")
-                    return
-                }
-                
-                if let snapshot = snapshot{
-                    DispatchQueue.main.async {
-                        self.events = snapshot.documents.map { d in
-                            let timeStamp = d["latestDate"] as! Timestamp
-                            return Event(id: d.documentID, name: d["name"] as? String ?? "", latestWeight: d["latestWeight"] as? Float ?? 0.0, latestRep: d["latestRep"] as? Int ?? 0, latestDate: timeStamp.dateValue())
-                        }
-                    }
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        db.collection("users").document(userID).collection("events").getDocuments { snapshot, error in
+            guard error == nil else {
+                print("種目取得時のエラー\(error!)")
+                return
+            }
+            guard let snapshot = snapshot else { return }
+            DispatchQueue.main.async {
+                self.events = snapshot.documents.map { d in
+                    let timeStamp = d["latestDate"] as! Timestamp
+                    return Event(id: d.documentID, name: d["name"] as? String ?? "", latestWeight: d["latestWeight"] as? Float ?? 0.0, latestRep: d["latestRep"] as? Int ?? 0, latestDate: timeStamp.dateValue())
                 }
             }
         }
@@ -128,144 +119,133 @@ class ViewModel: ObservableObject {
     //記録の取得
     func getRecord(event: Event) {
         let db = Firestore.firestore()
-        if let userID = Auth.auth().currentUser?.uid {
-            db.collection("users").document(userID).collection("events").document(event.id).collection("records").order(by: "date").getDocuments { (snapshot, error) in
-                if let snapshot = snapshot{
-                    
-                    guard error == nil else {
-                        print("記録取得時のエラー\(error!)")
-                        return
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        db.collection("users").document(userID).collection("events").document(event.id).collection("records").order(by: "date").getDocuments { (snapshot, error) in
+            guard error == nil else {
+                print("記録取得時のエラー\(error!)")
+                return
+            }
+            guard let snapshot = snapshot else { return }
+            DispatchQueue.main.async {
+                snapshot.documents.forEach { d in
+                    self.latestID = d.documentID
+                    let timeStamp: Timestamp = d["date"] as? Timestamp ?? Timestamp()
+                    let date = timeStamp.dateValue()
+                    //記録に間が空いている場合はダミーを作成
+                    guard let oldRecord = self.oldRecord else { return }
+                    var dateDifference = (Calendar.current.dateComponents([.day], from: oldRecord.date, to: timeStamp.dateValue())).day! - 1
+                    while dateDifference > 0 {
+                        self.records.append(Record(id: UUID().uuidString, date: Date(timeInterval: TimeInterval(-60*60*24*dateDifference), since: date), weight: oldRecord.weight, rep: oldRecord.rep, dummy: true))
+                        dateDifference -= 1
                     }
-                    
-                    DispatchQueue.main.async {
-                            snapshot.documents.forEach { d in
-                                self.latestID = d.documentID
-                                let timeStamp: Timestamp = d["date"] as? Timestamp ?? Timestamp()
-                                let date = timeStamp.dateValue()
-                                //記録に間が空いている場合はダミーを作成
-                                if let oldRecord = self.oldRecord {
-                                    var dateDifference = (Calendar.current.dateComponents([.day], from: oldRecord.date, to: timeStamp.dateValue())).day! - 1
-                                    while dateDifference > 0 {
-                                        self.records.append(Record(id: UUID().uuidString, date: Date(timeInterval: TimeInterval(-60*60*24*dateDifference), since: date), weight: oldRecord.weight, rep: oldRecord.rep, dummy: true))
-                                        dateDifference -= 1
-                                    }
-                                }
-                                let record = Record(id: d.documentID, date: date, weight: d["weight"] as? Float ?? 0, rep: d["rep"] as? Int ?? 0, dummy: false)
-                                self.oldRecord = record
-                                self.records.append(record)
+                    let record = Record(id: d.documentID, date: date, weight: d["weight"] as? Float ?? 0, rep: d["rep"] as? Int ?? 0, dummy: false)
+                    self.oldRecord = record
+                    self.records.append(record)
+                }
+                //3日平均、9日平均、27日平均の作成
+                let periodArray = [3,9,27]
+                for period in periodArray {
+                    var totalDate = 0
+                    var totalWeight: Float = 0
+                    var totalRep = 0
+                    let fraction = self.records.count % period
+                    var created = false
+                    self.records.forEach { record in
+                        totalWeight += record.weight
+                        totalRep += record.rep
+                        totalDate += 1
+                        //余った部分を最初に作成
+                        if fraction != 0 && fraction == totalDate && created == false {
+                            let recordID = UUID().uuidString
+                            if period == 3 {
+                                self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
+                                self.latestID3 = recordID
+                            } else if period == 9 {
+                                self.records9.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
+                                self.latestID9 = recordID
+                            } else if period == 27 {
+                                self.records27.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
+                                self.latestID27 = recordID
                             }
-                            //3日平均、9日平均、27日平均の作成
-                            let periodArray = [3,9,27]
-                            for period in periodArray {
-                                var totalDate = 0
-                                var totalWeight: Float = 0
-                                var totalRep = 0
-                                let fraction = self.records.count % period
-                                var created = false
-                                self.records.forEach { record in
-                                    totalWeight += record.weight
-                                    totalRep += record.rep
-                                    totalDate += 1
-                                    //余った部分を最初に作成
-                                    if fraction != 0 && fraction == totalDate && created == false {
-                                        let recordID = UUID().uuidString
-                                        if period == 3 {
-                                            self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                            self.latestID3 = recordID
-                                        } else if period == 9 {
-                                            self.records9.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                            self.latestID9 = recordID
-                                        } else if period == 27 {
-                                            self.records27.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                            self.latestID27 = recordID
-                                        }
-                                        created = true
-                                        totalWeight = 0
-                                        totalRep = 0
-                                        totalDate = 0
-                                    }
-                                    //平均を作成
-                                    if totalDate == period {
-                                        let recordID = UUID().uuidString
-                                        if period == 3 {
-                                            self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                            self.latestID3 = recordID
-                                        } else if period == 9 {
-                                            self.records9.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                            self.latestID9 = recordID
-                                        } else if period == 27 {
-                                            self.records27.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                            self.latestID27 = recordID
-                                        }
-                                        totalWeight = 0
-                                        totalRep = 0
-                                        totalDate = 0
-                                    }
-                                }
-                            }
-                            //最大重量
-                            snapshot.documents.forEach { d in
-                                if self.maxWeight < d["weight"] as? Float ?? 0.0 {
-                                    self.maxWeight = d["weight"] as? Float ?? 0.0
-                                }
-                            }
+                            created = true
+                            totalWeight = 0
+                            totalRep = 0
+                            totalDate = 0
                         }
+                        //平均を作成
+                        if totalDate == period {
+                            let recordID = UUID().uuidString
+                            if period == 3 {
+                                self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
+                                self.latestID3 = recordID
+                            } else if period == 9 {
+                                self.records9.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
+                                self.latestID9 = recordID
+                            } else if period == 27 {
+                                self.records27.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
+                                self.latestID27 = recordID
+                            }
+                            totalWeight = 0
+                            totalRep = 0
+                            totalDate = 0
+                        }
+                    }
+                }
+                //最大重量
+                snapshot.documents.forEach { d in
+                    if self.maxWeight < d["weight"] as? Float ?? 0.0 {
+                        self.maxWeight = d["weight"] as? Float ?? 0.0
+                    }
                 }
             }
-
         }
     }
     //記録
     func addRecord(event: Event, weight: Float, rep: Int) {
         let db = Firestore.firestore()
-        if let userID = Auth.auth().currentUser?.uid {
-            db.collection("users").document(userID).collection("events").document(event.id).setData(["name": event.name, "latestWeight": weight, "latestRep": rep, "latestDate": Date()]) { error in
-                guard error == nil else {
-                    print("記録追加時（種目更新）のエラー\(error!)")
-                    return
-                }
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        db.collection("users").document(userID).collection("events").document(event.id).setData(["name": event.name, "latestWeight": weight, "latestRep": rep, "latestDate": Date()]) { error in
+            guard error == nil else {
+                print("記録追加時（種目更新）のエラー\(error!)")
+                return
             }
-            //トップページの最新の記録も更新
-            db.collection("users").document(userID).collection("events").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep]) { error in
-                guard error == nil else {
-                    print("記録追加時のエラー\(error!)")
-                    return
-                }
+        }
+        //トップページの最新の記録も更新
+        db.collection("users").document(userID).collection("events").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep]) { error in
+            guard error == nil else {
+                print("記録追加時のエラー\(error!)")
+                return
             }
         }
     }
     //記録を上書き
     func updateRecord(event: Event, weight: Float, rep: Int) {
         let db = Firestore.firestore()
-        if let userID = Auth.auth().currentUser?.uid {
-            //一番新しい記録を削除
-            db.collection("users").document(userID).collection("events").document(event.id).collection("records").order(by: "date", descending: true).limit(to: 1).getDocuments { snapshot, error in
-                
-                guard error == nil else {
-                    print("記録更新時（古い記録削除）のエラー\(error!)")
-                    return
-                }
-                
-                if let snapshot = snapshot {
-                    snapshot.documents.forEach { d in
-                        let latestRecordID = d.documentID
-                        db.collection("users").document(userID).collection("events").document(event.id).collection("records").document(latestRecordID).delete()
-                    }
-                }
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        //一番新しい記録を削除
+        db.collection("users").document(userID).collection("events").document(event.id).collection("records").order(by: "date", descending: true).limit(to: 1).getDocuments { snapshot, error in
+            guard error == nil else {
+                print("記録更新時（古い記録削除）のエラー\(error!)")
+                return
             }
-            //トップページの最新の記録も更新
-            db.collection("users").document(userID).collection("events").document(event.id).setData(["name": event.name, "latestWeight": weight, "latestRep": rep,"latestDate": Date()]) { error in
-                guard error == nil else {
-                    print("記録更新時（種目更新）のエラー\(error!)")
-                    return
-                }
+            guard let snapshot = snapshot else { return }
+            snapshot.documents.forEach { d in
+                let latestRecordID = d.documentID
+                db.collection("users").document(userID).collection("events").document(event.id).collection("records").document(latestRecordID).delete()
             }
-            //記録を上書き
-            db.collection("users").document(userID).collection("events").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep]) { error in
-                guard error == nil else {
-                    print("記録更新時のエラー\(error!)")
-                    return
-                }
+        }
+        //トップページの最新の記録も更新
+        db.collection("users").document(userID).collection("events").document(event.id).setData(["name": event.name, "latestWeight": weight, "latestRep": rep,"latestDate": Date()]) { error in
+            guard error == nil else {
+                print("記録更新時（種目更新）のエラー\(error!)")
+                return
+            }
+        }
+        //記録を上書き
+        db.collection("users").document(userID).collection("events").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep]) { error in
+            guard error == nil else {
+                print("記録更新時のエラー\(error!)")
+                return
             }
         }
     }

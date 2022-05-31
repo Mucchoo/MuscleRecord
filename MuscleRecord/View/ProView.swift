@@ -36,14 +36,17 @@ struct ProView: View {
                     Button( action: {
                         Purchases.shared.getOfferings { (offerings, error) in
                             guard error == nil else {
-                                print("内課金購入時のエラー\(error!)")
+                                print("内課金取得時のエラー\(error!)")
                                 return
                             }
-                            if let package = offerings?.current?.lifetime?.storeProduct {
-                                Purchases.shared.purchase(product: package) { (transaction, customerInfo, error, userCancelled) in
-                                    if customerInfo?.entitlements.all["Pro"]?.isActive == true {
-                                        shouldPopToRootView = false
-                                    }
+                            guard let package = offerings?.current?.lifetime?.storeProduct else { return }
+                            Purchases.shared.purchase(product: package) { (transaction, customerInfo, error, userCancelled) in
+                                guard error == nil else {
+                                    print("内課金購入時のエラー\(error!)")
+                                    return
+                                }
+                                if customerInfo?.entitlements.all["Pro"]?.isActive == true {
+                                    shouldPopToRootView = false
                                 }
                             }
                         }
