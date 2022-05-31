@@ -18,14 +18,6 @@ struct ChangeInfoView: View {
     @State private var isError = false
     @State private var showEmailAlert = false
     @State private var showPasswordAlert = false
-    var window: UIWindow? {
-        guard let scene = UIApplication.shared.connectedScenes.first,
-              let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
-              let window = windowSceneDelegate.window else {
-            return nil
-        }
-        return window
-    }
     
     enum Focus {
         case email, password, confirm
@@ -78,7 +70,7 @@ struct ChangeInfoView: View {
                         //成功アラート
                         } else {
                             return Alert(title: Text("メールアドレスが更新されました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
-                                window?.rootViewController?.dismiss(animated: true, completion: nil)
+                                Window.first?.rootViewController?.dismiss(animated: true, completion: nil)
                             }))
                         }
                     }
@@ -129,7 +121,7 @@ struct ChangeInfoView: View {
                         //成功アラート
                         } else {
                             return Alert(title: Text("パスワードが更新されました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
-                                window?.rootViewController?.dismiss(animated: true, completion: nil)
+                                Window.first?.rootViewController?.dismiss(animated: true, completion: nil)
                             }))
                         }
                     }

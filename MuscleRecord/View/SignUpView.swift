@@ -18,14 +18,6 @@ struct SignUpView: View {
     @State private var isShowAlert = false
     @State private var isError = false
     @State var showSignIn = false
-    private var window: UIWindow? {
-        guard let scene = UIApplication.shared.connectedScenes.first,
-              let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
-              let window = windowSceneDelegate.window else {
-            return nil
-        }
-        return window
-    }
     
     enum Focus {
         case email, password, confirm
@@ -94,7 +86,7 @@ struct SignUpView: View {
                     //成功アラート
                     } else {
                         return Alert(title: Text("アカウントが作成されました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
-                            window?.rootViewController?.dismiss(animated: true, completion: nil)
+                            Window.first?.rootViewController?.dismiss(animated: true, completion: nil)
                         }))
                     }
                 }
