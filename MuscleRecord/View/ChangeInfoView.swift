@@ -12,12 +12,12 @@ struct ChangeInfoView: View {
     @ObservedObject var viewModel = ViewModel()
     @FocusState private var focus: Focus?
     @State private var email = ""
-    @State private var password = ""
     @State private var confirm = ""
+    @State private var password = ""
+    @State private var errorMessage = ""
+    @State private var isError = false
     @State private var showEmailAlert = false
     @State private var showPasswordAlert = false
-    @State private var isError = false
-    @State private var errorMessage = ""
     var window: UIWindow? {
         guard let scene = UIApplication.shared.connectedScenes.first,
               let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,

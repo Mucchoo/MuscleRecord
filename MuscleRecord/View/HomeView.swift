@@ -9,9 +9,8 @@ import SwiftUI
 import Firebase
 import StoreKit
 
-struct MuscleRecordView: View {
+struct HomeView: View {
     @ObservedObject var viewModel = ViewModel()
-    @State private var date = Date()
     @State private var showAlert = false
     @State private var showPro = false
     @State private var isPro = false
@@ -35,10 +34,10 @@ struct MuscleRecordView: View {
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(viewModel.getThemeColor())
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
         //20回起動毎にレビューアラートを表示
-        if UserDefaults.standard.integer(forKey: "LaunchedTimes") > 20 {
+        if UserDefaults.standard.integer(forKey: "launchedTimes") > 20 {
             if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: scene)
-                UserDefaults.standard.set(0, forKey: "LaunchedTimes")
+                UserDefaults.standard.set(0, forKey: "launchedTimes")
             }
         }
     }

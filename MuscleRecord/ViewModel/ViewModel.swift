@@ -29,6 +29,12 @@ class ViewModel: ObservableObject {
     func customerInfo() -> Bool {
         var isPro = false
         Purchases.shared.getCustomerInfo { (customerInfo, error) in
+            
+            guard error == nil else {
+                print("内課金購入時のエラー\(error!)")
+                return
+            }
+            
             if customerInfo?.entitlements["Pro"]?.isActive == true {
                 isPro = true
             }
@@ -66,10 +72,9 @@ class ViewModel: ObservableObject {
         let db = Firestore.firestore()
         if let userID = Auth.auth().currentUser?.uid {
             db.collection("users").document(userID).collection("events").document(event.id).updateData(["name": newName]) { error in
-                if let error = error {
-                    print("updateEvent中のエラー: \(error)")
-                } else {
-                    print("updateEvent成功")
+                guard error == nil else {
+                    print("種目更新時のエラー\(error!)")
+                    return
                 }
             }
         }
@@ -79,10 +84,9 @@ class ViewModel: ObservableObject {
         let db = Firestore.firestore()
         if let userID = Auth.auth().currentUser?.uid {
             db.collection("users").document(userID).collection("events").document(event.id).delete() { error in
-                if let error = error {
-                    print("deleteEvent中のエラー: \(error)")
-                } else {
-                    print("deleteEvent成功")
+                guard error == nil else {
+                    print("種目削除時のエラー\(error!)")
+                    return
                 }
             }
         }
@@ -92,10 +96,9 @@ class ViewModel: ObservableObject {
         let db = Firestore.firestore()
         if let userID = Auth.auth().currentUser?.uid {
             db.collection("users").document(userID).collection("events").addDocument(data: ["name": name, "latestWeight": 0.0, "latestRep": 0, "latestDate": Date(timeInterval: -60*60*24, since: .now)]) { error in
-                if let error = error {
-                    print("addEvent中のエラー: \(error)")
-                } else {
-                    print("addEvent成功")
+                guard error == nil else {
+                    print("種目追加時のエラー\(error!)")
+                    return
                 }
             }
         }
@@ -105,16 +108,17 @@ class ViewModel: ObservableObject {
         let db = Firestore.firestore()
         if let userID = Auth.auth().currentUser?.uid {
             db.collection("users").document(userID).collection("events").getDocuments { snapshot, error in
+                
+                guard error == nil else {
+                    print("種目取得時のエラー\(error!)")
+                    return
+                }
+                
                 if let snapshot = snapshot{
-                    if let error = error {
-                        print("getEvent中のエラー: \(error)")
-                    } else {
-                        print("getEvent成功")
-                        DispatchQueue.main.async {
-                            self.events = snapshot.documents.map { d in
-                                let timeStamp = d["latestDate"] as! Timestamp
-                                return Event(id: d.documentID, name: d["name"] as? String ?? "", latestWeight: d["latestWeight"] as? Float ?? 0.0, latestRep: d["latestRep"] as? Int ?? 0, latestDate: timeStamp.dateValue())
-                            }
+                    DispatchQueue.main.async {
+                        self.events = snapshot.documents.map { d in
+                            let timeStamp = d["latestDate"] as! Timestamp
+                            return Event(id: d.documentID, name: d["name"] as? String ?? "", latestWeight: d["latestWeight"] as? Float ?? 0.0, latestRep: d["latestRep"] as? Int ?? 0, latestDate: timeStamp.dateValue())
                         }
                     }
                 }
@@ -127,11 +131,13 @@ class ViewModel: ObservableObject {
         if let userID = Auth.auth().currentUser?.uid {
             db.collection("users").document(userID).collection("events").document(event.id).collection("records").order(by: "date").getDocuments { (snapshot, error) in
                 if let snapshot = snapshot{
-                    if let error = error {
-                        print("getRecord中のエラー: \(error)")
-                    } else {
-                        print("getRecord成功")
-                        DispatchQueue.main.async {
+                    
+                    guard error == nil else {
+                        print("記録取得時のエラー\(error!)")
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
                             snapshot.documents.forEach { d in
                                 self.latestID = d.documentID
                                 let timeStamp: Timestamp = d["date"] as? Timestamp ?? Timestamp()
@@ -204,8 +210,6 @@ class ViewModel: ObservableObject {
                                 }
                             }
                         }
-                        
-                    }
                 }
             }
 
@@ -216,18 +220,16 @@ class ViewModel: ObservableObject {
         let db = Firestore.firestore()
         if let userID = Auth.auth().currentUser?.uid {
             db.collection("users").document(userID).collection("events").document(event.id).setData(["name": event.name, "latestWeight": weight, "latestRep": rep, "latestDate": Date()]) { error in
-                if let error = error {
-                    print("addRecord(event)中のエラー: \(error)")
-                } else {
-                    print("addRecord(event)成功")
+                guard error == nil else {
+                    print("記録追加時（種目更新）のエラー\(error!)")
+                    return
                 }
             }
             //トップページの最新の記録も更新
             db.collection("users").document(userID).collection("events").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep]) { error in
-                if let error = error {
-                    print("addRecord(record)中のエラー: \(error)")
-                } else {
-                    print("addRecord(record)成功")
+                guard error == nil else {
+                    print("記録追加時のエラー\(error!)")
+                    return
                 }
             }
         }
@@ -238,32 +240,31 @@ class ViewModel: ObservableObject {
         if let userID = Auth.auth().currentUser?.uid {
             //一番新しい記録を削除
             db.collection("users").document(userID).collection("events").document(event.id).collection("records").order(by: "date", descending: true).limit(to: 1).getDocuments { snapshot, error in
+                
+                guard error == nil else {
+                    print("記録更新時（古い記録削除）のエラー\(error!)")
+                    return
+                }
+                
                 if let snapshot = snapshot {
-                    if let error = error {
-                        print("updateRecord(delete)中のエラー: \(error)")
-                    } else {
-                        print("updateRecord(delete)成功")
-                        snapshot.documents.forEach { d in
-                            let latestRecordID = d.documentID
-                            db.collection("users").document(userID).collection("events").document(event.id).collection("records").document(latestRecordID).delete()
-                        }
+                    snapshot.documents.forEach { d in
+                        let latestRecordID = d.documentID
+                        db.collection("users").document(userID).collection("events").document(event.id).collection("records").document(latestRecordID).delete()
                     }
                 }
             }
             //トップページの最新の記録も更新
             db.collection("users").document(userID).collection("events").document(event.id).setData(["name": event.name, "latestWeight": weight, "latestRep": rep,"latestDate": Date()]) { error in
-                if let error = error {
-                    print("updateRecord(event)中のエラー: \(error)")
-                } else {
-                    print("updateRecord(event)成功")
+                guard error == nil else {
+                    print("記録更新時（種目更新）のエラー\(error!)")
+                    return
                 }
             }
             //記録を上書き
             db.collection("users").document(userID).collection("events").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep]) { error in
-                if let error = error {
-                    print("updateRecord(record)中のエラー: \(error)")
-                } else {
-                    print("updateRecord(record)成功")
+                guard error == nil else {
+                    print("記録更新時のエラー\(error!)")
+                    return
                 }
             }
         }

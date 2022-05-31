@@ -13,10 +13,10 @@ struct ReauthenticateView: View {
     @FocusState private var focus: Focus?
     @State private var email = ""
     @State private var password = ""
-    @State private var showResetPassword = false
-    @State private var showChangeInfo = false
-    @State private var isShowAlert = false
     @State private var errorMessage = ""
+    @State private var isShowingAlert = false
+    @State private var isShowingChangeInfo = false
+    @State private var isShowingResetPassword = false
     
     enum Focus {
         case email, password
@@ -54,10 +54,10 @@ struct ReauthenticateView: View {
                     errorMessage = ""
                     if email.isEmpty {
                         errorMessage = "メールアドレスが入力されていません"
-                        isShowAlert = true
+                        isShowingAlert = true
                     } else if password.isEmpty {
                         errorMessage = "パスワードが入力されていません"
-                        isShowAlert = true
+                        isShowingAlert = true
                     } else {
                         signIn()
                     }
@@ -65,12 +65,12 @@ struct ReauthenticateView: View {
                     ButtonView(text: "ログイン").padding(.top, 20)
                 }
                 //アカウント情報変更ページ
-                .sheet(isPresented: $showChangeInfo) {
+                .sheet(isPresented: $isShowingChangeInfo) {
                     ChangeInfoView()
                 }
                 //パスワードを忘れたボタン
                 Button {
-                    showResetPassword = true
+                    isShowingResetPassword = true
                 } label: {
                     Text("パスワードを忘れた")
                         .font(.headline)
@@ -78,11 +78,11 @@ struct ReauthenticateView: View {
                         .padding(.top, 30)
                 }
                 //パスワード変更ページ
-                .sheet(isPresented: $showResetPassword) {
+                .sheet(isPresented: $isShowingResetPassword) {
                     ResetPasswordView()
                 }
                 //エラーアラート
-                .alert(isPresented: $isShowAlert) {
+                .alert(isPresented: $isShowingAlert) {
                     return Alert(title: Text(""), message: Text(errorMessage), dismissButton: .destructive(Text("OK")))
                 }
                 Spacer()
@@ -93,9 +93,9 @@ struct ReauthenticateView: View {
     private func signIn() {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if authResult?.user != nil {
-                showChangeInfo = true
+                isShowingChangeInfo = true
             } else {
-                isShowAlert = true
+                isShowingAlert = true
                 if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
                     switch errorCode {
                     case .invalidEmail:
@@ -107,7 +107,7 @@ struct ReauthenticateView: View {
                     default:
                         errorMessage = error.domain
                     }
-                    isShowAlert = true
+                    isShowingAlert = true
                 }
             }
         }

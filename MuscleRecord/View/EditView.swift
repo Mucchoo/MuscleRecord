@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct EditView: View {
+    @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel = ViewModel()
-    @Environment(\.dismiss) var dismiss
     @FocusState private var focus: Bool
-    @State private var name = ""
+    @State private var itemName = ""
     @State private var showAlert = false
     var event: Event
     
@@ -26,14 +26,14 @@ struct EditView: View {
                     }
                 VStack(spacing: 0){
                     //種目名textfield
-                    TextFieldView(title: "種目名", text: $name, placeHolder: "種目名を入力してください", isSecure: false)
+                    TextFieldView(title: "種目名", text: $itemName, placeHolder: "種目名を入力してください", isSecure: false)
                         .focused($focus)
                         .onAppear{
-                            self.name = event.name
+                            self.itemName = event.name
                         }
                     //上書きボタン
                     Button( action: {
-                        viewModel.updateEvent(event: event, newName: name)
+                        viewModel.updateEvent(event: event, newName: itemName)
                         dismiss()
                     }){
                         ButtonView(text: "名前を上書き")

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AddView: View {
-    @Environment(\.dismiss) var dismiss
-    @ObservedObject var viewModel = ViewModel()
+    @Environment(\.dismiss) private var dismiss
+    @ObservedObject private var viewModel = ViewModel()
     @FocusState private var focus: Bool
     @State private var name = ""
     

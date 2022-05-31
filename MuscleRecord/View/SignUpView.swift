@@ -12,11 +12,11 @@ struct SignUpView: View {
     @ObservedObject var viewModel = ViewModel()
     @FocusState private var focus: Focus?
     @State private var email = ""
-    @State private var password = ""
     @State private var confirm = ""
+    @State private var password = ""
+    @State private var errorMessage = ""
     @State private var isShowAlert = false
     @State private var isError = false
-    @State private var errorMessage = ""
     @State var showSignIn = false
     private var window: UIWindow? {
         guard let scene = UIApplication.shared.connectedScenes.first,

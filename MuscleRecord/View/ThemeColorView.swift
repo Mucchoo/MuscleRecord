@@ -14,7 +14,7 @@ struct ThemeColorView: View {
     var body: some View {
         if colorChanged {
             //色が変更されたらトップページに切り替える
-            MuscleRecordView()
+            HomeView()
             //既存のナビゲーションバーを削除
             .navigationBarHidden(true)
         } else {

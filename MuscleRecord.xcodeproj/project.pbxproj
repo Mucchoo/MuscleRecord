@@ -45,7 +45,7 @@
 		2AEA33B4281108C900E968FB /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA33B3281108C900E968FB /* SignUpView.swift */; };
 		2AFDF1A427ED85F200A03ACE /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A327ED85F200A03ACE /* GraphView.swift */; };
 		2AFDF1A627ED861100A03ACE /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A527ED861100A03ACE /* SettingView.swift */; };
-		2AFDF1A827ED869500A03ACE /* MuscleRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A727ED869500A03ACE /* MuscleRecordView.swift */; };
+		2AFDF1A827ED869500A03ACE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A727ED869500A03ACE /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,7 +87,7 @@
 		2AEA33B3281108C900E968FB /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		2AFDF1A327ED85F200A03ACE /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		2AFDF1A527ED861100A03ACE /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		2AFDF1A727ED869500A03ACE /* MuscleRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleRecordView.swift; sourceTree = "<group>"; };
+		2AFDF1A727ED869500A03ACE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +124,7 @@
 				2A96A78627F2BBD000A37A43 /* FormRowView.swift */,
 				2AFDF1A327ED85F200A03ACE /* GraphView.swift */,
 				2AACB837280D46B100ADCA84 /* GraphBodyView.swift */,
-				2AFDF1A727ED869500A03ACE /* MuscleRecordView.swift */,
+				2AFDF1A727ED869500A03ACE /* HomeView.swift */,
 				2A6F35FD2814FA3100885CE9 /* MailView.swift */,
 				2A23193C2806725200192216 /* ProView.swift */,
 				2A048CB3280C270400866E56 /* ProTitleView.swift */,
@@ -304,7 +304,7 @@
 				2AEA33B4281108C900E968FB /* SignUpView.swift in Sources */,
 				2A543DCD27F9C7670051665E /* ViewModel.swift in Sources */,
 				2AD99F8527F3EF760007E152 /* AddView.swift in Sources */,
-				2AFDF1A827ED869500A03ACE /* MuscleRecordView.swift in Sources */,
+				2AFDF1A827ED869500A03ACE /* HomeView.swift in Sources */,
 				2A3C7E6127FC2C9800B1E4EB /* Record.swift in Sources */,
 				2A048CBC280C356A00866E56 /* TutorialView.swift in Sources */,
 				2A6F35FA2814F9D000885CE9 /* Email.swift in Sources */,

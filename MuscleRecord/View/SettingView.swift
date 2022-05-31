@@ -11,13 +11,13 @@ import StoreKit
 
 struct SettingView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var rootIsActive : Bool
     @ObservedObject var viewModel = ViewModel()
+    @Binding var rootIsActive : Bool
     @State private var isActive = false
+    @State private var showAlert = false
+    @State var showReauthenticate = false
     @State var showTutorial = false
     @State var showMail = false
-    @State var showAlert = false
-    @State var showReauthenticate = false
     @State private var mailData = Email(subject: "ご意見・ご要望", recipients: ["yazujumusa@gmail.com"], message: "\n\n\n\n\nーーーーーーーーーーーーーーーーー\nこの上へお気軽にご記入ください。\n筋トレ記録")
     
     var body: some View {
@@ -136,7 +136,7 @@ struct SettingView: View {
             try Auth.auth().signOut()
             dismiss()
         } catch let signOutError as NSError {
-            print("サインアウトエラー: %@", signOutError)
+            print("サインアウトエラー\(signOutError)")
         }
     }
 }

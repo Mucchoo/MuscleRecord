@@ -10,8 +10,8 @@ import RevenueCat
 
 struct ProView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var shouldPopToRootView : Bool
     @ObservedObject var viewModel = ViewModel()
+    @Binding var shouldPopToRootView : Bool
     @State private var showAlert = false
     
     var body: some View {
@@ -35,6 +35,10 @@ struct ProView: View {
                     //購入ボタン
                     Button( action: {
                         Purchases.shared.getOfferings { (offerings, error) in
+                            guard error == nil else {
+                                print("内課金購入時のエラー\(error!)")
+                                return
+                            }
                             if let package = offerings?.current?.lifetime?.storeProduct {
                                 Purchases.shared.purchase(product: package) { (transaction, customerInfo, error, userCancelled) in
                                     if customerInfo?.entitlements.all["Pro"]?.isActive == true {
@@ -50,6 +54,10 @@ struct ProView: View {
                     //復元ボタン
                     Button( action: {
                         Purchases.shared.restorePurchases { customerInfo, error in
+                            guard error == nil else {
+                                print("内課金復元時のエラー\(error!)")
+                                return
+                            }
                             if customerInfo?.entitlements.all["Pro"]?.isActive == true {
                                 showAlert = true
                             }

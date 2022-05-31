@@ -13,10 +13,10 @@ struct SignInView: View {
     @FocusState private var focus: Focus?
     @State private var email = ""
     @State private var password = ""
+    @State private var errorMessage = ""
     @State private var showResetPassword = false
     @State private var isShowAlert = false
     @State private var isError = false
-    @State private var errorMessage = ""
     private var window: UIWindow? {
         guard let scene = UIApplication.shared.connectedScenes.first,
               let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,

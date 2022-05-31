@@ -12,11 +12,11 @@ struct ResetPasswordView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = ViewModel()
     @FocusState private var focus: Bool
-    @State private var email = ""
-    @State private var isSignedIn = false
-    @State private var isShowAlert = false
-    @State private var isError = false
     @State private var errorMessage = ""
+    @State private var email = ""
+    @State private var isError = false
+    @State private var isSignedIn = false
+    @State private var isShowingAlert = false
     
     var body: some View {
         ZStack{
@@ -41,15 +41,20 @@ struct ResetPasswordView: View {
                     if email.isEmpty {
                         errorMessage = "メールアドレスが入力されていません"
                         isError = true
-                        isShowAlert = true
+                        isShowingAlert = true
                     } else {
-                        Auth.auth().sendPasswordReset(withEmail: email) { error in }
-                        isShowAlert = true
+                        Auth.auth().sendPasswordReset(withEmail: email) { error in
+                            guard error == nil else {
+                                print("パスワードリセット時のエラー\(error!)")
+                                return
+                            }
+                        }
+                        isShowingAlert = true
                     }
                 }){
                     ButtonView(text: "パスワードを再設定").padding(.top, 20)
                 }
-                .alert(isPresented: $isShowAlert) {
+                .alert(isPresented: $isShowingAlert) {
                     //エラーアラート
                     if isError {
                         return Alert(title: Text("エラー"), message: Text(errorMessage), dismissButton: .default(Text("OK"))

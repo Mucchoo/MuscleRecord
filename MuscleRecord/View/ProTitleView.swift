@@ -15,7 +15,9 @@ struct ProTitleView: View {
     //内課金ページのタイトル
     var body: some View {
             HStack {
+                //アイコン
                 ZStack {
+                    //画像かSFSymbolsで表示方法を変更
                     if isImage {
                         RoundedRectangle(cornerRadius: 100)
                             .foregroundColor(viewModel.getThemeColor())
@@ -34,6 +36,7 @@ struct ProTitleView: View {
                             .foregroundColor(viewModel.getThemeColor())
                     }
                 }
+                //タイトル
                 HStack {
                     Text(title)
                         .font(.title3)
