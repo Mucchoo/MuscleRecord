@@ -36,7 +36,6 @@
 		2AA3733627EC507300A885B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA3733527EC507300A885B0 /* Preview Assets.xcassets */; };
 		2AACB82A280D0EB300ADCA84 /* TutorialImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACB829280D0EB300ADCA84 /* TutorialImageView.swift */; };
 		2AACB82C280D0F0E00ADCA84 /* TutorialTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACB82B280D0F0E00ADCA84 /* TutorialTextView.swift */; };
-		2AACB82E280D0F6D00ADCA84 /* TutorialArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACB82D280D0F6D00ADCA84 /* TutorialArrowView.swift */; };
 		2AACB830280D2E7600ADCA84 /* TutorialCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACB82F280D2E7600ADCA84 /* TutorialCardView.swift */; };
 		2AACB832280D3B8400ADCA84 /* SimpleNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACB831280D3B8400ADCA84 /* SimpleNavigationView.swift */; };
 		2AACB838280D46B100ADCA84 /* GraphBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACB837280D46B100ADCA84 /* GraphBodyView.swift */; };
@@ -79,7 +78,6 @@
 		2AA3733527EC507300A885B0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2AACB829280D0EB300ADCA84 /* TutorialImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialImageView.swift; sourceTree = "<group>"; };
 		2AACB82B280D0F0E00ADCA84 /* TutorialTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTextView.swift; sourceTree = "<group>"; };
-		2AACB82D280D0F6D00ADCA84 /* TutorialArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialArrowView.swift; sourceTree = "<group>"; };
 		2AACB82F280D2E7600ADCA84 /* TutorialCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCardView.swift; sourceTree = "<group>"; };
 		2AACB831280D3B8400ADCA84 /* SimpleNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNavigationView.swift; sourceTree = "<group>"; };
 		2AACB837280D46B100ADCA84 /* GraphBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBodyView.swift; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 				2A17A6AD28111AA4007AEE3B /* TextFieldView.swift */,
 				2A048CBB280C356A00866E56 /* TutorialView.swift */,
 				2AACB82F280D2E7600ADCA84 /* TutorialCardView.swift */,
-				2AACB82D280D0F6D00ADCA84 /* TutorialArrowView.swift */,
 				2AACB82B280D0F0E00ADCA84 /* TutorialTextView.swift */,
 				2AACB829280D0EB300ADCA84 /* TutorialImageView.swift */,
 			);
@@ -315,7 +312,6 @@
 				2A048CB4280C270400866E56 /* ProTitleView.swift in Sources */,
 				2AACB82A280D0EB300ADCA84 /* TutorialImageView.swift in Sources */,
 				2A75278728121EE500A0961C /* SignInView.swift in Sources */,
-				2AACB82E280D0F6D00ADCA84 /* TutorialArrowView.swift in Sources */,
 				2AFDF1A627ED861100A03ACE /* SettingView.swift in Sources */,
 				2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */,
 				2A75278E28123EDD00A0961C /* ResetPasswordView.swift in Sources */,

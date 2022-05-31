@@ -29,15 +29,23 @@ struct TutorialView: View {
                         .padding(.bottom, 10)
                     //ページビュー
                     TabView{
+                        //1枚目
                         TutorialCardView {
                             TutorialImageView(image: "Tutorial1")
-                            TutorialArrowView()
+                            Image(systemName: "arrow.down.circle.fill")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(viewModel.getThemeColor())
                             TutorialImageView(image: "Tutorial3")
                             TutorialTextView(text: "まずは右上の ＋ ボタンから種目を追加しましょう")
                         }
+                        //2枚目
                         TutorialCardView {
                             TutorialImageView(image: "Tutorial3")
-                            TutorialArrowView()
+                            Image(systemName: "arrow.down.circle.fill")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(viewModel.getThemeColor())
                             TutorialImageView(image: "Tutorial4")
                             Text("トレーニング後は\(Image(systemName: "pencil.circle.fill"))を押して記録できます")
                                 .font(.headline)
@@ -46,10 +54,12 @@ struct TutorialView: View {
                                 .padding(.bottom, 30)
                                 .foregroundColor(.black)
                         }
+                        //3枚目
                         TutorialCardView {
                             TutorialImageView(image: "Tutorial5")
                             TutorialTextView(text: "記録をすると結果がグラフに表れます")
                         }
+                        //4枚目
                         TutorialCardView {
                             TutorialImageView(image: "Tutorial6")
                             TutorialTextView(text: "記録を続けて成長をデータ化しましょう！")
