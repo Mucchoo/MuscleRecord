@@ -10,9 +10,9 @@ import SwiftUI
 struct ThemeColorView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = ViewModel()
-    @State var colorChanged = false
+    @State var isColorChanged = false
     var body: some View {
-        if colorChanged {
+        if isColorChanged {
             //色が変更されたらトップページに切り替える
             HomeView()
             //既存のナビゲーションバーを削除
@@ -26,7 +26,7 @@ struct ThemeColorView: View {
                             ForEach(0..<3) { i in
                                 Button(action: {
                                     UserDefaults.standard.set(i, forKey: "themeColorNumber")
-                                    colorChanged = true
+                                    isColorChanged = true
                                 }) {
                                     Rectangle()
                                         .foregroundColor(Color("ThemeColor\(i)"))
@@ -37,7 +37,7 @@ struct ThemeColorView: View {
                             ForEach(3..<6) { i in
                                 Button(action: {
                                     UserDefaults.standard.set(i, forKey: "themeColorNumber")
-                                    colorChanged = true
+                                    isColorChanged = true
                                 }) {
                                     Rectangle()
                                         .foregroundColor(Color("ThemeColor\(i)"))

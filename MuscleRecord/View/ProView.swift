@@ -12,7 +12,7 @@ struct ProView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = ViewModel()
     @Binding var shouldPopToRootView : Bool
-    @State private var showAlert = false
+    @State private var isShowingAlert = false
     
     var body: some View {
         SimpleNavigationView(title: "Proをアンロック") {
@@ -62,7 +62,7 @@ struct ProView: View {
                                 return
                             }
                             if customerInfo?.entitlements.all["Pro"]?.isActive == true {
-                                showAlert = true
+                                isShowingAlert = true
                             }
                         }
                     }, label: {
@@ -72,7 +72,7 @@ struct ProView: View {
                 }
                 .padding(20)
                 //復元時のアラート
-                .alert("購入を復元しました", isPresented: $showAlert) {
+                .alert("購入を復元しました", isPresented: $isShowingAlert) {
                     Button("OK") {
                         shouldPopToRootView = false
                     }

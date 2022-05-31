@@ -14,10 +14,10 @@ struct SettingView: View {
     @ObservedObject var viewModel = ViewModel()
     @Binding var rootIsActive : Bool
     @State private var isActive = false
-    @State private var showAlert = false
-    @State var showReauthenticate = false
-    @State var showTutorial = false
-    @State var showMail = false
+    @State private var isShowingAlert = false
+    @State var isShowingReauthenticate = false
+    @State var isShowingTutorial = false
+    @State var isShowingMail = false
     @State private var mailData = Email(subject: "ご意見・ご要望", recipients: ["yazujumusa@gmail.com"], message: "\n\n\n\n\nーーーーーーーーーーーーーーーーー\nこの上へお気軽にご記入ください。\n筋トレ記録")
     
     var body: some View {
@@ -72,12 +72,12 @@ struct SettingView: View {
                     Section(footer: Text("©︎ 2022 Musa Yazuju")){
                         //使い方
                         Button {
-                            showTutorial = true
+                            isShowingTutorial = true
                         } label: {
                             FormRowView(icon: "questionmark", firstText: "使い方", isHidden: false)
                         }
-                        .fullScreenCover(isPresented: $showTutorial) {
-                            TutorialView(showTutorial: $showTutorial)
+                        .fullScreenCover(isPresented: $isShowingTutorial) {
+                            TutorialView(isShowingTutorial: $isShowingTutorial)
                         }
                         //レビュー
                         Button {
@@ -95,29 +95,29 @@ struct SettingView: View {
                         }
                         //お問い合わせ
                         Button {
-                            showMail = true
+                            isShowingMail = true
                         } label: {
                             FormRowView(icon: "envelope", firstText: "ご意見・ご要望", isHidden: false)
                         }
-                        .sheet(isPresented: $showMail) {
+                        .sheet(isPresented: $isShowingMail) {
                             MailView(data: $mailData) { result in }
                         }
                         //アカウント情報変更
                         Button {
-                            showReauthenticate = true
+                            isShowingReauthenticate = true
                         } label: {
                             FormRowView(icon: "person", firstText: "アカウント情報変更", isHidden: false)
                         }
-                        .sheet(isPresented: $showReauthenticate) {
+                        .sheet(isPresented: $isShowingReauthenticate) {
                             ReauthenticateView()
                         }
                         //ログアウト
                         Button(action: {
-                            showAlert = true
+                            isShowingAlert = true
                         }) {
                             FormRowView(icon: "rectangle.portrait.and.arrow.right", firstText: "ログアウト", isHidden: false)
                         }
-                        .alert(isPresented: $showAlert) {
+                        .alert(isPresented: $isShowingAlert) {
                             return Alert(title: Text("本当にログアウトしますか？"), message: Text(""), primaryButton: .cancel(), secondaryButton: .destructive(Text("ログアウト"), action: {
                                 signOut()
                             }))

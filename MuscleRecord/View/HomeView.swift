@@ -11,11 +11,11 @@ import StoreKit
 
 struct HomeView: View {
     @ObservedObject var viewModel = ViewModel()
-    @State private var showAlert = false
-    @State private var showPro = false
+    @State private var isShowingAlert = false
+    @State private var isShowingPro = false
     @State private var isPro = false
-    @State var showTutorial = false
-    @State var isActive : Bool = false
+    @State var isActive = false
+    @State var isShowingTutorial = false
 
     init(){
         //ナビゲーションバーのUI調整
@@ -107,7 +107,7 @@ struct HomeView: View {
                         Spacer()
                     }
                     //6個以上種目を登録する場合アラートを表示し内課金購入ページに遷移
-                    NavigationLink(destination: ProView(shouldPopToRootView: $showPro), isActive: $showPro) {
+                    NavigationLink(destination: ProView(shouldPopToRootView: $isShowingPro), isActive: $isShowingPro) {
                         EmptyView()
                     }
                 }
@@ -135,7 +135,7 @@ struct HomeView: View {
                             }
                         } else {
                             Button( action: {
-                                showAlert = true
+                                isShowingAlert = true
                             }, label: {
                                 Image(systemName: "plus").foregroundColor(.white)
                             })
@@ -150,19 +150,19 @@ struct HomeView: View {
             //ログインしていない場合チュートリアルを表示
             .onAppear {
                 if Auth.auth().currentUser == nil {
-                    showTutorial = true
+                    isShowingTutorial = true
                 }                
             }
             //チュートリアル
-            .fullScreenCover(isPresented: $showTutorial, onDismiss: {
+            .fullScreenCover(isPresented: $isShowingTutorial, onDismiss: {
                 viewModel.getEvent()
             }) {
-                TutorialView(showTutorial: $showTutorial)
+                TutorialView(isShowingTutorial: $isShowingTutorial)
             }
             //非課金状態で6個以上種目を登録する場合アラートを表示
-            .alert(isPresented: $showAlert) {
+            .alert(isPresented: $isShowingAlert) {
                 return Alert(title: Text("無料版で追加できる種目は5個です"), message: Text("Proにをアンロックすれば、無制限に追加することができます。"), primaryButton: .default(Text("閉じる")), secondaryButton: .default(Text("Proを見る"), action: {
-                    showPro = true
+                    isShowingPro = true
                 }))
             }
         }.navigationViewStyle(StackNavigationViewStyle())

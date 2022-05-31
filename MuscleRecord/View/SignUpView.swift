@@ -15,7 +15,7 @@ struct SignUpView: View {
     @State private var confirm = ""
     @State private var password = ""
     @State private var errorMessage = ""
-    @State private var isShowAlert = false
+    @State private var isShowingAlert = false
     @State private var isError = false
     @State var showSignIn = false
     
@@ -50,19 +50,19 @@ struct SignUpView: View {
                     if email.isEmpty {
                         errorMessage = "メールアドレスが入力されていません"
                         isError = true
-                        isShowAlert = true
+                        isShowingAlert = true
                     } else if password.isEmpty {
                         errorMessage = "パスワードが入力されていません"
                         isError = true
-                        isShowAlert = true
+                        isShowingAlert = true
                     } else if confirm.isEmpty {
                         errorMessage = "確認用パスワードが入力されていません"
                         isError = true
-                        isShowAlert = true
+                        isShowingAlert = true
                     } else if password.compare(confirm) != .orderedSame {
                         errorMessage = "パスワードと確認パスワードが一致しません"
                         isError = true
-                        isShowAlert = true
+                        isShowingAlert = true
                     } else {
                         signUp()
                     }
@@ -78,7 +78,7 @@ struct SignUpView: View {
                         .foregroundColor(viewModel.getThemeColor())
                         .padding(.top, 30)
                 }
-                .alert(isPresented: $isShowAlert) {
+                .alert(isPresented: $isShowingAlert) {
                     //エラーアラート
                     if isError {
                         return Alert(title: Text(""), message: Text(errorMessage), dismissButton: .destructive(Text("OK"))
@@ -100,6 +100,7 @@ struct SignUpView: View {
     //アカウント作成
     private func signUp() {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            //不備があればアラートを表示
             if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
                 switch errorCode {
                 case .invalidEmail:
@@ -113,17 +114,16 @@ struct SignUpView: View {
                 }
                 
                 isError = true
-                isShowAlert = true
+                isShowingAlert = true
             }
-            
-            if let _ = authResult?.user {
-                isError = false
-                isShowAlert = true
-                Auth.auth().signIn(withEmail: email, password: password)
-                let db = Firestore.firestore()
-                let userID = Auth.auth().currentUser!.uid
-                db.collection("users").document(userID).setData(["email": email])
-            }
+            //不備がなければアカウント作成
+            guard let _ = authResult?.user else { return }
+            isError = false
+            isShowingAlert = true
+            Auth.auth().signIn(withEmail: email, password: password)
+            let db = Firestore.firestore()
+            let userID = Auth.auth().currentUser!.uid
+            db.collection("users").document(userID).setData(["email": email])
         }
     }
 }

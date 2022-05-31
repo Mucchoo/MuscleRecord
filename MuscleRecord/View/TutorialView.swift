@@ -10,8 +10,8 @@ import Firebase
 
 struct TutorialView: View {
     @ObservedObject var viewModel = ViewModel()
-    @State private var showSignUp = false
-    @Binding var showTutorial: Bool
+    @State private var isShowingSignUp = false
+    @Binding var isShowingTutorial: Bool
     
     var body: some View {
             ZStack(){
@@ -67,10 +67,10 @@ struct TutorialView: View {
                             Button {
                                 //未ログインの場合はアカウント作成ページ
                                 if Auth.auth().currentUser == nil {
-                                    showSignUp = true
+                                    isShowingSignUp = true
                                 //ログイン済みの場合はトップページ
                                 } else {
-                                    showTutorial = false
+                                    isShowingTutorial = false
                                 }
                             } label: {
                                 ButtonView(text: "始める").padding(.vertical, 30)
@@ -85,7 +85,7 @@ struct TutorialView: View {
                     .padding(.bottom, 20)
                 }
             }
-            .sheet(isPresented: $showSignUp) {
+            .sheet(isPresented: $isShowingSignUp) {
                 SignUpView()
             }
     }

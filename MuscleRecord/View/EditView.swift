@@ -10,9 +10,9 @@ import SwiftUI
 struct EditView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel = ViewModel()
-    @FocusState private var focus: Bool
+    @State private var isShowingAlert = false
+    @FocusState private var isFocused: Bool
     @State private var itemName = ""
-    @State private var showAlert = false
     var event: Event
     
     var body: some View {
@@ -22,14 +22,14 @@ struct EditView: View {
                 viewModel.clearColor
                     .edgesIgnoringSafeArea(.all)
                     .onTapGesture {
-                        self.focus = false
+                        isFocused = false
                     }
                 VStack(spacing: 0){
                     //種目名textfield
                     TextFieldView(title: "種目名", text: $itemName, placeHolder: "種目名を入力してください", isSecure: false)
-                        .focused($focus)
+                        .focused($isFocused)
                         .onAppear{
-                            self.itemName = event.name
+                            itemName = event.name
                         }
                     //上書きボタン
                     Button( action: {
@@ -42,7 +42,7 @@ struct EditView: View {
                     }
                     //削除ボタン
                     Button( action: {
-                        showAlert = true
+                        isShowingAlert = true
                     }){
                         Text("種目を削除")
                             .fontWeight(.bold)
@@ -53,7 +53,7 @@ struct EditView: View {
                             .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 2)
                     }
                     //削除時のアラート
-                    .alert(isPresented: $showAlert) {
+                    .alert(isPresented: $isShowingAlert) {
                         return Alert(title: Text("本当に削除しますか？"), message: Text(""), primaryButton: .cancel(), secondaryButton: .destructive(Text("削除"), action: {
                             viewModel.deleteEvent(event: event)
                             dismiss()

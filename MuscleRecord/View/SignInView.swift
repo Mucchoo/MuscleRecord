@@ -14,8 +14,8 @@ struct SignInView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var errorMessage = ""
-    @State private var showResetPassword = false
-    @State private var isShowAlert = false
+    @State private var isShowingResetPassword = false
+    @State private var isShowingAlert = false
     @State private var isError = false
     
     enum Focus {
@@ -46,11 +46,11 @@ struct SignInView: View {
                     if email.isEmpty {
                         isError = true
                         errorMessage = "メールアドレスが入力されていません"
-                        isShowAlert = true
+                        isShowingAlert = true
                     } else if password.isEmpty {
                         isError = true
                         errorMessage = "パスワードが入力されていません"
-                        isShowAlert = true
+                        isShowingAlert = true
                     } else {
                         signIn()
                     }
@@ -59,14 +59,14 @@ struct SignInView: View {
                 }
                 //パスワードを忘れたボタン
                 Button {
-                    showResetPassword = true
+                    isShowingResetPassword = true
                 } label: {
                     Text("パスワードを忘れた")
                         .font(.headline)
                         .foregroundColor(viewModel.getThemeColor())
                         .padding(.top, 30)
                 }
-                .alert(isPresented: $isShowAlert) {
+                .alert(isPresented: $isShowingAlert) {
                     //エラーアラート
                     if isError {
                         return Alert(title: Text(""), message: Text(errorMessage), dismissButton: .destructive(Text("OK"))
@@ -80,7 +80,7 @@ struct SignInView: View {
                 }
                 Spacer()
             }.padding(20)
-        }.sheet(isPresented: $showResetPassword) {
+        }.sheet(isPresented: $isShowingResetPassword) {
             ResetPasswordView()
         }
     }
@@ -88,9 +88,9 @@ struct SignInView: View {
     private func signIn() {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if authResult?.user != nil {
-                isShowAlert = true
+                isShowingAlert = true
             } else {
-                isShowAlert = true
+                isShowingAlert = true
                 isError = true
                 if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
                     switch errorCode {
@@ -103,7 +103,7 @@ struct SignInView: View {
                     default:
                         errorMessage = error.domain
                     }
-                    isShowAlert = true
+                    isShowingAlert = true
                 }
             }
         }

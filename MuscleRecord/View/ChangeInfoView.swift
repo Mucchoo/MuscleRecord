@@ -16,8 +16,8 @@ struct ChangeInfoView: View {
     @State private var password = ""
     @State private var errorMessage = ""
     @State private var isError = false
-    @State private var showEmailAlert = false
-    @State private var showPasswordAlert = false
+    @State private var isShowingEmailAlert = false
+    @State private var isShowingPasswordAlert = false
     
     enum Focus {
         case email, password, confirm
@@ -39,12 +39,12 @@ struct ChangeInfoView: View {
                     //メールアドレス変更ボタン
                     Button( action: {
                         if email.isEmpty {
-                            showEmailAlert = true
+                            isShowingEmailAlert = true
                             isError = true
                             errorMessage = "メールアドレスが入力されていません"
                         } else {
                             Auth.auth().currentUser?.updateEmail(to: email) { error in
-                                showEmailAlert = true
+                                isShowingEmailAlert = true
                                 if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
                                     switch errorCode {
                                     case .invalidEmail:
@@ -63,7 +63,7 @@ struct ChangeInfoView: View {
                     }, label: {
                         ButtonView(text: "メールアドレスを変更").padding(.vertical, 20)
                     })
-                    .alert(isPresented: $showEmailAlert) {
+                    .alert(isPresented: $isShowingEmailAlert) {
                         //エラーアラート
                         if isError {
                             return Alert(title: Text(errorMessage), message: Text(""), dismissButton: .default(Text("OK")))
@@ -82,20 +82,20 @@ struct ChangeInfoView: View {
                     //パスワード変更ボタン
                     Button( action: {
                         if password.isEmpty {
-                            showPasswordAlert = true
+                            isShowingPasswordAlert = true
                             isError = true
                             errorMessage = "パスワードが入力されていません"
                         } else if confirm.isEmpty {
-                            showPasswordAlert = true
+                            isShowingPasswordAlert = true
                             isError = true
                             errorMessage = "確認パスワードが入力されていません"
                         } else if password.compare(self.confirm) != .orderedSame {
-                            showPasswordAlert = true
+                            isShowingPasswordAlert = true
                             isError = true
                             errorMessage = "パスワードと確認パスワードが一致しません"
                         } else {
                             Auth.auth().currentUser?.updatePassword(to: password) { error in
-                                showPasswordAlert = true
+                                isShowingPasswordAlert = true
                                 if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
                                     switch errorCode {
                                     case .weakPassword:
@@ -114,7 +114,7 @@ struct ChangeInfoView: View {
                     }, label: {
                         ButtonView(text: "パスワードを変更").padding(.top, 20)
                     })
-                    .alert(isPresented: $showPasswordAlert) {
+                    .alert(isPresented: $isShowingPasswordAlert) {
                         //エラーアラート
                         if isError {
                             return Alert(title: Text(errorMessage), message: Text(""), dismissButton: .default(Text("OK")))

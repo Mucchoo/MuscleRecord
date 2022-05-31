@@ -120,30 +120,21 @@
 			isa = PBXGroup;
 			children = (
 				2AD99F8427F3EF760007E152 /* AddView.swift */,
-				2A048CB5280C275500866E56 /* ButtonView.swift */,
 				2A817F6227FBC55C00772B6C /* EditView.swift */,
-				2A96A78627F2BBD000A37A43 /* FormRowView.swift */,
-				2AFDF1A327ED85F200A03ACE /* GraphView.swift */,
-				2AACB837280D46B100ADCA84 /* GraphBodyView.swift */,
-				2AFDF1A727ED869500A03ACE /* HomeView.swift */,
-				2A6F35FD2814FA3100885CE9 /* MailView.swift */,
 				2A23193C2806725200192216 /* ProView.swift */,
-				2A048CB3280C270400866E56 /* ProTitleView.swift */,
 				2AD3AC0A28065A7100DE6E00 /* IconView.swift */,
+				2AFDF1A727ED869500A03ACE /* HomeView.swift */,
+				2A75278628121EE500A0961C /* SignInView.swift */,
+				2AFDF1A327ED85F200A03ACE /* GraphView.swift */,
 				2A58E12627F26E1300121A4F /* RecordView.swift */,
+				2AEA33B3281108C900E968FB /* SignUpView.swift */,
+				2AFDF1A527ED861100A03ACE /* SettingView.swift */,
+				2A048CBB280C356A00866E56 /* TutorialView.swift */,
+				2A6F35FF281507B800885CE9 /* ChangeInfoView.swift */,
+				2A5D524B2802704C00F0427D /* ThemeColorView.swift */,
 				2A6F36012815107800885CE9 /* ReauthenticateView.swift */,
 				2A75278D28123EDD00A0961C /* ResetPasswordView.swift */,
-				2AEA33B3281108C900E968FB /* SignUpView.swift */,
-				2A75278628121EE500A0961C /* SignInView.swift */,
-				2AFDF1A527ED861100A03ACE /* SettingView.swift */,
-				2A6F35FF281507B800885CE9 /* ChangeInfoView.swift */,
-				2AACB831280D3B8400ADCA84 /* SimpleNavigationView.swift */,
-				2A5D524B2802704C00F0427D /* ThemeColorView.swift */,
-				2A17A6AD28111AA4007AEE3B /* TextFieldView.swift */,
-				2A048CBB280C356A00866E56 /* TutorialView.swift */,
-				2AACB82F280D2E7600ADCA84 /* TutorialCardView.swift */,
-				2AACB82B280D0F0E00ADCA84 /* TutorialTextView.swift */,
-				2AACB829280D0EB300ADCA84 /* TutorialImageView.swift */,
+				2AF65EF12846439900A6BE42 /* Components */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -204,6 +195,23 @@
 				2AA3733527EC507300A885B0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2AF65EF12846439900A6BE42 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2A6F35FD2814FA3100885CE9 /* MailView.swift */,
+				2A048CB5280C275500866E56 /* ButtonView.swift */,
+				2A048CB3280C270400866E56 /* ProTitleView.swift */,
+				2A17A6AD28111AA4007AEE3B /* TextFieldView.swift */,
+				2A96A78627F2BBD000A37A43 /* FormRowView.swift */,
+				2AACB837280D46B100ADCA84 /* GraphBodyView.swift */,
+				2AACB82B280D0F0E00ADCA84 /* TutorialTextView.swift */,
+				2AACB82F280D2E7600ADCA84 /* TutorialCardView.swift */,
+				2AACB829280D0EB300ADCA84 /* TutorialImageView.swift */,
+				2AACB831280D3B8400ADCA84 /* SimpleNavigationView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -16,10 +16,10 @@ class ViewModel: ObservableObject {
     @Published var records9 = [Record]()
     @Published var records27 = [Record]()
     @Published var maxWeight: Float = 0.0
-    @Published var latestID: String = ""
-    @Published var latestID3: String = ""
-    @Published var latestID9: String = ""
-    @Published var latestID27: String = ""
+    @Published var latestRecord: String = ""
+    @Published var latestRecord3: String = ""
+    @Published var latestRecord9: String = ""
+    @Published var latestRecord27: String = ""
     @Published var oldRecord: Record?
     @Published var fontColor = Color("FontColor")
     @Published var cellColor = Color("CellColor")
@@ -128,7 +128,7 @@ class ViewModel: ObservableObject {
             guard let snapshot = snapshot else { return }
             DispatchQueue.main.async {
                 snapshot.documents.forEach { d in
-                    self.latestID = d.documentID
+                    self.latestRecord = d.documentID
                     let timeStamp: Timestamp = d["date"] as? Timestamp ?? Timestamp()
                     let date = timeStamp.dateValue()
                     //記録に間が空いている場合はダミーを作成
@@ -159,13 +159,13 @@ class ViewModel: ObservableObject {
                             let recordID = UUID().uuidString
                             if period == 3 {
                                 self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestID3 = recordID
+                                self.latestRecord3 = recordID
                             } else if period == 9 {
                                 self.records9.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestID9 = recordID
+                                self.latestRecord9 = recordID
                             } else if period == 27 {
                                 self.records27.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestID27 = recordID
+                                self.latestRecord27 = recordID
                             }
                             created = true
                             totalWeight = 0
@@ -177,13 +177,13 @@ class ViewModel: ObservableObject {
                             let recordID = UUID().uuidString
                             if period == 3 {
                                 self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestID3 = recordID
+                                self.latestRecord3 = recordID
                             } else if period == 9 {
                                 self.records9.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestID9 = recordID
+                                self.latestRecord9 = recordID
                             } else if period == 27 {
                                 self.records27.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestID27 = recordID
+                                self.latestRecord27 = recordID
                             }
                             totalWeight = 0
                             totalRep = 0

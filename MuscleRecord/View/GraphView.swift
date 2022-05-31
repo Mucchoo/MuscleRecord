@@ -9,8 +9,8 @@ import SwiftUI
 
 struct GraphView: View {
     @ObservedObject var viewModel = ViewModel()
-    @State private var periodScale = 0
     private var weightScale: [Float] = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]
+    @State private var graphRange = 0
     var event: Event
     //選択した種目のデータをグラフに表示
     init(event: Event){
@@ -22,7 +22,7 @@ struct GraphView: View {
         SimpleNavigationView(title: event.name) {
             VStack(spacing: 10) {
                 //グラフの表示幅の切り替え
-                Picker("period", selection: self.$periodScale, content: {
+                Picker("period", selection: self.$graphRange, content: {
                     Text("1日毎").tag(0)
                     Text("3日平均").tag(1)
                     Text("9日平均").tag(2)
@@ -53,14 +53,14 @@ struct GraphView: View {
                         .frame(width: 3)
                         .padding(.bottom, 30)
                     //選択した表示幅を反映
-                    if periodScale == 0 {
-                        GraphBodyView(records: viewModel.records, latestID: viewModel.latestID, maxWeight: viewModel.maxWeight)
-                    } else if periodScale == 1 {
-                        GraphBodyView(records: viewModel.records3, latestID: viewModel.latestID3, maxWeight: viewModel.maxWeight)
-                    } else if periodScale == 2 {
-                        GraphBodyView(records: viewModel.records9, latestID: viewModel.latestID9, maxWeight: viewModel.maxWeight)
+                    if graphRange == 0 {
+                        GraphBodyView(records: viewModel.records, latestID: viewModel.latestRecord, maxWeight: viewModel.maxWeight)
+                    } else if graphRange == 1 {
+                        GraphBodyView(records: viewModel.records3, latestID: viewModel.latestRecord3, maxWeight: viewModel.maxWeight)
+                    } else if graphRange == 2 {
+                        GraphBodyView(records: viewModel.records9, latestID: viewModel.latestRecord9, maxWeight: viewModel.maxWeight)
                     } else {
-                        GraphBodyView(records: viewModel.records27, latestID: viewModel.latestID27, maxWeight: viewModel.maxWeight)
+                        GraphBodyView(records: viewModel.records27, latestID: viewModel.latestRecord27, maxWeight: viewModel.maxWeight)
                     }
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
