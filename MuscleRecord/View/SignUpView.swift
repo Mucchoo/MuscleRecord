@@ -100,23 +100,11 @@ struct SignUpView: View {
     //アカウント作成
     private func signUp() {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            //不備があればアラートを表示
-            if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
-                switch errorCode {
-                case .invalidEmail:
-                    errorMessage = "メールアドレスの形式が正しくありません"
-                case .emailAlreadyInUse:
-                    errorMessage = "このメールアドレスは既に登録されています"
-                case .weakPassword:
-                    errorMessage = "パスワードは６文字以上で入力してください"
-                default:
-                    errorMessage = error.domain
-                }
-                
+            if let error = error as NSError? {
+                errorMessage = error.localizedDescription
                 isError = true
                 isShowingAlert = true
             }
-            //不備がなければアカウント作成
             guard let _ = authResult?.user else { return }
             isError = false
             isShowingAlert = true

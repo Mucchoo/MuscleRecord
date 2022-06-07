@@ -92,17 +92,8 @@ struct SignInView: View {
             } else {
                 isShowingAlert = true
                 isError = true
-                if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
-                    switch errorCode {
-                    case .invalidEmail:
-                        errorMessage = "メールアドレスの形式が正しくありません"
-                    case .userNotFound, .wrongPassword:
-                        errorMessage = "メールアドレス、またはパスワードが間違っています"
-                    case .userDisabled:
-                        errorMessage = "このユーザーアカウントは無効化されています"
-                    default:
-                        errorMessage = error.domain
-                    }
+                if let error = error as NSError? {
+                    errorMessage = error.localizedDescription
                     isShowingAlert = true
                 }
             }

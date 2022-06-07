@@ -45,15 +45,8 @@ struct ChangeInfoView: View {
                         } else {
                             Auth.auth().currentUser?.updateEmail(to: email) { error in
                                 isShowingEmailAlert = true
-                                if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
-                                    switch errorCode {
-                                    case .invalidEmail:
-                                        errorMessage = "メールアドレスの形式が正しくありません"
-                                    case .requiresRecentLogin:
-                                        errorMessage = "ログインしてください"
-                                    default:
-                                        errorMessage = error.localizedDescription
-                                    }
+                                if let error = error as NSError? {
+                                    errorMessage = error.localizedDescription
                                     isError = true
                                 } else {
                                     isError = false
@@ -96,15 +89,8 @@ struct ChangeInfoView: View {
                         } else {
                             Auth.auth().currentUser?.updatePassword(to: password) { error in
                                 isShowingPasswordAlert = true
-                                if let error = error as NSError?, let errorCode = AuthErrorCode(rawValue: error.code) {
-                                    switch errorCode {
-                                    case .weakPassword:
-                                        errorMessage = "パスワードは６文字以上で入力してください"
-                                    case .requiresRecentLogin:
-                                        errorMessage = "ログインしてください"
-                                    default:
-                                        errorMessage = error.localizedDescription
-                                    }
+                                if let error = error as NSError? {
+                                    errorMessage = error.localizedDescription
                                     isError = true
                                 } else {
                                     isError = false

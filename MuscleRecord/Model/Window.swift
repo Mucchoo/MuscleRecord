@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Window {
-    //iOS15以降でも使えるwindow
+    //iOS15以降でも警告が出ないwindow
     static var first: UIWindow? {
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
