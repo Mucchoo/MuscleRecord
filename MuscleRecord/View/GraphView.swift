@@ -64,8 +64,7 @@ struct GraphView: View {
                     }
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-            }
-            .padding(10)
+            }.padding(10)
         }
     }
 }

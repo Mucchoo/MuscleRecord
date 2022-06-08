@@ -69,7 +69,7 @@ struct SettingView: View {
                             }.opacity(0.5)
                         }
                     }
-                    Section(footer: Text("©︎ 2022 Musa Yazuju")){
+                    Section(header: Text("アプリケーション"), footer: Text("©︎ 2022 Musa Yazuju")){
                         //使い方
                         Button {
                             isShowingTutorial = true
