@@ -132,11 +132,12 @@ class ViewModel: ObservableObject {
                     let timeStamp: Timestamp = d["date"] as? Timestamp ?? Timestamp()
                     let date = timeStamp.dateValue()
                     //記録に間が空いている場合はダミーを作成
-                    guard let oldRecord = self.oldRecord else { return }
-                    var dateDifference = (Calendar.current.dateComponents([.day], from: oldRecord.date, to: timeStamp.dateValue())).day! - 1
-                    while dateDifference > 0 {
-                        self.records.append(Record(id: UUID().uuidString, date: Date(timeInterval: TimeInterval(-60*60*24*dateDifference), since: date), weight: oldRecord.weight, rep: oldRecord.rep, dummy: true))
-                        dateDifference -= 1
+                    if let oldRecord = self.oldRecord {
+                        var dateDifference = (Calendar.current.dateComponents([.day], from: oldRecord.date, to: timeStamp.dateValue())).day! - 1
+                        while dateDifference > 0 {
+                            self.records.append(Record(id: UUID().uuidString, date: Date(timeInterval: TimeInterval(-60*60*24*dateDifference), since: date), weight: oldRecord.weight, rep: oldRecord.rep, dummy: true))
+                            dateDifference -= 1
+                        }
                     }
                     let record = Record(id: d.documentID, date: date, weight: d["weight"] as? Float ?? 0, rep: d["rep"] as? Int ?? 0, dummy: false)
                     self.oldRecord = record
