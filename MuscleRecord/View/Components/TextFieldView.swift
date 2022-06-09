@@ -32,6 +32,8 @@ struct TextFieldView: View {
                 .frame(height: 50, alignment: .center)
                 .background(viewModel.getThemeColor().opacity(0.1))
                 .cornerRadius(8)
+                .textInputAutocapitalization(.none)
+                .submitLabel(.done)
         } else {
             TextField(placeHolder, text: text)
                 .font(.headline)
@@ -39,6 +41,8 @@ struct TextFieldView: View {
                 .frame(height: 50, alignment: .center)
                 .background(viewModel.getThemeColor().opacity(0.1))
                 .cornerRadius(8)
+                .textInputAutocapitalization(.none)
+                .submitLabel(.done)
         }
     }
 }
