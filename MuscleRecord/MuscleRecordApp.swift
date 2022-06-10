@@ -16,7 +16,7 @@ struct MuscleRecordApp: App {
         //Firebase有効化
         FirebaseApp.configure()
         //内課金有効化
-        Purchases.configure(withAPIKey: "appl_xBBDyDHmiVldcADDnLdXFbOGQRH")
+        Purchases.configure(withAPIKey: "appl_jyRKigvnDCVFFnitqxapmMLiGUx")
         //アプリ起動回数を記録
         let launchedTimes = UserDefaults.standard.object(forKey: "launchedTimes") as? Int ?? 0
         UserDefaults.standard.set(launchedTimes + 1, forKey: "launchedTimes")
