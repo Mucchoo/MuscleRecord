@@ -6,16 +6,15 @@
 //
 
 import SwiftUI
-import Firebase
 
 struct ChangeInfoView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject private var firebaseViewModel = FirebaseViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     @FocusState private var focus: Focus?
+    @State private var error = ""
     @State private var email = ""
     @State private var confirm = ""
     @State private var password = ""
-    @State private var errorMessage = ""
-    @State private var isError = false
     @State private var isShowingEmailAlert = false
     @State private var isShowingPasswordAlert = false
     
@@ -39,32 +38,21 @@ struct ChangeInfoView: View {
                     //メールアドレス変更ボタン
                     Button( action: {
                         if email.isEmpty {
-                            isShowingEmailAlert = true
-                            isError = true
-                            errorMessage = "メールアドレスが入力されていません"
+                            error = "メールアドレスが入力されていません"
                         } else {
-                            Auth.auth().currentUser?.updateEmail(to: email) { error in
-                                isShowingEmailAlert = true
-                                if let error = error as NSError? {
-                                    errorMessage = error.localizedDescription
-                                    isError = true
-                                } else {
-                                    isError = false
-                                }
-                            }
+                            error = firebaseViewModel.changeEmail(into: email) ?? ""
                         }
+                        isShowingEmailAlert = true
                     }, label: {
                         ButtonView(text: "メールアドレスを変更").padding(.vertical, 20)
                     })
                     .alert(isPresented: $isShowingEmailAlert) {
-                        //エラーアラート
-                        if isError {
-                            return Alert(title: Text(errorMessage), message: Text(""), dismissButton: .default(Text("OK")))
-                        //成功アラート
-                        } else {
+                        if error.isEmpty {
                             return Alert(title: Text("メールアドレスが更新されました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
                                 Window.first?.rootViewController?.dismiss(animated: true, completion: nil)
                             }))
+                        } else {
+                            return Alert(title: Text(error), message: Text(""), dismissButton: .default(Text("OK")))
                         }
                     }
                     //パスワード変更フォーム
@@ -75,40 +63,25 @@ struct ChangeInfoView: View {
                     //パスワード変更ボタン
                     Button( action: {
                         if password.isEmpty {
-                            isShowingPasswordAlert = true
-                            isError = true
-                            errorMessage = "パスワードが入力されていません"
+                            error = "パスワードが入力されていません"
                         } else if confirm.isEmpty {
-                            isShowingPasswordAlert = true
-                            isError = true
-                            errorMessage = "確認パスワードが入力されていません"
+                            error = "確認パスワードが入力されていません"
                         } else if password.compare(self.confirm) != .orderedSame {
-                            isShowingPasswordAlert = true
-                            isError = true
-                            errorMessage = "パスワードと確認パスワードが一致しません"
+                            error = "パスワードと確認パスワードが一致しません"
                         } else {
-                            Auth.auth().currentUser?.updatePassword(to: password) { error in
-                                isShowingPasswordAlert = true
-                                if let error = error as NSError? {
-                                    errorMessage = error.localizedDescription
-                                    isError = true
-                                } else {
-                                    isError = false
-                                }
-                            }
+                            error = firebaseViewModel.changePassword(into: password) ?? ""
                         }
+                        isShowingPasswordAlert = true
                     }, label: {
                         ButtonView(text: "パスワードを変更").padding(.top, 20)
                     })
                     .alert(isPresented: $isShowingPasswordAlert) {
-                        //エラーアラート
-                        if isError {
-                            return Alert(title: Text(errorMessage), message: Text(""), dismissButton: .default(Text("OK")))
-                        //成功アラート
-                        } else {
+                        if error.isEmpty {
                             return Alert(title: Text("パスワードが更新されました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
                                 Window.first?.rootViewController?.dismiss(animated: true, completion: nil)
                             }))
+                        } else {
+                            return Alert(title: Text(error), message: Text(""), dismissButton: .default(Text("OK")))
                         }
                     }
                     Spacer()

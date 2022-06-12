@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-import Firebase
 
 struct TutorialView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject private var firebaseViewModel = FirebaseViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     @State private var isShowingSignUp = false
     @Binding var isShowingTutorial: Bool
     
@@ -65,12 +65,10 @@ struct TutorialView: View {
                             TutorialTextView(text: "記録を続けて成長をデータ化しましょう！")
                             //始めるボタン
                             Button {
-                                //未ログインの場合はアカウント作成ページ
-                                if Auth.auth().currentUser == nil {
-                                    isShowingSignUp = true
-                                //ログイン済みの場合はトップページ
-                                } else {
+                                if firebaseViewModel.isLoggedIn() {
                                     isShowingTutorial = false
+                                } else {
+                                    isShowingSignUp = true
                                 }
                             } label: {
                                 ButtonView(text: "始める").padding(.vertical, 30)

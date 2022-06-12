@@ -63,12 +63,10 @@ struct SignInView: View {
                         .padding(.top, 30)
                 }
                 .alert(isPresented: $isShowingAlert) {
-                    //成功
                     if error.isEmpty {
                         return Alert(title: Text("ログインに成功しました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
                             Window.first?.rootViewController?.dismiss(animated: true, completion: nil)
                         }))
-                    //エラー
                     } else {
                         return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text("OK")))
                     }

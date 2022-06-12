@@ -71,12 +71,10 @@ struct SignUpView: View {
                         .padding(.top, 30)
                 }
                 .alert(isPresented: $isShowingAlert) {
-                    //成功
                     if error.isEmpty {
                         return Alert(title: Text("アカウントが作成されました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
                             Window.first?.rootViewController?.dismiss(animated: true, completion: nil)
                         }))
-                    //エラー
                     } else {
                         return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text("OK")))
                     }

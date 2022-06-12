@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
-import Firebase
 
 struct ReauthenticateView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject private var firebaseViewModel = FirebaseViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     @FocusState private var focus: Focus?
+    @State private var error = ""
     @State private var email = ""
     @State private var password = ""
-    @State private var errorMessage = ""
     @State private var isShowingAlert = false
     @State private var isShowingChangeInfo = false
     @State private var isShowingResetPassword = false
@@ -50,16 +50,18 @@ struct ReauthenticateView: View {
                     .focused($focus, equals: .password)
                 //ログインボタン
                 Button( action: {
-                    //不備やエラーを確認
-                    errorMessage = ""
+                    error = ""
                     if email.isEmpty {
-                        errorMessage = "メールアドレスが入力されていません"
-                        isShowingAlert = true
+                        error = "メールアドレスが入力されていません"
                     } else if password.isEmpty {
-                        errorMessage = "パスワードが入力されていません"
-                        isShowingAlert = true
+                        error = "パスワードが入力されていません"
                     } else {
-                        signIn()
+                        error = firebaseViewModel.signIn(email: email, password: password) ?? ""
+                    }
+                    if error.isEmpty {
+                        isShowingChangeInfo = true
+                    } else {
+                        isShowingAlert = true
                     }
                 }){
                     ButtonView(text: "ログイン").padding(.top, 20)
@@ -83,24 +85,10 @@ struct ReauthenticateView: View {
                 }
                 //エラーアラート
                 .alert(isPresented: $isShowingAlert) {
-                    return Alert(title: Text(""), message: Text(errorMessage), dismissButton: .destructive(Text("OK")))
+                    return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text("OK")))
                 }
                 Spacer()
             }.padding(20)
-        }
-    }
-    //サインイン
-    private func signIn() {
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            if authResult?.user != nil {
-                isShowingChangeInfo = true
-            } else {
-                isShowingAlert = true
-                if let error = error as NSError? {
-                    errorMessage = error.localizedDescription
-                    isShowingAlert = true
-                }
-            }
         }
     }
 }
