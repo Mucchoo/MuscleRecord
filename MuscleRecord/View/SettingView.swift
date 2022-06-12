@@ -5,12 +5,12 @@
 //  Created by Musa Yazuju on 2022/03/25.
 //
 
-import Firebase
 import SwiftUI
-import StoreKit
 
 struct SettingView: View {
     @Environment(\.dismiss) var dismiss
+    @ObservedObject var purchaseViewModel = PurchaseViewModel()
+    @ObservedObject var firebaseViewModel = FirebaseViewModel()
     @ObservedObject var viewModel = ViewModel()
     @Binding var rootIsActive : Bool
     @State private var isActive = false
@@ -27,7 +27,7 @@ struct SettingView: View {
                     //Proセクション
                     Section(header: Text("Pro")){
                         //内課金状態で表示内容を切り替え
-                        if viewModel.customerInfo() {
+                        if purchaseViewModel.isPurchased() {
                             //選択できない項目
                             FormRowView(icon: "gift", firstText: "Proアンロック済み", isHidden: false)
                             //テーマカラー
@@ -79,14 +79,6 @@ struct SettingView: View {
                         .fullScreenCover(isPresented: $isShowingTutorial) {
                             TutorialView(isShowingTutorial: $isShowingTutorial)
                         }
-                        //レビュー
-                        Button {
-                            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                                SKStoreReviewController.requestReview(in: scene)
-                            }
-                        } label: {
-                            FormRowView(icon: "star", firstText: "レビューで応援！", isHidden: false)
-                        }
                         //シェア
                         Button {
                             viewModel.shareApp()
@@ -119,7 +111,8 @@ struct SettingView: View {
                         }
                         .alert(isPresented: $isShowingAlert) {
                             return Alert(title: Text("本当にログアウトしますか？"), message: Text(""), primaryButton: .cancel(), secondaryButton: .destructive(Text("ログアウト"), action: {
-                                signOut()
+                                firebaseViewModel.signOut()
+                                dismiss()
                             }))
                         }
                     }
@@ -128,15 +121,6 @@ struct SettingView: View {
                 .environment(\.horizontalSizeClass, .regular)
             }
             .background(Color("BackgroundColor").edgesIgnoringSafeArea(.all))
-        }
-    }
-    //ログアウト
-    private func signOut() {
-        do {
-            try Auth.auth().signOut()
-            dismiss()
-        } catch let signOutError as NSError {
-            print("サインアウトエラー\(signOutError)")
         }
     }
 }

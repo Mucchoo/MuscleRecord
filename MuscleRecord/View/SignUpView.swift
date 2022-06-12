@@ -5,18 +5,17 @@
 //  Created by Musa Yazuju on 2022/04/21.
 //
 
-import Firebase
 import SwiftUI
 
 struct SignUpView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject private var firebaseViewModel = FirebaseViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     @FocusState private var focus: Focus?
+    @State private var error = ""
     @State private var email = ""
     @State private var confirm = ""
     @State private var password = ""
-    @State private var errorMessage = ""
     @State private var isShowingAlert = false
-    @State private var isError = false
     @State var showSignIn = false
     
     enum Focus {
@@ -46,26 +45,19 @@ struct SignUpView: View {
                     .focused($focus, equals: .confirm)
                 //アカウント作成ボタン
                 Button( action: {
-                    errorMessage = ""
+                    error = ""
                     if email.isEmpty {
-                        errorMessage = "メールアドレスが入力されていません"
-                        isError = true
-                        isShowingAlert = true
+                        error = "メールアドレスが入力されていません"
                     } else if password.isEmpty {
-                        errorMessage = "パスワードが入力されていません"
-                        isError = true
-                        isShowingAlert = true
+                        error = "パスワードが入力されていません"
                     } else if confirm.isEmpty {
-                        errorMessage = "確認用パスワードが入力されていません"
-                        isError = true
-                        isShowingAlert = true
+                        error = "確認用パスワードが入力されていません"
                     } else if password.compare(confirm) != .orderedSame {
-                        errorMessage = "パスワードと確認パスワードが一致しません"
-                        isError = true
-                        isShowingAlert = true
+                        error = "パスワードと確認パスワードが一致しません"
                     } else {
-                        signUp()
+                        error = firebaseViewModel.signUp(email: email, password: password) ?? ""
                     }
+                    isShowingAlert = true
                 }){
                     ButtonView(text: "アカウント作成").padding(.top, 20)
                 }
@@ -79,15 +71,14 @@ struct SignUpView: View {
                         .padding(.top, 30)
                 }
                 .alert(isPresented: $isShowingAlert) {
-                    //エラーアラート
-                    if isError {
-                        return Alert(title: Text(""), message: Text(errorMessage), dismissButton: .destructive(Text("OK"))
-                        )
-                    //成功アラート
-                    } else {
+                    //成功
+                    if error.isEmpty {
                         return Alert(title: Text("アカウントが作成されました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
                             Window.first?.rootViewController?.dismiss(animated: true, completion: nil)
                         }))
+                    //エラー
+                    } else {
+                        return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text("OK")))
                     }
                 }
                 Spacer()
@@ -95,23 +86,6 @@ struct SignUpView: View {
         //ログインページ
         }.sheet(isPresented: $showSignIn) {
             SignInView()
-        }
-    }
-    //アカウント作成
-    private func signUp() {
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if let error = error as NSError? {
-                errorMessage = error.localizedDescription
-                isError = true
-                isShowingAlert = true
-            }
-            guard let _ = authResult?.user else { return }
-            isError = false
-            isShowingAlert = true
-            Auth.auth().signIn(withEmail: email, password: password)
-            let db = Firestore.firestore()
-            let userID = Auth.auth().currentUser!.uid
-            db.collection("users").document(userID).setData(["email": email])
         }
     }
 }

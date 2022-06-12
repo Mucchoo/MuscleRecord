@@ -9,7 +9,8 @@ import SwiftUI
 
 struct EditView: View {
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject private var firebaseViewModel = FirebaseViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     @State private var isShowingAlert = false
     @FocusState private var isFocused: Bool
     @State private var itemName = ""
@@ -33,7 +34,7 @@ struct EditView: View {
                         }
                     //上書きボタン
                     Button( action: {
-                        viewModel.updateEvent(event: event, newName: itemName)
+                        firebaseViewModel.updateEvent(event: event, newName: itemName)
                         dismiss()
                     }){
                         ButtonView(text: "名前を上書き")
@@ -55,7 +56,7 @@ struct EditView: View {
                     //削除時のアラート
                     .alert(isPresented: $isShowingAlert) {
                         return Alert(title: Text("本当に削除しますか？"), message: Text(""), primaryButton: .cancel(), secondaryButton: .destructive(Text("削除"), action: {
-                            viewModel.deleteEvent(event: event)
+                            firebaseViewModel.deleteEvent(event: event)
                             dismiss()
                         }))
                     }

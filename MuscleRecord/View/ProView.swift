@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
-import RevenueCat
 
 struct ProView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var viewModel = ViewModel()
-    @Binding var shouldPopToRootView : Bool
+    @ObservedObject private var viewModel = ViewModel()
+    @ObservedObject private var purchaseViewModel = PurchaseViewModel()
+    @Binding var shouldPopToRootView: Bool
     @State private var isShowingAlert = false
     
     var body: some View {
@@ -34,37 +34,14 @@ struct ProView: View {
                     ProTitleView(icon: "lock.circle.fill", title: "種目数：5個 → 無制限", isImage: false)
                     //購入ボタン
                     Button( action: {
-                        Purchases.shared.getOfferings { (offerings, error) in
-                            guard error == nil else {
-                                print("内課金取得時のエラー\(error!)")
-                                return
-                            }
-                            guard let package = offerings?.current?.lifetime?.storeProduct else { return }
-                            Purchases.shared.purchase(product: package) { (transaction, customerInfo, error, userCancelled) in
-                                guard error == nil else {
-                                    print("内課金購入時のエラー\(error!)")
-                                    return
-                                }
-                                if customerInfo?.entitlements.all["Pro"]?.isActive == true {
-                                    shouldPopToRootView = false
-                                }
-                            }
-                        }
+                        purchaseViewModel.purchase()
                     }, label: {
                         ButtonView(text: "Proをアンロック - 250円")
                             .padding(.top, 20)
                     })
                     //復元ボタン
                     Button( action: {
-                        Purchases.shared.restorePurchases { customerInfo, error in
-                            guard error == nil else {
-                                print("内課金復元時のエラー\(error!)")
-                                return
-                            }
-                            if customerInfo?.entitlements.all["Pro"]?.isActive == true {
-                                isShowingAlert = true
-                            }
-                        }
+                        purchaseViewModel.restore()
                     }, label: {
                         ButtonView(text: "過去の購入を復元")
                             .padding(.top, 20)
@@ -78,6 +55,9 @@ struct ProView: View {
                     }
                 }
             }
+        }.onAppear {
+            shouldPopToRootView = purchaseViewModel.shouldPopToRootView
+            isShowingAlert = purchaseViewModel.isShowingAlert
         }
     }
 }

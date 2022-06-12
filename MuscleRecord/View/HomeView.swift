@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
-import Firebase
-import StoreKit
 
 struct HomeView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject private var purchaseViewModel = PurchaseViewModel()
+    @ObservedObject private var firebaseViewModel = FirebaseViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     @State private var isShowingAlert = false
     @State private var isShowingPro = false
     @State private var isPro = false
@@ -34,19 +34,14 @@ struct HomeView: View {
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(viewModel.getThemeColor())
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
         //20回起動毎にレビューアラートを表示
-        if UserDefaults.standard.integer(forKey: "launchedTimes") > 20 {
-            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                SKStoreReviewController.requestReview(in: scene)
-                UserDefaults.standard.set(0, forKey: "launchedTimes")
-            }
-        }
+        viewModel.showReviewForEvery20Launchs()
     }
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 0) {
-                    ForEach(viewModel.events) { event in
+                    ForEach(firebaseViewModel.events) { event in
                         //種目
                         VStack {
                             HStack(alignment: .top) {
@@ -113,7 +108,7 @@ struct HomeView: View {
                 }
                 .padding(.top, 10)
                 .onAppear {
-                    viewModel.getEvent()
+                    firebaseViewModel.getEvent()
                 }
             }
             .background(Color("BackgroundColor"))
@@ -128,8 +123,8 @@ struct HomeView: View {
                 //種目追加ボタン
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     //6個以上種目を登録する場合アラートを表示し内課金購入ページに遷移
-                    if viewModel.events.count > 4 {
-                        if viewModel.customerInfo() {
+                    if firebaseViewModel.events.count > 4 {
+                        if purchaseViewModel.isPurchased() {
                             NavigationLink(destination: AddView()){
                                 Image(systemName: "plus").foregroundColor(.white)
                             }
@@ -149,13 +144,13 @@ struct HomeView: View {
             }
             //ログインしていない場合チュートリアルを表示
             .onAppear {
-                if Auth.auth().currentUser == nil {
+                if !firebaseViewModel.isLoggedIn() {
                     isShowingTutorial = true
-                }                
+                }
             }
             //チュートリアル
             .fullScreenCover(isPresented: $isShowingTutorial, onDismiss: {
-                viewModel.getEvent()
+                firebaseViewModel.getEvent()
             }) {
                 TutorialView(isShowingTutorial: $isShowingTutorial)
             }

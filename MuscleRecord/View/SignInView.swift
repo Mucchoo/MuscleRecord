@@ -5,18 +5,17 @@
 //  Created by Musa Yazuju on 2022/04/22.
 //
 
-import Firebase
 import SwiftUI
 
 struct SignInView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject private var firebaseViewModel = FirebaseViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     @FocusState private var focus: Focus?
-    @State private var email = ""
     @State private var password = ""
-    @State private var errorMessage = ""
+    @State private var email = ""
+    @State private var error = ""
     @State private var isShowingResetPassword = false
     @State private var isShowingAlert = false
-    @State private var isError = false
     
     enum Focus {
         case email, password
@@ -44,16 +43,13 @@ struct SignInView: View {
                 //ログインボタン
                 Button( action: {
                     if email.isEmpty {
-                        isError = true
-                        errorMessage = "メールアドレスが入力されていません"
-                        isShowingAlert = true
+                        error = "メールアドレスが入力されていません"
                     } else if password.isEmpty {
-                        isError = true
-                        errorMessage = "パスワードが入力されていません"
-                        isShowingAlert = true
+                        error = "パスワードが入力されていません"
                     } else {
-                        signIn()
+                        error = firebaseViewModel.signIn(email: email, password: password) ?? ""
                     }
+                    isShowingAlert = true
                 }){
                     ButtonView(text: "ログイン").padding(.top, 20)
                 }
@@ -67,36 +63,20 @@ struct SignInView: View {
                         .padding(.top, 30)
                 }
                 .alert(isPresented: $isShowingAlert) {
-                    //エラーアラート
-                    if isError {
-                        return Alert(title: Text(""), message: Text(errorMessage), dismissButton: .destructive(Text("OK"))
-                        )
-                        //成功アラート
-                    } else {
+                    //成功
+                    if error.isEmpty {
                         return Alert(title: Text("ログインに成功しました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
                             Window.first?.rootViewController?.dismiss(animated: true, completion: nil)
                         }))
+                    //エラー
+                    } else {
+                        return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text("OK")))
                     }
                 }
                 Spacer()
             }.padding(20)
         }.sheet(isPresented: $isShowingResetPassword) {
             ResetPasswordView()
-        }
-    }
-    //サインイン
-    private func signIn() {
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            if authResult?.user != nil {
-                isShowingAlert = true
-            } else {
-                isShowingAlert = true
-                isError = true
-                if let error = error as NSError? {
-                    errorMessage = error.localizedDescription
-                    isShowingAlert = true
-                }
-            }
         }
     }
 }
