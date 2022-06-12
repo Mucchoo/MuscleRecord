@@ -112,7 +112,7 @@ struct HomeView: View {
                 }
             }
             .background(Color("BackgroundColor"))
-            .navigationBarTitle("筋トレ記録", displayMode: .inline)
+            .navigationBarTitle(R.string.localizable.title(), displayMode: .inline)
             .toolbar {
                 //設定ボタン
                 ToolbarItemGroup(placement: .navigationBarLeading) {
