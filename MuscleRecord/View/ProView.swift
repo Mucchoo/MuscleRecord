@@ -15,42 +15,42 @@ struct ProView: View {
     @State private var isShowingAlert = false
     
     var body: some View {
-        SimpleNavigationView(title: "Proをアンロック") {
+        SimpleNavigationView(title: R.string.localizable.proViewTitle()) {
             ScrollView(){
                 VStack(spacing: 10){
                     //アイコン解放
-                    ProTitleView(icon: "Logo", title: "アイコン解放", isImage: true)
-                    Image("Icons")
+                    ProTitleView(icon: R.string.localizable.logo(), title: R.string.localizable.unlockIcon(), isImage: true)
+                    Image(R.string.localizable.icons())
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(20)
                     //テーマカラー解放
-                    ProTitleView(icon: "hammer.circle.fill", title: "テーマカラー解放", isImage: false)
-                    Image("Themes")
+                    ProTitleView(icon: R.string.localizable.hammerIcon(), title: R.string.localizable.unlockTheme(), isImage: false)
+                    Image(R.string.localizable.themes())
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(20)
                     //種目数解放
-                    ProTitleView(icon: "lock.circle.fill", title: "種目数：5個 → 無制限", isImage: false)
+                    ProTitleView(icon: R.string.localizable.lockIcon(), title: R.string.localizable.unlockEvents(), isImage: false)
                     //購入ボタン
                     Button( action: {
                         purchaseViewModel.purchase()
                     }, label: {
-                        ButtonView(text: "Proをアンロック - 250円")
+                        ButtonView(text: R.string.localizable.purchase())
                             .padding(.top, 20)
                     })
                     //復元ボタン
                     Button( action: {
                         purchaseViewModel.restore()
                     }, label: {
-                        ButtonView(text: "過去の購入を復元")
+                        ButtonView(text: R.string.localizable.restore())
                             .padding(.top, 20)
                     })
                 }
                 .padding(20)
                 //復元時のアラート
-                .alert("購入を復元しました", isPresented: $isShowingAlert) {
-                    Button("OK") {
+                .alert(R.string.localizable.restored(), isPresented: $isShowingAlert) {
+                    Button(R.string.localizable.ok()) {
                         shouldPopToRootView = false
                     }
                 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct GraphView: View {
     @ObservedObject private var firebaseViewModel = FirebaseViewModel()
     @ObservedObject private var viewModel = ViewModel()
-    private var weightScale: [Float] = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]
+    private var weightScale: [Float] = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0]
     @State private var graphRange = 0
     var event: Event
     //選択した種目のデータをグラフに表示
@@ -23,11 +23,11 @@ struct GraphView: View {
         SimpleNavigationView(title: event.name) {
             VStack(spacing: 10) {
                 //グラフの表示幅の切り替え
-                Picker("period", selection: self.$graphRange, content: {
-                    Text("1日毎").tag(0)
-                    Text("3日平均").tag(1)
-                    Text("9日平均").tag(2)
-                    Text("27日平均").tag(3)
+                Picker(R.string.localizable.period(), selection: self.$graphRange, content: {
+                    Text(R.string.localizable.everyday()).tag(0)
+                    Text(R.string.localizable.threeDaysAverage()).tag(1)
+                    Text(R.string.localizable.nineDaysAverage()).tag(2)
+                    Text(R.string.localizable.twentySevenDaysAverage()).tag(3)
                 })
                 .pickerStyle(SegmentedPickerStyle())
                 HStack(spacing: 0) {
@@ -39,9 +39,6 @@ struct GraphView: View {
                                 .font(.footnote)
                             Spacer()
                         }
-                        Text("0")
-                            .foregroundColor(viewModel.getThemeColor())
-                            .font(.footnote)
                     }
                     .offset(y: 8)
                     .frame(minWidth: 15, minHeight: 0, maxHeight: .infinity)

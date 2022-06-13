@@ -41,7 +41,7 @@ struct ProTitleView: View {
                     Text(title)
                         .font(.title3)
                         .fontWeight(.bold)
-                        .foregroundColor(viewModel.fontColor)
+                        .foregroundColor(Color(R.color.fontColor()!))
                     Spacer()
                 }
             }

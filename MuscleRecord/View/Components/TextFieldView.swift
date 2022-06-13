@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Rswift
 
 struct TextFieldView: View {
     @ObservedObject var viewModel = ViewModel()
@@ -19,7 +20,7 @@ struct TextFieldView: View {
             Text(title)
                 .font(.headline)
                 .fontWeight(.bold)
-                .foregroundColor(viewModel.fontColor)
+                .foregroundColor(Color(R.color.fontColor()!))
                 .padding(.leading, 8)
             Spacer()
         }

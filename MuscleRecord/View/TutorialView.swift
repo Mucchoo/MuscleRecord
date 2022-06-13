@@ -19,7 +19,7 @@ struct TutorialView: View {
                 viewModel.getThemeColor().edgesIgnoringSafeArea(.all)
                 VStack {
                     //タイトル
-                    Text("使い方")
+                    Text(R.string.localizable.usage())
                         .font(.system(size: 20))
                         .fontWeight(.bold)
                         .foregroundColor(viewModel.getThemeColor())
@@ -31,23 +31,25 @@ struct TutorialView: View {
                     TabView{
                         //1枚目
                         TutorialCardView {
-                            TutorialImageView(image: "Tutorial1")
-                            Image(systemName: "arrow.down.circle.fill")
+                            TutorialImageView(image: R.string.localizable.tutorial1())
+                            Image(systemName: R.string.localizable.arrowIcon())
                                 .resizable()
                                 .frame(width: 30, height: 30)
                                 .foregroundColor(viewModel.getThemeColor())
-                            TutorialImageView(image: "Tutorial3")
-                            TutorialTextView(text: "まずは右上の ＋ ボタンから種目を追加しましょう")
+                            TutorialImageView(image: R.string.localizable.tutorial2())
+                            TutorialTextView(text: R.string.localizable.tutorialTextOne())
                         }
                         //2枚目
                         TutorialCardView {
-                            TutorialImageView(image: "Tutorial3")
-                            Image(systemName: "arrow.down.circle.fill")
+                            TutorialImageView(image: R.string.localizable.tutorial2())
+                            Image(systemName: R.string.localizable.arrowIcon())
                                 .resizable()
                                 .frame(width: 30, height: 30)
                                 .foregroundColor(viewModel.getThemeColor())
-                            TutorialImageView(image: "Tutorial4")
-                            Text("トレーニング後は\(Image(systemName: "pencil.circle.fill"))を押して記録できます")
+                            TutorialImageView(image: R.string.localizable.tutorial3())
+                            (Text(R.string.localizable.tutorialTextTwoFirst())
+                            + Text((Image(systemName: R.string.localizable.pencilIconFill())))
+                            + Text(R.string.localizable.tutorialTextTwoLast()))
                                 .font(.headline)
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 20)
@@ -56,13 +58,13 @@ struct TutorialView: View {
                         }
                         //3枚目
                         TutorialCardView {
-                            TutorialImageView(image: "Tutorial5")
-                            TutorialTextView(text: "記録をすると結果がグラフに表れます")
+                            TutorialImageView(image: R.string.localizable.tutorial4())
+                            TutorialTextView(text: R.string.localizable.tutorialTextThree())
                         }
                         //4枚目
                         TutorialCardView {
-                            TutorialImageView(image: "Tutorial6")
-                            TutorialTextView(text: "記録を続けて成長をデータ化しましょう！")
+                            TutorialImageView(image: R.string.localizable.tutorial5())
+                            TutorialTextView(text: R.string.localizable.tutorialTextFour())
                             //始めるボタン
                             Button {
                                 if firebaseViewModel.isLoggedIn() {
@@ -71,7 +73,7 @@ struct TutorialView: View {
                                     isShowingSignUp = true
                                 }
                             } label: {
-                                ButtonView(text: "始める").padding(.vertical, 30)
+                                ButtonView(text: R.string.localizable.start()).padding(.vertical, 30)
                             }
                         }
                         .background(.white)

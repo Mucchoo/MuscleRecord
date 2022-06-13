@@ -9,27 +9,21 @@ import SwiftUI
 import StoreKit
 
 class ViewModel: ObservableObject {
-    @Published var fontColor = Color("FontColor")
-    @Published var cellColor = Color("CellColor")
-    @Published var clearColor = Color("ClearColor")
-    @Published var backgroundColor = Color("BackgroundColor")
     //テーマカラーの取得
     func getThemeColor() -> Color {
-        switch UserDefaults.standard.integer(forKey: "themeColorNumber") {
-        case 0:
-            return Color("ThemeColor0")
+        switch UserDefaults.standard.integer(forKey: R.string.localizable.themeColorNumber()) {
         case 1:
-            return Color("ThemeColor1")
+            return Color(R.color.themeColor1()!)
         case 2:
-            return Color("ThemeColor2")
+            return Color(R.color.themeColor2()!)
         case 3:
-            return Color("ThemeColor3")
+            return Color(R.color.themeColor3()!)
         case 4:
-            return Color("ThemeColor4")
+            return Color(R.color.themeColor4()!)
         case 5:
-            return Color("ThemeColor5")
+            return Color(R.color.themeColor5()!)
         default:
-            return Color("ThemeColor0")
+            return Color(R.color.themeColor0()!)
         }
     }
     //記録時のdateFormat
@@ -41,16 +35,16 @@ class ViewModel: ObservableObject {
     }
     //シェア
     func shareApp(){
-        let productURL:URL = URL(string: "https://apps.apple.com/us/app/%E7%AD%8B%E3%83%88%E3%83%AC%E8%A8%98%E9%8C%B2-%E7%AD%8B%E8%82%89%E3%81%AE%E6%88%90%E9%95%B7%E3%82%92%E3%83%87%E3%83%BC%E3%82%BF%E5%8C%96-%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E8%A8%98%E9%8C%B2/id1622549301?itsct=apps_box_link&itscg=30200")!
+        let productURL:URL = URL(string: R.string.localizable.appURL())!
         let av = UIActivityViewController(activityItems: [productURL],applicationActivities: nil)
         Window.first?.rootViewController?.present(av, animated: true, completion: nil)
     }
     //20回起動毎にレビューアラート表示
     func showReviewForEvery20Launchs() {
-        if UserDefaults.standard.integer(forKey: "launchedTimes") > 20 {
+        if UserDefaults.standard.integer(forKey: R.string.localizable.launchedTimes()) > 20 {
             if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: scene)
-                UserDefaults.standard.set(0, forKey: "launchedTimes")
+                UserDefaults.standard.set(0, forKey: R.string.localizable.launchedTimes())
             }
         }
     }

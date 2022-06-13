@@ -15,17 +15,17 @@ struct AddView: View {
     @State private var eventName = ""
     
     var body: some View {
-        SimpleNavigationView(title: "種目を追加") {
+        SimpleNavigationView(title: R.string.localizable.addViewTitle()) {
             ZStack{
                 //背景タップ時にキーボードを閉じる
-                viewModel.clearColor
+                Color(R.color.clearColor()!)
                     .edgesIgnoringSafeArea(.all)
                     .onTapGesture {
                         isFocused = false
                     }
                 VStack(spacing: 0){
                     //種目名textField
-                    TextFieldView(title: "種目名", text: $eventName, placeHolder: "種目名を入力してください", isSecure: false)
+                    TextFieldView(title: R.string.localizable.eventName(), text: $eventName, placeHolder: R.string.localizable.eventNamePlaceholder(), isSecure: false)
                         .focused($isFocused)
                     //種目追加ボタン
                     Button( action: {
@@ -34,7 +34,7 @@ struct AddView: View {
                         eventName = ""
                         dismiss()
                     }, label: {
-                        ButtonView(text: "追加")
+                        ButtonView(text: R.string.localizable.add())
                             .padding(.top, 20)
                     })
                     Spacer()

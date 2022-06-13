@@ -19,7 +19,7 @@ class PurchaseViewModel: ObservableObject {
                 print("内課金購入時のエラー\(error!)")
                 return
             }
-            if customerInfo?.entitlements["pro"]?.isActive == true {
+            if customerInfo?.entitlements[R.string.localizable.pro()]?.isActive == true {
                 isPro = true
             }
         }
@@ -38,7 +38,7 @@ class PurchaseViewModel: ObservableObject {
                     print("内課金購入時のエラー\(error!)")
                     return
                 }
-                if customerInfo?.entitlements.all["pro"]?.isActive == true {
+                if customerInfo?.entitlements.all[R.string.localizable.pro()]?.isActive == true {
                     self.shouldPopToRootView = false
                 }
             }
@@ -51,7 +51,7 @@ class PurchaseViewModel: ObservableObject {
                 print("内課金復元時のエラー\(error!)")
                 return
             }
-            if customerInfo?.entitlements.all["pro"]?.isActive == true {
+            if customerInfo?.entitlements.all[R.string.localizable.pro()]?.isActive == true {
                 self.isShowingAlert = true
             }
         }

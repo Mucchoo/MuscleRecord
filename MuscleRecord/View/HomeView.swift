@@ -47,7 +47,7 @@ struct HomeView: View {
                             HStack(alignment: .top) {
                                 //編集ボタン
                                 NavigationLink(destination: EditView(event: event)){
-                                    Image(systemName: "ellipsis.circle")
+                                    Image(systemName: R.string.localizable.settingIcon())
                                         .resizable()
                                         .frame(width: 20, height: 20)
                                         .foregroundColor(viewModel.getThemeColor())
@@ -56,17 +56,17 @@ struct HomeView: View {
                                 Text(event.name)
                                     .fontWeight(.bold)
                                     .lineLimit(2)
-                                    .foregroundColor(viewModel.fontColor)
+                                    .foregroundColor(Color(R.color.fontColor()!))
                                 Spacer()
                                 //記録ボタン（記録後は表示を変更）
                                 NavigationLink(destination: RecordView(event: event)){
                                     if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
-                                        Image(systemName: "pencil.circle")
+                                        Image(systemName: R.string.localizable.pencilIcon())
                                             .resizable()
                                             .frame(width: 40, height: 40)
                                             .foregroundColor(viewModel.getThemeColor())
                                     } else {
-                                        Image(systemName: "pencil.circle.fill")
+                                        Image(systemName: R.string.localizable.pencilIconFill())
                                             .resizable()
                                             .frame(width: 40, height: 40)
                                             .foregroundColor(viewModel.getThemeColor())
@@ -77,17 +77,17 @@ struct HomeView: View {
                             HStack(alignment: .bottom) {
                                 //最新の重量と回数
                                 VStack(alignment: .leading, spacing: 5) {
-                                    Text("重量：\(String(format: "%.1f", event.latestWeight))kg ")
+                                    Text(R.string.localizable.weightIs() + String(format: "%.1f", event.latestWeight) + R.string.localizable.kg())
                                         .fontWeight(.semibold)
-                                        .foregroundColor(viewModel.fontColor)
-                                    Text("回数：\(event.latestRep)rep")
+                                        .foregroundColor(Color(R.color.fontColor()!))
+                                    Text(R.string.localizable.repIs() + String(event.latestRep) + R.string.localizable.rep())
                                         .fontWeight(.semibold)
-                                        .foregroundColor(viewModel.fontColor)
+                                        .foregroundColor(Color(R.color.fontColor()!))
                                 }
                                 Spacer()
                                 //グラフを見るボタン
                                 NavigationLink(destination: GraphView(event: event)) {
-                                    Text("グラフを見る ▶︎")
+                                    Text(R.string.localizable.seeGraph())
                                         .foregroundColor(viewModel.getThemeColor())
                                         .fontWeight(.semibold)
                                 }
@@ -95,7 +95,7 @@ struct HomeView: View {
                         }
                         .frame(maxHeight: 110)
                         .padding(20)
-                        .background(viewModel.cellColor)
+                        .background(Color(R.color.cellColor()!))
                         .cornerRadius(20)
                         .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 2)
                         .padding(.horizontal, 10)
@@ -111,13 +111,13 @@ struct HomeView: View {
                     firebaseViewModel.getEvent()
                 }
             }
-            .background(Color("BackgroundColor"))
-            .navigationBarTitle(R.string.localizable.title(), displayMode: .inline)
+            .background(Color(R.color.backgroundColor()!))
+            .navigationBarTitle(R.string.localizable.homeViewTitle(), displayMode: .inline)
             .toolbar {
                 //設定ボタン
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     NavigationLink(destination: SettingView(rootIsActive: $isActive), isActive: $isActive){
-                        Image(systemName: "line.3.horizontal").foregroundColor(.white)
+                        Image(systemName: R.string.localizable.settingIcon()).foregroundColor(.white)
                     }
                 }
                 //種目追加ボタン
@@ -126,18 +126,18 @@ struct HomeView: View {
                     if firebaseViewModel.events.count > 4 {
                         if purchaseViewModel.isPurchased() {
                             NavigationLink(destination: AddView()){
-                                Image(systemName: "plus").foregroundColor(.white)
+                                Image(systemName: R.string.localizable.plusIcon()).foregroundColor(.white)
                             }
                         } else {
                             Button( action: {
                                 isShowingAlert = true
                             }, label: {
-                                Image(systemName: "plus").foregroundColor(.white)
+                                Image(systemName: R.string.localizable.plusIcon()).foregroundColor(.white)
                             })
                         }
                     } else {
                         NavigationLink(destination: AddView()){
-                            Image(systemName: "plus").foregroundColor(.white)
+                            Image(systemName: R.string.localizable.plusIcon()).foregroundColor(.white)
                         }
                     }
                 }
@@ -156,7 +156,7 @@ struct HomeView: View {
             }
             //非課金状態で6個以上種目を登録する場合アラートを表示
             .alert(isPresented: $isShowingAlert) {
-                return Alert(title: Text("無料版で追加できる種目は5個です"), message: Text("Proにをアンロックすれば、無制限に追加することができます。"), primaryButton: .default(Text("閉じる")), secondaryButton: .default(Text("Proを見る"), action: {
+                return Alert(title: Text(R.string.localizable.onlyFiveEventsAvailableInFree()), message: Text(R.string.localizable.eventsWillBeUnlimitedIfJoinPro()), primaryButton: .default(Text(R.string.localizable.close())), secondaryButton: .default(Text(R.string.localizable.seePro()), action: {
                     isShowingPro = true
                 }))
             }

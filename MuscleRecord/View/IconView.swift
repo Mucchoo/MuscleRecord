@@ -13,7 +13,7 @@ struct IconView: View {
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
 
     var body: some View {
-        SimpleNavigationView(title: "アイコン") {
+        SimpleNavigationView(title: R.string.localizable.iconViewTitle()) {
             GeometryReader{ geometry in
                 ScrollView(){
                     LazyVGrid(columns: columns, spacing: 10) {
@@ -23,7 +23,7 @@ struct IconView: View {
                             UIApplication.shared.setAlternateIconName(nil)
                             dismiss()
                         }) {
-                            Image("Icon")
+                            Image(R.string.localizable.icon())
                                 .resizable()
                                 .cornerRadius(20)
                         //余白10pxで3列に表示
@@ -32,10 +32,10 @@ struct IconView: View {
                         ForEach(0..<19) { num in
                             Button(action: {
                                 //アイコンを変更
-                                UIApplication.shared.setAlternateIconName("AppIcon\(num)")
+                                UIApplication.shared.setAlternateIconName(R.string.localizable.appIcon() + String(num))
                                 dismiss()
                             }) {
-                                Image("Icon\(num)")
+                                Image(R.string.localizable.icon() + String(num))
                                     .resizable()
                                     .cornerRadius(20)
                             }.frame(width: (geometry.size.width - 40)/3, height: (geometry.size.width - 40)/3)
