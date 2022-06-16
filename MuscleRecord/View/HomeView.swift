@@ -47,7 +47,7 @@ struct HomeView: View {
                             HStack(alignment: .top) {
                                 //編集ボタン
                                 NavigationLink(destination: EditView(event: event)){
-                                    Image(systemName: R.string.localizable.settingIcon())
+                                    Image(systemName: R.string.localizable.editIcon())
                                         .resizable()
                                         .frame(width: 20, height: 20)
                                         .foregroundColor(viewModel.getThemeColor())

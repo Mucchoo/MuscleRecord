@@ -17,21 +17,18 @@ struct IconView: View {
             GeometryReader{ geometry in
                 ScrollView(){
                     LazyVGrid(columns: columns, spacing: 10) {
-                        //1つ目のアイテムだけ処理が違うので分けて表示
+                        //初期アイコンに変更
                         Button(action: {
-                            //初期アイコンに変更
                             UIApplication.shared.setAlternateIconName(nil)
                             dismiss()
                         }) {
                             Image(R.string.localizable.icon())
                                 .resizable()
                                 .cornerRadius(20)
-                        //余白10pxで3列に表示
                         }.frame(width: (geometry.size.width - 40)/3, height: (geometry.size.width - 40)/3)
-                        //2つ目以降のアイテム
+                        //初期以外のアイコンを変更
                         ForEach(0..<19) { num in
                             Button(action: {
-                                //アイコンを変更
                                 UIApplication.shared.setAlternateIconName(R.string.localizable.appIcon() + String(num))
                                 dismiss()
                             }) {

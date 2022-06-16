@@ -26,13 +26,10 @@ struct SettingView: View {
                 Form{
                     //Proセクション
                     Section(header: Text(R.string.localizable.pro())){
-                        //内課金状態で表示内容を切り替え
+                        //内課金購入済みの場合
                         if purchaseViewModel.isPurchased() {
-                            //選択できない項目
                             FormRowView(icon: R.string.localizable.giftIcon(), firstText: R.string.localizable.unlockedPro(), isHidden: false)
-                            //テーマカラー
                             NavigationLink(destination: ThemeColorView()) {FormRowView(icon: R.string.localizable.brushIcon(), firstText: R.string.localizable.themeColorViewTitle(), isHidden: false)}
-                            //アイコン
                             NavigationLink(destination: IconView()) {
                                 HStack{
                                     ZStack{
@@ -47,14 +44,12 @@ struct SettingView: View {
                                     Spacer()
                                 }
                             }
+                        //内課金未購入の場合
                         } else {
-                            //Proをアンロック
                             NavigationLink(destination: ProView(shouldPopToRootView: $rootIsActive)) {
                                 FormRowView(icon: R.string.localizable.giftIcon(), firstText: R.string.localizable.proViewTitle(), isHidden: false)
                             }
-                            //選択できない項目
                             FormRowView(icon: R.string.localizable.brushIcon(), firstText: R.string.localizable.themeColorViewTitle(), isHidden: true)
-                            //選択できない項目
                             HStack{
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 8)
