@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject private var purchaseViewModel = PurchaseViewModel()
     @ObservedObject private var firebaseViewModel = FirebaseViewModel()
+    @ObservedObject private var purchaseViewModel = PurchaseViewModel()
     @ObservedObject private var viewModel = ViewModel()
     @State private var isShowingAlert = false
     @State private var isShowingPro = false
     @State private var isPro = false
-    @State var isActive = false
     @State var isShowingTutorial = false
 
     init(){
@@ -102,7 +101,7 @@ struct HomeView: View {
                         Spacer()
                     }
                     //6個以上種目を登録する場合アラートを表示し内課金購入ページに遷移
-                    NavigationLink(destination: ProView(shouldPopToRootView: $isShowingPro), isActive: $isShowingPro) {
+                    NavigationLink(destination: ProView(), isActive: $isShowingPro) {
                         EmptyView()
                     }
                 }
@@ -116,7 +115,7 @@ struct HomeView: View {
             .toolbar {
                 //設定ボタン
                 ToolbarItemGroup(placement: .navigationBarLeading) {
-                    NavigationLink(destination: SettingView(rootIsActive: $isActive), isActive: $isActive){
+                    NavigationLink(destination: SettingView()){
                         Image(systemName: R.string.localizable.settingIcon()).foregroundColor(.white)
                     }
                 }
@@ -124,7 +123,7 @@ struct HomeView: View {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     //6個以上種目を登録する場合アラートを表示し内課金購入ページに遷移
                     if firebaseViewModel.events.count > 4 {
-                        if purchaseViewModel.isPurchased() {
+                        if UserDefaults.standard.bool(forKey: R.string.localizable.purchaseStatus()) {
                             NavigationLink(destination: AddView()){
                                 Image(systemName: R.string.localizable.plusIcon()).foregroundColor(.white)
                             }

@@ -9,10 +9,8 @@ import SwiftUI
 
 struct SettingView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var purchaseViewModel = PurchaseViewModel()
-    @ObservedObject var firebaseViewModel = FirebaseViewModel()
-    @ObservedObject var viewModel = ViewModel()
-    @Binding var rootIsActive : Bool
+    @ObservedObject private var firebaseViewModel = FirebaseViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     @State private var isActive = false
     @State private var isShowingAlert = false
     @State var isShowingReauthenticate = false
@@ -27,7 +25,7 @@ struct SettingView: View {
                     //Proセクション
                     Section(header: Text(R.string.localizable.pro())){
                         //内課金購入済みの場合
-                        if purchaseViewModel.isPurchased() {
+                        if UserDefaults.standard.bool(forKey: R.string.localizable.purchaseStatus()) {
                             FormRowView(icon: R.string.localizable.giftIcon(), firstText: R.string.localizable.unlockedPro(), isHidden: false)
                             NavigationLink(destination: ThemeColorView()) {FormRowView(icon: R.string.localizable.brushIcon(), firstText: R.string.localizable.themeColorViewTitle(), isHidden: false)}
                             NavigationLink(destination: IconView()) {
@@ -46,7 +44,7 @@ struct SettingView: View {
                             }
                         //内課金未購入の場合
                         } else {
-                            NavigationLink(destination: ProView(shouldPopToRootView: $rootIsActive)) {
+                            NavigationLink(destination: ProView()) {
                                 FormRowView(icon: R.string.localizable.giftIcon(), firstText: R.string.localizable.proViewTitle(), isHidden: false)
                             }
                             FormRowView(icon: R.string.localizable.brushIcon(), firstText: R.string.localizable.themeColorViewTitle(), isHidden: true)

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct RecordView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     @ObservedObject private var firebaseViewModel = FirebaseViewModel()
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     @State private var weight = 0
     @State private var rep = 0
     var event: Event

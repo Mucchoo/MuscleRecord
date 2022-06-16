@@ -7,11 +7,13 @@
 */
 //In App Purchase
 "pro" = "pro";
+"proIdentifier" = "musclerecord.pro";
 "purchaseAPI" = "appl_jyRKigvnDCVFFnitqxapmMLiGUx";
 //App URL
 "appURL" = "shorturl.at/blnHI";
 //UserDefaults
 "launchedTimes" = "launchedTimes";
+"purchaseStatus" = "PurchaseStatus";
 "themeColorNumber" = "themeColorNumber";
 //Firebase
 "rep" = "rep";
@@ -61,6 +63,7 @@
 //alert
 "ok" = "OK";
 "delete" = "削除";
+"purchased" = "購入しました";
 "restored" = "購入を復元しました";
 "sendEmail" = "メールを送信しました";
 "checkDelete" = "本当に削除しますか？";
@@ -72,6 +75,7 @@
 "passwordUpdated" = "パスワードが更新されました";
 "emailIsEmpty" = "メールアドレスが入力されていません";
 "passwordIsEmpty" = "パスワードが入力されていません";
+"unlockedAllFeatures" = "全てのアイテムがアンロックされました。";
 "passwordConfirmIsEmpty" = "確認用パスワードが入力されていません";
 "onlyFiveEventsAvailableInFree" = "無料版で追加できる種目は5個です";
 "pleaseCheckEmail" = "受け取ったメールを開いてパスワードを再設定してください。";

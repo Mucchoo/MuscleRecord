@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IconView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     //縦3列にグリッドを表示
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
 

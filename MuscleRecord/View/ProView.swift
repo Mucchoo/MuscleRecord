@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ProView: View {
-    @Environment(\.dismiss) var dismiss
-    @ObservedObject private var viewModel = ViewModel()
+    @Environment(\.dismiss) private var dismiss
     @ObservedObject private var purchaseViewModel = PurchaseViewModel()
-    @Binding var shouldPopToRootView: Bool
-    @State private var isShowingAlert = false
+    
+    init() {
+        purchaseViewModel.setup()
+    }
     
     var body: some View {
         SimpleNavigationView(title: R.string.localizable.proViewTitle()) {
@@ -44,20 +45,11 @@ struct ProView: View {
                         purchaseViewModel.restore()
                     }, label: {
                         ButtonView(text: R.string.localizable.restore())
-                            .padding(.top, 20)
+                            .padding(.top, 10)
                     })
                 }
                 .padding(20)
-                //復元時のアラート
-                .alert(R.string.localizable.restored(), isPresented: $isShowingAlert) {
-                    Button(R.string.localizable.ok()) {
-                        shouldPopToRootView = false
-                    }
-                }
             }
-        }.onAppear {
-            shouldPopToRootView = purchaseViewModel.shouldPopToRootView
-            isShowingAlert = purchaseViewModel.isShowingAlert
         }
     }
 }

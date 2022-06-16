@@ -1,0 +1,38 @@
+{
+  "identifier" : "8403960D",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "ACC915C8",
+      "localizations" : [
+        {
+          "description" : "Unlock all features",
+          "displayName" : "pro",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "アプリアイコン、テーマカラー、アイテム数の解放",
+          "displayName" : "pro",
+          "locale" : "ja"
+        }
+      ],
+      "productID" : "musclerecord.pro",
+      "referenceName" : "pro",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 2
+  }
+}

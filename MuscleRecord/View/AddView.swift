@@ -10,7 +10,6 @@ import SwiftUI
 struct AddView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var firebaseViewModel = FirebaseViewModel()
-    @ObservedObject private var viewModel = ViewModel()
     @FocusState private var isFocused: Bool
     @State private var eventName = ""
     

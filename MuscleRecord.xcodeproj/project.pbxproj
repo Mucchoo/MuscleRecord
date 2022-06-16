@@ -33,7 +33,6 @@
 		2A75278E28123EDD00A0961C /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75278D28123EDD00A0961C /* ResetPasswordView.swift */; };
 		2A817F6327FBC55C00772B6C /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A817F6227FBC55C00772B6C /* EditView.swift */; };
 		2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A96A78627F2BBD000A37A43 /* FormRowView.swift */; };
-		2A97B8D7282565E9002EC14D /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 2A97B8D6282565E9002EC14D /* RevenueCat */; };
 		2A97B8DA28256A0F002EC14D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A97B8D928256A0F002EC14D /* StoreKit.framework */; };
 		2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */; };
 		2AA3733327EC507300A885B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA3733227EC507300A885B0 /* Assets.xcassets */; };
@@ -45,9 +44,9 @@
 		2AACB838280D46B100ADCA84 /* GraphBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACB837280D46B100ADCA84 /* GraphBodyView.swift */; };
 		2AD3AC0B28065A7100DE6E00 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3AC0A28065A7100DE6E00 /* IconView.swift */; };
 		2AD99F8527F3EF760007E152 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD99F8427F3EF760007E152 /* AddView.swift */; };
-		2ADDC0C527F5BE3E003C548B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2ADDC0C427F5BE3D003C548B /* GoogleService-Info.plist */; };
 		2AE7CEED2854C057006344F4 /* PurchaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7CEEC2854C057006344F4 /* PurchaseViewModel.swift */; };
 		2AEA33B4281108C900E968FB /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA33B3281108C900E968FB /* SignUpView.swift */; };
+		2AFB296A285AF904008DC212 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AFB2969285AF904008DC212 /* GoogleService-Info.plist */; };
 		2AFDF1A427ED85F200A03ACE /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A327ED85F200A03ACE /* GraphView.swift */; };
 		2AFDF1A627ED861100A03ACE /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A527ED861100A03ACE /* SettingView.swift */; };
 		2AFDF1A827ED869500A03ACE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A727ED869500A03ACE /* HomeView.swift */; };
@@ -57,6 +56,7 @@
 		2A048CB3280C270400866E56 /* ProTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProTitleView.swift; sourceTree = "<group>"; };
 		2A048CB5280C275500866E56 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		2A048CBB280C356A00866E56 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		2A0E3366285ACC7600ADE298 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		2A17A6AD28111AA4007AEE3B /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		2A23193C2806725200192216 /* ProView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProView.swift; sourceTree = "<group>"; };
 		2A25372627ECAE52003C8728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -91,9 +91,9 @@
 		2AACB837280D46B100ADCA84 /* GraphBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBodyView.swift; sourceTree = "<group>"; };
 		2AD3AC0A28065A7100DE6E00 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		2AD99F8427F3EF760007E152 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
-		2ADDC0C427F5BE3D003C548B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2AE7CEEC2854C057006344F4 /* PurchaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewModel.swift; sourceTree = "<group>"; };
 		2AEA33B3281108C900E968FB /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		2AFB2969285AF904008DC212 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2AFDF1A327ED85F200A03ACE /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		2AFDF1A527ED861100A03ACE /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		2AFDF1A727ED869500A03ACE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -107,7 +107,6 @@
 				2A495832285608BD005CE418 /* Rswift in Frameworks */,
 				2A27AB8D27F5BB0A004AF6F3 /* FirebaseAuth in Frameworks */,
 				2A27AB8F27F5BB0A004AF6F3 /* FirebaseFirestore in Frameworks */,
-				2A97B8D7282565E9002EC14D /* RevenueCat in Frameworks */,
 				2A97B8DA28256A0F002EC14D /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,8 +196,9 @@
 			isa = PBXGroup;
 			children = (
 				2A7EFA90282B8CE1000C1891 /* MuscleRecord.entitlements */,
+				2A0E3366285ACC7600ADE298 /* Configuration.storekit */,
 				2A25372627ECAE52003C8728 /* Info.plist */,
-				2ADDC0C427F5BE3D003C548B /* GoogleService-Info.plist */,
+				2AFB2969285AF904008DC212 /* GoogleService-Info.plist */,
 				2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */,
 				2A49583A28560B44005CE418 /* Localizable.strings */,
 				2A57660C280E335F0079DB82 /* Model */,
@@ -256,7 +256,6 @@
 			packageProductDependencies = (
 				2A27AB8C27F5BB0A004AF6F3 /* FirebaseAuth */,
 				2A27AB8E27F5BB0A004AF6F3 /* FirebaseFirestore */,
-				2A97B8D6282565E9002EC14D /* RevenueCat */,
 				2A495831285608BD005CE418 /* Rswift */,
 			);
 			productName = MuscleRecord;
@@ -290,7 +289,6 @@
 			mainGroup = 2AA3732227EC507200A885B0;
 			packageReferences = (
 				2A27AB8B27F5BB0A004AF6F3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				2A97B8D5282565E8002EC14D /* XCRemoteSwiftPackageReference "purchases-ios" */,
 				2A495830285608BD005CE418 /* XCRemoteSwiftPackageReference "R.swift.Library" */,
 			);
 			productRefGroup = 2AA3732C27EC507200A885B0 /* Products */;
@@ -309,7 +307,7 @@
 			files = (
 				2A49583828560B44005CE418 /* Localizable.strings in Resources */,
 				2A25372827ECB0D5003C8728 /* LaunchScreen.storyboard in Resources */,
-				2ADDC0C527F5BE3E003C548B /* GoogleService-Info.plist in Resources */,
+				2AFB296A285AF904008DC212 /* GoogleService-Info.plist in Resources */,
 				2AA3733627EC507300A885B0 /* Preview Assets.xcassets in Resources */,
 				2AA3733327EC507300A885B0 /* Assets.xcassets in Resources */,
 			);
@@ -626,14 +624,6 @@
 				kind = branch;
 			};
 		};
-		2A97B8D5282565E8002EC14D /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -651,11 +641,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2A495830285608BD005CE418 /* XCRemoteSwiftPackageReference "R.swift.Library" */;
 			productName = Rswift;
-		};
-		2A97B8D6282565E9002EC14D /* RevenueCat */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2A97B8D5282565E8002EC14D /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = RevenueCat;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

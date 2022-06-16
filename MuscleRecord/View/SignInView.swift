@@ -11,11 +11,11 @@ struct SignInView: View {
     @ObservedObject private var firebaseViewModel = FirebaseViewModel()
     @ObservedObject private var viewModel = ViewModel()
     @FocusState private var focus: Focus?
+    @State private var isShowingResetPassword = false
+    @State private var isShowingAlert = false
     @State private var password = ""
     @State private var email = ""
     @State private var error = ""
-    @State private var isShowingResetPassword = false
-    @State private var isShowingAlert = false
     
     enum Focus {
         case email, password

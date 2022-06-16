@@ -5,54 +5,62 @@
 //  Created by Musa Yazuju on 2022/06/11.
 //
 
-import SwiftUI
-import RevenueCat
+import Foundation
+import StoreKit
 
-class PurchaseViewModel: ObservableObject {
-    @Published var shouldPopToRootView = true
-    @Published var isShowingAlert = false
-    //内課金購入状態
-    func isPurchased() -> Bool {
-        var isPro = false
-        Purchases.shared.getCustomerInfo { (customerInfo, error) in
-            guard error == nil else {
-                print("内課金購入時のエラー\(error!)")
-                return
-            }
-            if customerInfo?.entitlements[R.string.localizable.pro()]?.isActive == true {
-                isPro = true
-            }
-        }
-        return isPro
+class PurchaseViewModel: NSObject, ObservableObject {
+    var products = [SKProduct]()
+    //初期設定
+    func setup() {
+        let request = SKProductsRequest(productIdentifiers: [R.string.localizable.proIdentifier()])
+        request.delegate = self
+        request.start()
     }
-    //内課金購入
+    //購入
     func purchase() {
-        Purchases.shared.getOfferings { (offerings, error) in
-            guard error == nil else {
-                print("内課金取得時のエラー\(error!)")
-                return
-            }
-            guard let package = offerings?.current?.lifetime?.storeProduct else { return }
-            Purchases.shared.purchase(product: package) { (transaction, customerInfo, error, userCancelled) in
-                guard error == nil else {
-                    print("内課金購入時のエラー\(error!)")
-                    return
-                }
-                if customerInfo?.entitlements.all[R.string.localizable.pro()]?.isActive == true {
-                    self.shouldPopToRootView = false
-                }
-            }
-        }
+        guard let product = products.first else { return }
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.default().add(payment)
     }
-    //内課金復元
+    //復元
     func restore() {
-        Purchases.shared.restorePurchases { customerInfo, error in
-            guard error == nil else {
-                print("内課金復元時のエラー\(error!)")
-                return
-            }
-            if customerInfo?.entitlements.all[R.string.localizable.pro()]?.isActive == true {
-                self.isShowingAlert = true
+        SKPaymentQueue.default().restoreCompletedTransactions()
+        SKPaymentQueue.default().add(self)
+    }
+    //購入後のアラート
+    private func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: R.string.localizable.unlockedAllFeatures(), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: R.string.localizable.ok(), style: .default))
+        Window.first!.rootViewController?.present(alert, animated: true)
+    }
+}
+//情報取得後
+extension PurchaseViewModel: SKProductsRequestDelegate {
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        products = response.products
+    }
+}
+//transactions変更時
+extension PurchaseViewModel: SKPaymentTransactionObserver {
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        transactions.forEach {
+            switch $0.transactionState {
+            case .purchasing: print("purchasing")
+            case .purchased:
+                print("purchased")
+                UserDefaults.standard.set(true, forKey: R.string.localizable.purchaseStatus())
+                showAlert(title: R.string.localizable.purchased())
+                SKPaymentQueue.default().finishTransaction($0)
+            case .restored:
+                print("restored")
+                UserDefaults.standard.set(true, forKey: R.string.localizable.purchaseStatus())
+                showAlert(title: R.string.localizable.restored())
+                SKPaymentQueue.default().finishTransaction($0)
+            case .deferred: print("defferred")
+            case .failed:
+                print("failed")
+                SKPaymentQueue.default().finishTransaction($0)
+            default: break
             }
         }
     }

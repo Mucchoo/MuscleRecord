@@ -10,8 +10,8 @@ import SwiftUI
 struct GraphView: View {
     @ObservedObject private var firebaseViewModel = FirebaseViewModel()
     @ObservedObject private var viewModel = ViewModel()
-    private var weightScale: [Float] = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0]
     @State private var graphRange = 0
+    private var weightScale: [Float] = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0]
     var event: Event
     //選択した種目のデータをグラフに表示
     init(event: Event){
@@ -42,7 +42,7 @@ struct GraphView: View {
                     }
                     .offset(y: 8)
                     .frame(minWidth: 15, minHeight: 0, maxHeight: .infinity)
-                    .padding(.bottom, 63)
+                    .padding(.bottom, 22)
                     .padding(.trailing, 10)
                     .padding(.top, 22)
                     //メモリとグラフを仕切る線
