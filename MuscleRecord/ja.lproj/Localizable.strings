@@ -94,6 +94,7 @@
 //assets
 "logo" = "Logo";
 "icon" = "Icon";
+"items" = "Items";
 "icons" = "Icons";
 "themes" = "Themes";
 "giftIcon" = "gift";

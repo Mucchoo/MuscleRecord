@@ -44,6 +44,6 @@ struct ProTitleView: View {
                         .foregroundColor(Color(R.color.fontColor()!))
                     Spacer()
                 }
-            }
+            }.padding(.top, 10)
     }
 }
