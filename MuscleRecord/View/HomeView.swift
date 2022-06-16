@@ -96,18 +96,19 @@ struct HomeView: View {
                         .padding(20)
                         .background(Color(R.color.cellColor()!))
                         .cornerRadius(20)
-                        .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 2)
+                        .shadow(color: Color(R.color.fontColor()!).opacity(0.5), radius: 4, x: 0, y: 2)
+                        .padding(.top, 5)
                         .padding(.horizontal, 10)
                         Spacer()
-                    }
-                    //6個以上種目を登録する場合アラートを表示し内課金購入ページに遷移
-                    NavigationLink(destination: ProView(), isActive: $isShowingPro) {
-                        EmptyView()
                     }
                 }
                 .padding(.top, 10)
                 .onAppear {
                     firebaseViewModel.getEvent()
+                }
+                //6個以上種目を登録する場合アラートを表示し内課金購入ページに遷移
+                NavigationLink(destination: ProView(), isActive: $isShowingPro) {
+                    EmptyView()
                 }
             }
             .background(Color(R.color.backgroundColor()!))

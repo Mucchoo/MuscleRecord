@@ -51,7 +51,7 @@ struct EditView: View {
                             .background(Color(R.color.clearColor()!))
                             .foregroundColor(viewModel.getThemeColor())
                             .cornerRadius(20)
-                            .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 2)
+                            .shadow(color: Color(R.color.fontColor()!).opacity(0.5), radius: 4, x: 0, y: 2)
                     }
                     //削除時のアラート
                     .alert(isPresented: $isShowingAlert) {

@@ -24,7 +24,7 @@ struct TutorialView: View {
                         .fontWeight(.bold)
                         .foregroundColor(viewModel.getThemeColor())
                         .frame(width: 200, height: 40)
-                        .background(.white)
+                        .background(Color(R.color.clearColor()!))
                         .cornerRadius(20)
                         .padding(.bottom, 10)
                     //ページビュー
@@ -54,7 +54,7 @@ struct TutorialView: View {
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 20)
                                 .padding(.bottom, 30)
-                                .foregroundColor(.black)
+                                .foregroundColor(Color(R.color.fontColor()!))
                         }
                         //3枚目
                         TutorialCardView {
@@ -76,7 +76,7 @@ struct TutorialView: View {
                                 ButtonView(text: R.string.localizable.start()).padding(.vertical, 30)
                             }
                         }
-                        .background(.white)
+                        .background(Color(R.color.clearColor()!))
                         .cornerRadius(20)
                         .padding(.horizontal, 20)
                     }
