@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SimpleNavigationView<Content: View>: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     let content: Content
     var title: String
     

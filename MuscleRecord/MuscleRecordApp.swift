@@ -10,7 +10,7 @@ import Firebase
 
 @main
 struct MuscleRecordApp: App {
-        
+    
     init() {
         //Firebase有効化
         FirebaseApp.configure()
@@ -24,5 +24,4 @@ struct MuscleRecordApp: App {
             HomeView()
         }
     }
-
 }

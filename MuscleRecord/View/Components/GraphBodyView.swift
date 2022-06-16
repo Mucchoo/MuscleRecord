@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GraphBodyView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     var records: [Record]
     var latestID: String
     var maxWeight: Float

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProTitleView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     var icon: String
     var title: String
     var isImage: Bool

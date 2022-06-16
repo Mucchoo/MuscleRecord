@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FormRowView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     var icon: String
     var firstText: String
     var isHidden: Bool

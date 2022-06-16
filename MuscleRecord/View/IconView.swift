@@ -15,7 +15,7 @@ struct IconView: View {
     var body: some View {
         SimpleNavigationView(title: R.string.localizable.iconViewTitle()) {
             GeometryReader{ geometry in
-                ScrollView(){
+                ScrollView {
                     LazyVGrid(columns: columns, spacing: 10) {
                         //初期アイコンに変更
                         Button(action: {

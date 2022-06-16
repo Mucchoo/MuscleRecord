@@ -14,7 +14,7 @@ struct TutorialView: View {
     @Binding var isShowingTutorial: Bool
     
     var body: some View {
-            ZStack(){
+            ZStack {
                 //背景
                 viewModel.getThemeColor().edgesIgnoringSafeArea(.all)
                 VStack {

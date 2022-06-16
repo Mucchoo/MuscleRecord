@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ResetPasswordView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     @ObservedObject private var firebaseViewModel = FirebaseViewModel()
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     @FocusState private var focus: Bool
     @State private var email = ""
     @State private var errorMessage = ""

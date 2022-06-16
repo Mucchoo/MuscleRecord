@@ -9,7 +9,7 @@ import SwiftUI
 import Rswift
 
 struct TextFieldView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     var title: String
     var text: Binding<String>
     var placeHolder: String

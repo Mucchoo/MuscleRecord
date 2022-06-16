@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ThemeColorView: View {
-    @Environment(\.dismiss) var dismiss
-    @ObservedObject var viewModel = ViewModel()
-    @State var isColorChanged = false
+    @Environment(\.dismiss) private var dismiss
+    @ObservedObject private var viewModel = ViewModel()
+    @State private var isColorChanged = false
+    
     var body: some View {
         if isColorChanged {
             //色が変更されたらトップページに切り替える

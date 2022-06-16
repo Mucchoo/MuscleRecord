@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TutorialTextView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     var text: String
     //チュートリアルの説明文
     var body: some View {

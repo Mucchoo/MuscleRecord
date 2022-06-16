@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     @ObservedObject private var firebaseViewModel = FirebaseViewModel()
     @ObservedObject private var viewModel = ViewModel()
     @State private var isActive = false

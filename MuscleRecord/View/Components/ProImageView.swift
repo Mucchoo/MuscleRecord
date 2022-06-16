@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ProImageView: View {
-    
     var image: String
     //内課金ページの画像
     var body: some View {

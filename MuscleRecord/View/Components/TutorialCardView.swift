@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct TutorialCardView<Content: View>: View {
+    @ObservedObject private var viewModel = ViewModel()
     let content: Content
     
     init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
-    @ObservedObject var viewModel = ViewModel()
     //チュートリアルのカード
     var body: some View {
-        VStack(){
+        VStack {
             Spacer()
             content
             Spacer()
