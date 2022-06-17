@@ -37,16 +37,19 @@ struct TutorialView: View {
                                 .frame(width: 30, height: 30)
                                 .foregroundColor(viewModel.getThemeColor())
                             TutorialImageView(image: R.string.localizable.tutorial2())
+                                .shadow(color: Color(R.color.fontColor()!).opacity(0.5), radius: 4, x: 0, y: 2)
                             TutorialTextView(text: R.string.localizable.tutorialTextOne())
                         }
                         //2枚目
                         TutorialCardView {
                             TutorialImageView(image: R.string.localizable.tutorial2())
+                                .shadow(color: Color(R.color.fontColor()!).opacity(0.5), radius: 4, x: 0, y: 2)
                             Image(systemName: R.string.localizable.arrowIcon())
                                 .resizable()
                                 .frame(width: 30, height: 30)
                                 .foregroundColor(viewModel.getThemeColor())
                             TutorialImageView(image: R.string.localizable.tutorial3())
+                                .shadow(color: Color(R.color.fontColor()!).opacity(0.5), radius: 4, x: 0, y: 2)
                             (Text(R.string.localizable.tutorialTextTwoFirst())
                             + Text((Image(systemName: R.string.localizable.pencilIconFill())))
                             + Text(R.string.localizable.tutorialTextTwoLast()))

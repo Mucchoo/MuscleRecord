@@ -47,7 +47,7 @@ struct ThemeColorView: View {
                         }
                     }
                 }
-            }
+            }.edgesIgnoringSafeArea(.bottom)
         }
     }
 }
