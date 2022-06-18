@@ -8,7 +8,6 @@
 //In App Purchase
 "pro" = "pro";
 "proIdentifier" = "musclerecord.pro";
-"purchaseAPI" = "appl_jyRKigvnDCVFFnitqxapmMLiGUx";
 //App URL
 "appURL" = "https://itunes.apple.com/jp/app/id1628829703?mt=8";
 //UserDefaults
