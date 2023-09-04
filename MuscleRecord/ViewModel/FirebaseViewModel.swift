@@ -40,21 +40,22 @@ class FirebaseViewModel: ObservableObject {
         return errorMessage
     }
     //アカウント作成
-    func signUp(email: String, password: String) -> String? {
+    func signUp(email: String, password: String, completion: @escaping (String?) -> ()) {
         var errorMessage = ""
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 print("signUp error: \(error.localizedDescription)")
                 errorMessage = error.localizedDescription
+                completion(errorMessage)
             } else {
                 guard let _ = authResult?.user else { return }
                 Auth.auth().signIn(withEmail: email, password: password)
                 let db = Firestore.firestore()
                 let userID = Auth.auth().currentUser!.uid
                 db.collection(R.string.localizable.users()).document(userID).setData([R.string.localizable.email(): email])
+                completion(nil)
             }
         }
-        return errorMessage
     }
     //メールアドレス変更
     func changeEmail(into: String) -> String? {

@@ -48,16 +48,25 @@ struct SignUpView: View {
                     error = ""
                     if email.isEmpty {
                         error = R.string.localizable.emailIsEmpty()
+                        isShowingAlert = true
                     } else if password.isEmpty {
                         error = R.string.localizable.passwordIsEmpty()
+                        isShowingAlert = true
                     } else if confirm.isEmpty {
                         error = R.string.localizable.passwordConfirmIsEmpty()
+                        isShowingAlert = true
                     } else if password.compare(confirm) != .orderedSame {
                         error = R.string.localizable.passwordAndPasswordConfirmIsNotEqual()
+                        isShowingAlert = true
                     } else {
-                        error = firebaseViewModel.signUp(email: email, password: password) ?? ""
+                        firebaseViewModel.signUp(email: email, password: password) { errorMessage in
+                            if let errorMessage {
+                                error = errorMessage
+                            }
+                            
+                            isShowingAlert = true
+                        }
                     }
-                    isShowingAlert = true
                 }){
                     ButtonView(text: R.string.localizable.createAccount()).padding(.top, 20)
                 }
