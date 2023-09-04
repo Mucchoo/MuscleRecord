@@ -33,6 +33,7 @@ class FirebaseViewModel: ObservableObject {
         var errorMessage = ""
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {
+                print("signIn error: \(error.localizedDescription)")
                 errorMessage = error.localizedDescription
             }
         }
@@ -43,6 +44,7 @@ class FirebaseViewModel: ObservableObject {
         var errorMessage = ""
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
+                print("signUp error: \(error.localizedDescription)")
                 errorMessage = error.localizedDescription
             } else {
                 guard let _ = authResult?.user else { return }
@@ -59,6 +61,7 @@ class FirebaseViewModel: ObservableObject {
         var errorMessage = ""
         Auth.auth().currentUser?.updateEmail(to: into) { error in
             if let error = error as NSError? {
+                print("changeEmail error: \(error.localizedDescription)")
                 errorMessage = error.localizedDescription
             }
         }
@@ -69,6 +72,7 @@ class FirebaseViewModel: ObservableObject {
         var errorMessage = ""
         Auth.auth().currentUser?.updatePassword(to: into) { error in
             if let error = error as NSError? {
+                print("changePassword error: \(error.localizedDescription)")
                 errorMessage = error.localizedDescription
             }
         }
@@ -77,8 +81,8 @@ class FirebaseViewModel: ObservableObject {
     //パスワードリセット
     func resetPassword(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
-            guard error == nil else {
-                print("パスワードリセット時のエラー\(error!)")
+            if let error {
+                print("resetPassword error: \(error.localizedDescription)")
                 return
             }
         }
@@ -87,8 +91,8 @@ class FirebaseViewModel: ObservableObject {
     func signOut() {
         do {
             try Auth.auth().signOut()
-        } catch let signOutError as NSError {
-            print("サインアウトエラー\(signOutError)")
+        } catch let error as NSError {
+            print("signOut error: \(error.localizedDescription)")
         }
     }
     //種目名の更新
@@ -96,8 +100,8 @@ class FirebaseViewModel: ObservableObject {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else { return }
         db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).updateData([R.string.localizable.name(): newName]) { error in
-            guard error == nil else {
-                print("種目更新時のエラー\(error!)")
+            if let error {
+                print("updateEvent error: \(error.localizedDescription)")
                 return
             }
         }
@@ -107,8 +111,8 @@ class FirebaseViewModel: ObservableObject {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else { return }
         db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).delete() { error in
-            guard error == nil else {
-                print("種目削除時のエラー\(error!)")
+            if let error {
+                print("deleteEvent error: \(error.localizedDescription)")
                 return
             }
         }
@@ -118,8 +122,8 @@ class FirebaseViewModel: ObservableObject {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else { return }
         db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).addDocument(data: [R.string.localizable.name(): name, R.string.localizable.latestWeight(): 0.0, R.string.localizable.latestRep(): 0, R.string.localizable.latestDate(): Date(timeInterval: -60*60*24, since: .now)]) { error in
-            guard error == nil else {
-                print("種目追加時のエラー\(error!)")
+            if let error {
+                print("addEvent error: \(error.localizedDescription)")
                 return
             }
         }
@@ -129,8 +133,8 @@ class FirebaseViewModel: ObservableObject {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else { return }
         db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).getDocuments { snapshot, error in
-            guard error == nil else {
-                print("種目取得時のエラー\(error!)")
+            if let error {
+                print("getEvent error: \(error.localizedDescription)")
                 return
             }
             guard let snapshot = snapshot else { return }
@@ -147,8 +151,8 @@ class FirebaseViewModel: ObservableObject {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else { return }
         db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).collection(R.string.localizable.records()).order(by: R.string.localizable.date()).getDocuments { (snapshot, error) in
-            guard error == nil else {
-                print("記録取得時のエラー\(error!)")
+            if let error {
+                print("getRecord error: \(error.localizedDescription)")
                 return
             }
             guard let snapshot = snapshot else { return }
@@ -232,15 +236,15 @@ class FirebaseViewModel: ObservableObject {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else { return }
         db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).setData([R.string.localizable.name(): event.name, R.string.localizable.latestWeight(): weight, R.string.localizable.latestRep(): rep, R.string.localizable.latestDate(): Date()]) { error in
-            guard error == nil else {
-                print("記録追加時（種目更新）のエラー\(error!)")
+            if let error {
+                print("addRecord error1: \(error.localizedDescription)")
                 return
             }
         }
         //トップページの最新の記録も更新
         db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).collection(R.string.localizable.records()).addDocument(data: [R.string.localizable.date(): Date(), R.string.localizable.weight(): weight, R.string.localizable.rep(): rep]) { error in
-            guard error == nil else {
-                print("記録追加時のエラー\(error!)")
+            if let error {
+                print("addRecord error2: \(error.localizedDescription)")
                 return
             }
         }
@@ -251,8 +255,8 @@ class FirebaseViewModel: ObservableObject {
         guard let userID = Auth.auth().currentUser?.uid else { return }
         //一番新しい記録を削除
         db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).collection(R.string.localizable.records()).order(by: R.string.localizable.date(), descending: true).limit(to: 1).getDocuments { snapshot, error in
-            guard error == nil else {
-                print("記録更新時（古い記録削除）のエラー\(error!)")
+            if let error {
+                print("updateRecord error1: \(error.localizedDescription)")
                 return
             }
             guard let snapshot = snapshot else { return }
@@ -263,15 +267,15 @@ class FirebaseViewModel: ObservableObject {
         }
         //トップページの最新の記録も更新
         db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).setData([R.string.localizable.name(): event.name, R.string.localizable.latestWeight(): weight, R.string.localizable.latestRep(): rep, R.string.localizable.latestDate(): Date()]) { error in
-            guard error == nil else {
-                print("記録更新時（種目更新）のエラー\(error!)")
+            if let error {
+                print("updateRecord error2: \(error.localizedDescription)")
                 return
             }
         }
         //記録を上書き
         db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).collection(R.string.localizable.records()).addDocument(data: [R.string.localizable.date(): Date(), R.string.localizable.weight(): weight, R.string.localizable.rep(): rep]) { error in
-            guard error == nil else {
-                print("記録更新時のエラー\(error!)")
+            if let error {
+                print("updateRecord error3: \(error.localizedDescription)")
                 return
             }
         }
