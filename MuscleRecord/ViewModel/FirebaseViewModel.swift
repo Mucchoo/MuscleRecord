@@ -16,9 +16,6 @@ class FirebaseViewModel: ObservableObject {
     @Published var records27 = [Record]()
     @Published var maxWeight: Float = 0.0
     @Published var latestRecord: String = ""
-    @Published var latestRecord3: String = ""
-    @Published var latestRecord9: String = ""
-    @Published var latestRecord27: String = ""
     @Published var oldRecord: Record?
     //ログイン状態
     func isLoggedIn() -> Bool {
@@ -173,55 +170,6 @@ class FirebaseViewModel: ObservableObject {
                     let record = Record(id: d.documentID, date: date, weight: d[R.string.localizable.weight()] as? Float ?? 0, rep: d[R.string.localizable.rep()] as? Int ?? 0, dummy: false)
                     self.oldRecord = record
                     self.records.append(record)
-                }
-                //3日平均、9日平均、27日平均の作成
-                let periodArray = [3,9,27]
-                for period in periodArray {
-                    var totalDate = 0
-                    var totalWeight: Float = 0
-                    var totalRep = 0
-                    let fraction = self.records.count % period
-                    var created = false
-                    self.records.forEach { record in
-                        totalWeight += record.weight
-                        totalRep += record.rep
-                        totalDate += 1
-                        //余った部分を最初に作成
-                        if fraction != 0 && fraction == totalDate && created == false {
-                            let recordID = UUID().uuidString
-                            if period == 3 {
-                                self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestRecord3 = recordID
-                            } else if period == 9 {
-                                self.records9.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestRecord9 = recordID
-                            } else if period == 27 {
-                                self.records27.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestRecord27 = recordID
-                            }
-                            created = true
-                            totalWeight = 0
-                            totalRep = 0
-                            totalDate = 0
-                        }
-                        //平均を作成
-                        if totalDate == period {
-                            let recordID = UUID().uuidString
-                            if period == 3 {
-                                self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestRecord3 = recordID
-                            } else if period == 9 {
-                                self.records9.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestRecord9 = recordID
-                            } else if period == 27 {
-                                self.records27.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestRecord27 = recordID
-                            }
-                            totalWeight = 0
-                            totalRep = 0
-                            totalDate = 0
-                        }
-                    }
                 }
                 //最大重量
                 snapshot.documents.forEach { d in
