@@ -20,39 +20,39 @@ struct ResetPasswordView: View {
     var body: some View {
         ZStack{
             //背景タップでキーボードを閉じる
-            Color(R.color.clearColor()!)
+            Color("ClearColor")
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
                     focus = false
                 }
             VStack(spacing: 0){
                 //タイトル
-                Text(R.string.localizable.resetPassword())
+                Text("パスワードを再設定")
                     .font(.headline)
                     .padding(.bottom, 20)
-                    .foregroundColor(Color(R.color.fontColor()!))
+                    .foregroundColor(Color("FontColor"))
                 //メールアドレスtextField
-                TextFieldView(title: R.string.localizable.emailAddress(), text: $email, placeHolder: R.string.localizable.emailAddressPlaceholder(), isSecure: false)
+                TextFieldView(title: "メールアドレス", text: $email, placeHolder: "example@example.com", isSecure: false)
                     .focused($focus)
                 //パスワード再設定ボタン
                 Button( action: {
                     errorMessage = ""
                     if email.isEmpty {
-                        errorMessage = R.string.localizable.emailIsEmpty()
+                        errorMessage = "メールアドレスが入力されていません"
                     } else {
                         firebaseViewModel.resetPassword(email: email)
                     }
                     isShowingAlert = true
                 }){
-                    ButtonView(text: R.string.localizable.resetPassword()).padding(.top, 20)
+                    ButtonView(text: "パスワードを再設定").padding(.top, 20)
                 }
                 .alert(isPresented: $isShowingAlert) {
                     if errorMessage.isEmpty {
-                        return Alert(title: Text(R.string.localizable.sendEmail()), message: Text(R.string.localizable.pleaseCheckEmail()), dismissButton: .default(Text(R.string.localizable.ok()), action: {
+                        return Alert(title: Text("メールを送信しました"), message: Text("受け取ったメールを開いてパスワードを再設定してください。"), dismissButton: .default(Text("OK"), action: {
                             dismiss()
                         }))
                     } else {
-                        return Alert(title: Text(R.string.localizable.errorOccured()), message: Text(errorMessage), dismissButton: .default(Text(R.string.localizable.ok())))
+                        return Alert(title: Text("エラーが発生しました"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
                     }
                 }
                 Spacer()

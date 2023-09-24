@@ -24,51 +24,56 @@ struct SignInView: View {
     var body: some View {
         ZStack{
             //背景タップでキーボードを閉じる
-            Color(R.color.clearColor()!)
+            Color("ClearColor")
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
                     focus = nil
                 }
             VStack(spacing: 0){
                 //タイトル
-                Text(R.string.localizable.login())
+                Text("ログイン")
                     .font(.headline)
                     .padding(.bottom, 20)
-                    .foregroundColor(Color(R.color.fontColor()!))
+                    .foregroundColor(Color("FontColor"))
                 //フォーム
-                TextFieldView(title: R.string.localizable.emailAddress(), text: $email, placeHolder: R.string.localizable.emailAddressPlaceholder(), isSecure: false)
+                TextFieldView(title: "メールアドレス", text: $email, placeHolder: "example@example.com", isSecure: false)
                     .focused($focus, equals: .email)
-                TextFieldView(title: R.string.localizable.password(), text: $password, placeHolder: R.string.localizable.passwordPlaceholder(), isSecure: true)
+                TextFieldView(title: "パスワード", text: $password, placeHolder: "password", isSecure: true)
                     .focused($focus, equals: .password)
                 //ログインボタン
                 Button( action: {
                     if email.isEmpty {
-                        error = R.string.localizable.emailIsEmpty()
+                        error = "メールアドレスが入力されていません"
+                        isShowingAlert = true
                     } else if password.isEmpty {
-                        error = R.string.localizable.passwordIsEmpty()
+                        error = "パスワードが入力されていません"
+                        isShowingAlert = true
                     } else {
-                        error = firebaseViewModel.signIn(email: email, password: password) ?? ""
+                        firebaseViewModel.signIn(email: email, password: password) { errorString in
+                            error = errorString ?? ""
+                            isShowingAlert = true
+                        }
                     }
-                    isShowingAlert = true
                 }){
-                    ButtonView(text: R.string.localizable.login()).padding(.top, 20)
+                    ButtonView(text: "ログイン").padding(.top, 20)
                 }
                 //パスワードを忘れたボタン
                 Button {
                     isShowingResetPassword = true
                 } label: {
-                    Text(R.string.localizable.forgotPassword())
+                    Text("パスワードを忘れた")
                         .font(.headline)
                         .foregroundColor(viewModel.getThemeColor())
                         .padding(.top, 30)
                 }
                 .alert(isPresented: $isShowingAlert) {
+                    
                     if error.isEmpty {
-                        return Alert(title: Text(R.string.localizable.loginSucceeded()), message: Text(""), dismissButton: .default(Text(R.string.localizable.ok()), action: {
+                        return Alert(title: Text("ログインに成功しました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
                             Window.first?.rootViewController?.dismiss(animated: true, completion: nil)
                         }))
                     } else {
-                        return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text(R.string.localizable.ok())))
+                        return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text("OK")))
                     }
                 }
                 Spacer()

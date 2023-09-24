@@ -23,65 +23,65 @@ struct ChangeInfoView: View {
     }
     
     var body: some View {
-        SimpleNavigationView(title: R.string.localizable.changeInfoViewTitle()) {
+        SimpleNavigationView(title: "アカウント情報変更") {
             ZStack{
                 //背景タップでキーボードを閉じる
-                Color(R.color.clearColor()!)
+                Color("ClearColor")
                     .edgesIgnoringSafeArea(.all)
                     .onTapGesture {
                         focus = nil
                     }
                 VStack(spacing: 0){
                     //メールアドレスtextField
-                    TextFieldView(title: R.string.localizable.newEmailAddress(), text: $email, placeHolder: R.string.localizable.emailAddressPlaceholder(), isSecure: false)
+                    TextFieldView(title: "新しいメールアドレス", text: $email, placeHolder: "example@example.com", isSecure: false)
                         .focused($focus, equals: .email)
                     //メールアドレス変更ボタン
                     Button( action: {
                         if email.isEmpty {
-                            error = R.string.localizable.emailIsEmpty()
+                            error = "メールアドレスが入力されていません"
                         } else {
                             error = firebaseViewModel.changeEmail(into: email) ?? ""
                         }
                         isShowingEmailAlert = true
                     }, label: {
-                        ButtonView(text: R.string.localizable.changeEmail()).padding(.vertical, 20)
+                        ButtonView(text: "メールアドレスを変更").padding(.vertical, 20)
                     })
                     .alert(isPresented: $isShowingEmailAlert) {
                         if error.isEmpty {
-                            return Alert(title: Text(R.string.localizable.updatedEmail()), message: Text(""), dismissButton: .default(Text(R.string.localizable.ok()), action: {
+                            return Alert(title: Text("メールアドレスが更新されました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
                                 Window.first?.rootViewController?.dismiss(animated: true, completion: nil)
                             }))
                         } else {
-                            return Alert(title: Text(error), message: Text(""), dismissButton: .default(Text(R.string.localizable.ok())))
+                            return Alert(title: Text(error), message: Text(""), dismissButton: .default(Text("OK")))
                         }
                     }
                     //パスワード変更フォーム
-                    TextFieldView(title: R.string.localizable.newPassword(), text: $password, placeHolder: R.string.localizable.passwordPlaceholder(), isSecure: true)
+                    TextFieldView(title: "新しいパスワード", text: $password, placeHolder: "password", isSecure: true)
                         .focused($focus, equals: .password)
-                    TextFieldView(title: R.string.localizable.passwordConfirm(), text: $confirm, placeHolder: R.string.localizable.passwordPlaceholder(), isSecure: true)
+                    TextFieldView(title: "確認用パスワード", text: $confirm, placeHolder: "password", isSecure: true)
                         .focused($focus, equals: .confirm)
                     //パスワード変更ボタン
                     Button( action: {
                         if password.isEmpty {
-                            error = R.string.localizable.passwordIsEmpty()
+                            error = "パスワードが入力されていません"
                         } else if confirm.isEmpty {
-                            error = R.string.localizable.passwordConfirmIsEmpty()
+                            error = "確認用パスワードが入力されていません"
                         } else if password.compare(self.confirm) != .orderedSame {
-                            error = R.string.localizable.passwordAndPasswordConfirmIsNotEqual()
+                            error = "パスワードと確認パスワードが一致しません"
                         } else {
                             error = firebaseViewModel.changePassword(into: password) ?? ""
                         }
                         isShowingPasswordAlert = true
                     }, label: {
-                        ButtonView(text: R.string.localizable.changePassword()).padding(.top, 20)
+                        ButtonView(text: "パスワードを変更").padding(.top, 20)
                     })
                     .alert(isPresented: $isShowingPasswordAlert) {
                         if error.isEmpty {
-                            return Alert(title: Text(R.string.localizable.passwordUpdated()), message: Text(""), dismissButton: .default(Text(R.string.localizable.ok()), action: {
+                            return Alert(title: Text("パスワードが更新されました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
                                 Window.first?.rootViewController?.dismiss(animated: true, completion: nil)
                             }))
                         } else {
-                            return Alert(title: Text(error), message: Text(""), dismissButton: .default(Text(R.string.localizable.ok())))
+                            return Alert(title: Text(error), message: Text(""), dismissButton: .default(Text("OK")))
                         }
                     }
                     Spacer()

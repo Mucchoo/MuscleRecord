@@ -25,38 +25,38 @@ struct SignUpView: View {
     var body: some View {
         ZStack{
             //背景タップでキーボードを閉じる
-            Color(R.color.clearColor()!)
+            Color("ClearColor")
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
                     focus = nil
                 }
             VStack(spacing: 0){
                 //タイトル
-                Text(R.string.localizable.createAccount())
+                Text("アカウント作成")
                     .font(.headline)
                     .padding(.bottom, 20)
-                    .foregroundColor(Color(R.color.fontColor()!))
+                    .foregroundColor(Color("FontColor"))
                 //フォーム
-                TextFieldView(title: R.string.localizable.emailAddress(), text: $email, placeHolder: R.string.localizable.emailAddressPlaceholder(), isSecure: false)
+                TextFieldView(title: "メールアドレス", text: $email, placeHolder: "example@example.com", isSecure: false)
                     .focused($focus, equals: .email)
-                TextFieldView(title: R.string.localizable.password(), text: $password, placeHolder: R.string.localizable.passwordPlaceholder(), isSecure: true)
+                TextFieldView(title: "パスワード", text: $password, placeHolder: "password", isSecure: true)
                     .focused($focus, equals: .password)
-                TextFieldView(title: R.string.localizable.passwordConfirm(), text: $confirm, placeHolder: R.string.localizable.passwordPlaceholder(), isSecure: true)
+                TextFieldView(title: "確認用パスワード", text: $confirm, placeHolder: "password", isSecure: true)
                     .focused($focus, equals: .confirm)
                 //アカウント作成ボタン
                 Button( action: {
                     error = ""
                     if email.isEmpty {
-                        error = R.string.localizable.emailIsEmpty()
+                        error = "メールアドレスが入力されていません"
                         isShowingAlert = true
                     } else if password.isEmpty {
-                        error = R.string.localizable.passwordIsEmpty()
+                        error = "パスワードが入力されていません"
                         isShowingAlert = true
                     } else if confirm.isEmpty {
-                        error = R.string.localizable.passwordConfirmIsEmpty()
+                        error = "確認用パスワードが入力されていません"
                         isShowingAlert = true
                     } else if password.compare(confirm) != .orderedSame {
-                        error = R.string.localizable.passwordAndPasswordConfirmIsNotEqual()
+                        error = "パスワードと確認パスワードが一致しません"
                         isShowingAlert = true
                     } else {
                         firebaseViewModel.signUp(email: email, password: password) { errorMessage in
@@ -68,24 +68,24 @@ struct SignUpView: View {
                         }
                     }
                 }){
-                    ButtonView(text: R.string.localizable.createAccount()).padding(.top, 20)
+                    ButtonView(text: "アカウント作成").padding(.top, 20)
                 }
                 //ログインボタン
                 Button {
                     showSignIn = true
                 } label: {
-                    Text(R.string.localizable.loginExistingAccount())
+                    Text("既存のアカウントにログイン")
                         .font(.headline)
                         .foregroundColor(viewModel.getThemeColor())
                         .padding(.top, 30)
                 }
                 .alert(isPresented: $isShowingAlert) {
                     if error.isEmpty {
-                        return Alert(title: Text(R.string.localizable.accountCreated()), message: Text(""), dismissButton: .default(Text(R.string.localizable.ok()), action: {
+                        return Alert(title: Text("アカウントが作成されました"), message: Text(""), dismissButton: .default(Text("OK"), action: {
                             Window.first?.rootViewController?.dismiss(animated: true, completion: nil)
                         }))
                     } else {
-                        return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text(R.string.localizable.ok())))
+                        return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text("OK")))
                     }
                 }
                 Spacer()

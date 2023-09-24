@@ -19,7 +19,7 @@ struct TextFieldView: View {
             Text(title)
                 .font(.headline)
                 .fontWeight(.bold)
-                .foregroundColor(Color(R.color.fontColor()!))
+                .foregroundColor(Color("FontColor"))
                 .padding(.leading, 8)
             Spacer()
         }

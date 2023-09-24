@@ -12,7 +12,7 @@ class PurchaseViewModel: NSObject, ObservableObject {
     var products = [SKProduct]()
     //初期設定
     func setup() {
-        let request = SKProductsRequest(productIdentifiers: [R.string.localizable.proIdentifier()])
+        let request = SKProductsRequest(productIdentifiers: ["musclerecord.pro"])
         request.delegate = self
         request.start()
     }
@@ -29,8 +29,8 @@ class PurchaseViewModel: NSObject, ObservableObject {
     }
     //購入後のアラート
     private func showAlert(title: String) {
-        let alert = UIAlertController(title: title, message: R.string.localizable.unlockedAllFeatures(), preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: R.string.localizable.ok(), style: .default))
+        let alert = UIAlertController(title: title, message: "全てのアイテムがアンロックされました。", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
         Window.first!.rootViewController?.present(alert, animated: true)
     }
 }
@@ -48,13 +48,13 @@ extension PurchaseViewModel: SKPaymentTransactionObserver {
             case .purchasing: print("purchasing")
             case .purchased:
                 print("purchased")
-                UserDefaults.standard.set(true, forKey: R.string.localizable.purchaseStatus())
-                showAlert(title: R.string.localizable.purchased())
+                UserDefaults.standard.set(true, forKey: "PurchaseStatus")
+                showAlert(title: "購入しました")
                 SKPaymentQueue.default().finishTransaction($0)
             case .restored:
                 print("restored")
-                UserDefaults.standard.set(true, forKey: R.string.localizable.purchaseStatus())
-                showAlert(title: R.string.localizable.restored())
+                UserDefaults.standard.set(true, forKey: "PurchaseStatus")
+                showAlert(title: "購入を復元しました")
                 SKPaymentQueue.default().finishTransaction($0)
             case .deferred: print("defferred")
             case .failed:
