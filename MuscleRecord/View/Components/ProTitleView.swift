@@ -41,7 +41,7 @@ struct ProTitleView: View {
                     Text(title)
                         .font(.title3)
                         .fontWeight(.bold)
-                        .foregroundColor(Color("FontColor"))
+                        .foregroundColor(Color(R.color.fontColor()!))
                     Spacer()
                 }
             }.padding(.top, 10)

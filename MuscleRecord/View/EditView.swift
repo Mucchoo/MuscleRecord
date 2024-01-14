@@ -17,17 +17,17 @@ struct EditView: View {
     var event: Event
     
     var body: some View {
-        SimpleNavigationView(title: "種目を編集") {
+        SimpleNavigationView(title: R.string.localizable.editViewTitle()) {
             ZStack{
                 //背景タップ時にキーボードを閉じる
-                Color("ClearColor")
+                Color(R.color.clearColor()!)
                     .edgesIgnoringSafeArea(.all)
                     .onTapGesture {
                         isFocused = false
                     }
                 VStack(spacing: 0){
                     //種目名textfield
-                    TextFieldView(title: "種目名", text: $itemName, placeHolder: "種目名を入力してください", isSecure: false)
+                    TextFieldView(title: R.string.localizable.eventName(), text: $itemName, placeHolder: R.string.localizable.eventNamePlaceholder(), isSecure: false)
                         .focused($isFocused)
                         .onAppear{
                             itemName = event.name
@@ -37,7 +37,7 @@ struct EditView: View {
                         firebaseViewModel.updateEvent(event: event, newName: itemName)
                         dismiss()
                     }){
-                        ButtonView(text: "名前を上書き")
+                        ButtonView(text: R.string.localizable.updateName())
                             .padding(.top, 20)
                             .padding(.bottom, 10)
                     }
@@ -45,17 +45,17 @@ struct EditView: View {
                     Button( action: {
                         isShowingAlert = true
                     }){
-                        Text("種目を削除")
+                        Text(R.string.localizable.deleteEvent())
                             .fontWeight(.bold)
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 70, alignment: .center)
-                            .background(Color("ClearColor"))
+                            .background(Color(R.color.clearColor()!))
                             .foregroundColor(viewModel.getThemeColor())
                             .cornerRadius(20)
-                            .shadow(color: Color("FontColor").opacity(0.5), radius: 4, x: 0, y: 2)
+                            .shadow(color: Color(R.color.fontColor()!).opacity(0.5), radius: 4, x: 0, y: 2)
                     }
                     //削除時のアラート
                     .alert(isPresented: $isShowingAlert) {
-                        return Alert(title: Text("本当に削除しますか？"), message: Text(""), primaryButton: .cancel(), secondaryButton: .destructive(Text("削除"), action: {
+                        return Alert(title: Text(R.string.localizable.checkDelete()), message: Text(""), primaryButton: .cancel(), secondaryButton: .destructive(Text(R.string.localizable.delete()), action: {
                             firebaseViewModel.deleteEvent(event: event)
                             dismiss()
                         }))

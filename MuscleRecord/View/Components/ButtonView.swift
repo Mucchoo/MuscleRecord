@@ -18,6 +18,6 @@ struct ButtonView: View {
             .background(viewModel.getThemeColor())
             .foregroundColor(.white)
             .cornerRadius(20)
-            .shadow(color: Color("FontColor").opacity(0.5), radius: 4, x: 0, y: 2)
+            .shadow(color: Color(R.color.fontColor()!).opacity(0.5), radius: 4, x: 0, y: 2)
     }
 }

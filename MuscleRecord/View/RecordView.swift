@@ -20,8 +20,8 @@ struct RecordView: View {
             VStack{
                 //重量入力
                 HStack{
-                    Text("重量").fontWeight(.bold)
-                    Picker("weight", selection: $weight, content: {
+                    Text(R.string.localizable.weightTitle()).fontWeight(.bold)
+                    Picker(R.string.localizable.weight(), selection: $weight, content: {
                         ForEach(1..<1001) { num in
                             Text(String(Float(num)/2)).font(.headline)
                         }
@@ -32,12 +32,12 @@ struct RecordView: View {
                     .onAppear {
                         weight = Int(event.latestWeight*2) - 1
                     }
-                    Text("kg ").fontWeight(.bold)
+                    Text(R.string.localizable.kg()).fontWeight(.bold)
                 }
                 //回数入力
                 HStack{
-                    Text("回数").fontWeight(.bold)
-                    Picker("rep", selection: $rep, content: {
+                    Text(R.string.localizable.repTitle()).fontWeight(.bold)
+                    Picker(R.string.localizable.rep(), selection: $rep, content: {
                         ForEach(1..<100) { num in
                             Text(String(num)).font(.headline)
                         }
@@ -48,7 +48,7 @@ struct RecordView: View {
                     .onAppear {
                         rep = event.latestRep - 1
                     }
-                    Text("rep").fontWeight(.bold)
+                    Text(R.string.localizable.rep()).fontWeight(.bold)
                 }
                 //記録ボタン
                 Button( action: {
@@ -61,9 +61,9 @@ struct RecordView: View {
                     dismiss()
                 }, label: {
                     if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
-                        ButtonView(text: "記録を上書き")
+                        ButtonView(text: R.string.localizable.updateRecord())
                     } else {
-                        ButtonView(text: "記録")
+                        ButtonView(text: R.string.localizable.record())
                     }
                 })
                 Spacer()

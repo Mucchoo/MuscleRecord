@@ -25,51 +25,46 @@ struct ReauthenticateView: View {
     var body: some View {
         ZStack{
             //背景タップでキーボードを閉じる
-            Color("ClearColor")
+            Color(R.color.clearColor()!)
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
                     focus = nil
                 }
             VStack(spacing: 0){
                 //タイトル
-                Text("ログイン")
+                Text(R.string.localizable.login())
                     .font(.headline)
                     .padding(.bottom, 10)
-                    .foregroundColor(Color("FontColor"))
+                    .foregroundColor(Color(R.color.fontColor()!))
                 //説明文
-                Text("アカウント情報を変更するには一度ログインする必要があります。")
+                Text(R.string.localizable.needLoginToChangeAccount())
                     .font(.body)
                     .padding(.bottom, 20)
-                    .foregroundColor(Color("FontColor"))
+                    .foregroundColor(Color(R.color.fontColor()!))
                     .multilineTextAlignment(.center)
                 //メールアドレスtextField
-                TextFieldView(title: "メールアドレス", text: $email, placeHolder: "example@example.com", isSecure: false)
+                TextFieldView(title: R.string.localizable.emailAddress(), text: $email, placeHolder: R.string.localizable.emailAddressPlaceholder(), isSecure: false)
                     .focused($focus, equals: .email)
                 //パスワードtextField
-                TextFieldView(title: "パスワード", text: $password, placeHolder: "password", isSecure: true)
+                TextFieldView(title: R.string.localizable.password(), text: $password, placeHolder: R.string.localizable.passwordPlaceholder(), isSecure: true)
                     .focused($focus, equals: .password)
                 //ログインボタン
                 Button( action: {
                     error = ""
                     if email.isEmpty {
-                        error = "メールアドレスが入力されていません"
-                        isShowingAlert = true
+                        error = R.string.localizable.emailIsEmpty()
                     } else if password.isEmpty {
-                        error = "パスワードが入力されていません"
-                        isShowingAlert = true
+                        error = R.string.localizable.passwordIsEmpty()
                     } else {
-                        firebaseViewModel.signIn(email: email, password: password) { errorString in
-                            error = errorString ?? ""
-                            
-                            if error.isEmpty {
-                                isShowingChangeInfo = true
-                            } else {
-                                isShowingAlert = true
-                            }
-                        }
+                        error = firebaseViewModel.signIn(email: email, password: password) ?? ""
+                    }
+                    if error.isEmpty {
+                        isShowingChangeInfo = true
+                    } else {
+                        isShowingAlert = true
                     }
                 }){
-                    ButtonView(text: "ログイン").padding(.top, 20)
+                    ButtonView(text: R.string.localizable.login()).padding(.top, 20)
                 }
                 //アカウント情報変更ページ
                 .sheet(isPresented: $isShowingChangeInfo) {
@@ -79,7 +74,7 @@ struct ReauthenticateView: View {
                 Button {
                     isShowingResetPassword = true
                 } label: {
-                    Text("パスワードを忘れた")
+                    Text(R.string.localizable.forgotPassword())
                         .font(.headline)
                         .foregroundColor(viewModel.getThemeColor())
                         .padding(.top, 30)
@@ -90,7 +85,7 @@ struct ReauthenticateView: View {
                 }
                 //エラーアラート
                 .alert(isPresented: $isShowingAlert) {
-                    return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text("OK")))
+                    return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text(R.string.localizable.ok())))
                 }
                 Spacer()
             }.padding(20)

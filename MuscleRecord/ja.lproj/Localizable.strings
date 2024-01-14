@@ -1,0 +1,147 @@
+/* 
+  Localizable.strings
+  MuscleRecord
+
+  Created by Musa Yazuju on 2022/06/12.
+  
+*/
+//In App Purchase
+"pro" = "pro";
+"proIdentifier" = "musclerecord.pro";
+//App URL
+"appURL" = "https://itunes.apple.com/jp/app/id1628829703?mt=8";
+//UserDefaults
+"launchedTimes" = "launchedTimes";
+"purchaseStatus" = "PurchaseStatus";
+"themeColorNumber" = "themeColorNumber";
+//Firebase
+"rep" = "rep";
+"name" = "name";
+"date" = "date";
+"users" = "users";
+"email" = "email";
+"events" = "events";
+"weight" = "weight";
+"records" = "records";
+"latestRep" = "latestRep";
+"latestDate" = "latestDate";
+"latestWeight" = "latestWeight";
+//textField
+"eventName" = "種目名";
+"password" = "パスワード";
+"emailAddress" = "メールアドレス";
+"newPassword" = "新しいパスワード";
+"passwordPlaceholder" = "password";
+"passwordConfirm" = "確認用パスワード";
+"newEmailAddress" = "新しいメールアドレス";
+"eventNamePlaceholder" = "種目名を入力してください";
+"emailAddressPlaceholder" = "example@example.com";
+//Button
+"add" = "追加";
+"record" = "記録";
+"start" = "始める";
+"close" = "閉じる";
+"usage" = "使い方";
+"login" = "ログイン";
+"seePro" = "Proを見る";
+"logout" = "ログアウト";
+"deleteEvent" = "種目を削除";
+"shareApp" = "アプリをシェア";
+"seeGraph" = "グラフを見る ▶︎";
+"updateName" = "名前を上書き";
+"restore" = "過去の購入を復元";
+"updateRecord" = "記録を上書き";
+"createAccount" = "アカウント作成";
+"unlockedPro" = "Proアンロック済み";
+"changeEmail" = "メールアドレスを変更";
+"changePassword" = "パスワードを変更";
+"resetPassword" = "パスワードを再設定";
+"forgotPassword" = "パスワードを忘れた";
+"purchase" = "Proをアンロック - 300円";
+"loginExistingAccount" = "既存のアカウントにログイン";
+//alert
+"ok" = "OK";
+"delete" = "削除";
+"purchased" = "購入しました";
+"restored" = "購入を復元しました";
+"sendEmail" = "メールを送信しました";
+"checkDelete" = "本当に削除しますか？";
+"errorOccured" = "エラーが発生しました";
+"loginSucceeded" = "ログインに成功しました";
+"logoutConfirm" = "本当にログアウトしますか？";
+"accountCreated" = "アカウントが作成されました";
+"updatedEmail" = "メールアドレスが更新されました";
+"passwordUpdated" = "パスワードが更新されました";
+"emailIsEmpty" = "メールアドレスが入力されていません";
+"passwordIsEmpty" = "パスワードが入力されていません";
+"unlockedAllFeatures" = "全てのアイテムがアンロックされました。";
+"passwordConfirmIsEmpty" = "確認用パスワードが入力されていません";
+"onlyFiveEventsAvailableInFree" = "無料版で追加できる種目は5個です";
+"pleaseCheckEmail" = "受け取ったメールを開いてパスワードを再設定してください。";
+"passwordAndPasswordConfirmIsNotEqual" = "パスワードと確認パスワードが一致しません";
+"needLoginToChangeAccount" = "アカウント情報を変更するには一度ログインする必要があります。";
+"eventsWillBeUnlimitedIfJoinPro" = "Proにをアンロックすれば、無制限に追加することができます。";
+//navigation Bar
+"settingViewTitle" = "設定";
+"iconViewTitle" = "アイコン";
+"addViewTitle" = "種目を追加";
+"homeViewTitle" = "筋トレ記録";
+"editViewTitle" = "種目を編集";
+"proViewTitle" = "Proをアンロック";
+"themeColorViewTitle" = "テーマカラー";
+"changeInfoViewTitle" = "アカウント情報変更";
+//assets
+"logo" = "Logo";
+"icon" = "Icon";
+"items" = "Items";
+"icons" = "Icons";
+"themes" = "Themes";
+"giftIcon" = "gift";
+"plusIcon" = "plus";
+"appIcon" = "AppIcon";
+"personIcon" = "person";
+"tutorial1" = "Tutorial1";
+"tutorial2" = "Tutorial2";
+"tutorial3" = "Tutorial3";
+"tutorial4" = "Tutorial4";
+"tutorial5" = "Tutorial5";
+"themeColor" = "ThemeColor";
+"envelopeIcon" = "envelope";
+"backIcon" = "arrow.backward";
+"editIcon" = "ellipsis.circle";
+"pencilIcon" = "pencil.circle";
+"lockIcon" = "lock.circle.fill";
+"questionIcon" = "questionmark";
+"shareIcon" = "square.and.arrow.up";
+"settingIcon" = "line.3.horizontal";
+"hammerIcon" = "hammer.circle.fill";
+"arrowIcon" = "arrow.down.circle.fill";
+"pencilIconFill" = "pencil.circle.fill";
+"brushIcon" = "paintbrush.pointed.fill";
+"logoutIcon" = "rectangle.portrait.and.arrow.right";
+//Picker
+"repTitle" = "回数";
+"period" = "period";
+"everyday" = "1日毎";
+"weightTitle" = "重量";
+"nineDaysAverage" = "9日平均";
+"threeDaysAverage" = "3日平均";
+"twentySevenDaysAverage" = "27日平均";
+//Text
+"kg" = "kg ";
+"repIs" = "回数：";
+"weightIs" = "重量：";
+"unlockIcon" = "アイコン解放";
+"application" = "アプリケーション";
+"unlockTheme" = "テーマカラー解放";
+"copyRight" = "©︎ 2022 Musa Yazuju";
+"unlockEvents" = "種目数：5個 → 無制限";
+"tutorialTextTwoFirst" = "トレーニング後は";
+"tutorialTextTwoLast" = "を押して記録できます";
+"tutorialTextThree" = "記録をすると結果がグラフに表れます";
+"tutorialTextFour" = "記録を続けて成長をデータ化しましょう！";
+"tutorialTextOne" = "まずは右上の ＋ ボタンから種目を追加しましょう";
+//MessageUI
+"messageSubject" = "ご意見・ご要望";
+"messageResipients" = "yazujumusa@gmail.com";
+"messageBody" = "\n\n\n\n\nーーーーーーーーーーーーーーーーー\nこの上へお気軽にご記入ください。\n筋トレ記録";
