@@ -27,7 +27,6 @@ struct GraphView: View {
                     Text(R.string.localizable.everyday()).tag(0)
                     Text(R.string.localizable.threeDaysAverage()).tag(1)
                     Text(R.string.localizable.nineDaysAverage()).tag(2)
-                    Text(R.string.localizable.twentySevenDaysAverage()).tag(3)
                 })
                 .pickerStyle(SegmentedPickerStyle())
                 HStack(spacing: 0) {
@@ -55,10 +54,8 @@ struct GraphView: View {
                         GraphBodyView(records: firebaseViewModel.records, latestID: firebaseViewModel.latestRecord, maxWeight: firebaseViewModel.maxWeight)
                     } else if graphRange == 1 {
                         GraphBodyView(records: firebaseViewModel.records3, latestID: firebaseViewModel.latestRecord3, maxWeight: firebaseViewModel.maxWeight)
-                    } else if graphRange == 2 {
-                        GraphBodyView(records: firebaseViewModel.records9, latestID: firebaseViewModel.latestRecord9, maxWeight: firebaseViewModel.maxWeight)
                     } else {
-                        GraphBodyView(records: firebaseViewModel.records27, latestID: firebaseViewModel.latestRecord27, maxWeight: firebaseViewModel.maxWeight)
+                        GraphBodyView(records: firebaseViewModel.records9, latestID: firebaseViewModel.latestRecord9, maxWeight: firebaseViewModel.maxWeight)
                     }
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)

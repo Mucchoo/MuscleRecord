@@ -13,12 +13,10 @@ class FirebaseViewModel: ObservableObject {
     @Published var records = [Record]()
     @Published var records3 = [Record]()
     @Published var records9 = [Record]()
-    @Published var records27 = [Record]()
     @Published var maxWeight: Float = 0.0
     @Published var latestRecord: String = ""
     @Published var latestRecord3: String = ""
     @Published var latestRecord9: String = ""
-    @Published var latestRecord27: String = ""
     @Published var oldRecord: Record?
     //ログイン状態
     func isLoggedIn() -> Bool {
@@ -174,8 +172,8 @@ class FirebaseViewModel: ObservableObject {
                     self.oldRecord = record
                     self.records.append(record)
                 }
-                //3日平均、9日平均、27日平均の作成
-                let periodArray = [3,9,27]
+                //3日平均、9日平均、平均の作成
+                let periodArray = [3,9]
                 for period in periodArray {
                     var totalDate = 0
                     var totalWeight: Float = 0
@@ -192,12 +190,9 @@ class FirebaseViewModel: ObservableObject {
                             if period == 3 {
                                 self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
                                 self.latestRecord3 = recordID
-                            } else if period == 9 {
+                            } else {
                                 self.records9.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
                                 self.latestRecord9 = recordID
-                            } else if period == 27 {
-                                self.records27.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestRecord27 = recordID
                             }
                             created = true
                             totalWeight = 0
@@ -210,12 +205,9 @@ class FirebaseViewModel: ObservableObject {
                             if period == 3 {
                                 self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
                                 self.latestRecord3 = recordID
-                            } else if period == 9 {
+                            } else {
                                 self.records9.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
                                 self.latestRecord9 = recordID
-                            } else if period == 27 {
-                                self.records27.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestRecord27 = recordID
                             }
                             totalWeight = 0
                             totalRep = 0
