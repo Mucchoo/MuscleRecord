@@ -1,14 +1,46 @@
 {
-  "sourceLanguage" : "ja",
+  "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "%lld" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
     },
     "accountCreated" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account is created."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21,6 +53,12 @@
       "comment" : "Button",
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32,6 +70,12 @@
     "addViewTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Events"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -42,6 +86,12 @@
     },
     "application" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -54,6 +104,12 @@
       "comment" : "App URL",
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://itunes.apple.com/jp/app/id1628829703?mt=8"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -65,6 +121,12 @@
     "changeEmail" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Email"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -76,6 +138,12 @@
     "changeInfoViewTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Account Info"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -87,6 +155,12 @@
     "changePassword" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Password"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -97,6 +171,12 @@
     },
     "checkDelete" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure to delete the event?"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -107,6 +187,12 @@
     },
     "close" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -117,6 +203,12 @@
     },
     "copyRight" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "©︎ 2022 Musa Yazuju"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -127,6 +219,12 @@
     },
     "createAccount" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Account"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -138,6 +236,12 @@
     "date" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "date"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -148,6 +252,12 @@
     },
     "delete" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -158,6 +268,12 @@
     },
     "deleteEvent" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete the Event "
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -169,6 +285,12 @@
     "editViewTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit the Event"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -180,6 +302,12 @@
     "email" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "email"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -191,6 +319,12 @@
     "emailAddress" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email Addess"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -202,6 +336,12 @@
     "emailAddressPlaceholder" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "example@example.com"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -213,6 +353,12 @@
     "emailIsEmpty" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email address is empty."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -223,6 +369,12 @@
     },
     "errorOccured" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error Occured"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -235,6 +387,12 @@
       "comment" : "textField",
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Event Name"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -246,6 +404,12 @@
     "eventNamePlaceholder" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fill event name"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -257,6 +421,12 @@
     "events" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "events"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -267,6 +437,12 @@
     },
     "eventsWillBeUnlimitedIfJoinPro" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can add events as much as you want after unlocking Pro."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -277,6 +453,12 @@
     },
     "everyday" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -287,6 +469,12 @@
     },
     "forgotPassword" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forgot Password"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -297,6 +485,12 @@
     },
     "homeViewTitle" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muscle Record"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -307,6 +501,12 @@
     },
     "iconViewTitle" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icons"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -318,6 +518,12 @@
     "items" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "items"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -329,6 +535,12 @@
     "kg" : {
       "comment" : "Text",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kg"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -340,6 +552,12 @@
     "latestDate" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "latestDate"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -351,6 +569,12 @@
     "latestRep" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "latestRep"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -362,6 +586,12 @@
     "latestWeight" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "latestWeight"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -374,6 +604,12 @@
       "comment" : "UserDefaults",
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "launchedTimes"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -384,6 +620,12 @@
     },
     "login" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -394,6 +636,12 @@
     },
     "loginExistingAccount" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login to existing account"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -404,6 +652,12 @@
     },
     "loginSucceeded" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login Succeeded"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -416,6 +670,12 @@
       "comment" : "assets",
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -426,6 +686,12 @@
     },
     "logout" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log Out"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -436,6 +702,12 @@
     },
     "logoutConfirm" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure to log out?"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -447,6 +719,12 @@
     "messageBody" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\n\n\n\n\nーーーーーーーーーーーーーーーーー\nPlease write your message above this line.\nMuscle Record"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -458,6 +736,12 @@
     "messageResipients" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yazujumusa@gmail.com"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -470,6 +754,12 @@
       "comment" : "MessageUI",
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback・Contact"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -481,6 +771,12 @@
     "name" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "name"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -491,6 +787,12 @@
     },
     "needLoginToChangeAccount" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント情報を変更するには一度ログインする必要があります。"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -502,6 +804,12 @@
     "newEmailAddress" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Email Address"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -513,6 +821,12 @@
     "newPassword" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Password"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -523,6 +837,12 @@
     },
     "nineDaysAverage" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9days"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -534,6 +854,12 @@
     "ok" : {
       "comment" : "alert",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -544,6 +870,12 @@
     },
     "onlyFiveEventsAvailableInFree" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can add only 5 events for free."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -555,6 +887,12 @@
     "password" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "password"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -566,6 +904,12 @@
     "passwordAndPasswordConfirmIsNotEqual" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The password and the confirmation password is not identical."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -577,6 +921,12 @@
     "passwordConfirm" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmation Password"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -588,6 +938,12 @@
     "passwordConfirmIsEmpty" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmation password is empty."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -599,6 +955,12 @@
     "passwordIsEmpty" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password is empty."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -610,6 +972,12 @@
     "passwordPlaceholder" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "password"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -620,6 +988,12 @@
     },
     "passwordUpdated" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "password is updated."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -629,10 +1003,29 @@
       }
     },
     "period" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "period"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "period"
+          }
+        }
+      }
     },
     "pleaseCheckEmail" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open the received email and reset your password."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -642,11 +1035,31 @@
       }
     },
     "pro" : {
-      "comment" : "In App Purchase"
+      "comment" : "In App Purchase",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pro"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pro"
+          }
+        }
+      }
     },
     "proIdentifier" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "musclerecord.pro"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -658,6 +1071,12 @@
     "proViewTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock Pro"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -669,6 +1088,12 @@
     "purchase" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock Pro - 2.5$"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -680,6 +1105,12 @@
     "purchased" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchased"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -691,6 +1122,12 @@
     "purchaseStatus" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PurchaseStatus"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -702,6 +1139,12 @@
     "record" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Record"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -713,6 +1156,12 @@
     "records" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Records"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -722,11 +1171,31 @@
       }
     },
     "rep" : {
-      "comment" : "Firebase"
+      "comment" : "Firebase",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "rep"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "rep"
+          }
+        }
+      }
     },
     "repIs" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rep: "
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -738,6 +1207,12 @@
     "repTitle" : {
       "comment" : "Picker",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rep"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -748,6 +1223,12 @@
     },
     "resetPassword" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Password"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -759,6 +1240,12 @@
     "restore" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore Purchase"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -770,6 +1257,12 @@
     "restored" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restored Purchase"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -780,6 +1273,12 @@
     },
     "seeGraph" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See the Graph ▶︎"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -790,6 +1289,12 @@
     },
     "seePro" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See Pro"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -800,6 +1305,12 @@
     },
     "sendEmail" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The email is sent."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -812,6 +1323,12 @@
       "comment" : "navigation Bar",
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -823,6 +1340,12 @@
     "shareApp" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share App"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -834,6 +1357,12 @@
     "start" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -845,6 +1374,12 @@
     "themeColor" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ThemeColor"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -856,6 +1391,12 @@
     "themeColorNumber" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "themeColorNumber"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -867,6 +1408,12 @@
     "themeColorViewTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme Color"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -878,6 +1425,12 @@
     "themes" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Themes"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -888,6 +1441,12 @@
     },
     "threeDaysAverage" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3days"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -899,6 +1458,12 @@
     "tutorialTextFour" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep your record to track the progress!"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -910,6 +1475,12 @@
     "tutorialTextOne" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press the \"+\" button on the top right corner to add your event."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -921,6 +1492,12 @@
     "tutorialTextThree" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Graph will be shown after taking your record."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -931,6 +1508,12 @@
     },
     "tutorialTextTwoFirst" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "After training, press"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -941,6 +1524,12 @@
     },
     "tutorialTextTwoLast" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to record your result."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -952,6 +1541,12 @@
     "unlockedAllFeatures" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All items are unlocked."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -963,6 +1558,12 @@
     "unlockedPro" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro Unlocked"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -974,6 +1575,12 @@
     "unlockEvents" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Event Count: 5 → Unlimited"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -985,6 +1592,12 @@
     "unlockIcon" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock Icons"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -996,6 +1609,12 @@
     "unlockTheme" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock Themes"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1006,6 +1625,12 @@
     },
     "updatedEmail" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your email address is updated."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1017,6 +1642,12 @@
     "updateName" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update Name"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1028,6 +1659,12 @@
     "updateRecord" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update Record"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1038,6 +1675,12 @@
     },
     "usage" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usage"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1049,6 +1692,12 @@
     "users" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "users"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1058,11 +1707,30 @@
       }
     },
     "weight" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "weight"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "weight"
+          }
+        }
+      }
     },
     "weightIs" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weight: "
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1073,6 +1741,12 @@
     },
     "weightTitle" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weight"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",

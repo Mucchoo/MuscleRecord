@@ -257,11 +257,12 @@
 			};
 			buildConfigurationList = 2AA3732627EC507200A885B0 /* Build configuration list for PBXProject "MuscleRecord" */;
 			compatibilityVersion = "Xcode 13.0";
-			developmentRegion = ja;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
 				ja,
+				en,
 			);
 			mainGroup = 2AA3732227EC507200A885B0;
 			packageReferences = (
