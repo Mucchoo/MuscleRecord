@@ -9,9 +9,9 @@ import SwiftUI
 
 struct TextFieldView: View {
     @ObservedObject private var viewModel = ViewModel()
-    var title: String
+    var title: LocalizedStringResource
     var text: Binding<String>
-    var placeHolder: String
+    var placeHolder: LocalizedStringKey
     var isSecure: Bool
     //アプリ全体で使うtextField
     var body: some View {
@@ -19,7 +19,7 @@ struct TextFieldView: View {
             Text(title)
                 .font(.headline)
                 .fontWeight(.bold)
-                .foregroundColor(Color(R.color.fontColor()!))
+                .foregroundColor(Color("FontColor"))
                 .padding(.leading, 8)
             Spacer()
         }

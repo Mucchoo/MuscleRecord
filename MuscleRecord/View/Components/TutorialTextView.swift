@@ -17,6 +17,6 @@ struct TutorialTextView: View {
             .multilineTextAlignment(.center)
             .padding(.horizontal, 30)
             .padding(.bottom, 30)
-            .foregroundColor(Color(R.color.fontColor()!))
+            .foregroundColor(Color("FontColor"))
     }
 }

@@ -25,36 +25,36 @@ struct ReauthenticateView: View {
     var body: some View {
         ZStack{
             //背景タップでキーボードを閉じる
-            Color(R.color.clearColor()!)
+            Color("ClearColor")
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
                     focus = nil
                 }
             VStack(spacing: 0){
                 //タイトル
-                Text(R.string.localizable.login())
+                Text("login")
                     .font(.headline)
                     .padding(.bottom, 10)
-                    .foregroundColor(Color(R.color.fontColor()!))
+                    .foregroundColor(Color("FontColor"))
                 //説明文
-                Text(R.string.localizable.needLoginToChangeAccount())
+                Text("needLoginToChangeAccount")
                     .font(.body)
                     .padding(.bottom, 20)
-                    .foregroundColor(Color(R.color.fontColor()!))
+                    .foregroundColor(Color("FontColor"))
                     .multilineTextAlignment(.center)
                 //メールアドレスtextField
-                TextFieldView(title: R.string.localizable.emailAddress(), text: $email, placeHolder: R.string.localizable.emailAddressPlaceholder(), isSecure: false)
+                TextFieldView(title: "emailAddress", text: $email, placeHolder: "emailAddressPlaceholder", isSecure: false)
                     .focused($focus, equals: .email)
                 //パスワードtextField
-                TextFieldView(title: R.string.localizable.password(), text: $password, placeHolder: R.string.localizable.passwordPlaceholder(), isSecure: true)
+                TextFieldView(title: "password", text: $password, placeHolder: "passwordPlaceholder", isSecure: true)
                     .focused($focus, equals: .password)
                 //ログインボタン
                 Button( action: {
                     error = ""
                     if email.isEmpty {
-                        error = R.string.localizable.emailIsEmpty()
+                        error = String(localized: "emailIsEmpty")
                     } else if password.isEmpty {
-                        error = R.string.localizable.passwordIsEmpty()
+                        error = String(localized: "passwordIsEmpty")
                     } else {
                         error = firebaseViewModel.signIn(email: email, password: password) ?? ""
                     }
@@ -64,7 +64,7 @@ struct ReauthenticateView: View {
                         isShowingAlert = true
                     }
                 }){
-                    ButtonView(text: R.string.localizable.login()).padding(.top, 20)
+                    ButtonView("login").padding(.top, 20)
                 }
                 //アカウント情報変更ページ
                 .sheet(isPresented: $isShowingChangeInfo) {
@@ -74,7 +74,7 @@ struct ReauthenticateView: View {
                 Button {
                     isShowingResetPassword = true
                 } label: {
-                    Text(R.string.localizable.forgotPassword())
+                    Text("forgotPassword")
                         .font(.headline)
                         .foregroundColor(viewModel.getThemeColor())
                         .padding(.top, 30)
@@ -85,7 +85,7 @@ struct ReauthenticateView: View {
                 }
                 //エラーアラート
                 .alert(isPresented: $isShowingAlert) {
-                    return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text(R.string.localizable.ok())))
+                    return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text("ok")))
                 }
                 Spacer()
             }.padding(20)

@@ -13,7 +13,7 @@ struct IconView: View {
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
 
     var body: some View {
-        SimpleNavigationView(title: R.string.localizable.iconViewTitle()) {
+        SimpleNavigationView(title: String(localized: "iconViewTitle")) {
             GeometryReader{ geometry in
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 10) {
@@ -22,23 +22,23 @@ struct IconView: View {
                             UIApplication.shared.setAlternateIconName(nil)
                             dismiss()
                         }) {
-                            Image(R.string.localizable.icon())
+                            Image("Icon")
                                 .resizable()
                                 .cornerRadius(20)
                         }
-                        .shadow(color: Color(R.color.fontColor()!).opacity(0.5), radius: 4, x: 0, y: 2)
+                        .shadow(color: Color("FontColor").opacity(0.5), radius: 4, x: 0, y: 2)
                         .frame(width: (geometry.size.width - 40)/3, height: (geometry.size.width - 40)/3)
                         //初期以外のアイコンを変更
                         ForEach(0..<19) { num in
                             Button(action: {
-                                UIApplication.shared.setAlternateIconName(R.string.localizable.appIcon() + String(num))
+                                UIApplication.shared.setAlternateIconName("AppIcon" + String(num))
                                 dismiss()
                             }) {
-                                Image(R.string.localizable.icon() + String(num))
+                                Image("Icon" + String(num))
                                     .resizable()
                                     .cornerRadius(20)
                             }
-                            .shadow(color: Color(R.color.fontColor()!).opacity(0.5), radius: 4, x: 0, y: 2)
+                            .shadow(color: Color("FontColor").opacity(0.5), radius: 4, x: 0, y: 2)
                             .frame(width: (geometry.size.width - 40)/3, height: (geometry.size.width - 40)/3)
                         }
                     }

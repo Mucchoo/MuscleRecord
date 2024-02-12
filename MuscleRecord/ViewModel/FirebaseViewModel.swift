@@ -50,7 +50,7 @@ class FirebaseViewModel: ObservableObject {
                 Auth.auth().signIn(withEmail: email, password: password)
                 let db = Firestore.firestore()
                 let userID = Auth.auth().currentUser!.uid
-                db.collection(R.string.localizable.users()).document(userID).setData([R.string.localizable.email(): email])
+                db.collection("users").document(userID).setData(["email": email])
                 completion(nil)
             }
         }
@@ -98,7 +98,7 @@ class FirebaseViewModel: ObservableObject {
     func updateEvent(event: Event, newName: String) {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).updateData([R.string.localizable.name(): newName]) { error in
+        db.collection("users").document(userID).collection("events").document(event.id).updateData(["name": newName]) { error in
             if let error {
                 print("updateEvent error: \(error.localizedDescription)")
                 return
@@ -109,7 +109,7 @@ class FirebaseViewModel: ObservableObject {
     func deleteEvent(event: Event) {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).delete() { error in
+        db.collection("users").document(userID).collection("events").document(event.id).delete() { error in
             if let error {
                 print("deleteEvent error: \(error.localizedDescription)")
                 return
@@ -120,7 +120,7 @@ class FirebaseViewModel: ObservableObject {
     func addEvent(_ name: String) {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).addDocument(data: [R.string.localizable.name(): name, R.string.localizable.latestWeight(): 0.0, R.string.localizable.latestRep(): 0, R.string.localizable.latestDate(): Date(timeInterval: -60*60*24, since: .now)]) { error in
+        db.collection("users").document(userID).collection("events").addDocument(data: ["name": name, "latestWeight": 0.0, "latestRep": 0, "latestDate": Date(timeInterval: -60*60*24, since: .now)]) { error in
             if let error {
                 print("addEvent error: \(error.localizedDescription)")
                 return
@@ -131,7 +131,7 @@ class FirebaseViewModel: ObservableObject {
     func getEvent() {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).getDocuments { snapshot, error in
+        db.collection("users").document(userID).collection("events").getDocuments { snapshot, error in
             if let error {
                 print("getEvent error: \(error.localizedDescription)")
                 return
@@ -139,8 +139,8 @@ class FirebaseViewModel: ObservableObject {
             guard let snapshot = snapshot else { return }
             DispatchQueue.main.async {
                 self.events = snapshot.documents.map { d in
-                    let timeStamp = d[R.string.localizable.latestDate()] as! Timestamp
-                    return Event(id: d.documentID, name: d[R.string.localizable.name()] as? String ?? "", latestWeight: d[R.string.localizable.latestWeight()] as? Float ?? 0.0, latestRep: d[R.string.localizable.latestRep()] as? Int ?? 0, latestDate: timeStamp.dateValue())
+                    let timeStamp = d["latestDate"] as! Timestamp
+                    return Event(id: d.documentID, name: d["name"] as? String ?? "", latestWeight: d["latestWeight"] as? Float ?? 0.0, latestRep: d["latestRep"] as? Int ?? 0, latestDate: timeStamp.dateValue())
                 }
             }
         }
@@ -149,7 +149,7 @@ class FirebaseViewModel: ObservableObject {
     func getRecord(event: Event) {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).collection(R.string.localizable.records()).order(by: R.string.localizable.date()).getDocuments { (snapshot, error) in
+        db.collection("users").document(userID).collection("events").document(event.id).collection("records").order(by: "date").getDocuments { (snapshot, error) in
             if let error {
                 print("getRecord error: \(error.localizedDescription)")
                 return
@@ -158,7 +158,7 @@ class FirebaseViewModel: ObservableObject {
             DispatchQueue.main.async {
                 snapshot.documents.forEach { d in
                     self.latestRecord = d.documentID
-                    let timeStamp: Timestamp = d[R.string.localizable.date()] as? Timestamp ?? Timestamp()
+                    let timeStamp: Timestamp = d["date"] as? Timestamp ?? Timestamp()
                     let date = timeStamp.dateValue()
                     //記録に間が空いている場合はダミーを作成
                     if let oldRecord = self.oldRecord {
@@ -168,7 +168,7 @@ class FirebaseViewModel: ObservableObject {
                             dateDifference -= 1
                         }
                     }
-                    let record = Record(id: d.documentID, date: date, weight: d[R.string.localizable.weight()] as? Float ?? 0, rep: d[R.string.localizable.rep()] as? Int ?? 0, dummy: false)
+                    let record = Record(id: d.documentID, date: date, weight: d["weight"] as? Float ?? 0, rep: d["rep"] as? Int ?? 0, dummy: false)
                     self.oldRecord = record
                     self.records.append(record)
                 }
@@ -217,8 +217,8 @@ class FirebaseViewModel: ObservableObject {
                 }
                 //最大重量
                 snapshot.documents.forEach { d in
-                    if self.maxWeight < d[R.string.localizable.weight()] as? Float ?? 0.0 {
-                        self.maxWeight = d[R.string.localizable.weight()] as? Float ?? 0.0
+                    if self.maxWeight < d["weight"] as? Float ?? 0.0 {
+                        self.maxWeight = d["weight"] as? Float ?? 0.0
                     }
                 }
             }
@@ -228,14 +228,14 @@ class FirebaseViewModel: ObservableObject {
     func addRecord(event: Event, weight: Float, rep: Int) {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).setData([R.string.localizable.name(): event.name, R.string.localizable.latestWeight(): weight, R.string.localizable.latestRep(): rep, R.string.localizable.latestDate(): Date()]) { error in
+        db.collection("users").document(userID).collection("events").document(event.id).setData(["name": event.name, "latestWeight": weight, "latestRep": rep, "latestDate": Date()]) { error in
             if let error {
                 print("addRecord error1: \(error.localizedDescription)")
                 return
             }
         }
         //トップページの最新の記録も更新
-        db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).collection(R.string.localizable.records()).addDocument(data: [R.string.localizable.date(): Date(), R.string.localizable.weight(): weight, R.string.localizable.rep(): rep]) { error in
+        db.collection("users").document(userID).collection("events").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep]) { error in
             if let error {
                 print("addRecord error2: \(error.localizedDescription)")
                 return
@@ -247,7 +247,7 @@ class FirebaseViewModel: ObservableObject {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else { return }
         //一番新しい記録を削除
-        db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).collection(R.string.localizable.records()).order(by: R.string.localizable.date(), descending: true).limit(to: 1).getDocuments { snapshot, error in
+        db.collection("users").document(userID).collection("events").document(event.id).collection("records").order(by: "date", descending: true).limit(to: 1).getDocuments { snapshot, error in
             if let error {
                 print("updateRecord error1: \(error.localizedDescription)")
                 return
@@ -255,18 +255,18 @@ class FirebaseViewModel: ObservableObject {
             guard let snapshot = snapshot else { return }
             snapshot.documents.forEach { d in
                 let latestRecordID = d.documentID
-                db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).collection(R.string.localizable.records()).document(latestRecordID).delete()
+                db.collection("users").document(userID).collection("events").document(event.id).collection("records").document(latestRecordID).delete()
             }
         }
         //トップページの最新の記録も更新
-        db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).setData([R.string.localizable.name(): event.name, R.string.localizable.latestWeight(): weight, R.string.localizable.latestRep(): rep, R.string.localizable.latestDate(): Date()]) { error in
+        db.collection("users").document(userID).collection("events").document(event.id).setData(["name": event.name, "latestWeight": weight, "latestRep": rep, "latestDate": Date()]) { error in
             if let error {
                 print("updateRecord error2: \(error.localizedDescription)")
                 return
             }
         }
         //記録を上書き
-        db.collection(R.string.localizable.users()).document(userID).collection(R.string.localizable.events()).document(event.id).collection(R.string.localizable.records()).addDocument(data: [R.string.localizable.date(): Date(), R.string.localizable.weight(): weight, R.string.localizable.rep(): rep]) { error in
+        db.collection("users").document(userID).collection("events").document(event.id).collection("records").addDocument(data: ["date": Date(), "weight": weight, "rep": rep]) { error in
             if let error {
                 print("updateRecord error3: \(error.localizedDescription)")
                 return

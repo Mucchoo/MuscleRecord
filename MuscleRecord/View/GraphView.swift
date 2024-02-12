@@ -23,10 +23,10 @@ struct GraphView: View {
         SimpleNavigationView(title: event.name) {
             VStack(spacing: 10) {
                 //グラフの表示幅の切り替え
-                Picker(R.string.localizable.period(), selection: self.$graphRange, content: {
-                    Text(R.string.localizable.everyday()).tag(0)
-                    Text(R.string.localizable.threeDaysAverage()).tag(1)
-                    Text(R.string.localizable.nineDaysAverage()).tag(2)
+                Picker("period", selection: self.$graphRange, content: {
+                    Text("everyday").tag(0)
+                    Text("threeDaysAverage").tag(1)
+                    Text("nineDaysAverage").tag(2)
                 })
                 .pickerStyle(SegmentedPickerStyle())
                 HStack(spacing: 0) {

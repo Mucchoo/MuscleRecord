@@ -20,8 +20,8 @@ struct RecordView: View {
             VStack{
                 //重量入力
                 HStack{
-                    Text(R.string.localizable.weightTitle()).fontWeight(.bold)
-                    Picker(R.string.localizable.weight(), selection: $weight, content: {
+                    Text("weightTitle").fontWeight(.bold)
+                    Picker("weight", selection: $weight, content: {
                         ForEach(1..<1001) { num in
                             Text(String(Float(num)/2)).font(.headline)
                         }
@@ -32,12 +32,12 @@ struct RecordView: View {
                     .onAppear {
                         weight = Int(event.latestWeight*2) - 1
                     }
-                    Text(R.string.localizable.kg()).fontWeight(.bold)
+                    Text("kg").fontWeight(.bold)
                 }
                 //回数入力
                 HStack{
-                    Text(R.string.localizable.repTitle()).fontWeight(.bold)
-                    Picker(R.string.localizable.rep(), selection: $rep, content: {
+                    Text("repTitle").fontWeight(.bold)
+                    Picker("rep", selection: $rep, content: {
                         ForEach(1..<100) { num in
                             Text(String(num)).font(.headline)
                         }
@@ -48,7 +48,7 @@ struct RecordView: View {
                     .onAppear {
                         rep = event.latestRep - 1
                     }
-                    Text(R.string.localizable.rep()).fontWeight(.bold)
+                    Text("rep").fontWeight(.bold)
                 }
                 //記録ボタン
                 Button( action: {
@@ -61,9 +61,9 @@ struct RecordView: View {
                     dismiss()
                 }, label: {
                     if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
-                        ButtonView(text: R.string.localizable.updateRecord())
+                        ButtonView("updateRecord")
                     } else {
-                        ButtonView(text: R.string.localizable.record())
+                        ButtonView("record")
                     }
                 })
                 Spacer()

@@ -16,7 +16,6 @@
 		2A27AB8D27F5BB0A004AF6F3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2A27AB8C27F5BB0A004AF6F3 /* FirebaseAuth */; };
 		2A27AB8F27F5BB0A004AF6F3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2A27AB8E27F5BB0A004AF6F3 /* FirebaseFirestore */; };
 		2A3C7E6127FC2C9800B1E4EB /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C7E6027FC2C9800B1E4EB /* Record.swift */; };
-		2A49583828560B44005CE418 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A49583A28560B44005CE418 /* Localizable.strings */; };
 		2A543DCB27F9C6FB0051665E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A543DCA27F9C6FB0051665E /* Event.swift */; };
 		2A543DCD27F9C7670051665E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A543DCC27F9C7670051665E /* ViewModel.swift */; };
 		2A58E12727F26E1300121A4F /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A58E12627F26E1300121A4F /* RecordView.swift */; };
@@ -30,12 +29,10 @@
 		2A75278728121EE500A0961C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75278628121EE500A0961C /* SignInView.swift */; };
 		2A75278E28123EDD00A0961C /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75278D28123EDD00A0961C /* ResetPasswordView.swift */; };
 		2A817F6327FBC55C00772B6C /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A817F6227FBC55C00772B6C /* EditView.swift */; };
-		2A8B8F502A999C1A00A3ED71 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 2A8B8F4F2A999C1A00A3ED71 /* RswiftLibrary */; };
 		2A96A78727F2BBD000A37A43 /* FormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A96A78627F2BBD000A37A43 /* FormRowView.swift */; };
 		2A97B8DA28256A0F002EC14D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A97B8D928256A0F002EC14D /* StoreKit.framework */; };
 		2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */; };
 		2AA3733327EC507300A885B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA3733227EC507300A885B0 /* Assets.xcassets */; };
-		2AA3733627EC507300A885B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA3733527EC507300A885B0 /* Preview Assets.xcassets */; };
 		2AACB82A280D0EB300ADCA84 /* TutorialImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACB829280D0EB300ADCA84 /* TutorialImageView.swift */; };
 		2AACB82C280D0F0E00ADCA84 /* TutorialTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACB82B280D0F0E00ADCA84 /* TutorialTextView.swift */; };
 		2AACB830280D2E7600ADCA84 /* TutorialCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACB82F280D2E7600ADCA84 /* TutorialCardView.swift */; };
@@ -50,6 +47,7 @@
 		2AFDF1A427ED85F200A03ACE /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A327ED85F200A03ACE /* GraphView.swift */; };
 		2AFDF1A627ED861100A03ACE /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A527ED861100A03ACE /* SettingView.swift */; };
 		2AFDF1A827ED869500A03ACE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A727ED869500A03ACE /* HomeView.swift */; };
+		C665AA082B799681009D23FE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C665AA072B799681009D23FE /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +60,6 @@
 		2A25372627ECAE52003C8728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A3C7E6027FC2C9800B1E4EB /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
-		2A49583928560B44005CE418 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2A543DCA27F9C6FB0051665E /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		2A543DCC27F9C7670051665E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		2A58E12627F26E1300121A4F /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
@@ -82,7 +79,6 @@
 		2AA3732B27EC507200A885B0 /* Muscle Record.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Muscle Record.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleRecordApp.swift; sourceTree = "<group>"; };
 		2AA3733227EC507300A885B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2AA3733527EC507300A885B0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2AACB829280D0EB300ADCA84 /* TutorialImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialImageView.swift; sourceTree = "<group>"; };
 		2AACB82B280D0F0E00ADCA84 /* TutorialTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTextView.swift; sourceTree = "<group>"; };
 		2AACB82F280D2E7600ADCA84 /* TutorialCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCardView.swift; sourceTree = "<group>"; };
@@ -97,6 +93,7 @@
 		2AFDF1A327ED85F200A03ACE /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		2AFDF1A527ED861100A03ACE /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		2AFDF1A727ED869500A03ACE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C665AA072B799681009D23FE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +102,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A27AB8D27F5BB0A004AF6F3 /* FirebaseAuth in Frameworks */,
-				2A8B8F502A999C1A00A3ED71 /* RswiftLibrary in Frameworks */,
 				2A27AB8F27F5BB0A004AF6F3 /* FirebaseFirestore in Frameworks */,
 				2A97B8DA28256A0F002EC14D /* StoreKit.framework in Frameworks */,
 			);
@@ -191,23 +187,14 @@
 				2A25372627ECAE52003C8728 /* Info.plist */,
 				2AFB296B285B1D67008DC212 /* GoogleService-Info.plist */,
 				2AA3732E27EC507200A885B0 /* MuscleRecordApp.swift */,
-				2A49583A28560B44005CE418 /* Localizable.strings */,
+				C665AA072B799681009D23FE /* Localizable.xcstrings */,
 				2A57660C280E335F0079DB82 /* Model */,
 				2A57660D280E33690079DB82 /* View */,
 				2A57660E280E337C0079DB82 /* ViewModel */,
 				2AA3733227EC507300A885B0 /* Assets.xcassets */,
 				2A25372727ECB0D5003C8728 /* LaunchScreen.storyboard */,
-				2AA3733427EC507300A885B0 /* Preview Content */,
 			);
 			path = MuscleRecord;
-			sourceTree = "<group>";
-		};
-		2AA3733427EC507300A885B0 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				2AA3733527EC507300A885B0 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		2AF65EF12846439900A6BE42 /* Components */ = {
@@ -248,7 +235,6 @@
 			packageProductDependencies = (
 				2A27AB8C27F5BB0A004AF6F3 /* FirebaseAuth */,
 				2A27AB8E27F5BB0A004AF6F3 /* FirebaseFirestore */,
-				2A8B8F4F2A999C1A00A3ED71 /* RswiftLibrary */,
 			);
 			productName = MuscleRecord;
 			productReference = 2AA3732B27EC507200A885B0 /* Muscle Record.app */;
@@ -280,7 +266,6 @@
 			mainGroup = 2AA3732227EC507200A885B0;
 			packageReferences = (
 				2A27AB8B27F5BB0A004AF6F3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				2A8B8F4E2A999C1A00A3ED71 /* XCRemoteSwiftPackageReference "R.swift" */,
 			);
 			productRefGroup = 2AA3732C27EC507200A885B0 /* Products */;
 			projectDirPath = "";
@@ -296,10 +281,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A49583828560B44005CE418 /* Localizable.strings in Resources */,
 				2A25372827ECB0D5003C8728 /* LaunchScreen.storyboard in Resources */,
+				C665AA082B799681009D23FE /* Localizable.xcstrings in Resources */,
 				2AFB296C285B1D67008DC212 /* GoogleService-Info.plist in Resources */,
-				2AA3733627EC507300A885B0 /* Preview Assets.xcassets in Resources */,
 				2AA3733327EC507300A885B0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,17 +341,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		2A49583A28560B44005CE418 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2A49583928560B44005CE418 /* ja */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		2AA3733727EC507300A885B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -420,6 +393,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -474,6 +448,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -493,7 +468,7 @@
 				CODE_SIGN_ENTITLEMENTS = MuscleRecord/MuscleRecord.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MuscleRecord/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 4WXTDSDQPZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -508,6 +483,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -532,7 +508,7 @@
 				CODE_SIGN_ENTITLEMENTS = MuscleRecord/MuscleRecord.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MuscleRecord/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 4WXTDSDQPZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -547,6 +523,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -593,14 +570,6 @@
 				kind = branch;
 			};
 		};
-		2A8B8F4E2A999C1A00A3ED71 /* XCRemoteSwiftPackageReference "R.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mac-cain13/R.swift.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -613,11 +582,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2A27AB8B27F5BB0A004AF6F3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
-		};
-		2A8B8F4F2A999C1A00A3ED71 /* RswiftLibrary */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2A8B8F4E2A999C1A00A3ED71 /* XCRemoteSwiftPackageReference "R.swift" */;
-			productName = RswiftLibrary;
 		};
 		2A8B8F512A999C3700A3ED71 /* RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;

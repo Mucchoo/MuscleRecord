@@ -19,55 +19,55 @@ struct TutorialView: View {
                 viewModel.getThemeColor().edgesIgnoringSafeArea(.all)
                 VStack {
                     //タイトル
-                    Text(R.string.localizable.usage())
+                    Text("usage")
                         .font(.system(size: 20))
                         .fontWeight(.bold)
                         .foregroundColor(viewModel.getThemeColor())
                         .frame(width: 200, height: 40)
-                        .background(Color(R.color.clearColor()!))
+                        .background(Color("ClearColor"))
                         .cornerRadius(20)
                         .padding(.bottom, 10)
                     //ページビュー
                     TabView{
                         //1枚目
                         TutorialCardView {
-                            TutorialImageView(image: R.string.localizable.tutorial1())
-                            Image(systemName: R.string.localizable.arrowIcon())
+                            TutorialImageView(image: "Tutorial1")
+                            Image(systemName: "arrow.down.circle.fill")
                                 .resizable()
                                 .frame(width: 30, height: 30)
                                 .foregroundColor(viewModel.getThemeColor())
-                            TutorialImageView(image: R.string.localizable.tutorial2())
-                                .shadow(color: Color(R.color.fontColor()!).opacity(0.5), radius: 4, x: 0, y: 2)
-                            TutorialTextView(text: R.string.localizable.tutorialTextOne())
+                            TutorialImageView(image: "Tutorial2")
+                                .shadow(color: Color("FontColor").opacity(0.5), radius: 4, x: 0, y: 2)
+                            TutorialTextView(text: String(localized: "tutorialTextOne"))
                         }
                         //2枚目
                         TutorialCardView {
-                            TutorialImageView(image: R.string.localizable.tutorial2())
-                                .shadow(color: Color(R.color.fontColor()!).opacity(0.5), radius: 4, x: 0, y: 2)
-                            Image(systemName: R.string.localizable.arrowIcon())
+                            TutorialImageView(image: "Tutorial2")
+                                .shadow(color: Color("FontColor").opacity(0.5), radius: 4, x: 0, y: 2)
+                            Image(systemName: "arrow.down.circle.fill")
                                 .resizable()
                                 .frame(width: 30, height: 30)
                                 .foregroundColor(viewModel.getThemeColor())
-                            TutorialImageView(image: R.string.localizable.tutorial3())
-                                .shadow(color: Color(R.color.fontColor()!).opacity(0.5), radius: 4, x: 0, y: 2)
-                            (Text(R.string.localizable.tutorialTextTwoFirst())
-                            + Text((Image(systemName: R.string.localizable.pencilIconFill())))
-                            + Text(R.string.localizable.tutorialTextTwoLast()))
+                            TutorialImageView(image: "Tutorial3")
+                                .shadow(color: Color("FontColor").opacity(0.5), radius: 4, x: 0, y: 2)
+                            (Text("tutorialTextTwoFirst")
+                            + Text((Image(systemName: "pencil.circle.fill")))
+                            + Text("tutorialTextTwoLast"))
                                 .font(.headline)
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 20)
                                 .padding(.bottom, 30)
-                                .foregroundColor(Color(R.color.fontColor()!))
+                                .foregroundColor(Color("FontColor"))
                         }
                         //3枚目
                         TutorialCardView {
-                            TutorialImageView(image: R.string.localizable.tutorial4())
-                            TutorialTextView(text: R.string.localizable.tutorialTextThree())
+                            TutorialImageView(image: "Tutorial4")
+                            TutorialTextView(text: String(localized: "tutorialTextThree"))
                         }
                         //4枚目
                         TutorialCardView {
-                            TutorialImageView(image: R.string.localizable.tutorial5())
-                            TutorialTextView(text: R.string.localizable.tutorialTextFour())
+                            TutorialImageView(image: "Tutorial5")
+                            TutorialTextView(text: String(localized: "tutorialTextFour"))
                             //始めるボタン
                             Button {
                                 if firebaseViewModel.isLoggedIn() {
@@ -76,10 +76,10 @@ struct TutorialView: View {
                                     isShowingSignUp = true
                                 }
                             } label: {
-                                ButtonView(text: R.string.localizable.start()).padding(.vertical, 30)
+                                ButtonView("start").padding(.vertical, 30)
                             }
                         }
-                        .background(Color(R.color.clearColor()!))
+                        .background(Color("ClearColor"))
                         .cornerRadius(20)
                         .padding(.horizontal, 20)
                     }

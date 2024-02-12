@@ -1,0 +1,1086 @@
+{
+  "sourceLanguage" : "ja",
+  "strings" : {
+    "" : {
+
+    },
+    "%lld" : {
+
+    },
+    "accountCreated" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウントが作成されました"
+          }
+        }
+      }
+    },
+    "add" : {
+      "comment" : "Button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "追加"
+          }
+        }
+      }
+    },
+    "addViewTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種目を追加"
+          }
+        }
+      }
+    },
+    "application" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリケーション"
+          }
+        }
+      }
+    },
+    "appURL" : {
+      "comment" : "App URL",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://itunes.apple.com/jp/app/id1628829703?mt=8"
+          }
+        }
+      }
+    },
+    "changeEmail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メールアドレスを変更"
+          }
+        }
+      }
+    },
+    "changeInfoViewTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント情報変更"
+          }
+        }
+      }
+    },
+    "changePassword" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスワードを変更"
+          }
+        }
+      }
+    },
+    "checkDelete" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本当に削除しますか？"
+          }
+        }
+      }
+    },
+    "close" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "閉じる"
+          }
+        }
+      }
+    },
+    "copyRight" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "©︎ 2022 Musa Yazuju"
+          }
+        }
+      }
+    },
+    "createAccount" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント作成"
+          }
+        }
+      }
+    },
+    "date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "date"
+          }
+        }
+      }
+    },
+    "delete" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "削除"
+          }
+        }
+      }
+    },
+    "deleteEvent" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種目を削除"
+          }
+        }
+      }
+    },
+    "editViewTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種目を編集"
+          }
+        }
+      }
+    },
+    "email" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "email"
+          }
+        }
+      }
+    },
+    "emailAddress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メールアドレス"
+          }
+        }
+      }
+    },
+    "emailAddressPlaceholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "example@example.com"
+          }
+        }
+      }
+    },
+    "emailIsEmpty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メールアドレスが入力されていません"
+          }
+        }
+      }
+    },
+    "errorOccured" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エラーが発生しました"
+          }
+        }
+      }
+    },
+    "eventName" : {
+      "comment" : "textField",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種目名"
+          }
+        }
+      }
+    },
+    "eventNamePlaceholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種目名を入力してください"
+          }
+        }
+      }
+    },
+    "events" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "events"
+          }
+        }
+      }
+    },
+    "eventsWillBeUnlimitedIfJoinPro" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proにをアンロックすれば、無制限に追加することができます。"
+          }
+        }
+      }
+    },
+    "everyday" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1日毎"
+          }
+        }
+      }
+    },
+    "forgotPassword" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスワードを忘れた"
+          }
+        }
+      }
+    },
+    "homeViewTitle" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "筋トレ記録"
+          }
+        }
+      }
+    },
+    "iconViewTitle" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アイコン"
+          }
+        }
+      }
+    },
+    "items" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Items"
+          }
+        }
+      }
+    },
+    "kg" : {
+      "comment" : "Text",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kg "
+          }
+        }
+      }
+    },
+    "latestDate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "latestDate"
+          }
+        }
+      }
+    },
+    "latestRep" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "latestRep"
+          }
+        }
+      }
+    },
+    "latestWeight" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "latestWeight"
+          }
+        }
+      }
+    },
+    "launchedTimes" : {
+      "comment" : "UserDefaults",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "launchedTimes"
+          }
+        }
+      }
+    },
+    "login" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ログイン"
+          }
+        }
+      }
+    },
+    "loginExistingAccount" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "既存のアカウントにログイン"
+          }
+        }
+      }
+    },
+    "loginSucceeded" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ログインに成功しました"
+          }
+        }
+      }
+    },
+    "logo" : {
+      "comment" : "assets",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logo"
+          }
+        }
+      }
+    },
+    "logout" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ログアウト"
+          }
+        }
+      }
+    },
+    "logoutConfirm" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本当にログアウトしますか？"
+          }
+        }
+      }
+    },
+    "messageBody" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\n\n\n\n\nーーーーーーーーーーーーーーーーー\nこの上へお気軽にご記入ください。\n筋トレ記録"
+          }
+        }
+      }
+    },
+    "messageResipients" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yazujumusa@gmail.com"
+          }
+        }
+      }
+    },
+    "messageSubject" : {
+      "comment" : "MessageUI",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ご意見・ご要望"
+          }
+        }
+      }
+    },
+    "name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "name"
+          }
+        }
+      }
+    },
+    "needLoginToChangeAccount" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント情報を変更するには一度ログインする必要があります。"
+          }
+        }
+      }
+    },
+    "newEmailAddress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しいメールアドレス"
+          }
+        }
+      }
+    },
+    "newPassword" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しいパスワード"
+          }
+        }
+      }
+    },
+    "nineDaysAverage" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9日平均"
+          }
+        }
+      }
+    },
+    "ok" : {
+      "comment" : "alert",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "onlyFiveEventsAvailableInFree" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無料版で追加できる種目は5個です"
+          }
+        }
+      }
+    },
+    "password" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスワード"
+          }
+        }
+      }
+    },
+    "passwordAndPasswordConfirmIsNotEqual" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスワードと確認パスワードが一致しません"
+          }
+        }
+      }
+    },
+    "passwordConfirm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認用パスワード"
+          }
+        }
+      }
+    },
+    "passwordConfirmIsEmpty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認用パスワードが入力されていません"
+          }
+        }
+      }
+    },
+    "passwordIsEmpty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスワードが入力されていません"
+          }
+        }
+      }
+    },
+    "passwordPlaceholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "password"
+          }
+        }
+      }
+    },
+    "passwordUpdated" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスワードが更新されました"
+          }
+        }
+      }
+    },
+    "period" : {
+
+    },
+    "pleaseCheckEmail" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "受け取ったメールを開いてパスワードを再設定してください。"
+          }
+        }
+      }
+    },
+    "pro" : {
+      "comment" : "In App Purchase"
+    },
+    "proIdentifier" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "musclerecord.pro"
+          }
+        }
+      }
+    },
+    "proViewTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proをアンロック"
+          }
+        }
+      }
+    },
+    "purchase" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proをアンロック - 300円"
+          }
+        }
+      }
+    },
+    "purchased" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入しました"
+          }
+        }
+      }
+    },
+    "purchaseStatus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PurchaseStatus"
+          }
+        }
+      }
+    },
+    "record" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "記録"
+          }
+        }
+      }
+    },
+    "records" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "records"
+          }
+        }
+      }
+    },
+    "rep" : {
+      "comment" : "Firebase"
+    },
+    "repIs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回数："
+          }
+        }
+      }
+    },
+    "repTitle" : {
+      "comment" : "Picker",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回数"
+          }
+        }
+      }
+    },
+    "resetPassword" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスワードを再設定"
+          }
+        }
+      }
+    },
+    "restore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "過去の購入を復元"
+          }
+        }
+      }
+    },
+    "restored" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入を復元しました"
+          }
+        }
+      }
+    },
+    "seeGraph" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "グラフを見る ▶︎"
+          }
+        }
+      }
+    },
+    "seePro" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proを見る"
+          }
+        }
+      }
+    },
+    "sendEmail" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メールを送信しました"
+          }
+        }
+      }
+    },
+    "settingViewTitle" : {
+      "comment" : "navigation Bar",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
+          }
+        }
+      }
+    },
+    "shareApp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリをシェア"
+          }
+        }
+      }
+    },
+    "start" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "始める"
+          }
+        }
+      }
+    },
+    "themeColor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ThemeColor"
+          }
+        }
+      }
+    },
+    "themeColorNumber" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "themeColorNumber"
+          }
+        }
+      }
+    },
+    "themeColorViewTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "テーマカラー"
+          }
+        }
+      }
+    },
+    "themes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Themes"
+          }
+        }
+      }
+    },
+    "threeDaysAverage" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3日平均"
+          }
+        }
+      }
+    },
+    "tutorialTextFour" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "記録を続けて成長をデータ化しましょう！"
+          }
+        }
+      }
+    },
+    "tutorialTextOne" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "まずは右上の ＋ ボタンから種目を追加しましょう"
+          }
+        }
+      }
+    },
+    "tutorialTextThree" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "記録をすると結果がグラフに表れます"
+          }
+        }
+      }
+    },
+    "tutorialTextTwoFirst" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トレーニング後は"
+          }
+        }
+      }
+    },
+    "tutorialTextTwoLast" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "を押して記録できます"
+          }
+        }
+      }
+    },
+    "unlockedAllFeatures" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全てのアイテムがアンロックされました。"
+          }
+        }
+      }
+    },
+    "unlockedPro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proアンロック済み"
+          }
+        }
+      }
+    },
+    "unlockEvents" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種目数：5個 → 無制限"
+          }
+        }
+      }
+    },
+    "unlockIcon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アイコン解放"
+          }
+        }
+      }
+    },
+    "unlockTheme" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "テーマカラー解放"
+          }
+        }
+      }
+    },
+    "updatedEmail" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メールアドレスが更新されました"
+          }
+        }
+      }
+    },
+    "updateName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名前を上書き"
+          }
+        }
+      }
+    },
+    "updateRecord" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "記録を上書き"
+          }
+        }
+      }
+    },
+    "usage" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使い方"
+          }
+        }
+      }
+    },
+    "users" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "users"
+          }
+        }
+      }
+    },
+    "weight" : {
+
+    },
+    "weightIs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重量："
+          }
+        }
+      }
+    },
+    "weightTitle" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重量"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

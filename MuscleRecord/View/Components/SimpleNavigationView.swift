@@ -27,7 +27,7 @@ struct SimpleNavigationView<Content: View>: View {
                     action: {
                         dismiss()
                     }, label: {
-                        Image(systemName: R.string.localizable.backIcon())
+                        Image(systemName: "arrow.backward")
                     }
                 ).tint(.white)
             }

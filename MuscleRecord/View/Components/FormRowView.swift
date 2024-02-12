@@ -22,7 +22,7 @@ struct FormRowView: View {
                     .foregroundColor(Color.white)
             }
             .frame(width: 36, height: 36, alignment: .center)
-            Text(firstText).foregroundColor(Color(R.color.fontColor()!))
+            Text(firstText).foregroundColor(Color("FontColor"))
             Spacer()
         }.opacity(isHidden ? 0.5 : 1)
     }

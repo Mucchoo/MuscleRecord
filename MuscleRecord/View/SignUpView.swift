@@ -25,38 +25,38 @@ struct SignUpView: View {
     var body: some View {
         ZStack{
             //背景タップでキーボードを閉じる
-            Color(R.color.clearColor()!)
+            Color("ClearColor")
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
                     focus = nil
                 }
             VStack(spacing: 0){
                 //タイトル
-                Text(R.string.localizable.createAccount())
+                Text("createAccount")
                     .font(.headline)
                     .padding(.bottom, 20)
-                    .foregroundColor(Color(R.color.fontColor()!))
+                    .foregroundColor(Color("FontColor"))
                 //フォーム
-                TextFieldView(title: R.string.localizable.emailAddress(), text: $email, placeHolder: R.string.localizable.emailAddressPlaceholder(), isSecure: false)
+                TextFieldView(title: "emailAddress", text: $email, placeHolder: "emailAddressPlaceholder", isSecure: false)
                     .focused($focus, equals: .email)
-                TextFieldView(title: R.string.localizable.password(), text: $password, placeHolder: R.string.localizable.passwordPlaceholder(), isSecure: true)
+                TextFieldView(title: "password", text: $password, placeHolder: "passwordPlaceholder", isSecure: true)
                     .focused($focus, equals: .password)
-                TextFieldView(title: R.string.localizable.passwordConfirm(), text: $confirm, placeHolder: R.string.localizable.passwordPlaceholder(), isSecure: true)
+                TextFieldView(title: "passwordConfirm", text: $confirm, placeHolder: "passwordPlaceholder", isSecure: true)
                     .focused($focus, equals: .confirm)
                 //アカウント作成ボタン
                 Button( action: {
                     error = ""
                     if email.isEmpty {
-                        error = R.string.localizable.emailIsEmpty()
+                        error = String(localized: "emailIsEmpty")
                         isShowingAlert = true
                     } else if password.isEmpty {
-                        error = R.string.localizable.passwordIsEmpty()
+                        error = String(localized: "passwordIsEmpty")
                         isShowingAlert = true
                     } else if confirm.isEmpty {
-                        error = R.string.localizable.passwordConfirmIsEmpty()
+                        error = String(localized: "passwordConfirmIsEmpty")
                         isShowingAlert = true
                     } else if password.compare(confirm) != .orderedSame {
-                        error = R.string.localizable.passwordAndPasswordConfirmIsNotEqual()
+                        error = String(localized: "passwordAndPasswordConfirmIsNotEqual")
                         isShowingAlert = true
                     } else {
                         firebaseViewModel.signUp(email: email, password: password) { errorMessage in
@@ -68,24 +68,24 @@ struct SignUpView: View {
                         }
                     }
                 }){
-                    ButtonView(text: R.string.localizable.createAccount()).padding(.top, 20)
+                    ButtonView("createAccount").padding(.top, 20)
                 }
                 //ログインボタン
                 Button {
                     showSignIn = true
                 } label: {
-                    Text(R.string.localizable.loginExistingAccount())
+                    Text("loginExistingAccount")
                         .font(.headline)
                         .foregroundColor(viewModel.getThemeColor())
                         .padding(.top, 30)
                 }
                 .alert(isPresented: $isShowingAlert) {
                     if error.isEmpty {
-                        return Alert(title: Text(R.string.localizable.accountCreated()), message: Text(""), dismissButton: .default(Text(R.string.localizable.ok()), action: {
+                        return Alert(title: Text("accountCreated"), message: Text(""), dismissButton: .default(Text("ok"), action: {
                             Window.first?.rootViewController?.dismiss(animated: true, completion: nil)
                         }))
                     } else {
-                        return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text(R.string.localizable.ok())))
+                        return Alert(title: Text(""), message: Text(error), dismissButton: .destructive(Text("ok")))
                     }
                 }
                 Spacer()

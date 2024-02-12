@@ -16,58 +16,58 @@ struct SettingView: View {
     @State var isShowingReauthenticate = false
     @State var isShowingTutorial = false
     @State var isShowingMail = false
-    @State private var mailData = Email(subject: R.string.localizable.messageSubject(), recipients: [R.string.localizable.messageResipients()], message: R.string.localizable.messageBody())
+    @State private var mailData = Email(subject: String(localized: "messageSubject"), recipients: [String(localized: "messageResipients")], message: String(localized: "messageBody"))
     
     var body: some View {
-        SimpleNavigationView(title: R.string.localizable.settingViewTitle()) {
+        SimpleNavigationView(title: String(localized: "settingViewTitle")) {
             VStack{
                 Form{
                     //Proセクション
-                    Section(header: Text(R.string.localizable.pro())){
+                    Section(header: Text("pro")){
                         //内課金購入済みの場合
-                        if UserDefaults.standard.bool(forKey: R.string.localizable.purchaseStatus()) {
-                            FormRowView(icon: R.string.localizable.giftIcon(), firstText: R.string.localizable.unlockedPro(), isHidden: false)
-                            NavigationLink(destination: ThemeColorView()) {FormRowView(icon: R.string.localizable.brushIcon(), firstText: R.string.localizable.themeColorViewTitle(), isHidden: false)}
+                        if UserDefaults.standard.bool(forKey: "purchaseStatus") {
+                            FormRowView(icon: "gift", firstText: String(localized: "unlockedPro"), isHidden: false)
+                            NavigationLink(destination: ThemeColorView()) {FormRowView(icon: "paintbrush.pointed.fill", firstText: String(localized: "themeColorViewTitle"), isHidden: false)}
                             NavigationLink(destination: IconView()) {
                                 HStack{
                                     ZStack{
                                         RoundedRectangle(cornerRadius: 8)
                                             .foregroundColor(viewModel.getThemeColor())
                                             .frame(width: 36, height: 36)
-                                        Image(R.string.localizable.logo())
+                                        Image("Logo")
                                             .resizable()
                                             .frame(width: 20, height: 20)
                                     }
-                                    Text(R.string.localizable.iconViewTitle()).foregroundColor(Color(R.color.fontColor()!))
+                                    Text("iconViewTitle").foregroundColor(Color("FontColor"))
                                     Spacer()
                                 }
                             }
                         //内課金未購入の場合
                         } else {
                             NavigationLink(destination: ProView()) {
-                                FormRowView(icon: R.string.localizable.giftIcon(), firstText: R.string.localizable.proViewTitle(), isHidden: false)
+                                FormRowView(icon: "gift", firstText: String(localized: "proViewTitle"), isHidden: false)
                             }
-                            FormRowView(icon: R.string.localizable.brushIcon(), firstText: R.string.localizable.themeColorViewTitle(), isHidden: true)
+                            FormRowView(icon: "paintbrush.pointed.fill", firstText: String(localized: "themeColorViewTitle"), isHidden: true)
                             HStack{
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 8)
                                         .foregroundColor(viewModel.getThemeColor())
                                         .frame(width: 36, height: 36)
-                                    Image(R.string.localizable.logo())
+                                    Image("Logo")
                                         .resizable()
                                         .frame(width: 20, height: 20)
                                 }
-                                Text(R.string.localizable.iconViewTitle()).foregroundColor(Color(R.color.fontColor()!))
+                                Text("iconViewTitle").foregroundColor(Color("FontColor"))
                                 Spacer()
                             }.opacity(0.5)
                         }
                     }
-                    Section(header: Text(R.string.localizable.application()), footer: Text(R.string.localizable.copyRight())){
+                    Section(header: Text("application"), footer: Text("copyRight")){
                         //使い方
                         Button {
                             isShowingTutorial = true
                         } label: {
-                            FormRowView(icon: R.string.localizable.questionIcon(), firstText: R.string.localizable.usage(), isHidden: false)
+                            FormRowView(icon: "questionmark", firstText: String(localized: "usage"), isHidden: false)
                         }
                         .fullScreenCover(isPresented: $isShowingTutorial) {
                             TutorialView(isShowingTutorial: $isShowingTutorial)
@@ -76,13 +76,13 @@ struct SettingView: View {
                         Button {
                             viewModel.shareApp()
                         } label: {
-                            FormRowView(icon: R.string.localizable.shareIcon(), firstText: R.string.localizable.shareApp(), isHidden: false)
+                            FormRowView(icon: "square.and.arrow.up", firstText: String(localized: "shareApp"), isHidden: false)
                         }
                         //お問い合わせ
                         Button {
                             isShowingMail = true
                         } label: {
-                            FormRowView(icon: R.string.localizable.envelopeIcon(), firstText: R.string.localizable.messageSubject(), isHidden: false)
+                            FormRowView(icon: "envelope", firstText: String(localized: "messageSubject"), isHidden: false)
                         }
                         .sheet(isPresented: $isShowingMail) {
                             MailView(data: $mailData) { result in }
@@ -91,7 +91,7 @@ struct SettingView: View {
                         Button {
                             isShowingReauthenticate = true
                         } label: {
-                            FormRowView(icon: R.string.localizable.personIcon(), firstText: R.string.localizable.changeInfoViewTitle(), isHidden: false)
+                            FormRowView(icon: "person", firstText: String(localized: "changeInfoViewTitle"), isHidden: false)
                         }
                         .sheet(isPresented: $isShowingReauthenticate) {
                             ReauthenticateView()
@@ -100,10 +100,10 @@ struct SettingView: View {
                         Button(action: {
                             isShowingAlert = true
                         }) {
-                            FormRowView(icon: R.string.localizable.logoutIcon(), firstText: R.string.localizable.logout(), isHidden: false)
+                            FormRowView(icon: "rectangle.portrait.and.arrow.right", firstText: String(localized: "logout"), isHidden: false)
                         }
                         .alert(isPresented: $isShowingAlert) {
-                            return Alert(title: Text(R.string.localizable.logoutConfirm()), message: Text(""), primaryButton: .cancel(), secondaryButton: .destructive(Text(R.string.localizable.logout()), action: {
+                            return Alert(title: Text("logoutConfirm"), message: Text(""), primaryButton: .cancel(), secondaryButton: .destructive(Text("logout"), action: {
                                 firebaseViewModel.signOut()
                                 dismiss()
                             }))
@@ -113,7 +113,7 @@ struct SettingView: View {
                 .listStyle(GroupedListStyle())
                 .environment(\.horizontalSizeClass, .regular)
             }
-            .background(Color(R.color.backgroundColor()!).edgesIgnoringSafeArea(.all))
+            .background(Color("BackgroundColor").edgesIgnoringSafeArea(.all))
         }
     }
 }
