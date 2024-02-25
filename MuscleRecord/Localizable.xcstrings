@@ -466,6 +466,7 @@
       }
     },
     "homeViewTitle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1134,6 +1135,9 @@
           }
         }
       }
+    },
+    "Record List" : {
+
     },
     "records" : {
       "extractionState" : "manual",

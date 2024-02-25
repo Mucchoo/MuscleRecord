@@ -47,6 +47,7 @@
 		2AFDF1A627ED861100A03ACE /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A527ED861100A03ACE /* SettingView.swift */; };
 		2AFDF1A827ED869500A03ACE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDF1A727ED869500A03ACE /* HomeView.swift */; };
 		C665AA082B799681009D23FE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C665AA072B799681009D23FE /* Localizable.xcstrings */; };
+		C677E87C2B8B173C00D9AA4F /* Spotlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = C677E87B2B8B173C00D9AA4F /* Spotlight.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		2AFDF1A527ED861100A03ACE /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		2AFDF1A727ED869500A03ACE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C665AA072B799681009D23FE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		C677E87B2B8B173C00D9AA4F /* Spotlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotlight.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				2AACB82F280D2E7600ADCA84 /* TutorialCardView.swift */,
 				2AACB829280D0EB300ADCA84 /* TutorialImageView.swift */,
 				2AACB831280D3B8400ADCA84 /* SimpleNavigationView.swift */,
+				C677E87B2B8B173C00D9AA4F /* Spotlight.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				2A75278728121EE500A0961C /* SignInView.swift in Sources */,
 				2AE7CEED2854C057006344F4 /* PurchaseViewModel.swift in Sources */,
 				2AFDF1A627ED861100A03ACE /* SettingView.swift in Sources */,
+				C677E87C2B8B173C00D9AA4F /* Spotlight.swift in Sources */,
 				2AA3732F27EC507200A885B0 /* MuscleRecordApp.swift in Sources */,
 				2A75278E28123EDD00A0961C /* ResetPasswordView.swift in Sources */,
 				2AFDF1A427ED85F200A03ACE /* GraphView.swift in Sources */,
