@@ -95,8 +95,6 @@ class FirebaseViewModel: ObservableObject {
     }
     //種目名の更新
     func updateEvent(event: Event, newName: String) {
-        let db = Firestore.firestore()
-        guard let userID = Auth.auth().currentUser?.uid else { return }
         firestoreEvents?.document(event.id).updateData(["name": newName]) { error in
             if let error {
                 print("updateEvent error: \(error.localizedDescription)")
@@ -106,8 +104,6 @@ class FirebaseViewModel: ObservableObject {
     }
     //種目の削除
     func deleteEvent(event: Event) {
-        let db = Firestore.firestore()
-        guard let userID = Auth.auth().currentUser?.uid else { return }
         firestoreEvents?.document(event.id).delete() { error in
             if let error {
                 print("deleteEvent error: \(error.localizedDescription)")
@@ -117,8 +113,6 @@ class FirebaseViewModel: ObservableObject {
     }
     //種目の追加
     func addEvent(_ name: String) {
-        let db = Firestore.firestore()
-        guard let userID = Auth.auth().currentUser?.uid else { return }
         firestoreEvents?.addDocument(data: ["name": name, "latestWeight": 0.0, "latestRep": 0, "latestDate": Date(timeInterval: -60*60*24, since: .now)]) { error in
             if let error {
                 print("addEvent error: \(error.localizedDescription)")
@@ -128,8 +122,6 @@ class FirebaseViewModel: ObservableObject {
     }
     //種目の取得
     func getEvent() {
-        let db = Firestore.firestore()
-        guard let userID = Auth.auth().currentUser?.uid else { return }
         firestoreEvents?.getDocuments { snapshot, error in
             if let error {
                 print("getEvent error: \(error.localizedDescription)")
@@ -146,8 +138,6 @@ class FirebaseViewModel: ObservableObject {
     }
     //記録の取得
     func getRecord(event: Event) {
-        let db = Firestore.firestore()
-        guard let userID = Auth.auth().currentUser?.uid else { return }
         firestoreEvents?.document(event.id).collection("records").order(by: "date").getDocuments { [weak self] snapshot, error in
             if let error {
                 print("getRecord error: \(error.localizedDescription)")
@@ -158,8 +148,6 @@ class FirebaseViewModel: ObservableObject {
     }
     //記録
     func addRecord(event: Event, weight: Float, rep: Int, completion: (() -> ())?) {
-        let db = Firestore.firestore()
-        guard let userID = Auth.auth().currentUser?.uid else { return }
         firestoreEvents?.document(event.id).setData(["name": event.name, "latestWeight": weight, "latestRep": rep, "latestDate": Date()]) { error in
             if let error {
                 print("addRecord error1: \(error.localizedDescription)")
@@ -176,8 +164,6 @@ class FirebaseViewModel: ObservableObject {
     }
     //記録を上書き
     func updateRecord(event: Event, weight: Float, rep: Int, completion: (() -> ())?) {
-        let db = Firestore.firestore()
-        guard let userID = Auth.auth().currentUser?.uid else { return }
         let group = DispatchGroup()
         
         group.enter()
