@@ -12,7 +12,7 @@ class PurchaseViewModel: NSObject, ObservableObject {
     var products = [SKProduct]()
     //初期設定
     func setup() {
-        let request = SKProductsRequest(productIdentifiers: ["proIdentifier"])
+        let request = SKProductsRequest(productIdentifiers: ["musclerecord.pro"])
         request.delegate = self
         request.start()
     }

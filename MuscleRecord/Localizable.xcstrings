@@ -661,17 +661,6 @@
         }
       }
     },
-    "proIdentifier" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "musclerecord.pro"
-          }
-        }
-      }
-    },
     "proViewTitle" : {
       "extractionState" : "manual",
       "localizations" : {
