@@ -142,74 +142,12 @@ class FirebaseViewModel: ObservableObject {
     func getRecord(event: Event) {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        db.collection("users").document(userID).collection("events").document(event.id).collection("records").order(by: "date").getDocuments { (snapshot, error) in
+        db.collection("users").document(userID).collection("events").document(event.id).collection("records").order(by: "date").getDocuments { [weak self] snapshot, error in
             if let error {
                 print("getRecord error: \(error.localizedDescription)")
                 return
             }
-            guard let snapshot = snapshot else { return }
-            DispatchQueue.main.async {
-                snapshot.documents.forEach { d in
-                    let timeStamp: Timestamp = d["date"] as? Timestamp ?? Timestamp()
-                    let date = timeStamp.dateValue()
-                    //記録に間が空いている場合はダミーを作成
-                    if let oldRecord = self.oldRecord {
-                        var dateDifference = (Calendar.current.dateComponents([.day], from: oldRecord.date, to: timeStamp.dateValue())).day! - 1
-                        while dateDifference > 0 {
-                            self.records.append(Record(id: UUID().uuidString, date: Date(timeInterval: TimeInterval(-60*60*24*dateDifference), since: date), weight: oldRecord.weight, rep: oldRecord.rep, dummy: true))
-                            dateDifference -= 1
-                        }
-                    }
-                    let record = Record(id: d.documentID, date: date, weight: d["weight"] as? Float ?? 0, rep: d["rep"] as? Int ?? 0, dummy: false)
-                    self.oldRecord = record
-                    self.records.append(record)
-                }
-                //3日平均、9日平均、平均の作成
-                let periodArray = [3,9]
-                for period in periodArray {
-                    var totalDate = 0
-                    var totalWeight: Float = 0
-                    var totalRep = 0
-                    let fraction = self.records.count % period
-                    var createdFraction = false
-                    self.records.forEach { record in
-                        totalWeight += record.weight
-                        totalRep += record.rep
-                        totalDate += 1
-                        //余った部分を最初に作成
-                        if fraction != 0 && fraction == totalDate && createdFraction == false {
-                            let record = Record(date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false)
-                            if period == 3 {
-                                self.records3.append(record)
-                            } else {
-                                self.records9.append(record)
-                            }
-                            createdFraction = true
-                            totalWeight = 0
-                            totalRep = 0
-                            totalDate = 0
-                        }
-                        //平均を作成
-                        if totalDate == period {
-                            let record = Record(date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false)
-                            if period == 3 {
-                                self.records3.append(record)
-                            } else {
-                                self.records9.append(record)
-                            }
-                            totalWeight = 0
-                            totalRep = 0
-                            totalDate = 0
-                        }
-                    }
-                }
-                //最大重量
-                snapshot.documents.forEach { d in
-                    if self.maxWeight < d["weight"] as? Float ?? 0.0 {
-                        self.maxWeight = d["weight"] as? Float ?? 0.0
-                    }
-                }
-            }
+            self?.createRecords(snapshot?.documents)
         }
     }
     //記録
@@ -258,6 +196,79 @@ class FirebaseViewModel: ObservableObject {
             if let error {
                 print("updateRecord error3: \(error.localizedDescription)")
                 return
+            }
+        }
+    }
+    
+    private func createRecords(_ documents: [QueryDocumentSnapshot]?) {
+        guard let documents else { return }
+        DispatchQueue.main.async {
+            self.createDailyRecords(documents)
+            self.createAverageRecords(documents)
+        }
+    }
+    
+    private func createDailyRecords(_ documents: [QueryDocumentSnapshot]) {
+        documents.forEach { d in
+            let timeStamp: Timestamp = d["date"] as? Timestamp ?? Timestamp()
+            let date = timeStamp.dateValue()
+            //記録に間が空いている場合はダミーを作成
+            if let oldRecord {
+                var dateDifference = (Calendar.current.dateComponents([.day], from: oldRecord.date, to: timeStamp.dateValue())).day! - 1
+                while dateDifference > 0 {
+                    self.records.append(Record(date: .init(timeInterval: .init(-60*60*24*dateDifference), since: date), weight: oldRecord.weight, rep: oldRecord.rep, dummy: true))
+                    dateDifference -= 1
+                }
+            }
+            let record = Record(id: d.documentID, date: date, weight: d["weight"] as? Float ?? 0, rep: d["rep"] as? Int ?? 0, dummy: false)
+            oldRecord = record
+            records.append(record)
+            
+            if maxWeight < d["weight"] as? Float ?? 0.0 {
+                maxWeight = d["weight"] as? Float ?? 0.0
+            }
+        }
+    }
+    
+    private func createAverageRecords(_ documents: [QueryDocumentSnapshot]) {
+        let periodArray = [3,9]
+        
+        for period in periodArray {
+            var totalDate = 0
+            var totalWeight: Float = 0
+            var totalRep = 0
+            
+            let fractionCount = records.count % period
+            var createdfraction = false
+            records.forEach { record in
+                totalWeight += record.weight
+                totalRep += record.rep
+                totalDate += 1
+                //余った部分を最初に作成
+                if fractionCount != 0 && fractionCount == totalDate && createdfraction == false {
+                    let record = Record(date: record.date, weight: totalWeight/Float(fractionCount), rep: totalRep/fractionCount, dummy: false)
+                    if period == 3 {
+                        records3.append(record)
+                    } else {
+                        records9.append(record)
+                    }
+                    createdfraction = true
+                    totalWeight = 0
+                    totalRep = 0
+                    totalDate = 0
+                }
+                //平均を作成
+                if totalDate == period {
+                    let record = Record(date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false)
+                    if period == 3 {
+                        records3.append(record)
+                    } else {
+                        records9.append(record)
+                    }
+                    totalWeight = 0
+                    totalRep = 0
+                    totalDate = 0
+                }
             }
         }
     }
