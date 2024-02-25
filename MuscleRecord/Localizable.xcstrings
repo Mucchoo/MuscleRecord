@@ -326,7 +326,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "email address"
           }
         }
@@ -772,7 +772,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アカウント情報を変更するには一度ログインする必要があります。"
+            "value" : "You must log in once to change your account information."
           }
         },
         "ja" : {
