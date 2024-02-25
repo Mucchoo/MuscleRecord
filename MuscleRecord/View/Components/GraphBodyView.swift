@@ -10,8 +10,8 @@ import SwiftUI
 struct GraphBodyView: View {
     @ObservedObject private var viewModel = ViewModel()
     var records: [Record]
-    var latestID: String
     var maxWeight: Float
+    
     var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M/d"
@@ -63,7 +63,7 @@ struct GraphBodyView: View {
                     .padding(.top, 38)
                     //初期状態ではグラフの1番左（1番古い情報）が表示されるので自動で1番右までスクロール
                     .onAppear{
-                        proxy.scrollTo(latestID)
+                        proxy.scrollTo(records.last?.id ?? "")
                     }
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .bottom)
             }

@@ -14,17 +14,10 @@ class FirebaseViewModel: ObservableObject {
     @Published var records3 = [Record]()
     @Published var records9 = [Record]()
     @Published var maxWeight: Float = 0.0
-    @Published var latestRecord: String = ""
-    @Published var latestRecord3: String = ""
-    @Published var latestRecord9: String = ""
     @Published var oldRecord: Record?
     //ログイン状態
-    func isLoggedIn() -> Bool {
-        if Auth.auth().currentUser == nil {
-            return false
-        } else {
-            return true
-        }
+    var isLoggedIn: Bool {
+        Auth.auth().currentUser != nil
     }
     //サインイン
     func signIn(email: String, password: String) -> String? {
@@ -157,7 +150,6 @@ class FirebaseViewModel: ObservableObject {
             guard let snapshot = snapshot else { return }
             DispatchQueue.main.async {
                 snapshot.documents.forEach { d in
-                    self.latestRecord = d.documentID
                     let timeStamp: Timestamp = d["date"] as? Timestamp ?? Timestamp()
                     let date = timeStamp.dateValue()
                     //記録に間が空いている場合はダミーを作成
@@ -179,35 +171,31 @@ class FirebaseViewModel: ObservableObject {
                     var totalWeight: Float = 0
                     var totalRep = 0
                     let fraction = self.records.count % period
-                    var created = false
+                    var createdFraction = false
                     self.records.forEach { record in
                         totalWeight += record.weight
                         totalRep += record.rep
                         totalDate += 1
                         //余った部分を最初に作成
-                        if fraction != 0 && fraction == totalDate && created == false {
-                            let recordID = UUID().uuidString
+                        if fraction != 0 && fraction == totalDate && createdFraction == false {
+                            let record = Record(date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false)
                             if period == 3 {
-                                self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestRecord3 = recordID
+                                self.records3.append(record)
                             } else {
-                                self.records9.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestRecord9 = recordID
+                                self.records9.append(record)
                             }
-                            created = true
+                            createdFraction = true
                             totalWeight = 0
                             totalRep = 0
                             totalDate = 0
                         }
                         //平均を作成
                         if totalDate == period {
-                            let recordID = UUID().uuidString
+                            let record = Record(date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false)
                             if period == 3 {
-                                self.records3.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestRecord3 = recordID
+                                self.records3.append(record)
                             } else {
-                                self.records9.append(Record(id: recordID, date: record.date, weight: totalWeight/Float(period), rep: totalRep/period, dummy: false))
-                                self.latestRecord9 = recordID
+                                self.records9.append(record)
                             }
                             totalWeight = 0
                             totalRep = 0
@@ -273,5 +261,4 @@ class FirebaseViewModel: ObservableObject {
             }
         }
     }
-
 }

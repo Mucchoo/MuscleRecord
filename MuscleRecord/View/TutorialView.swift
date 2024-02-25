@@ -70,7 +70,7 @@ struct TutorialView: View {
                             TutorialTextView(text: String(localized: "tutorialTextFour"))
                             //始めるボタン
                             Button {
-                                if firebaseViewModel.isLoggedIn() {
+                                if firebaseViewModel.isLoggedIn {
                                     isShowingTutorial = false
                                 } else {
                                     isShowingSignUp = true

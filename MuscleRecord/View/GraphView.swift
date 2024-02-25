@@ -51,11 +51,11 @@ struct GraphView: View {
                         .padding(.bottom, 30)
                     //選択した表示幅を反映
                     if graphRange == 0 {
-                        GraphBodyView(records: firebaseViewModel.records, latestID: firebaseViewModel.latestRecord, maxWeight: firebaseViewModel.maxWeight)
+                        GraphBodyView(records: firebaseViewModel.records, maxWeight: firebaseViewModel.maxWeight)
                     } else if graphRange == 1 {
-                        GraphBodyView(records: firebaseViewModel.records3, latestID: firebaseViewModel.latestRecord3, maxWeight: firebaseViewModel.maxWeight)
+                        GraphBodyView(records: firebaseViewModel.records3, maxWeight: firebaseViewModel.maxWeight)
                     } else {
-                        GraphBodyView(records: firebaseViewModel.records9, latestID: firebaseViewModel.latestRecord9, maxWeight: firebaseViewModel.maxWeight)
+                        GraphBodyView(records: firebaseViewModel.records9, maxWeight: firebaseViewModel.maxWeight)
                     }
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)

@@ -144,7 +144,7 @@ struct HomeView: View {
             }
             //ログインしていない場合チュートリアルを表示
             .onAppear {
-                if !firebaseViewModel.isLoggedIn() {
+                if !firebaseViewModel.isLoggedIn {
                     isShowingTutorial = true
                 }
             }
