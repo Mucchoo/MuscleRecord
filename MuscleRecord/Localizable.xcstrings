@@ -100,24 +100,6 @@
         }
       }
     },
-    "appURL" : {
-      "comment" : "App URL",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "https://itunes.apple.com/jp/app/id1628829703?mt=8"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "https://itunes.apple.com/jp/app/id1628829703?mt=8"
-          }
-        }
-      }
-    },
     "changeEmail" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -339,13 +321,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "example@example.com"
+            "value" : "email address"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "example@example.com"
+            "state" : "needs_review",
+            "value" : "email address"
           }
         }
       }

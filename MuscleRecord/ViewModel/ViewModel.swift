@@ -35,7 +35,7 @@ class ViewModel: ObservableObject {
     }
     //シェア
     func shareApp(){
-        let productURL:URL = URL(string: "appURL")!
+        let productURL:URL = URL(string: "https://itunes.apple.com/jp/app/id1628829703?mt=8")!
         let av = UIActivityViewController(activityItems: [productURL],applicationActivities: nil)
         Window.first?.rootViewController?.present(av, animated: true, completion: nil)
     }
