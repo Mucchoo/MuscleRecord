@@ -54,11 +54,14 @@ struct RecordView: View {
                 Button( action: {
                     //既に記録している場合記録を更新
                     if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
-                        firebaseViewModel.updateRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1)
+                        firebaseViewModel.updateRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1) {
+                            dismiss()
+                        }
                     } else {
-                        firebaseViewModel.addRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1)
+                        firebaseViewModel.addRecord(event: event, weight: Float(weight)/2 + 0.5, rep: rep + 1) {
+                            dismiss()
+                        }
                     }
-                    dismiss()
                 }, label: {
                     if viewModel.dateFormat(date: Date()) == viewModel.dateFormat(date: event.latestDate) {
                         ButtonView("updateRecord")
