@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ProView: View {
-    @Environment(\.dismiss) private var dismiss
     @ObservedObject private var purchaseViewModel = PurchaseViewModel()
     
     init() {
@@ -21,13 +20,15 @@ struct ProView: View {
                 VStack(spacing: 10) {
                     //アイコン解放
                     ProTitleView(icon: "Logo", title: String(localized: "unlockIcon"), isImage: true)
-                    ProImageView(image: "Icons")
+                    Image("Icons")
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(20)
                     //テーマカラー解放
                     ProTitleView(icon: "hammer.circle.fill", title: String(localized: "unlockTheme"), isImage: false)
-                    ProImageView(image: "Themes")
+                    themes
                     //種目数解放
                     ProTitleView(icon: "lock.circle.fill", title: String(localized: "unlockEvents"), isImage: false)
-                    ProImageView(image: "Items")
                     //購入ボタン
                     Button( action: {
                         purchaseViewModel.purchase()
@@ -44,4 +45,29 @@ struct ProView: View {
             }
         }
     }
+    
+    private var themes: some View {
+        VStack(spacing: 4) {
+            HStack(spacing: 4) {
+                themeItem(.themeColor0)
+                themeItem(.themeColor1)
+                themeItem(.themeColor2)
+            }
+            HStack(spacing: 4) {
+                themeItem(.themeColor3)
+                themeItem(.themeColor4)
+                themeItem(.themeColor5)
+            }
+        }
+    }
+    
+    private func themeItem(_ color: ColorResource) -> some View {
+        RoundedRectangle(cornerRadius: 4)
+            .foregroundStyle(Color(color))
+            .frame(height: 50)
+    }
+}
+
+#Preview {
+    ProView()
 }
