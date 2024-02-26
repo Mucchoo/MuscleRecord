@@ -5,63 +5,89 @@
 //  Created by Musa Yazuju on 2022/06/11.
 //
 
-import Foundation
+import UIKit
 import StoreKit
 
-class PurchaseViewModel: NSObject, ObservableObject {
-    var products = [SKProduct]()
-    //初期設定
+@MainActor
+class PurchaseViewModel: ObservableObject {
+    @Published var products = [Product]()
+
     func setup() {
-        let request = SKProductsRequest(productIdentifiers: ["musclerecord.pro"])
-        request.delegate = self
-        request.start()
-    }
-    //購入
-    func purchase() {
-        guard let product = products.first else { return }
-        let payment = SKPayment(product: product)
-        SKPaymentQueue.default().add(payment)
-    }
-    //復元
-    func restore() {
-        SKPaymentQueue.default().restoreCompletedTransactions()
-        SKPaymentQueue.default().add(self)
-    }
-    //購入後のアラート
-    private func showAlert(title: String) {
-        let alert = UIAlertController(title: title, message: "unlockedAllFeatures", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ok", style: .default))
-        Window.first!.rootViewController?.present(alert, animated: true)
-    }
-}
-//情報取得後
-extension PurchaseViewModel: SKProductsRequestDelegate {
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        products = response.products
-    }
-}
-//transactions変更時
-extension PurchaseViewModel: SKPaymentTransactionObserver {
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        transactions.forEach {
-            switch $0.transactionState {
-            case .purchasing: print("purchasing")
-            case .purchased:
-                print("purchased")
-                UserDefaults.standard.set(true, forKey: "purchaseStatus")
-                showAlert(title: "purchased")
-                SKPaymentQueue.default().finishTransaction($0)
-            case .restored:
-                print("restored")
-                UserDefaults.standard.set(true, forKey: "purchaseStatus")
-                showAlert(title: "restored")
-                SKPaymentQueue.default().finishTransaction($0)
-            case .deferred: print("defferred")
-            case .failed:
-                print("failed")
-                SKPaymentQueue.default().finishTransaction($0)
-            default: break
+        Task {
+            do {
+                let productIds = Set(["musclerecord.pro"])
+                let foundProducts = try await Product.products(for: productIds)
+                self.products = foundProducts
+            } catch {
+                print("Failed to load products: \(error)")
             }
+        }
+        
+        listenForTransactionUpdates()
+    }
+
+    func purchase() {
+        Task {
+            guard let product = products.first else { return }
+            do {
+                let result = try await product.purchase()
+                switch result {
+                case .success(let verification):
+                    switch verification {
+                    case .verified(let transaction):
+                        UserDefaults.standard.set(true, forKey: "purchaseStatus")
+                        showAlert(title: "購入しました")
+                        await transaction.finish()
+                    case .unverified:
+                        showAlert(title: "購入に失敗しました")
+                    }
+                default:
+                    showAlert(title: "購入に失敗しました")
+                }
+            } catch {
+                showAlert(title: "購入に失敗しました")
+                print("Purchase failed: \(error)")
+            }
+        }
+    }
+
+    func restore() {
+        Task {
+            for await result in Transaction.currentEntitlements {
+                switch result {
+                case .verified(let transaction):
+                    UserDefaults.standard.set(true, forKey: "purchaseStatus")
+                    showAlert(title: "購入を復元しました")
+                    await transaction.finish()
+                case .unverified:
+                    showAlert(title: "購入の復元に失敗しました")
+                }
+            }
+        }
+    }
+    
+    private func listenForTransactionUpdates() {
+        Task {
+            for await transaction in Transaction.updates {
+                switch transaction {
+                case .verified(let transaction):
+                    UserDefaults.standard.set(true, forKey: "purchaseStatus")
+                    await transaction.finish()
+                case .unverified(_, _):
+                    break
+                }
+            }
+        }
+    }
+
+    private func showAlert(title: String) {
+        DispatchQueue.main.async {
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+            guard let rootViewController = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController else { return }
+            
+            let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            rootViewController.present(alert, animated: true)
         }
     }
 }
